@@ -60,7 +60,7 @@
             this.pnBanner.Controls.Add(this.pnCompName);
             this.pnBanner.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnBanner.Location = new System.Drawing.Point(0, 0);
-            this.pnBanner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnBanner.Margin = new System.Windows.Forms.Padding(4);
             this.pnBanner.Name = "pnBanner";
             this.pnBanner.Size = new System.Drawing.Size(1553, 123);
             this.pnBanner.TabIndex = 0;
@@ -86,7 +86,7 @@
             this.pnCompName.Controls.Add(this.lblStaticCompanyName);
             this.pnCompName.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnCompName.Location = new System.Drawing.Point(0, 0);
-            this.pnCompName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnCompName.Margin = new System.Windows.Forms.Padding(4);
             this.pnCompName.Name = "pnCompName";
             this.pnCompName.Size = new System.Drawing.Size(361, 123);
             this.pnCompName.TabIndex = 2;
@@ -96,7 +96,7 @@
             this.picLogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.picLogo.Image = global::KernalPanic.Properties.Resources.Company_Logo___White;
             this.picLogo.Location = new System.Drawing.Point(0, 0);
-            this.picLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picLogo.Margin = new System.Windows.Forms.Padding(4);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(120, 123);
             this.picLogo.TabIndex = 0;
@@ -123,7 +123,7 @@
             this.pnNav.Controls.Add(this.btnHome);
             this.pnNav.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnNav.Location = new System.Drawing.Point(0, 123);
-            this.pnNav.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnNav.Margin = new System.Windows.Forms.Padding(4);
             this.pnNav.Name = "pnNav";
             this.pnNav.Size = new System.Drawing.Size(361, 885);
             this.pnNav.TabIndex = 1;
@@ -135,7 +135,7 @@
             this.btnOrder.Controls.Add(this.lblOrder);
             this.btnOrder.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnOrder.Location = new System.Drawing.Point(0, 107);
-            this.btnOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOrder.Margin = new System.Windows.Forms.Padding(4);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(361, 107);
             this.btnOrder.TabIndex = 4;
@@ -143,12 +143,12 @@
             // 
             // picOrder
             // 
-            this.picOrder.Dock = System.Windows.Forms.DockStyle.Top;
+            this.picOrder.Dock = System.Windows.Forms.DockStyle.Left;
             this.picOrder.Image = global::KernalPanic.Properties.Resources.order;
             this.picOrder.Location = new System.Drawing.Point(0, 0);
-            this.picOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picOrder.Margin = new System.Windows.Forms.Padding(4);
             this.picOrder.Name = "picOrder";
-            this.picOrder.Size = new System.Drawing.Size(361, 70);
+            this.picOrder.Size = new System.Drawing.Size(120, 107);
             this.picOrder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picOrder.TabIndex = 0;
             this.picOrder.TabStop = false;
@@ -156,13 +156,13 @@
             // 
             // lblOrder
             // 
-            this.lblOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblOrder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOrder.ForeColor = System.Drawing.Color.White;
-            this.lblOrder.Location = new System.Drawing.Point(0, 70);
+            this.lblOrder.Location = new System.Drawing.Point(0, 0);
             this.lblOrder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOrder.Name = "lblOrder";
-            this.lblOrder.Size = new System.Drawing.Size(361, 37);
+            this.lblOrder.Size = new System.Drawing.Size(361, 107);
             this.lblOrder.TabIndex = 3;
             this.lblOrder.Text = "Order";
             this.lblOrder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -175,7 +175,7 @@
             this.btnHome.Controls.Add(this.lblHome);
             this.btnHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHome.Location = new System.Drawing.Point(0, 0);
-            this.btnHome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(4);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(361, 107);
             this.btnHome.TabIndex = 3;
@@ -183,12 +183,12 @@
             // 
             // picHome
             // 
-            this.picHome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.picHome.Dock = System.Windows.Forms.DockStyle.Left;
             this.picHome.Image = global::KernalPanic.Properties.Resources.home;
             this.picHome.Location = new System.Drawing.Point(0, 0);
-            this.picHome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picHome.Margin = new System.Windows.Forms.Padding(4);
             this.picHome.Name = "picHome";
-            this.picHome.Size = new System.Drawing.Size(361, 70);
+            this.picHome.Size = new System.Drawing.Size(120, 107);
             this.picHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picHome.TabIndex = 0;
             this.picHome.TabStop = false;
@@ -196,13 +196,13 @@
             // 
             // lblHome
             // 
-            this.lblHome.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHome.ForeColor = System.Drawing.Color.White;
-            this.lblHome.Location = new System.Drawing.Point(0, 70);
+            this.lblHome.Location = new System.Drawing.Point(0, 0);
             this.lblHome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHome.Name = "lblHome";
-            this.lblHome.Size = new System.Drawing.Size(361, 37);
+            this.lblHome.Size = new System.Drawing.Size(361, 107);
             this.lblHome.TabIndex = 3;
             this.lblHome.Text = "Home";
             this.lblHome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -213,7 +213,7 @@
             this.pnStatus.Controls.Add(this.lblStatus);
             this.pnStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnStatus.Location = new System.Drawing.Point(361, 977);
-            this.pnStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnStatus.Margin = new System.Windows.Forms.Padding(4);
             this.pnStatus.Name = "pnStatus";
             this.pnStatus.Size = new System.Drawing.Size(1192, 31);
             this.pnStatus.TabIndex = 2;
@@ -241,7 +241,7 @@
             this.Controls.Add(this.pnNav);
             this.Controls.Add(this.pnBanner);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1194, 728);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
