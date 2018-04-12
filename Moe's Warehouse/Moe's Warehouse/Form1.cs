@@ -28,15 +28,19 @@ namespace WindowsFormsApplication1
         // val is based on what order the button comes in, starting at 0
         private void changeNav(int val)
         {
-            switch(val)
+            btnOrder.BackColor = Color.FromArgb(64, 64, 64);
+            btnItem.BackColor = Color.FromArgb(64, 64, 64);
+            btnWarehouse.BackColor = Color.FromArgb(64, 64, 64);
+            switch (val)
             {
                 case 0:
                     btnItem.BackColor = Color.Gray;
-                    btnOrder.BackColor = Color.FromArgb(64, 64, 64);
                     break;
                 case 1:
-                    btnItem.BackColor = Color.FromArgb(64, 64, 64);
                     btnOrder.BackColor = Color.Gray;
+                    break;
+                case 2:
+                    btnWarehouse.BackColor = Color.Gray;
                     break;
             }
         }
@@ -91,14 +95,35 @@ namespace WindowsFormsApplication1
         {
             btnOrder_Click(null, null);
         }
-
-        private void picWarehouse_Click(object sender, EventArgs e)
-        {
-
-        }
-
         //*************
         //* End Order *
         //*************
+
+
+        //*****************
+        //* Warehouse *
+        //*****************
+
+        // calls main Warehouse click function
+        private void picWarehouse_Click(object sender, EventArgs e)
+        {
+            btnWarehouse_Click(null, null);
+        }
+
+        // calls main Warehouse click function
+        private void lblWarehouse_Click(object sender, EventArgs e)
+        {
+            btnWarehouse_Click(null, null);
+        }
+
+        // Sets title, and changes background color
+        private void btnWarehouse_Click(object sender, EventArgs e)
+        {
+            lblCurrentScreen.Text = "WAREHOUSE";
+            changeNav(2);
+        }
+        //*****************
+        //* End Warehouse *
+        //*****************
     }
 }

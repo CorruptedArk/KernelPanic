@@ -90,7 +90,9 @@
     <Content Include="Resources\Company Logo - ico.ico" />
     <Content Include="Resources\Company Logo - White.png" />
     <Content Include="Resources\home.png" />
+    <None Include="Resources\item.png" />
     <Content Include="Resources\order.png" />
+    <None Include="Resources\warehouse.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
