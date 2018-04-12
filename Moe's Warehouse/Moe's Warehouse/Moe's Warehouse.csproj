@@ -91,6 +91,8 @@
     <Content Include="Resources\Company Logo - White.png" />
     <Content Include="Resources\home.png" />
     <None Include="Resources\item.png" />
+    <None Include="Resources\login.png" />
+    <None Include="Resources\logout.png" />
     <Content Include="Resources\order.png" />
     <None Include="Resources\warehouse.png" />
   </ItemGroup>

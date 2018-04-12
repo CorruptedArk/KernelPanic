@@ -1,9 +1,11 @@
-﻿using System;
+﻿using KernalPanic.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,31 +21,84 @@ namespace WindowsFormsApplication1
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            lblCurrentScreen.Text = "ITEM";
+            lblCurrentScreen.Text = "LOGIN";
             lblStatus.Text = "";
+            HideNav();
         }
 
+        private void HideNav()
+        {
+            btnItem.Hide();
+            btnOrder.Hide();
+            btnWarehouse.Hide();
+        }
+
+        private void ShowNav()
+        {
+            btnItem.Show();
+            btnOrder.Show();
+            btnWarehouse.Show();
+        }
 
         // Handles which button is currently selected, changes the background color
         // val is based on what order the button comes in, starting at 0
         private void changeNav(int val)
         {
+            btnLogin.BackColor = Color.FromArgb(64, 64, 64);
             btnOrder.BackColor = Color.FromArgb(64, 64, 64);
             btnItem.BackColor = Color.FromArgb(64, 64, 64);
             btnWarehouse.BackColor = Color.FromArgb(64, 64, 64);
             switch (val)
             {
                 case 0:
-                    btnItem.BackColor = Color.Gray;
+                    btnLogin.BackColor = Color.Gray;
                     break;
                 case 1:
-                    btnOrder.BackColor = Color.Gray;
+                    btnItem.BackColor = Color.Gray;
                     break;
                 case 2:
+                    btnOrder.BackColor = Color.Gray;
+                    break;
+                case 3:
                     btnWarehouse.BackColor = Color.Gray;
                     break;
             }
         }
+
+        //**************
+        //* log in/out *
+        //**************
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (lblLogin.Text == "Logout")
+            {
+                lblLogin.Text = "Login";
+                HideNav();
+                changeNav(0);
+                lblCurrentScreen.Text = "LOGIN";
+                picLogin.Image = Resources.login;
+            }
+            else
+            {
+                lblLogin.Text = "Logout";
+                ShowNav();
+                picLogin.Image = Resources.logout;
+            }
+        }
+
+        private void lblLogin_Click(object sender, EventArgs e)
+        {
+            btnLogin_Click(null, null);
+        }
+
+        private void picLogin_Click(object sender, EventArgs e)
+        {
+            btnLogin_Click(null, null);
+        }
+
+        //******************
+        //* End log in/out *
+        //******************
 
         //*************
         //*Item Button*
@@ -54,7 +109,7 @@ namespace WindowsFormsApplication1
         private void btnItem_Click(object sender, EventArgs e)
         {
             lblCurrentScreen.Text = "ITEM";
-            changeNav(0);
+            changeNav(1);
         }
 
         // calls item click function
@@ -81,7 +136,7 @@ namespace WindowsFormsApplication1
         private void btnOrder_Click(object sender, EventArgs e)
         {
             lblCurrentScreen.Text = "ORDER";
-            changeNav(1);
+            changeNav(2);
         }
 
         // calls main order click function
@@ -120,7 +175,7 @@ namespace WindowsFormsApplication1
         private void btnWarehouse_Click(object sender, EventArgs e)
         {
             lblCurrentScreen.Text = "WAREHOUSE";
-            changeNav(2);
+            changeNav(3);
         }
         //*****************
         //* End Warehouse *

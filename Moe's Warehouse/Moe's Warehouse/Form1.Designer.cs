@@ -42,9 +42,12 @@
             this.lblItem = new System.Windows.Forms.Label();
             this.pnStatus = new System.Windows.Forms.Panel();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.btnLogin = new System.Windows.Forms.Panel();
+            this.lblLogin = new System.Windows.Forms.Label();
+            this.picLogin = new System.Windows.Forms.PictureBox();
             this.picWarehouse = new System.Windows.Forms.PictureBox();
-            this.picOrder = new System.Windows.Forms.PictureBox();
             this.picItem = new System.Windows.Forms.PictureBox();
+            this.picOrder = new System.Windows.Forms.PictureBox();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.pnBanner.SuspendLayout();
             this.pnCompName.SuspendLayout();
@@ -53,9 +56,11 @@
             this.btnOrder.SuspendLayout();
             this.btnItem.SuspendLayout();
             this.pnStatus.SuspendLayout();
+            this.btnLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWarehouse)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,6 +121,7 @@
             this.pnNav.Controls.Add(this.btnWarehouse);
             this.pnNav.Controls.Add(this.btnOrder);
             this.pnNav.Controls.Add(this.btnItem);
+            this.pnNav.Controls.Add(this.btnLogin);
             this.pnNav.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnNav.Location = new System.Drawing.Point(0, 123);
             this.pnNav.Margin = new System.Windows.Forms.Padding(4);
@@ -127,7 +133,8 @@
             // 
             this.btnWarehouse.Controls.Add(this.picWarehouse);
             this.btnWarehouse.Controls.Add(this.lblWarehouse);
-            this.btnWarehouse.Location = new System.Drawing.Point(0, 218);
+            this.btnWarehouse.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnWarehouse.Location = new System.Drawing.Point(0, 321);
             this.btnWarehouse.Margin = new System.Windows.Forms.Padding(4);
             this.btnWarehouse.Name = "btnWarehouse";
             this.btnWarehouse.Size = new System.Drawing.Size(361, 107);
@@ -140,10 +147,10 @@
             this.lblWarehouse.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblWarehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWarehouse.ForeColor = System.Drawing.Color.White;
-            this.lblWarehouse.Location = new System.Drawing.Point(120, 0);
+            this.lblWarehouse.Location = new System.Drawing.Point(119, 0);
             this.lblWarehouse.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWarehouse.Name = "lblWarehouse";
-            this.lblWarehouse.Size = new System.Drawing.Size(241, 107);
+            this.lblWarehouse.Size = new System.Drawing.Size(242, 107);
             this.lblWarehouse.TabIndex = 1;
             this.lblWarehouse.Text = "Warehouse";
             this.lblWarehouse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -154,7 +161,8 @@
             this.btnOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnOrder.Controls.Add(this.picOrder);
             this.btnOrder.Controls.Add(this.lblOrder);
-            this.btnOrder.Location = new System.Drawing.Point(0, 107);
+            this.btnOrder.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnOrder.Location = new System.Drawing.Point(0, 214);
             this.btnOrder.Margin = new System.Windows.Forms.Padding(4);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(361, 107);
@@ -166,10 +174,10 @@
             this.lblOrder.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOrder.ForeColor = System.Drawing.Color.White;
-            this.lblOrder.Location = new System.Drawing.Point(120, 0);
+            this.lblOrder.Location = new System.Drawing.Point(119, 0);
             this.lblOrder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOrder.Name = "lblOrder";
-            this.lblOrder.Size = new System.Drawing.Size(241, 107);
+            this.lblOrder.Size = new System.Drawing.Size(242, 107);
             this.lblOrder.TabIndex = 3;
             this.lblOrder.Text = "Order";
             this.lblOrder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -177,11 +185,11 @@
             // 
             // btnItem
             // 
-            this.btnItem.BackColor = System.Drawing.Color.Gray;
+            this.btnItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnItem.Controls.Add(this.picItem);
             this.btnItem.Controls.Add(this.lblItem);
             this.btnItem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnItem.Location = new System.Drawing.Point(0, 0);
+            this.btnItem.Location = new System.Drawing.Point(0, 107);
             this.btnItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnItem.Name = "btnItem";
             this.btnItem.Size = new System.Drawing.Size(361, 107);
@@ -193,10 +201,10 @@
             this.lblItem.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblItem.ForeColor = System.Drawing.Color.White;
-            this.lblItem.Location = new System.Drawing.Point(120, 0);
+            this.lblItem.Location = new System.Drawing.Point(119, 0);
             this.lblItem.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblItem.Name = "lblItem";
-            this.lblItem.Size = new System.Drawing.Size(241, 107);
+            this.lblItem.Size = new System.Drawing.Size(242, 107);
             this.lblItem.TabIndex = 3;
             this.lblItem.Text = "Item";
             this.lblItem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -226,6 +234,47 @@
             this.lblStatus.TabIndex = 4;
             this.lblStatus.Text = "[Error or Status Message]";
             // 
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.Gray;
+            this.btnLogin.Controls.Add(this.picLogin);
+            this.btnLogin.Controls.Add(this.lblLogin);
+            this.btnLogin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLogin.Location = new System.Drawing.Point(0, 0);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(361, 107);
+            this.btnLogin.TabIndex = 4;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // lblLogin
+            // 
+            this.lblLogin.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogin.ForeColor = System.Drawing.Color.White;
+            this.lblLogin.Location = new System.Drawing.Point(119, 0);
+            this.lblLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLogin.Name = "lblLogin";
+            this.lblLogin.Size = new System.Drawing.Size(242, 107);
+            this.lblLogin.TabIndex = 3;
+            this.lblLogin.Text = "Login";
+            this.lblLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblLogin.UseCompatibleTextRendering = true;
+            this.lblLogin.Click += new System.EventHandler(this.lblLogin_Click);
+            // 
+            // picLogin
+            // 
+            this.picLogin.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picLogin.Image = global::KernalPanic.Properties.Resources.login;
+            this.picLogin.Location = new System.Drawing.Point(0, 0);
+            this.picLogin.Margin = new System.Windows.Forms.Padding(4);
+            this.picLogin.Name = "picLogin";
+            this.picLogin.Size = new System.Drawing.Size(120, 107);
+            this.picLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picLogin.TabIndex = 0;
+            this.picLogin.TabStop = false;
+            this.picLogin.Click += new System.EventHandler(this.picLogin_Click);
+            // 
             // picWarehouse
             // 
             this.picWarehouse.Dock = System.Windows.Forms.DockStyle.Left;
@@ -237,19 +286,6 @@
             this.picWarehouse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picWarehouse.TabIndex = 0;
             this.picWarehouse.TabStop = false;
-            // 
-            // picOrder
-            // 
-            this.picOrder.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picOrder.Image = global::KernalPanic.Properties.Resources.order;
-            this.picOrder.Location = new System.Drawing.Point(0, 0);
-            this.picOrder.Margin = new System.Windows.Forms.Padding(4);
-            this.picOrder.Name = "picOrder";
-            this.picOrder.Size = new System.Drawing.Size(120, 107);
-            this.picOrder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picOrder.TabIndex = 0;
-            this.picOrder.TabStop = false;
-            this.picOrder.Click += new System.EventHandler(this.picOrder_Click);
             // 
             // picItem
             // 
@@ -263,6 +299,19 @@
             this.picItem.TabIndex = 0;
             this.picItem.TabStop = false;
             this.picItem.Click += new System.EventHandler(this.picItem_Click);
+            // 
+            // picOrder
+            // 
+            this.picOrder.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picOrder.Image = global::KernalPanic.Properties.Resources.order;
+            this.picOrder.Location = new System.Drawing.Point(0, 0);
+            this.picOrder.Margin = new System.Windows.Forms.Padding(4);
+            this.picOrder.Name = "picOrder";
+            this.picOrder.Size = new System.Drawing.Size(120, 107);
+            this.picOrder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picOrder.TabIndex = 0;
+            this.picOrder.TabStop = false;
+            this.picOrder.Click += new System.EventHandler(this.picOrder_Click);
             // 
             // picLogo
             // 
@@ -301,9 +350,11 @@
             this.btnItem.ResumeLayout(false);
             this.pnStatus.ResumeLayout(false);
             this.pnStatus.PerformLayout();
+            this.btnLogin.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWarehouse)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
 
@@ -328,6 +379,9 @@
         private System.Windows.Forms.Panel btnWarehouse;
         private System.Windows.Forms.PictureBox picWarehouse;
         private System.Windows.Forms.Label lblWarehouse;
+        private System.Windows.Forms.Panel btnLogin;
+        private System.Windows.Forms.PictureBox picLogin;
+        private System.Windows.Forms.Label lblLogin;
     }
 }
 
