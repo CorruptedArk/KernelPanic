@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            lblCurrentScreen.Text = "HOME";
+            lblCurrentScreen.Text = "ITEM";
             lblStatus.Text = "";
         }
 
@@ -31,38 +31,38 @@ namespace WindowsFormsApplication1
             switch(val)
             {
                 case 0:
-                    btnHome.BackColor = Color.Gray;
+                    btnItem.BackColor = Color.Gray;
                     btnOrder.BackColor = Color.FromArgb(64, 64, 64);
                     break;
                 case 1:
-                    btnHome.BackColor = Color.FromArgb(64, 64, 64);
+                    btnItem.BackColor = Color.FromArgb(64, 64, 64);
                     btnOrder.BackColor = Color.Gray;
                     break;
             }
         }
 
         //*************
-        //*Home Button*
+        //*Item Button*
         //*************
 
-        // Main Home click function
+        // Item click function
         // Sets title, and changes background color
-        private void btnHome_Click(object sender, EventArgs e)
+        private void btnItem_Click(object sender, EventArgs e)
         {
-            lblCurrentScreen.Text = "HOME";
+            lblCurrentScreen.Text = "ITEM";
             changeNav(0);
         }
 
-        // calls main home click function
-        private void picHome_Click(object sender, EventArgs e)
+        // calls item click function
+        private void picItem_Click(object sender, EventArgs e)
         {
-            btnHome_Click(null, null);
+            btnItem_Click(null, null);
         }
 
         // calls main home click function
-        private void lblHome_Click(object sender, EventArgs e)
+        private void lblItem_Click(object sender, EventArgs e)
         {
-            btnHome_Click(null, null);
+            btnItem_Click(null, null);
         }
         //**************
         //* End Button *
@@ -91,6 +91,12 @@ namespace WindowsFormsApplication1
         {
             btnOrder_Click(null, null);
         }
+
+        private void picWarehouse_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //*************
         //* End Order *
         //*************
