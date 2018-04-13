@@ -14,6 +14,12 @@ namespace WindowsFormsApplication1
 {
     public partial class FormMain : Form
     {
+        const int LOGIN_NAV_ID = 0;
+        const int ITEM_NAV_ID = 1;
+        const int ORDER_NAV_ID = 2;
+        const int WAREHOUSE_NAV_ID = 3;
+        List<Panel> panelList = new List<Panel>();
+
         public FormMain()
         {
             InitializeComponent();
@@ -24,6 +30,11 @@ namespace WindowsFormsApplication1
             lblCurrentScreen.Text = "LOGIN";
             lblStatus.Text = "";
             HideNav();
+            panelList.Add(loginPanel);
+            panelList.Add(itemPanel);
+            panelList.Add(orderPanel);
+            panelList.Add(warehousePanel);
+            SetMainView(LOGIN_NAV_ID);
         }
 
         private void HideNav()
@@ -50,17 +61,21 @@ namespace WindowsFormsApplication1
             btnWarehouse.BackColor = Color.FromArgb(64, 64, 64);
             switch (val)
             {
-                case 0:
+                case LOGIN_NAV_ID:
                     btnLogin.BackColor = Color.Gray;
+                    SetMainView(LOGIN_NAV_ID);
                     break;
-                case 1:
+                case ITEM_NAV_ID:
                     btnItem.BackColor = Color.Gray;
+                    SetMainView(ITEM_NAV_ID);
                     break;
-                case 2:
+                case ORDER_NAV_ID:
                     btnOrder.BackColor = Color.Gray;
+                    SetMainView(ORDER_NAV_ID);
                     break;
-                case 3:
+                case WAREHOUSE_NAV_ID:
                     btnWarehouse.BackColor = Color.Gray;
+                    SetMainView(WAREHOUSE_NAV_ID);
                     break;
             }
         }
@@ -74,7 +89,7 @@ namespace WindowsFormsApplication1
             {
                 lblLogin.Text = "Login";
                 HideNav();
-                changeNav(0);
+                changeNav(LOGIN_NAV_ID);
                 lblCurrentScreen.Text = "LOGIN";
                 picLogin.Image = Resources.login;
             }
@@ -109,7 +124,7 @@ namespace WindowsFormsApplication1
         private void btnItem_Click(object sender, EventArgs e)
         {
             lblCurrentScreen.Text = "ITEM";
-            changeNav(1);
+            changeNav(ITEM_NAV_ID);
         }
 
         // calls item click function
@@ -136,7 +151,7 @@ namespace WindowsFormsApplication1
         private void btnOrder_Click(object sender, EventArgs e)
         {
             lblCurrentScreen.Text = "ORDER";
-            changeNav(2);
+            changeNav(ORDER_NAV_ID);
         }
 
         // calls main order click function
@@ -175,10 +190,27 @@ namespace WindowsFormsApplication1
         private void btnWarehouse_Click(object sender, EventArgs e)
         {
             lblCurrentScreen.Text = "WAREHOUSE";
-            changeNav(3);
+            changeNav(WAREHOUSE_NAV_ID);
         }
         //*****************
         //* End Warehouse *
         //*****************
+
+        // Sets the panel at navID in panelList as the visible panel and hides the others
+        private void SetMainView(int navID)
+        {
+            for(int i = 0; i < panelList.Count; i++)
+            {
+                if( i == navID )
+                {
+                    panelList[i].Visible = true;
+                }
+                else
+                {
+                    panelList[i].Visible = false;
+                }
+            }
+        }
+
     }
 }
