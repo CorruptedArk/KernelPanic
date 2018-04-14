@@ -18,7 +18,12 @@ namespace WindowsFormsApplication1
         const int ITEM_NAV_ID = 1;
         const int ORDER_NAV_ID = 2;
         const int WAREHOUSE_NAV_ID = 3;
-        List<Panel> panelList = new List<Panel>();
+        const int EMPLOYEE_NAV_ID = 4;
+        const int BATCH_NAV_ID = 5;
+        readonly Color DEFAULT_BACKGROUND = Color.FromArgb(64, 64, 64);
+        private List<Panel> panelList = new List<Panel>();
+
+        private string currentUser;
 
         public FormMain()
         {
@@ -34,7 +39,10 @@ namespace WindowsFormsApplication1
             panelList.Add(itemPanel);
             panelList.Add(orderPanel);
             panelList.Add(warehousePanel);
+            panelList.Add(employeePanel);
+            panelList.Add(batchPanel);
             SetMainView(LOGIN_NAV_ID);
+            btnBatch.Visible = false;
         }
 
         private void HideNav()
@@ -42,6 +50,7 @@ namespace WindowsFormsApplication1
             btnItem.Hide();
             btnOrder.Hide();
             btnWarehouse.Hide();
+            btnEmployee.Hide();
         }
 
         private void ShowNav()
@@ -49,16 +58,18 @@ namespace WindowsFormsApplication1
             btnItem.Show();
             btnOrder.Show();
             btnWarehouse.Show();
+            btnEmployee.Show();
         }
 
         // Handles which button is currently selected, changes the background color
         // val is based on what order the button comes in, starting at 0
         private void changeNav(int val)
         {
-            btnLogin.BackColor = Color.FromArgb(64, 64, 64);
-            btnOrder.BackColor = Color.FromArgb(64, 64, 64);
-            btnItem.BackColor = Color.FromArgb(64, 64, 64);
-            btnWarehouse.BackColor = Color.FromArgb(64, 64, 64);
+            btnLogin.BackColor = DEFAULT_BACKGROUND;
+            btnOrder.BackColor = DEFAULT_BACKGROUND;
+            btnItem.BackColor = DEFAULT_BACKGROUND;
+            btnWarehouse.BackColor = DEFAULT_BACKGROUND;
+            btnEmployee.BackColor = DEFAULT_BACKGROUND;
             switch (val)
             {
                 case LOGIN_NAV_ID:
@@ -77,6 +88,30 @@ namespace WindowsFormsApplication1
                     btnWarehouse.BackColor = Color.Gray;
                     SetMainView(WAREHOUSE_NAV_ID);
                     break;
+                case EMPLOYEE_NAV_ID:
+                    btnEmployee.BackColor = Color.Gray;
+                    SetMainView(EMPLOYEE_NAV_ID);
+                    break;
+                case BATCH_NAV_ID:
+                    SetMainView(BATCH_NAV_ID);
+                    break;
+                
+            }
+        }
+
+        // Sets the panel at navID in panelList as the visible panel and hides the others
+        private void SetMainView(int navID)
+        {
+            for (int i = 0; i < panelList.Count; i++)
+            {
+                if (i == navID)
+                {
+                    panelList[i].Visible = true;
+                }
+                else
+                {
+                    panelList[i].Visible = false;
+                }
             }
         }
 
@@ -89,6 +124,7 @@ namespace WindowsFormsApplication1
             {
                 lblLogin.Text = "Login";
                 HideNav();
+                btnBatch.Visible = false;
                 changeNav(LOGIN_NAV_ID);
                 lblCurrentScreen.Text = "LOGIN";
                 picLogin.Image = Resources.login;
@@ -104,6 +140,26 @@ namespace WindowsFormsApplication1
         private void picLogin_Click(object sender, EventArgs e)
         {
             btnLogin_Click(null, null);
+        }
+
+        private void loginEnterButton_Click(object sender, EventArgs e)
+        {
+            // check for valid login information
+            string username = userNameBox.Text;
+            string password = passwordBox.Text;
+
+            if (true) // this needs to be the login success condition when the database is established.
+            {
+                userNameBox.Text = "";
+                passwordBox.Text = "";
+                currentUser = username;
+                lblLogin.Text = "Logout";
+                ShowNav();
+                btnBatch.Visible = true;
+                lblCurrentScreen.Text = "ITEM";
+                changeNav(ITEM_NAV_ID);
+                picLogin.Image = Resources.logout;
+            }
         }
 
         //******************
@@ -191,36 +247,63 @@ namespace WindowsFormsApplication1
         //* End Warehouse *
         //*****************
 
-        // Sets the panel at navID in panelList as the visible panel and hides the others
-        private void SetMainView(int navID)
+
+        //*****************
+        //* Employee *
+        //*****************
+
+        private void btnEmployee_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < panelList.Count; i++)
-            {
-                if( i == navID )
-                {
-                    panelList[i].Visible = true;
-                }
-                else
-                {
-                    panelList[i].Visible = false;
-                }
-            }
+            lblCurrentScreen.Text = "EMPLOYEE";
+            changeNav(EMPLOYEE_NAV_ID);
         }
 
-        private void loginEnterButton_Click(object sender, EventArgs e)
+        private void picEmployee_Click(object sender, EventArgs e)
         {
-            // check for valid login information
-            string username = userNameBox.Text;
-            string password = passwordBox.Text;
-
-
-            if (true) // this needs to be the login success condition when the database is established.
-            {           
-                lblLogin.Text = "Logout";
-                ShowNav();
-                changeNav(ITEM_NAV_ID);
-                picLogin.Image = Resources.logout;
-            }
+            btnEmployee_Click(null, null);
         }
+
+        private void lblEmployee_Click(object sender, EventArgs e)
+        {
+            btnEmployee_Click(null, null);
+        }
+
+
+        //*****************
+        //* End Employee *
+        //*****************
+
+        //*****************
+        //* Batch *
+        //*****************
+        private void btnBatch_Click(object sender, EventArgs e)
+        {
+            HideNav();
+            btnBatch.Visible = false;
+            lblCurrentScreen.Text = "BATCH";
+            changeNav(BATCH_NAV_ID);
+
+            batchProcess();
+
+            ShowNav();
+            btnBatch.Visible = true;
+        }
+
+        // This function will hold the batch process. The contents are currently a placeholder for demonstration
+        private void batchProcess()
+        {
+            batchTestLabel.Text = "Starting...";
+            Refresh();
+
+            System.Threading.Thread.Sleep(5000);
+
+            batchTestLabel.Text = "Done";
+            
+        }
+
+        //*****************
+        //* End Batch *
+        //*****************
+
     }
 }

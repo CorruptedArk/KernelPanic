@@ -35,6 +35,9 @@
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.lblStaticCompanyName = new System.Windows.Forms.Label();
             this.pnNav = new System.Windows.Forms.Panel();
+            this.btnEmployee = new System.Windows.Forms.Panel();
+            this.picEmployee = new System.Windows.Forms.PictureBox();
+            this.lblEmployee = new System.Windows.Forms.Label();
             this.btnWarehouse = new System.Windows.Forms.Panel();
             this.picWarehouse = new System.Windows.Forms.PictureBox();
             this.lblWarehouse = new System.Windows.Forms.Label();
@@ -61,10 +64,17 @@
             this.orderTestLabel = new System.Windows.Forms.Label();
             this.warehousePanel = new System.Windows.Forms.Panel();
             this.warehouseTestLabel = new System.Windows.Forms.Label();
+            this.employeePanel = new System.Windows.Forms.Panel();
+            this.employeeTestLabel = new System.Windows.Forms.Label();
+            this.btnBatch = new System.Windows.Forms.Button();
+            this.batchPanel = new System.Windows.Forms.Panel();
+            this.batchTestLabel = new System.Windows.Forms.Label();
             this.pnBanner.SuspendLayout();
             this.pnCompName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.pnNav.SuspendLayout();
+            this.btnEmployee.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEmployee)).BeginInit();
             this.btnWarehouse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picWarehouse)).BeginInit();
             this.btnOrder.SuspendLayout();
@@ -78,6 +88,8 @@
             this.itemPanel.SuspendLayout();
             this.orderPanel.SuspendLayout();
             this.warehousePanel.SuspendLayout();
+            this.employeePanel.SuspendLayout();
+            this.batchPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnBanner
@@ -141,6 +153,8 @@
             // 
             this.pnNav.AutoScroll = true;
             this.pnNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pnNav.Controls.Add(this.btnBatch);
+            this.pnNav.Controls.Add(this.btnEmployee);
             this.pnNav.Controls.Add(this.btnWarehouse);
             this.pnNav.Controls.Add(this.btnOrder);
             this.pnNav.Controls.Add(this.btnItem);
@@ -150,6 +164,42 @@
             this.pnNav.Name = "pnNav";
             this.pnNav.Size = new System.Drawing.Size(271, 509);
             this.pnNav.TabIndex = 1;
+            // 
+            // btnEmployee
+            // 
+            this.btnEmployee.Controls.Add(this.picEmployee);
+            this.btnEmployee.Controls.Add(this.lblEmployee);
+            this.btnEmployee.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEmployee.Location = new System.Drawing.Point(0, 348);
+            this.btnEmployee.Name = "btnEmployee";
+            this.btnEmployee.Size = new System.Drawing.Size(271, 87);
+            this.btnEmployee.TabIndex = 6;
+            this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
+            // 
+            // picEmployee
+            // 
+            this.picEmployee.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picEmployee.Location = new System.Drawing.Point(0, 0);
+            this.picEmployee.Name = "picEmployee";
+            this.picEmployee.Size = new System.Drawing.Size(90, 87);
+            this.picEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picEmployee.TabIndex = 0;
+            this.picEmployee.TabStop = false;
+            this.picEmployee.Click += new System.EventHandler(this.picEmployee_Click);
+            // 
+            // lblEmployee
+            // 
+            this.lblEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.lblEmployee.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmployee.ForeColor = System.Drawing.Color.White;
+            this.lblEmployee.Location = new System.Drawing.Point(89, 0);
+            this.lblEmployee.Name = "lblEmployee";
+            this.lblEmployee.Size = new System.Drawing.Size(182, 87);
+            this.lblEmployee.TabIndex = 1;
+            this.lblEmployee.Text = "Employee";
+            this.lblEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblEmployee.Click += new System.EventHandler(this.lblEmployee_Click);
             // 
             // btnWarehouse
             // 
@@ -432,6 +482,50 @@
             this.warehouseTestLabel.TabIndex = 0;
             this.warehouseTestLabel.Text = "warehouse";
             // 
+            // employeePanel
+            // 
+            this.employeePanel.Controls.Add(this.employeeTestLabel);
+            this.employeePanel.Location = new System.Drawing.Point(271, 100);
+            this.employeePanel.Name = "employeePanel";
+            this.employeePanel.Size = new System.Drawing.Size(756, 481);
+            this.employeePanel.TabIndex = 1;
+            // 
+            // employeeTestLabel
+            // 
+            this.employeeTestLabel.AutoSize = true;
+            this.employeeTestLabel.Location = new System.Drawing.Point(0, 0);
+            this.employeeTestLabel.Name = "employeeTestLabel";
+            this.employeeTestLabel.Size = new System.Drawing.Size(53, 13);
+            this.employeeTestLabel.TabIndex = 0;
+            this.employeeTestLabel.Text = "Employee";
+            // 
+            // btnBatch
+            // 
+            this.btnBatch.Location = new System.Drawing.Point(38, 462);
+            this.btnBatch.Name = "btnBatch";
+            this.btnBatch.Size = new System.Drawing.Size(194, 34);
+            this.btnBatch.TabIndex = 7;
+            this.btnBatch.Text = "Start Batch";
+            this.btnBatch.UseVisualStyleBackColor = true;
+            this.btnBatch.Click += new System.EventHandler(this.btnBatch_Click);
+            // 
+            // batchPanel
+            // 
+            this.batchPanel.Controls.Add(this.batchTestLabel);
+            this.batchPanel.Location = new System.Drawing.Point(271, 100);
+            this.batchPanel.Name = "batchPanel";
+            this.batchPanel.Size = new System.Drawing.Size(756, 481);
+            this.batchPanel.TabIndex = 1;
+            // 
+            // batchTestLabel
+            // 
+            this.batchTestLabel.AutoSize = true;
+            this.batchTestLabel.Location = new System.Drawing.Point(5, 4);
+            this.batchTestLabel.Name = "batchTestLabel";
+            this.batchTestLabel.Size = new System.Drawing.Size(35, 13);
+            this.batchTestLabel.TabIndex = 0;
+            this.batchTestLabel.Text = "Batch";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,10 +535,12 @@
             this.Controls.Add(this.pnStatus);
             this.Controls.Add(this.pnNav);
             this.Controls.Add(this.pnBanner);
-            this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.batchPanel);
+            this.Controls.Add(this.employeePanel);
             this.Controls.Add(this.orderPanel);
             this.Controls.Add(this.itemPanel);
             this.Controls.Add(this.warehousePanel);
+            this.Controls.Add(this.loginPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 596);
             this.Name = "FormMain";
@@ -456,6 +552,8 @@
             this.pnCompName.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.pnNav.ResumeLayout(false);
+            this.btnEmployee.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picEmployee)).EndInit();
             this.btnWarehouse.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picWarehouse)).EndInit();
             this.btnOrder.ResumeLayout(false);
@@ -474,6 +572,10 @@
             this.orderPanel.PerformLayout();
             this.warehousePanel.ResumeLayout(false);
             this.warehousePanel.PerformLayout();
+            this.employeePanel.ResumeLayout(false);
+            this.employeePanel.PerformLayout();
+            this.batchPanel.ResumeLayout(false);
+            this.batchPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -512,6 +614,14 @@
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.Label userLabel;
         private System.Windows.Forms.Button loginEnterButton;
+        private System.Windows.Forms.Panel btnEmployee;
+        private System.Windows.Forms.PictureBox picEmployee;
+        private System.Windows.Forms.Label lblEmployee;
+        private System.Windows.Forms.Panel employeePanel;
+        private System.Windows.Forms.Label employeeTestLabel;
+        private System.Windows.Forms.Button btnBatch;
+        private System.Windows.Forms.Panel batchPanel;
+        private System.Windows.Forms.Label batchTestLabel;
     }
 }
 
