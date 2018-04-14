@@ -93,12 +93,7 @@ namespace WindowsFormsApplication1
                 lblCurrentScreen.Text = "LOGIN";
                 picLogin.Image = Resources.login;
             }
-            else
-            {
-                lblLogin.Text = "Logout";
-                ShowNav();
-                picLogin.Image = Resources.logout;
-            }
+            
         }
 
         private void lblLogin_Click(object sender, EventArgs e)
@@ -212,5 +207,20 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void loginEnterButton_Click(object sender, EventArgs e)
+        {
+            // check for valid login information
+            string username = userNameBox.Text;
+            string password = passwordBox.Text;
+
+
+            if (true) // this needs to be the login success condition when the database is established.
+            {           
+                lblLogin.Text = "Logout";
+                ShowNav();
+                changeNav(ITEM_NAV_ID);
+                picLogin.Image = Resources.logout;
+            }
+        }
     }
 }

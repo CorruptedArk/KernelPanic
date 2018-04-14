@@ -50,13 +50,17 @@
             this.pnStatus = new System.Windows.Forms.Panel();
             this.lblStatus = new System.Windows.Forms.Label();
             this.loginPanel = new System.Windows.Forms.Panel();
+            this.loginEnterButton = new System.Windows.Forms.Button();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.userLabel = new System.Windows.Forms.Label();
+            this.passwordBox = new System.Windows.Forms.TextBox();
+            this.userNameBox = new System.Windows.Forms.TextBox();
             this.itemPanel = new System.Windows.Forms.Panel();
             this.itemTestLabel = new System.Windows.Forms.Label();
             this.orderPanel = new System.Windows.Forms.Panel();
             this.orderTestLabel = new System.Windows.Forms.Label();
             this.warehousePanel = new System.Windows.Forms.Panel();
             this.warehouseTestLabel = new System.Windows.Forms.Label();
-            this.loginTestLabel = new System.Windows.Forms.Label();
             this.pnBanner.SuspendLayout();
             this.pnCompName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -319,11 +323,63 @@
             // 
             // loginPanel
             // 
-            this.loginPanel.Controls.Add(this.loginTestLabel);
+            this.loginPanel.Controls.Add(this.loginEnterButton);
+            this.loginPanel.Controls.Add(this.passwordLabel);
+            this.loginPanel.Controls.Add(this.userLabel);
+            this.loginPanel.Controls.Add(this.passwordBox);
+            this.loginPanel.Controls.Add(this.userNameBox);
             this.loginPanel.Location = new System.Drawing.Point(272, 100);
             this.loginPanel.Name = "loginPanel";
             this.loginPanel.Size = new System.Drawing.Size(756, 481);
             this.loginPanel.TabIndex = 3;
+            // 
+            // loginEnterButton
+            // 
+            this.loginEnterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginEnterButton.Location = new System.Drawing.Point(408, 154);
+            this.loginEnterButton.Name = "loginEnterButton";
+            this.loginEnterButton.Size = new System.Drawing.Size(113, 38);
+            this.loginEnterButton.TabIndex = 4;
+            this.loginEnterButton.Text = "Enter";
+            this.loginEnterButton.UseVisualStyleBackColor = true;
+            this.loginEnterButton.Click += new System.EventHandler(this.loginEnterButton_Click);
+            // 
+            // passwordLabel
+            // 
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordLabel.Location = new System.Drawing.Point(66, 104);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(97, 24);
+            this.passwordLabel.TabIndex = 3;
+            this.passwordLabel.Text = "Password:";
+            // 
+            // userLabel
+            // 
+            this.userLabel.AutoSize = true;
+            this.userLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userLabel.Location = new System.Drawing.Point(61, 54);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(102, 24);
+            this.userLabel.TabIndex = 2;
+            this.userLabel.Text = "Username:";
+            // 
+            // passwordBox
+            // 
+            this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordBox.Location = new System.Drawing.Point(163, 101);
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.Size = new System.Drawing.Size(358, 29);
+            this.passwordBox.TabIndex = 1;
+            this.passwordBox.UseSystemPasswordChar = true;
+            // 
+            // userNameBox
+            // 
+            this.userNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNameBox.Location = new System.Drawing.Point(163, 51);
+            this.userNameBox.Name = "userNameBox";
+            this.userNameBox.Size = new System.Drawing.Size(358, 29);
+            this.userNameBox.TabIndex = 0;
             // 
             // itemPanel
             // 
@@ -376,15 +432,6 @@
             this.warehouseTestLabel.TabIndex = 0;
             this.warehouseTestLabel.Text = "warehouse";
             // 
-            // loginTestLabel
-            // 
-            this.loginTestLabel.AutoSize = true;
-            this.loginTestLabel.Location = new System.Drawing.Point(6, 7);
-            this.loginTestLabel.Name = "loginTestLabel";
-            this.loginTestLabel.Size = new System.Drawing.Size(29, 13);
-            this.loginTestLabel.TabIndex = 0;
-            this.loginTestLabel.Text = "login";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,10 +441,10 @@
             this.Controls.Add(this.pnStatus);
             this.Controls.Add(this.pnNav);
             this.Controls.Add(this.pnBanner);
+            this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.orderPanel);
             this.Controls.Add(this.itemPanel);
             this.Controls.Add(this.warehousePanel);
-            this.Controls.Add(this.loginPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 596);
             this.Name = "FormMain";
@@ -460,7 +507,11 @@
         private System.Windows.Forms.Label orderTestLabel;
         private System.Windows.Forms.Label itemTestLabel;
         private System.Windows.Forms.Label warehouseTestLabel;
-        private System.Windows.Forms.Label loginTestLabel;
+        private System.Windows.Forms.TextBox passwordBox;
+        private System.Windows.Forms.TextBox userNameBox;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Label userLabel;
+        private System.Windows.Forms.Button loginEnterButton;
     }
 }
 
