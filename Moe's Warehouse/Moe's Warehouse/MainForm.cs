@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
         private List<Panel> panelList = new List<Panel>();
 
         private string currentUser;
+        private bool isInEditMode = false;
 
         public FormMain()
         {
@@ -58,7 +59,10 @@ namespace WindowsFormsApplication1
             btnItem.Show();
             btnOrder.Show();
             btnWarehouse.Show();
-            btnEmployee.Show();
+            if (true) // has permission to view/edit employees
+            {
+                btnEmployee.Show();
+            } 
         }
 
         // Handles which button is currently selected, changes the background color
@@ -159,7 +163,17 @@ namespace WindowsFormsApplication1
                 lblCurrentScreen.Text = "ITEM";
                 changeNav(ITEM_NAV_ID);
                 picLogin.Image = Resources.logout;
+
+                itemViewButton.BackColor = Color.Gray;
+                itemEditButton.BackColor = Color.White;
+                isInEditMode = false;
             }
+        }
+
+        private void loginResetButton_Click(object sender, EventArgs e)
+        {
+            userNameBox.Text = "";
+            passwordBox.Text = "";
         }
 
         //******************
@@ -167,7 +181,7 @@ namespace WindowsFormsApplication1
         //******************
 
         //*************
-        //*Item Button*
+        //*Item*
         //*************
 
         // Item click function
@@ -175,6 +189,19 @@ namespace WindowsFormsApplication1
         private void btnItem_Click(object sender, EventArgs e)
         {
             lblCurrentScreen.Text = "ITEM";
+
+            if(isInEditMode)
+            {
+                itemViewButton.BackColor = Color.White;
+                itemEditButton.BackColor = Color.Gray;
+
+            }
+            else
+            {
+                itemViewButton.BackColor = Color.Gray;
+                itemEditButton.BackColor = Color.White;
+            }
+
             changeNav(ITEM_NAV_ID);
         }
 
@@ -189,12 +216,52 @@ namespace WindowsFormsApplication1
         {
             btnItem_Click(null, null);
         }
+
+        private void itemViewButton_Click(object sender, EventArgs e)
+        {
+            itemViewButton.BackColor = Color.Gray;
+            itemEditButton.BackColor = Color.White;
+
+            isInEditMode = false;
+        }
+
+        private void itemEditButton_Click(object sender, EventArgs e)
+        {
+            itemEditButton.BackColor = Color.Gray;
+            itemViewButton.BackColor = Color.White;
+
+            isInEditMode = true;
+        }
+
+
+        private void itemSearchBox_Click(object sender, EventArgs e)
+        {
+            if (itemSearchBox.Text == "Search")
+            {
+                itemSearchBox.Text = "";
+            }
+        }
+
+
+        private void itemSearchBox_Leave(object sender, EventArgs e)
+        {
+            if (itemSearchBox.Text == "")
+            {
+                itemSearchBox.Text = "Search";
+            }
+        }
+
+        private void itemSearchButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //**************
-        //* End Button *
+        //* End Item *
         //**************
 
         //**************
-        //*Order Button*
+        //*Order*
         //**************
 
         // Main Order click function
@@ -300,6 +367,7 @@ namespace WindowsFormsApplication1
             batchTestLabel.Text = "Done";
             
         }
+
 
         //*****************
         //* End Batch *

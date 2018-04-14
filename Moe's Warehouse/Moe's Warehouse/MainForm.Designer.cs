@@ -35,6 +35,7 @@
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.lblStaticCompanyName = new System.Windows.Forms.Label();
             this.pnNav = new System.Windows.Forms.Panel();
+            this.btnBatch = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Panel();
             this.picEmployee = new System.Windows.Forms.PictureBox();
             this.lblEmployee = new System.Windows.Forms.Label();
@@ -53,20 +54,23 @@
             this.pnStatus = new System.Windows.Forms.Panel();
             this.lblStatus = new System.Windows.Forms.Label();
             this.loginPanel = new System.Windows.Forms.Panel();
+            this.loginResetButton = new System.Windows.Forms.Button();
             this.loginEnterButton = new System.Windows.Forms.Button();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.userLabel = new System.Windows.Forms.Label();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.userNameBox = new System.Windows.Forms.TextBox();
             this.itemPanel = new System.Windows.Forms.Panel();
-            this.itemTestLabel = new System.Windows.Forms.Label();
+            this.itemSearchButton = new System.Windows.Forms.Button();
+            this.itemEditButton = new System.Windows.Forms.Button();
+            this.itemViewButton = new System.Windows.Forms.Button();
+            this.itemSearchBox = new System.Windows.Forms.TextBox();
             this.orderPanel = new System.Windows.Forms.Panel();
             this.orderTestLabel = new System.Windows.Forms.Label();
             this.warehousePanel = new System.Windows.Forms.Panel();
             this.warehouseTestLabel = new System.Windows.Forms.Label();
             this.employeePanel = new System.Windows.Forms.Panel();
             this.employeeTestLabel = new System.Windows.Forms.Label();
-            this.btnBatch = new System.Windows.Forms.Button();
             this.batchPanel = new System.Windows.Forms.Panel();
             this.batchTestLabel = new System.Windows.Forms.Label();
             this.pnBanner.SuspendLayout();
@@ -164,6 +168,16 @@
             this.pnNav.Name = "pnNav";
             this.pnNav.Size = new System.Drawing.Size(271, 509);
             this.pnNav.TabIndex = 1;
+            // 
+            // btnBatch
+            // 
+            this.btnBatch.Location = new System.Drawing.Point(38, 462);
+            this.btnBatch.Name = "btnBatch";
+            this.btnBatch.Size = new System.Drawing.Size(194, 34);
+            this.btnBatch.TabIndex = 7;
+            this.btnBatch.Text = "Start Batch";
+            this.btnBatch.UseVisualStyleBackColor = true;
+            this.btnBatch.Click += new System.EventHandler(this.btnBatch_Click);
             // 
             // btnEmployee
             // 
@@ -373,6 +387,7 @@
             // 
             // loginPanel
             // 
+            this.loginPanel.Controls.Add(this.loginResetButton);
             this.loginPanel.Controls.Add(this.loginEnterButton);
             this.loginPanel.Controls.Add(this.passwordLabel);
             this.loginPanel.Controls.Add(this.userLabel);
@@ -383,14 +398,25 @@
             this.loginPanel.Size = new System.Drawing.Size(756, 481);
             this.loginPanel.TabIndex = 3;
             // 
+            // loginResetButton
+            // 
+            this.loginResetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginResetButton.Location = new System.Drawing.Point(163, 154);
+            this.loginResetButton.Name = "loginResetButton";
+            this.loginResetButton.Size = new System.Drawing.Size(154, 38);
+            this.loginResetButton.TabIndex = 5;
+            this.loginResetButton.Text = "Reset";
+            this.loginResetButton.UseVisualStyleBackColor = true;
+            this.loginResetButton.Click += new System.EventHandler(this.loginResetButton_Click);
+            // 
             // loginEnterButton
             // 
             this.loginEnterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginEnterButton.Location = new System.Drawing.Point(408, 154);
+            this.loginEnterButton.Location = new System.Drawing.Point(353, 154);
             this.loginEnterButton.Name = "loginEnterButton";
-            this.loginEnterButton.Size = new System.Drawing.Size(113, 38);
+            this.loginEnterButton.Size = new System.Drawing.Size(168, 38);
             this.loginEnterButton.TabIndex = 4;
-            this.loginEnterButton.Text = "Enter";
+            this.loginEnterButton.Text = "Login";
             this.loginEnterButton.UseVisualStyleBackColor = true;
             this.loginEnterButton.Click += new System.EventHandler(this.loginEnterButton_Click);
             // 
@@ -433,20 +459,60 @@
             // 
             // itemPanel
             // 
-            this.itemPanel.Controls.Add(this.itemTestLabel);
+            this.itemPanel.Controls.Add(this.itemSearchButton);
+            this.itemPanel.Controls.Add(this.itemEditButton);
+            this.itemPanel.Controls.Add(this.itemViewButton);
+            this.itemPanel.Controls.Add(this.itemSearchBox);
             this.itemPanel.Location = new System.Drawing.Point(271, 100);
             this.itemPanel.Name = "itemPanel";
             this.itemPanel.Size = new System.Drawing.Size(756, 479);
             this.itemPanel.TabIndex = 0;
             // 
-            // itemTestLabel
+            // itemSearchButton
             // 
-            this.itemTestLabel.AutoSize = true;
-            this.itemTestLabel.Location = new System.Drawing.Point(0, 3);
-            this.itemTestLabel.Name = "itemTestLabel";
-            this.itemTestLabel.Size = new System.Drawing.Size(26, 13);
-            this.itemTestLabel.TabIndex = 0;
-            this.itemTestLabel.Text = "item";
+            this.itemSearchButton.Location = new System.Drawing.Point(667, 19);
+            this.itemSearchButton.Name = "itemSearchButton";
+            this.itemSearchButton.Size = new System.Drawing.Size(63, 24);
+            this.itemSearchButton.TabIndex = 3;
+            this.itemSearchButton.Text = "Enter";
+            this.itemSearchButton.UseVisualStyleBackColor = true;
+            this.itemSearchButton.Click += new System.EventHandler(this.itemSearchButton_Click);
+            // 
+            // itemEditButton
+            // 
+            this.itemEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.itemEditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemEditButton.Location = new System.Drawing.Point(118, 0);
+            this.itemEditButton.Name = "itemEditButton";
+            this.itemEditButton.Size = new System.Drawing.Size(115, 43);
+            this.itemEditButton.TabIndex = 2;
+            this.itemEditButton.Text = "Edit";
+            this.itemEditButton.UseVisualStyleBackColor = true;
+            this.itemEditButton.Click += new System.EventHandler(this.itemEditButton_Click);
+            // 
+            // itemViewButton
+            // 
+            this.itemViewButton.BackColor = System.Drawing.Color.Gray;
+            this.itemViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.itemViewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemViewButton.Location = new System.Drawing.Point(0, 0);
+            this.itemViewButton.Name = "itemViewButton";
+            this.itemViewButton.Size = new System.Drawing.Size(121, 43);
+            this.itemViewButton.TabIndex = 1;
+            this.itemViewButton.Text = "View";
+            this.itemViewButton.UseVisualStyleBackColor = false;
+            this.itemViewButton.Click += new System.EventHandler(this.itemViewButton_Click);
+            // 
+            // itemSearchBox
+            // 
+            this.itemSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemSearchBox.Location = new System.Drawing.Point(509, 19);
+            this.itemSearchBox.Name = "itemSearchBox";
+            this.itemSearchBox.Size = new System.Drawing.Size(152, 24);
+            this.itemSearchBox.TabIndex = 0;
+            this.itemSearchBox.Text = "Search";
+            this.itemSearchBox.Click += new System.EventHandler(this.itemSearchBox_Click);
+            this.itemSearchBox.Leave += new System.EventHandler(this.itemSearchBox_Leave);
             // 
             // orderPanel
             // 
@@ -499,16 +565,6 @@
             this.employeeTestLabel.TabIndex = 0;
             this.employeeTestLabel.Text = "Employee";
             // 
-            // btnBatch
-            // 
-            this.btnBatch.Location = new System.Drawing.Point(38, 462);
-            this.btnBatch.Name = "btnBatch";
-            this.btnBatch.Size = new System.Drawing.Size(194, 34);
-            this.btnBatch.TabIndex = 7;
-            this.btnBatch.Text = "Start Batch";
-            this.btnBatch.UseVisualStyleBackColor = true;
-            this.btnBatch.Click += new System.EventHandler(this.btnBatch_Click);
-            // 
             // batchPanel
             // 
             this.batchPanel.Controls.Add(this.batchTestLabel);
@@ -535,12 +591,12 @@
             this.Controls.Add(this.pnStatus);
             this.Controls.Add(this.pnNav);
             this.Controls.Add(this.pnBanner);
+            this.Controls.Add(this.itemPanel);
+            this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.batchPanel);
             this.Controls.Add(this.employeePanel);
             this.Controls.Add(this.orderPanel);
-            this.Controls.Add(this.itemPanel);
             this.Controls.Add(this.warehousePanel);
-            this.Controls.Add(this.loginPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 596);
             this.Name = "FormMain";
@@ -607,7 +663,6 @@
         private System.Windows.Forms.Panel orderPanel;
         private System.Windows.Forms.Panel warehousePanel;
         private System.Windows.Forms.Label orderTestLabel;
-        private System.Windows.Forms.Label itemTestLabel;
         private System.Windows.Forms.Label warehouseTestLabel;
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.TextBox userNameBox;
@@ -622,6 +677,11 @@
         private System.Windows.Forms.Button btnBatch;
         private System.Windows.Forms.Panel batchPanel;
         private System.Windows.Forms.Label batchTestLabel;
+        private System.Windows.Forms.Button loginResetButton;
+        private System.Windows.Forms.Button itemViewButton;
+        private System.Windows.Forms.TextBox itemSearchBox;
+        private System.Windows.Forms.Button itemEditButton;
+        private System.Windows.Forms.Button itemSearchButton;
     }
 }
 
