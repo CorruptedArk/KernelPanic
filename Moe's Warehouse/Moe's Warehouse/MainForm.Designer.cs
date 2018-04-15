@@ -66,13 +66,18 @@
             this.itemViewButton = new System.Windows.Forms.Button();
             this.itemSearchBox = new System.Windows.Forms.TextBox();
             this.orderPanel = new System.Windows.Forms.Panel();
-            this.orderTestLabel = new System.Windows.Forms.Label();
             this.warehousePanel = new System.Windows.Forms.Panel();
-            this.warehouseTestLabel = new System.Windows.Forms.Label();
             this.employeePanel = new System.Windows.Forms.Panel();
-            this.employeeTestLabel = new System.Windows.Forms.Label();
             this.batchPanel = new System.Windows.Forms.Panel();
             this.batchTestLabel = new System.Windows.Forms.Label();
+            this.orderViewButton = new System.Windows.Forms.Button();
+            this.orderEditButton = new System.Windows.Forms.Button();
+            this.orderSearchBox = new System.Windows.Forms.TextBox();
+            this.orderSearchButton = new System.Windows.Forms.Button();
+            this.warehouseViewButton = new System.Windows.Forms.Button();
+            this.warehouseEditButton = new System.Windows.Forms.Button();
+            this.employeeViewButton = new System.Windows.Forms.Button();
+            this.employeeEditButton = new System.Windows.Forms.Button();
             this.pnBanner.SuspendLayout();
             this.pnCompName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -459,9 +464,9 @@
             // 
             // itemPanel
             // 
-            this.itemPanel.Controls.Add(this.itemSearchButton);
-            this.itemPanel.Controls.Add(this.itemEditButton);
             this.itemPanel.Controls.Add(this.itemViewButton);
+            this.itemPanel.Controls.Add(this.itemEditButton);
+            this.itemPanel.Controls.Add(this.itemSearchButton);
             this.itemPanel.Controls.Add(this.itemSearchBox);
             this.itemPanel.Location = new System.Drawing.Point(271, 100);
             this.itemPanel.Name = "itemPanel";
@@ -482,9 +487,9 @@
             // 
             this.itemEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.itemEditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemEditButton.Location = new System.Drawing.Point(118, 0);
+            this.itemEditButton.Location = new System.Drawing.Point(121, 0);
             this.itemEditButton.Name = "itemEditButton";
-            this.itemEditButton.Size = new System.Drawing.Size(115, 43);
+            this.itemEditButton.Size = new System.Drawing.Size(121, 43);
             this.itemEditButton.TabIndex = 2;
             this.itemEditButton.Text = "Edit";
             this.itemEditButton.UseVisualStyleBackColor = true;
@@ -516,54 +521,32 @@
             // 
             // orderPanel
             // 
-            this.orderPanel.Controls.Add(this.orderTestLabel);
+            this.orderPanel.Controls.Add(this.orderSearchButton);
+            this.orderPanel.Controls.Add(this.orderSearchBox);
+            this.orderPanel.Controls.Add(this.orderEditButton);
+            this.orderPanel.Controls.Add(this.orderViewButton);
             this.orderPanel.Location = new System.Drawing.Point(271, 100);
             this.orderPanel.Name = "orderPanel";
             this.orderPanel.Size = new System.Drawing.Size(757, 481);
             this.orderPanel.TabIndex = 0;
             // 
-            // orderTestLabel
-            // 
-            this.orderTestLabel.AutoSize = true;
-            this.orderTestLabel.Location = new System.Drawing.Point(4, 3);
-            this.orderTestLabel.Name = "orderTestLabel";
-            this.orderTestLabel.Size = new System.Drawing.Size(31, 13);
-            this.orderTestLabel.TabIndex = 0;
-            this.orderTestLabel.Text = "order";
-            // 
             // warehousePanel
             // 
-            this.warehousePanel.Controls.Add(this.warehouseTestLabel);
+            this.warehousePanel.Controls.Add(this.warehouseViewButton);
+            this.warehousePanel.Controls.Add(this.warehouseEditButton);
             this.warehousePanel.Location = new System.Drawing.Point(271, 100);
             this.warehousePanel.Name = "warehousePanel";
             this.warehousePanel.Size = new System.Drawing.Size(757, 481);
             this.warehousePanel.TabIndex = 4;
             // 
-            // warehouseTestLabel
-            // 
-            this.warehouseTestLabel.AutoSize = true;
-            this.warehouseTestLabel.Location = new System.Drawing.Point(13, 7);
-            this.warehouseTestLabel.Name = "warehouseTestLabel";
-            this.warehouseTestLabel.Size = new System.Drawing.Size(59, 13);
-            this.warehouseTestLabel.TabIndex = 0;
-            this.warehouseTestLabel.Text = "warehouse";
-            // 
             // employeePanel
             // 
-            this.employeePanel.Controls.Add(this.employeeTestLabel);
+            this.employeePanel.Controls.Add(this.employeeViewButton);
+            this.employeePanel.Controls.Add(this.employeeEditButton);
             this.employeePanel.Location = new System.Drawing.Point(271, 100);
             this.employeePanel.Name = "employeePanel";
             this.employeePanel.Size = new System.Drawing.Size(756, 481);
             this.employeePanel.TabIndex = 1;
-            // 
-            // employeeTestLabel
-            // 
-            this.employeeTestLabel.AutoSize = true;
-            this.employeeTestLabel.Location = new System.Drawing.Point(0, 0);
-            this.employeeTestLabel.Name = "employeeTestLabel";
-            this.employeeTestLabel.Size = new System.Drawing.Size(53, 13);
-            this.employeeTestLabel.TabIndex = 0;
-            this.employeeTestLabel.Text = "Employee";
             // 
             // batchPanel
             // 
@@ -582,6 +565,102 @@
             this.batchTestLabel.TabIndex = 0;
             this.batchTestLabel.Text = "Batch";
             // 
+            // orderViewButton
+            // 
+            this.orderViewButton.BackColor = System.Drawing.Color.Gray;
+            this.orderViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.orderViewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderViewButton.Location = new System.Drawing.Point(0, 0);
+            this.orderViewButton.Name = "orderViewButton";
+            this.orderViewButton.Size = new System.Drawing.Size(121, 43);
+            this.orderViewButton.TabIndex = 0;
+            this.orderViewButton.Text = "View";
+            this.orderViewButton.UseVisualStyleBackColor = false;
+            this.orderViewButton.Click += new System.EventHandler(this.orderViewButton_Click);
+            // 
+            // orderEditButton
+            // 
+            this.orderEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.orderEditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderEditButton.Location = new System.Drawing.Point(121, 0);
+            this.orderEditButton.Name = "orderEditButton";
+            this.orderEditButton.Size = new System.Drawing.Size(121, 43);
+            this.orderEditButton.TabIndex = 1;
+            this.orderEditButton.Text = "Edit";
+            this.orderEditButton.UseVisualStyleBackColor = true;
+            this.orderEditButton.Click += new System.EventHandler(this.orderEditButton_Click);
+            // 
+            // orderSearchBox
+            // 
+            this.orderSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderSearchBox.Location = new System.Drawing.Point(509, 19);
+            this.orderSearchBox.Name = "orderSearchBox";
+            this.orderSearchBox.Size = new System.Drawing.Size(152, 24);
+            this.orderSearchBox.TabIndex = 2;
+            this.orderSearchBox.Text = "Search";
+            this.orderSearchBox.Click += new System.EventHandler(this.orderSearchBox_Click);
+            this.orderSearchBox.Leave += new System.EventHandler(this.orderSearchBox_Leave);
+            // 
+            // orderSearchButton
+            // 
+            this.orderSearchButton.Location = new System.Drawing.Point(667, 19);
+            this.orderSearchButton.Name = "orderSearchButton";
+            this.orderSearchButton.Size = new System.Drawing.Size(63, 24);
+            this.orderSearchButton.TabIndex = 3;
+            this.orderSearchButton.Text = "Enter";
+            this.orderSearchButton.UseVisualStyleBackColor = true;
+            this.orderSearchButton.Click += new System.EventHandler(this.orderSearchButton_Click);
+            // 
+            // warehouseViewButton
+            // 
+            this.warehouseViewButton.BackColor = System.Drawing.Color.Gray;
+            this.warehouseViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.warehouseViewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.warehouseViewButton.Location = new System.Drawing.Point(0, 0);
+            this.warehouseViewButton.Name = "warehouseViewButton";
+            this.warehouseViewButton.Size = new System.Drawing.Size(121, 43);
+            this.warehouseViewButton.TabIndex = 0;
+            this.warehouseViewButton.Text = "View";
+            this.warehouseViewButton.UseVisualStyleBackColor = false;
+            this.warehouseViewButton.Click += new System.EventHandler(this.warehouseViewButton_Click);
+            // 
+            // warehouseEditButton
+            // 
+            this.warehouseEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.warehouseEditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.warehouseEditButton.Location = new System.Drawing.Point(121, 0);
+            this.warehouseEditButton.Name = "warehouseEditButton";
+            this.warehouseEditButton.Size = new System.Drawing.Size(121, 43);
+            this.warehouseEditButton.TabIndex = 1;
+            this.warehouseEditButton.Text = "Edit";
+            this.warehouseEditButton.UseVisualStyleBackColor = true;
+            this.warehouseEditButton.Click += new System.EventHandler(this.warehouseEditButton_Click);
+            // 
+            // employeeViewButton
+            // 
+            this.employeeViewButton.BackColor = System.Drawing.Color.Gray;
+            this.employeeViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.employeeViewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeViewButton.Location = new System.Drawing.Point(0, 0);
+            this.employeeViewButton.Name = "employeeViewButton";
+            this.employeeViewButton.Size = new System.Drawing.Size(121, 43);
+            this.employeeViewButton.TabIndex = 0;
+            this.employeeViewButton.Text = "View";
+            this.employeeViewButton.UseVisualStyleBackColor = false;
+            this.employeeViewButton.Click += new System.EventHandler(this.employeeViewButton_Click);
+            // 
+            // employeeEditButton
+            // 
+            this.employeeEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.employeeEditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeEditButton.Location = new System.Drawing.Point(121, 0);
+            this.employeeEditButton.Name = "employeeEditButton";
+            this.employeeEditButton.Size = new System.Drawing.Size(121, 43);
+            this.employeeEditButton.TabIndex = 1;
+            this.employeeEditButton.Text = "Edit";
+            this.employeeEditButton.UseVisualStyleBackColor = true;
+            this.employeeEditButton.Click += new System.EventHandler(this.employeeEditButton_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -591,12 +670,12 @@
             this.Controls.Add(this.pnStatus);
             this.Controls.Add(this.pnNav);
             this.Controls.Add(this.pnBanner);
+            this.Controls.Add(this.employeePanel);
+            this.Controls.Add(this.warehousePanel);
             this.Controls.Add(this.itemPanel);
+            this.Controls.Add(this.orderPanel);
             this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.batchPanel);
-            this.Controls.Add(this.employeePanel);
-            this.Controls.Add(this.orderPanel);
-            this.Controls.Add(this.warehousePanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 596);
             this.Name = "FormMain";
@@ -627,9 +706,7 @@
             this.orderPanel.ResumeLayout(false);
             this.orderPanel.PerformLayout();
             this.warehousePanel.ResumeLayout(false);
-            this.warehousePanel.PerformLayout();
             this.employeePanel.ResumeLayout(false);
-            this.employeePanel.PerformLayout();
             this.batchPanel.ResumeLayout(false);
             this.batchPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -662,8 +739,6 @@
         private System.Windows.Forms.Panel itemPanel;
         private System.Windows.Forms.Panel orderPanel;
         private System.Windows.Forms.Panel warehousePanel;
-        private System.Windows.Forms.Label orderTestLabel;
-        private System.Windows.Forms.Label warehouseTestLabel;
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.TextBox userNameBox;
         private System.Windows.Forms.Label passwordLabel;
@@ -673,7 +748,6 @@
         private System.Windows.Forms.PictureBox picEmployee;
         private System.Windows.Forms.Label lblEmployee;
         private System.Windows.Forms.Panel employeePanel;
-        private System.Windows.Forms.Label employeeTestLabel;
         private System.Windows.Forms.Button btnBatch;
         private System.Windows.Forms.Panel batchPanel;
         private System.Windows.Forms.Label batchTestLabel;
@@ -682,6 +756,14 @@
         private System.Windows.Forms.TextBox itemSearchBox;
         private System.Windows.Forms.Button itemEditButton;
         private System.Windows.Forms.Button itemSearchButton;
+        private System.Windows.Forms.Button orderViewButton;
+        private System.Windows.Forms.Button orderEditButton;
+        private System.Windows.Forms.Button orderSearchButton;
+        private System.Windows.Forms.TextBox orderSearchBox;
+        private System.Windows.Forms.Button warehouseViewButton;
+        private System.Windows.Forms.Button warehouseEditButton;
+        private System.Windows.Forms.Button employeeEditButton;
+        private System.Windows.Forms.Button employeeViewButton;
     }
 }
 

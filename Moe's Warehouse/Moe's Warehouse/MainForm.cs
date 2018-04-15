@@ -127,6 +127,8 @@ namespace WindowsFormsApplication1
             if (lblLogin.Text == "Logout")
             {
                 lblLogin.Text = "Login";
+                picLogin.BackColor = DEFAULT_BACKGROUND;
+                lblLogin.BackColor = DEFAULT_BACKGROUND;
                 HideNav();
                 btnBatch.Visible = false;
                 changeNav(LOGIN_NAV_ID);
@@ -158,6 +160,8 @@ namespace WindowsFormsApplication1
                 passwordBox.Text = "";
                 currentUser = username;
                 lblLogin.Text = "Logout";
+                lblLogin.BackColor = Color.Red;
+                picLogin.BackColor = Color.Red;
                 ShowNav();
                 btnBatch.Visible = true;
                 lblCurrentScreen.Text = "ITEM";
@@ -269,6 +273,18 @@ namespace WindowsFormsApplication1
         private void btnOrder_Click(object sender, EventArgs e)
         {
             lblCurrentScreen.Text = "ORDER";
+
+            if(isInEditMode)
+            {
+                orderViewButton.BackColor = Color.White;
+                orderEditButton.BackColor = Color.Gray;
+            }
+            else
+            {
+                orderViewButton.BackColor = Color.Gray;
+                orderEditButton.BackColor = Color.White;
+            }
+
             changeNav(ORDER_NAV_ID);
         }
 
@@ -283,6 +299,43 @@ namespace WindowsFormsApplication1
         {
             btnOrder_Click(null, null);
         }
+
+
+        private void orderViewButton_Click(object sender, EventArgs e)
+        {
+            orderViewButton.BackColor = Color.Gray;
+            orderEditButton.BackColor = Color.White;
+            isInEditMode = false;
+        }
+
+        private void orderEditButton_Click(object sender, EventArgs e)
+        {
+            orderEditButton.BackColor = Color.Gray;
+            orderViewButton.BackColor = Color.White;
+            isInEditMode = true;
+        }
+
+        private void orderSearchBox_Click(object sender, EventArgs e)
+        {
+            if (orderSearchBox.Text == "Search")
+            {
+                orderSearchBox.Text = "";
+            }
+        }
+
+        private void orderSearchBox_Leave(object sender, EventArgs e)
+        {
+            if (orderSearchBox.Text == "")
+            {
+                orderSearchBox.Text = "Search";
+            }
+        }
+
+        private void orderSearchButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //*************
         //* End Order *
         //*************
@@ -308,8 +361,37 @@ namespace WindowsFormsApplication1
         private void btnWarehouse_Click(object sender, EventArgs e)
         {
             lblCurrentScreen.Text = "WAREHOUSE";
+
+            if(isInEditMode)
+            {
+                warehouseEditButton.BackColor = Color.Gray;
+                warehouseViewButton.BackColor = Color.White;
+            }
+            else
+            {
+                warehouseViewButton.BackColor = Color.Gray;
+                warehouseEditButton.BackColor = Color.White;
+            }
+
             changeNav(WAREHOUSE_NAV_ID);
         }
+
+
+        private void warehouseViewButton_Click(object sender, EventArgs e)
+        {
+            warehouseViewButton.BackColor = Color.Gray;
+            warehouseEditButton.BackColor = Color.White;
+            isInEditMode = false;
+        }
+
+        private void warehouseEditButton_Click(object sender, EventArgs e)
+        {
+            warehouseViewButton.BackColor = Color.White;
+            warehouseEditButton.BackColor = Color.Gray;
+            isInEditMode = true;
+        }
+
+        
         //*****************
         //* End Warehouse *
         //*****************
@@ -322,6 +404,18 @@ namespace WindowsFormsApplication1
         private void btnEmployee_Click(object sender, EventArgs e)
         {
             lblCurrentScreen.Text = "EMPLOYEE";
+
+            if (isInEditMode)
+            {
+                employeeEditButton.BackColor = Color.Gray;
+                employeeViewButton.BackColor = Color.White;
+            }
+            else
+            {
+                employeeEditButton.BackColor = Color.White;
+                employeeViewButton.BackColor = Color.Gray;
+            }
+
             changeNav(EMPLOYEE_NAV_ID);
         }
 
@@ -335,6 +429,19 @@ namespace WindowsFormsApplication1
             btnEmployee_Click(null, null);
         }
 
+        private void employeeViewButton_Click(object sender, EventArgs e)
+        {
+            employeeViewButton.BackColor = Color.Gray;
+            employeeEditButton.BackColor = Color.White;
+            isInEditMode = false;
+        }
+
+        private void employeeEditButton_Click(object sender, EventArgs e)
+        {
+            employeeEditButton.BackColor = Color.Gray;
+            employeeViewButton.BackColor = Color.White;
+            isInEditMode = true;
+        }
 
         //*****************
         //* End Employee *
