@@ -89,6 +89,7 @@
     <Content Include="Resources\Company Logo - Color.png" />
     <Content Include="Resources\Company Logo - ico.ico" />
     <Content Include="Resources\Company Logo - White.png" />
+    <None Include="Resources\Employee.png" />
     <Content Include="Resources\home.png" />
     <None Include="Resources\item.png" />
     <None Include="Resources\login.png" />

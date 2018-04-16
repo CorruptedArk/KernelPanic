@@ -55,29 +55,29 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.loginPanel = new System.Windows.Forms.Panel();
             this.loginResetButton = new System.Windows.Forms.Button();
+            this.userNameBox = new System.Windows.Forms.TextBox();
+            this.userLabel = new System.Windows.Forms.Label();
             this.loginEnterButton = new System.Windows.Forms.Button();
             this.passwordLabel = new System.Windows.Forms.Label();
-            this.userLabel = new System.Windows.Forms.Label();
             this.passwordBox = new System.Windows.Forms.TextBox();
-            this.userNameBox = new System.Windows.Forms.TextBox();
             this.itemPanel = new System.Windows.Forms.Panel();
-            this.itemSearchButton = new System.Windows.Forms.Button();
-            this.itemEditButton = new System.Windows.Forms.Button();
             this.itemViewButton = new System.Windows.Forms.Button();
+            this.itemEditButton = new System.Windows.Forms.Button();
+            this.itemSearchButton = new System.Windows.Forms.Button();
             this.itemSearchBox = new System.Windows.Forms.TextBox();
             this.orderPanel = new System.Windows.Forms.Panel();
-            this.warehousePanel = new System.Windows.Forms.Panel();
-            this.employeePanel = new System.Windows.Forms.Panel();
-            this.batchPanel = new System.Windows.Forms.Panel();
-            this.batchTestLabel = new System.Windows.Forms.Label();
-            this.orderViewButton = new System.Windows.Forms.Button();
-            this.orderEditButton = new System.Windows.Forms.Button();
-            this.orderSearchBox = new System.Windows.Forms.TextBox();
             this.orderSearchButton = new System.Windows.Forms.Button();
+            this.orderSearchBox = new System.Windows.Forms.TextBox();
+            this.orderEditButton = new System.Windows.Forms.Button();
+            this.orderViewButton = new System.Windows.Forms.Button();
+            this.warehousePanel = new System.Windows.Forms.Panel();
             this.warehouseViewButton = new System.Windows.Forms.Button();
             this.warehouseEditButton = new System.Windows.Forms.Button();
+            this.employeePanel = new System.Windows.Forms.Panel();
             this.employeeViewButton = new System.Windows.Forms.Button();
             this.employeeEditButton = new System.Windows.Forms.Button();
+            this.batchPanel = new System.Windows.Forms.Panel();
+            this.batchTestLabel = new System.Windows.Forms.Label();
             this.pnBanner.SuspendLayout();
             this.pnCompName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -107,8 +107,9 @@
             this.pnBanner.Controls.Add(this.pnCompName);
             this.pnBanner.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnBanner.Location = new System.Drawing.Point(0, 0);
+            this.pnBanner.Margin = new System.Windows.Forms.Padding(4);
             this.pnBanner.Name = "pnBanner";
-            this.pnBanner.Size = new System.Drawing.Size(1028, 100);
+            this.pnBanner.Size = new System.Drawing.Size(1371, 123);
             this.pnBanner.TabIndex = 0;
             // 
             // lblCurrentScreen
@@ -117,9 +118,10 @@
             this.lblCurrentScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCurrentScreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrentScreen.ForeColor = System.Drawing.Color.White;
-            this.lblCurrentScreen.Location = new System.Drawing.Point(271, 0);
+            this.lblCurrentScreen.Location = new System.Drawing.Point(361, 0);
+            this.lblCurrentScreen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCurrentScreen.Name = "lblCurrentScreen";
-            this.lblCurrentScreen.Size = new System.Drawing.Size(757, 100);
+            this.lblCurrentScreen.Size = new System.Drawing.Size(1010, 123);
             this.lblCurrentScreen.TabIndex = 3;
             this.lblCurrentScreen.Text = "[Current Screen Name]";
             this.lblCurrentScreen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,8 +133,9 @@
             this.pnCompName.Controls.Add(this.lblStaticCompanyName);
             this.pnCompName.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnCompName.Location = new System.Drawing.Point(0, 0);
+            this.pnCompName.Margin = new System.Windows.Forms.Padding(4);
             this.pnCompName.Name = "pnCompName";
-            this.pnCompName.Size = new System.Drawing.Size(271, 100);
+            this.pnCompName.Size = new System.Drawing.Size(361, 123);
             this.pnCompName.TabIndex = 2;
             // 
             // picLogo
@@ -140,8 +143,9 @@
             this.picLogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.picLogo.Image = global::KernalPanic.Properties.Resources.Company_Logo___White;
             this.picLogo.Location = new System.Drawing.Point(0, 0);
+            this.picLogo.Margin = new System.Windows.Forms.Padding(4);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(90, 100);
+            this.picLogo.Size = new System.Drawing.Size(120, 123);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
@@ -151,9 +155,10 @@
             this.lblStaticCompanyName.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblStaticCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStaticCompanyName.ForeColor = System.Drawing.Color.White;
-            this.lblStaticCompanyName.Location = new System.Drawing.Point(90, 0);
+            this.lblStaticCompanyName.Location = new System.Drawing.Point(120, 0);
+            this.lblStaticCompanyName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStaticCompanyName.Name = "lblStaticCompanyName";
-            this.lblStaticCompanyName.Size = new System.Drawing.Size(181, 100);
+            this.lblStaticCompanyName.Size = new System.Drawing.Size(241, 123);
             this.lblStaticCompanyName.TabIndex = 3;
             this.lblStaticCompanyName.Text = "Moe\'s Warehouse";
             this.lblStaticCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -169,16 +174,18 @@
             this.pnNav.Controls.Add(this.btnItem);
             this.pnNav.Controls.Add(this.btnLogin);
             this.pnNav.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnNav.Location = new System.Drawing.Point(0, 100);
+            this.pnNav.Location = new System.Drawing.Point(0, 123);
+            this.pnNav.Margin = new System.Windows.Forms.Padding(4);
             this.pnNav.Name = "pnNav";
-            this.pnNav.Size = new System.Drawing.Size(271, 509);
+            this.pnNav.Size = new System.Drawing.Size(361, 627);
             this.pnNav.TabIndex = 1;
             // 
             // btnBatch
             // 
-            this.btnBatch.Location = new System.Drawing.Point(38, 462);
+            this.btnBatch.Location = new System.Drawing.Point(51, 569);
+            this.btnBatch.Margin = new System.Windows.Forms.Padding(4);
             this.btnBatch.Name = "btnBatch";
-            this.btnBatch.Size = new System.Drawing.Size(194, 34);
+            this.btnBatch.Size = new System.Drawing.Size(259, 42);
             this.btnBatch.TabIndex = 7;
             this.btnBatch.Text = "Start Batch";
             this.btnBatch.UseVisualStyleBackColor = true;
@@ -189,18 +196,21 @@
             this.btnEmployee.Controls.Add(this.picEmployee);
             this.btnEmployee.Controls.Add(this.lblEmployee);
             this.btnEmployee.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnEmployee.Location = new System.Drawing.Point(0, 348);
+            this.btnEmployee.Location = new System.Drawing.Point(0, 428);
+            this.btnEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.btnEmployee.Name = "btnEmployee";
-            this.btnEmployee.Size = new System.Drawing.Size(271, 87);
+            this.btnEmployee.Size = new System.Drawing.Size(361, 107);
             this.btnEmployee.TabIndex = 6;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
             // 
             // picEmployee
             // 
             this.picEmployee.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picEmployee.Image = global::KernalPanic.Properties.Resources.Employee;
             this.picEmployee.Location = new System.Drawing.Point(0, 0);
+            this.picEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.picEmployee.Name = "picEmployee";
-            this.picEmployee.Size = new System.Drawing.Size(90, 87);
+            this.picEmployee.Size = new System.Drawing.Size(120, 107);
             this.picEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picEmployee.TabIndex = 0;
             this.picEmployee.TabStop = false;
@@ -212,9 +222,10 @@
             this.lblEmployee.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmployee.ForeColor = System.Drawing.Color.White;
-            this.lblEmployee.Location = new System.Drawing.Point(89, 0);
+            this.lblEmployee.Location = new System.Drawing.Point(118, 0);
+            this.lblEmployee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmployee.Name = "lblEmployee";
-            this.lblEmployee.Size = new System.Drawing.Size(182, 87);
+            this.lblEmployee.Size = new System.Drawing.Size(243, 107);
             this.lblEmployee.TabIndex = 1;
             this.lblEmployee.Text = "Employee";
             this.lblEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -225,9 +236,10 @@
             this.btnWarehouse.Controls.Add(this.picWarehouse);
             this.btnWarehouse.Controls.Add(this.lblWarehouse);
             this.btnWarehouse.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnWarehouse.Location = new System.Drawing.Point(0, 261);
+            this.btnWarehouse.Location = new System.Drawing.Point(0, 321);
+            this.btnWarehouse.Margin = new System.Windows.Forms.Padding(4);
             this.btnWarehouse.Name = "btnWarehouse";
-            this.btnWarehouse.Size = new System.Drawing.Size(271, 87);
+            this.btnWarehouse.Size = new System.Drawing.Size(361, 107);
             this.btnWarehouse.TabIndex = 5;
             this.btnWarehouse.Click += new System.EventHandler(this.btnWarehouse_Click);
             // 
@@ -236,8 +248,9 @@
             this.picWarehouse.Dock = System.Windows.Forms.DockStyle.Left;
             this.picWarehouse.Image = global::KernalPanic.Properties.Resources.warehouse;
             this.picWarehouse.Location = new System.Drawing.Point(0, 0);
+            this.picWarehouse.Margin = new System.Windows.Forms.Padding(4);
             this.picWarehouse.Name = "picWarehouse";
-            this.picWarehouse.Size = new System.Drawing.Size(90, 87);
+            this.picWarehouse.Size = new System.Drawing.Size(120, 107);
             this.picWarehouse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picWarehouse.TabIndex = 0;
             this.picWarehouse.TabStop = false;
@@ -248,9 +261,10 @@
             this.lblWarehouse.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblWarehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWarehouse.ForeColor = System.Drawing.Color.White;
-            this.lblWarehouse.Location = new System.Drawing.Point(89, 0);
+            this.lblWarehouse.Location = new System.Drawing.Point(118, 0);
+            this.lblWarehouse.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWarehouse.Name = "lblWarehouse";
-            this.lblWarehouse.Size = new System.Drawing.Size(182, 87);
+            this.lblWarehouse.Size = new System.Drawing.Size(243, 107);
             this.lblWarehouse.TabIndex = 1;
             this.lblWarehouse.Text = "Warehouse";
             this.lblWarehouse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -262,9 +276,10 @@
             this.btnOrder.Controls.Add(this.picOrder);
             this.btnOrder.Controls.Add(this.lblOrder);
             this.btnOrder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOrder.Location = new System.Drawing.Point(0, 174);
+            this.btnOrder.Location = new System.Drawing.Point(0, 214);
+            this.btnOrder.Margin = new System.Windows.Forms.Padding(4);
             this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(271, 87);
+            this.btnOrder.Size = new System.Drawing.Size(361, 107);
             this.btnOrder.TabIndex = 4;
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
@@ -273,8 +288,9 @@
             this.picOrder.Dock = System.Windows.Forms.DockStyle.Left;
             this.picOrder.Image = global::KernalPanic.Properties.Resources.order;
             this.picOrder.Location = new System.Drawing.Point(0, 0);
+            this.picOrder.Margin = new System.Windows.Forms.Padding(4);
             this.picOrder.Name = "picOrder";
-            this.picOrder.Size = new System.Drawing.Size(90, 87);
+            this.picOrder.Size = new System.Drawing.Size(120, 107);
             this.picOrder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picOrder.TabIndex = 0;
             this.picOrder.TabStop = false;
@@ -285,9 +301,10 @@
             this.lblOrder.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOrder.ForeColor = System.Drawing.Color.White;
-            this.lblOrder.Location = new System.Drawing.Point(89, 0);
+            this.lblOrder.Location = new System.Drawing.Point(118, 0);
+            this.lblOrder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOrder.Name = "lblOrder";
-            this.lblOrder.Size = new System.Drawing.Size(182, 87);
+            this.lblOrder.Size = new System.Drawing.Size(243, 107);
             this.lblOrder.TabIndex = 3;
             this.lblOrder.Text = "Order";
             this.lblOrder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -299,9 +316,10 @@
             this.btnItem.Controls.Add(this.picItem);
             this.btnItem.Controls.Add(this.lblItem);
             this.btnItem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnItem.Location = new System.Drawing.Point(0, 87);
+            this.btnItem.Location = new System.Drawing.Point(0, 107);
+            this.btnItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnItem.Name = "btnItem";
-            this.btnItem.Size = new System.Drawing.Size(271, 87);
+            this.btnItem.Size = new System.Drawing.Size(361, 107);
             this.btnItem.TabIndex = 3;
             this.btnItem.Click += new System.EventHandler(this.btnItem_Click);
             // 
@@ -310,8 +328,9 @@
             this.picItem.Dock = System.Windows.Forms.DockStyle.Left;
             this.picItem.Image = global::KernalPanic.Properties.Resources.item;
             this.picItem.Location = new System.Drawing.Point(0, 0);
+            this.picItem.Margin = new System.Windows.Forms.Padding(4);
             this.picItem.Name = "picItem";
-            this.picItem.Size = new System.Drawing.Size(90, 87);
+            this.picItem.Size = new System.Drawing.Size(120, 107);
             this.picItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picItem.TabIndex = 0;
             this.picItem.TabStop = false;
@@ -322,9 +341,10 @@
             this.lblItem.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblItem.ForeColor = System.Drawing.Color.White;
-            this.lblItem.Location = new System.Drawing.Point(89, 0);
+            this.lblItem.Location = new System.Drawing.Point(118, 0);
+            this.lblItem.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblItem.Name = "lblItem";
-            this.lblItem.Size = new System.Drawing.Size(182, 87);
+            this.lblItem.Size = new System.Drawing.Size(243, 107);
             this.lblItem.TabIndex = 3;
             this.lblItem.Text = "Item";
             this.lblItem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -338,8 +358,9 @@
             this.btnLogin.Controls.Add(this.lblLogin);
             this.btnLogin.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnLogin.Location = new System.Drawing.Point(0, 0);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(271, 87);
+            this.btnLogin.Size = new System.Drawing.Size(361, 107);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -348,8 +369,9 @@
             this.picLogin.Dock = System.Windows.Forms.DockStyle.Left;
             this.picLogin.Image = global::KernalPanic.Properties.Resources.login;
             this.picLogin.Location = new System.Drawing.Point(0, 0);
+            this.picLogin.Margin = new System.Windows.Forms.Padding(4);
             this.picLogin.Name = "picLogin";
-            this.picLogin.Size = new System.Drawing.Size(90, 87);
+            this.picLogin.Size = new System.Drawing.Size(120, 107);
             this.picLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picLogin.TabIndex = 0;
             this.picLogin.TabStop = false;
@@ -360,9 +382,10 @@
             this.lblLogin.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogin.ForeColor = System.Drawing.Color.White;
-            this.lblLogin.Location = new System.Drawing.Point(89, 0);
+            this.lblLogin.Location = new System.Drawing.Point(118, 0);
+            this.lblLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(182, 87);
+            this.lblLogin.Size = new System.Drawing.Size(243, 107);
             this.lblLogin.TabIndex = 3;
             this.lblLogin.Text = "Login";
             this.lblLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -373,9 +396,10 @@
             // 
             this.pnStatus.Controls.Add(this.lblStatus);
             this.pnStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnStatus.Location = new System.Drawing.Point(271, 584);
+            this.pnStatus.Location = new System.Drawing.Point(361, 719);
+            this.pnStatus.Margin = new System.Windows.Forms.Padding(4);
             this.pnStatus.Name = "pnStatus";
-            this.pnStatus.Size = new System.Drawing.Size(757, 25);
+            this.pnStatus.Size = new System.Drawing.Size(1010, 31);
             this.pnStatus.TabIndex = 2;
             // 
             // lblStatus
@@ -385,41 +409,74 @@
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.Red;
             this.lblStatus.Location = new System.Drawing.Point(0, 0);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(151, 13);
+            this.lblStatus.Size = new System.Drawing.Size(195, 17);
             this.lblStatus.TabIndex = 4;
             this.lblStatus.Text = "[Error or Status Message]";
             // 
             // loginPanel
             // 
+            this.loginPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.loginPanel.Controls.Add(this.loginResetButton);
+            this.loginPanel.Controls.Add(this.userNameBox);
+            this.loginPanel.Controls.Add(this.userLabel);
             this.loginPanel.Controls.Add(this.loginEnterButton);
             this.loginPanel.Controls.Add(this.passwordLabel);
-            this.loginPanel.Controls.Add(this.userLabel);
             this.loginPanel.Controls.Add(this.passwordBox);
-            this.loginPanel.Controls.Add(this.userNameBox);
-            this.loginPanel.Location = new System.Drawing.Point(272, 100);
+            this.loginPanel.Location = new System.Drawing.Point(363, 123);
+            this.loginPanel.Margin = new System.Windows.Forms.Padding(4);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(756, 481);
+            this.loginPanel.Size = new System.Drawing.Size(1008, 592);
             this.loginPanel.TabIndex = 3;
             // 
             // loginResetButton
             // 
+            this.loginResetButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginResetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginResetButton.Location = new System.Drawing.Point(163, 154);
+            this.loginResetButton.Location = new System.Drawing.Point(342, 332);
+            this.loginResetButton.Margin = new System.Windows.Forms.Padding(4);
             this.loginResetButton.Name = "loginResetButton";
-            this.loginResetButton.Size = new System.Drawing.Size(154, 38);
+            this.loginResetButton.Size = new System.Drawing.Size(205, 47);
             this.loginResetButton.TabIndex = 5;
             this.loginResetButton.Text = "Reset";
             this.loginResetButton.UseVisualStyleBackColor = true;
             this.loginResetButton.Click += new System.EventHandler(this.loginResetButton_Click);
             // 
+            // userNameBox
+            // 
+            this.userNameBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNameBox.Location = new System.Drawing.Point(342, 205);
+            this.userNameBox.Margin = new System.Windows.Forms.Padding(4);
+            this.userNameBox.Name = "userNameBox";
+            this.userNameBox.Size = new System.Drawing.Size(476, 34);
+            this.userNameBox.TabIndex = 0;
+            // 
+            // userLabel
+            // 
+            this.userLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userLabel.AutoSize = true;
+            this.userLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userLabel.Location = new System.Drawing.Point(199, 208);
+            this.userLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(130, 29);
+            this.userLabel.TabIndex = 2;
+            this.userLabel.Text = "Username:";
+            // 
             // loginEnterButton
             // 
+            this.loginEnterButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginEnterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginEnterButton.Location = new System.Drawing.Point(353, 154);
+            this.loginEnterButton.Location = new System.Drawing.Point(596, 332);
+            this.loginEnterButton.Margin = new System.Windows.Forms.Padding(4);
             this.loginEnterButton.Name = "loginEnterButton";
-            this.loginEnterButton.Size = new System.Drawing.Size(168, 38);
+            this.loginEnterButton.Size = new System.Drawing.Size(224, 47);
             this.loginEnterButton.TabIndex = 4;
             this.loginEnterButton.Text = "Login";
             this.loginEnterButton.UseVisualStyleBackColor = true;
@@ -427,40 +484,30 @@
             // 
             // passwordLabel
             // 
+            this.passwordLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(66, 104);
+            this.passwordLabel.Location = new System.Drawing.Point(206, 270);
+            this.passwordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(97, 24);
+            this.passwordLabel.Size = new System.Drawing.Size(126, 29);
             this.passwordLabel.TabIndex = 3;
             this.passwordLabel.Text = "Password:";
             // 
-            // userLabel
-            // 
-            this.userLabel.AutoSize = true;
-            this.userLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userLabel.Location = new System.Drawing.Point(61, 54);
-            this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(102, 24);
-            this.userLabel.TabIndex = 2;
-            this.userLabel.Text = "Username:";
-            // 
             // passwordBox
             // 
+            this.passwordBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordBox.Location = new System.Drawing.Point(163, 101);
+            this.passwordBox.Location = new System.Drawing.Point(342, 266);
+            this.passwordBox.Margin = new System.Windows.Forms.Padding(4);
             this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(358, 29);
+            this.passwordBox.Size = new System.Drawing.Size(476, 34);
             this.passwordBox.TabIndex = 1;
             this.passwordBox.UseSystemPasswordChar = true;
-            // 
-            // userNameBox
-            // 
-            this.userNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameBox.Location = new System.Drawing.Point(163, 51);
-            this.userNameBox.Name = "userNameBox";
-            this.userNameBox.Size = new System.Drawing.Size(358, 29);
-            this.userNameBox.TabIndex = 0;
             // 
             // itemPanel
             // 
@@ -468,32 +515,11 @@
             this.itemPanel.Controls.Add(this.itemEditButton);
             this.itemPanel.Controls.Add(this.itemSearchButton);
             this.itemPanel.Controls.Add(this.itemSearchBox);
-            this.itemPanel.Location = new System.Drawing.Point(271, 100);
+            this.itemPanel.Location = new System.Drawing.Point(361, 123);
+            this.itemPanel.Margin = new System.Windows.Forms.Padding(4);
             this.itemPanel.Name = "itemPanel";
-            this.itemPanel.Size = new System.Drawing.Size(756, 479);
+            this.itemPanel.Size = new System.Drawing.Size(1008, 590);
             this.itemPanel.TabIndex = 0;
-            // 
-            // itemSearchButton
-            // 
-            this.itemSearchButton.Location = new System.Drawing.Point(667, 19);
-            this.itemSearchButton.Name = "itemSearchButton";
-            this.itemSearchButton.Size = new System.Drawing.Size(63, 24);
-            this.itemSearchButton.TabIndex = 3;
-            this.itemSearchButton.Text = "Enter";
-            this.itemSearchButton.UseVisualStyleBackColor = true;
-            this.itemSearchButton.Click += new System.EventHandler(this.itemSearchButton_Click);
-            // 
-            // itemEditButton
-            // 
-            this.itemEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.itemEditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemEditButton.Location = new System.Drawing.Point(121, 0);
-            this.itemEditButton.Name = "itemEditButton";
-            this.itemEditButton.Size = new System.Drawing.Size(121, 43);
-            this.itemEditButton.TabIndex = 2;
-            this.itemEditButton.Text = "Edit";
-            this.itemEditButton.UseVisualStyleBackColor = true;
-            this.itemEditButton.Click += new System.EventHandler(this.itemEditButton_Click);
             // 
             // itemViewButton
             // 
@@ -501,19 +527,45 @@
             this.itemViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.itemViewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemViewButton.Location = new System.Drawing.Point(0, 0);
+            this.itemViewButton.Margin = new System.Windows.Forms.Padding(4);
             this.itemViewButton.Name = "itemViewButton";
-            this.itemViewButton.Size = new System.Drawing.Size(121, 43);
+            this.itemViewButton.Size = new System.Drawing.Size(161, 53);
             this.itemViewButton.TabIndex = 1;
             this.itemViewButton.Text = "View";
             this.itemViewButton.UseVisualStyleBackColor = false;
             this.itemViewButton.Click += new System.EventHandler(this.itemViewButton_Click);
             // 
+            // itemEditButton
+            // 
+            this.itemEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.itemEditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemEditButton.Location = new System.Drawing.Point(161, 0);
+            this.itemEditButton.Margin = new System.Windows.Forms.Padding(4);
+            this.itemEditButton.Name = "itemEditButton";
+            this.itemEditButton.Size = new System.Drawing.Size(161, 53);
+            this.itemEditButton.TabIndex = 2;
+            this.itemEditButton.Text = "Edit";
+            this.itemEditButton.UseVisualStyleBackColor = true;
+            this.itemEditButton.Click += new System.EventHandler(this.itemEditButton_Click);
+            // 
+            // itemSearchButton
+            // 
+            this.itemSearchButton.Location = new System.Drawing.Point(889, 23);
+            this.itemSearchButton.Margin = new System.Windows.Forms.Padding(4);
+            this.itemSearchButton.Name = "itemSearchButton";
+            this.itemSearchButton.Size = new System.Drawing.Size(84, 30);
+            this.itemSearchButton.TabIndex = 3;
+            this.itemSearchButton.Text = "Enter";
+            this.itemSearchButton.UseVisualStyleBackColor = true;
+            this.itemSearchButton.Click += new System.EventHandler(this.itemSearchButton_Click);
+            // 
             // itemSearchBox
             // 
             this.itemSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemSearchBox.Location = new System.Drawing.Point(509, 19);
+            this.itemSearchBox.Location = new System.Drawing.Point(679, 23);
+            this.itemSearchBox.Margin = new System.Windows.Forms.Padding(4);
             this.itemSearchBox.Name = "itemSearchBox";
-            this.itemSearchBox.Size = new System.Drawing.Size(152, 24);
+            this.itemSearchBox.Size = new System.Drawing.Size(201, 29);
             this.itemSearchBox.TabIndex = 0;
             this.itemSearchBox.Text = "Search";
             this.itemSearchBox.Click += new System.EventHandler(this.itemSearchBox_Click);
@@ -525,45 +577,46 @@
             this.orderPanel.Controls.Add(this.orderSearchBox);
             this.orderPanel.Controls.Add(this.orderEditButton);
             this.orderPanel.Controls.Add(this.orderViewButton);
-            this.orderPanel.Location = new System.Drawing.Point(271, 100);
+            this.orderPanel.Location = new System.Drawing.Point(361, 123);
+            this.orderPanel.Margin = new System.Windows.Forms.Padding(4);
             this.orderPanel.Name = "orderPanel";
-            this.orderPanel.Size = new System.Drawing.Size(757, 481);
+            this.orderPanel.Size = new System.Drawing.Size(1009, 592);
             this.orderPanel.TabIndex = 0;
             // 
-            // warehousePanel
+            // orderSearchButton
             // 
-            this.warehousePanel.Controls.Add(this.warehouseViewButton);
-            this.warehousePanel.Controls.Add(this.warehouseEditButton);
-            this.warehousePanel.Location = new System.Drawing.Point(271, 100);
-            this.warehousePanel.Name = "warehousePanel";
-            this.warehousePanel.Size = new System.Drawing.Size(757, 481);
-            this.warehousePanel.TabIndex = 4;
+            this.orderSearchButton.Location = new System.Drawing.Point(889, 23);
+            this.orderSearchButton.Margin = new System.Windows.Forms.Padding(4);
+            this.orderSearchButton.Name = "orderSearchButton";
+            this.orderSearchButton.Size = new System.Drawing.Size(84, 30);
+            this.orderSearchButton.TabIndex = 3;
+            this.orderSearchButton.Text = "Enter";
+            this.orderSearchButton.UseVisualStyleBackColor = true;
             // 
-            // employeePanel
+            // orderSearchBox
             // 
-            this.employeePanel.Controls.Add(this.employeeViewButton);
-            this.employeePanel.Controls.Add(this.employeeEditButton);
-            this.employeePanel.Location = new System.Drawing.Point(271, 100);
-            this.employeePanel.Name = "employeePanel";
-            this.employeePanel.Size = new System.Drawing.Size(756, 481);
-            this.employeePanel.TabIndex = 1;
+            this.orderSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderSearchBox.Location = new System.Drawing.Point(679, 23);
+            this.orderSearchBox.Margin = new System.Windows.Forms.Padding(4);
+            this.orderSearchBox.Name = "orderSearchBox";
+            this.orderSearchBox.Size = new System.Drawing.Size(201, 29);
+            this.orderSearchBox.TabIndex = 2;
+            this.orderSearchBox.Text = "Search";
+            this.orderSearchBox.Click += new System.EventHandler(this.orderSearchBox_Click);
+            this.orderSearchBox.Leave += new System.EventHandler(this.orderSearchBox_Leave);
             // 
-            // batchPanel
+            // orderEditButton
             // 
-            this.batchPanel.Controls.Add(this.batchTestLabel);
-            this.batchPanel.Location = new System.Drawing.Point(271, 100);
-            this.batchPanel.Name = "batchPanel";
-            this.batchPanel.Size = new System.Drawing.Size(756, 481);
-            this.batchPanel.TabIndex = 1;
-            // 
-            // batchTestLabel
-            // 
-            this.batchTestLabel.AutoSize = true;
-            this.batchTestLabel.Location = new System.Drawing.Point(5, 4);
-            this.batchTestLabel.Name = "batchTestLabel";
-            this.batchTestLabel.Size = new System.Drawing.Size(35, 13);
-            this.batchTestLabel.TabIndex = 0;
-            this.batchTestLabel.Text = "Batch";
+            this.orderEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.orderEditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderEditButton.Location = new System.Drawing.Point(161, 0);
+            this.orderEditButton.Margin = new System.Windows.Forms.Padding(4);
+            this.orderEditButton.Name = "orderEditButton";
+            this.orderEditButton.Size = new System.Drawing.Size(161, 53);
+            this.orderEditButton.TabIndex = 1;
+            this.orderEditButton.Text = "Edit";
+            this.orderEditButton.UseVisualStyleBackColor = true;
+            this.orderEditButton.Click += new System.EventHandler(this.orderEditButton_Click);
             // 
             // orderViewButton
             // 
@@ -571,45 +624,23 @@
             this.orderViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.orderViewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.orderViewButton.Location = new System.Drawing.Point(0, 0);
+            this.orderViewButton.Margin = new System.Windows.Forms.Padding(4);
             this.orderViewButton.Name = "orderViewButton";
-            this.orderViewButton.Size = new System.Drawing.Size(121, 43);
+            this.orderViewButton.Size = new System.Drawing.Size(161, 53);
             this.orderViewButton.TabIndex = 0;
             this.orderViewButton.Text = "View";
             this.orderViewButton.UseVisualStyleBackColor = false;
             this.orderViewButton.Click += new System.EventHandler(this.orderViewButton_Click);
             // 
-            // orderEditButton
+            // warehousePanel
             // 
-            this.orderEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.orderEditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderEditButton.Location = new System.Drawing.Point(121, 0);
-            this.orderEditButton.Name = "orderEditButton";
-            this.orderEditButton.Size = new System.Drawing.Size(121, 43);
-            this.orderEditButton.TabIndex = 1;
-            this.orderEditButton.Text = "Edit";
-            this.orderEditButton.UseVisualStyleBackColor = true;
-            this.orderEditButton.Click += new System.EventHandler(this.orderEditButton_Click);
-            // 
-            // orderSearchBox
-            // 
-            this.orderSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderSearchBox.Location = new System.Drawing.Point(509, 19);
-            this.orderSearchBox.Name = "orderSearchBox";
-            this.orderSearchBox.Size = new System.Drawing.Size(152, 24);
-            this.orderSearchBox.TabIndex = 2;
-            this.orderSearchBox.Text = "Search";
-            this.orderSearchBox.Click += new System.EventHandler(this.orderSearchBox_Click);
-            this.orderSearchBox.Leave += new System.EventHandler(this.orderSearchBox_Leave);
-            // 
-            // orderSearchButton
-            // 
-            this.orderSearchButton.Location = new System.Drawing.Point(667, 19);
-            this.orderSearchButton.Name = "orderSearchButton";
-            this.orderSearchButton.Size = new System.Drawing.Size(63, 24);
-            this.orderSearchButton.TabIndex = 3;
-            this.orderSearchButton.Text = "Enter";
-            this.orderSearchButton.UseVisualStyleBackColor = true;
-            this.orderSearchButton.Click += new System.EventHandler(this.orderSearchButton_Click);
+            this.warehousePanel.Controls.Add(this.warehouseViewButton);
+            this.warehousePanel.Controls.Add(this.warehouseEditButton);
+            this.warehousePanel.Location = new System.Drawing.Point(361, 123);
+            this.warehousePanel.Margin = new System.Windows.Forms.Padding(4);
+            this.warehousePanel.Name = "warehousePanel";
+            this.warehousePanel.Size = new System.Drawing.Size(1009, 592);
+            this.warehousePanel.TabIndex = 4;
             // 
             // warehouseViewButton
             // 
@@ -617,8 +648,9 @@
             this.warehouseViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.warehouseViewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.warehouseViewButton.Location = new System.Drawing.Point(0, 0);
+            this.warehouseViewButton.Margin = new System.Windows.Forms.Padding(4);
             this.warehouseViewButton.Name = "warehouseViewButton";
-            this.warehouseViewButton.Size = new System.Drawing.Size(121, 43);
+            this.warehouseViewButton.Size = new System.Drawing.Size(161, 53);
             this.warehouseViewButton.TabIndex = 0;
             this.warehouseViewButton.Text = "View";
             this.warehouseViewButton.UseVisualStyleBackColor = false;
@@ -628,13 +660,24 @@
             // 
             this.warehouseEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.warehouseEditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.warehouseEditButton.Location = new System.Drawing.Point(121, 0);
+            this.warehouseEditButton.Location = new System.Drawing.Point(161, 0);
+            this.warehouseEditButton.Margin = new System.Windows.Forms.Padding(4);
             this.warehouseEditButton.Name = "warehouseEditButton";
-            this.warehouseEditButton.Size = new System.Drawing.Size(121, 43);
+            this.warehouseEditButton.Size = new System.Drawing.Size(161, 53);
             this.warehouseEditButton.TabIndex = 1;
             this.warehouseEditButton.Text = "Edit";
             this.warehouseEditButton.UseVisualStyleBackColor = true;
             this.warehouseEditButton.Click += new System.EventHandler(this.warehouseEditButton_Click);
+            // 
+            // employeePanel
+            // 
+            this.employeePanel.Controls.Add(this.employeeViewButton);
+            this.employeePanel.Controls.Add(this.employeeEditButton);
+            this.employeePanel.Location = new System.Drawing.Point(361, 123);
+            this.employeePanel.Margin = new System.Windows.Forms.Padding(4);
+            this.employeePanel.Name = "employeePanel";
+            this.employeePanel.Size = new System.Drawing.Size(1008, 592);
+            this.employeePanel.TabIndex = 1;
             // 
             // employeeViewButton
             // 
@@ -642,8 +685,9 @@
             this.employeeViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.employeeViewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.employeeViewButton.Location = new System.Drawing.Point(0, 0);
+            this.employeeViewButton.Margin = new System.Windows.Forms.Padding(4);
             this.employeeViewButton.Name = "employeeViewButton";
-            this.employeeViewButton.Size = new System.Drawing.Size(121, 43);
+            this.employeeViewButton.Size = new System.Drawing.Size(161, 53);
             this.employeeViewButton.TabIndex = 0;
             this.employeeViewButton.Text = "View";
             this.employeeViewButton.UseVisualStyleBackColor = false;
@@ -653,31 +697,52 @@
             // 
             this.employeeEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.employeeEditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeEditButton.Location = new System.Drawing.Point(121, 0);
+            this.employeeEditButton.Location = new System.Drawing.Point(161, 0);
+            this.employeeEditButton.Margin = new System.Windows.Forms.Padding(4);
             this.employeeEditButton.Name = "employeeEditButton";
-            this.employeeEditButton.Size = new System.Drawing.Size(121, 43);
+            this.employeeEditButton.Size = new System.Drawing.Size(161, 53);
             this.employeeEditButton.TabIndex = 1;
             this.employeeEditButton.Text = "Edit";
             this.employeeEditButton.UseVisualStyleBackColor = true;
             this.employeeEditButton.Click += new System.EventHandler(this.employeeEditButton_Click);
             // 
+            // batchPanel
+            // 
+            this.batchPanel.Controls.Add(this.batchTestLabel);
+            this.batchPanel.Location = new System.Drawing.Point(361, 123);
+            this.batchPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.batchPanel.Name = "batchPanel";
+            this.batchPanel.Size = new System.Drawing.Size(1008, 592);
+            this.batchPanel.TabIndex = 1;
+            // 
+            // batchTestLabel
+            // 
+            this.batchTestLabel.AutoSize = true;
+            this.batchTestLabel.Location = new System.Drawing.Point(7, 5);
+            this.batchTestLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.batchTestLabel.Name = "batchTestLabel";
+            this.batchTestLabel.Size = new System.Drawing.Size(44, 17);
+            this.batchTestLabel.TabIndex = 0;
+            this.batchTestLabel.Text = "Batch";
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1028, 609);
+            this.ClientSize = new System.Drawing.Size(1371, 750);
             this.Controls.Add(this.pnStatus);
             this.Controls.Add(this.pnNav);
             this.Controls.Add(this.pnBanner);
+            this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.batchPanel);
             this.Controls.Add(this.employeePanel);
             this.Controls.Add(this.warehousePanel);
             this.Controls.Add(this.itemPanel);
             this.Controls.Add(this.orderPanel);
-            this.Controls.Add(this.loginPanel);
-            this.Controls.Add(this.batchPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(900, 596);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1194, 723);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Moe\'s Warehouse";

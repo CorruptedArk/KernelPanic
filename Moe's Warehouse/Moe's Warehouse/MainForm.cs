@@ -1,26 +1,25 @@
 ﻿using KernalPanic.Properties;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
     public partial class FormMain : Form
     {
+        //Navigation Panel Order
         const int LOGIN_NAV_ID = 0;
         const int ITEM_NAV_ID = 1;
         const int ORDER_NAV_ID = 2;
         const int WAREHOUSE_NAV_ID = 3;
         const int EMPLOYEE_NAV_ID = 4;
         const int BATCH_NAV_ID = 5;
+
+        //Default Background color
         readonly Color DEFAULT_BACKGROUND = Color.FromArgb(64, 64, 64);
+
+        //List of panels
         private List<Panel> panelList = new List<Panel>();
 
         private string currentUser;
@@ -33,17 +32,23 @@ namespace WindowsFormsApplication1
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            lblCurrentScreen.Text = "LOGIN";
-            lblStatus.Text = "";
-            HideNav();
+            InitializePanelList();
+
+            //Logout at start to initilize everything... removes code redundancy
+            lblLogin.Text = "Logout";
+            Logout();
+
+            SetMainView(LOGIN_NAV_ID);
+        }
+
+        private void InitializePanelList()
+        {
             panelList.Add(loginPanel);
             panelList.Add(itemPanel);
             panelList.Add(orderPanel);
             panelList.Add(warehousePanel);
             panelList.Add(employeePanel);
             panelList.Add(batchPanel);
-            SetMainView(LOGIN_NAV_ID);
-            btnBatch.Visible = false;
         }
 
         private void HideNav()
@@ -59,7 +64,7 @@ namespace WindowsFormsApplication1
             btnItem.Show();
             btnOrder.Show();
             btnWarehouse.Show();
-            if (true) // has permission to view/edit employees
+            if (true) // has permission to view/edit employees, check permission from database
             {
                 btnEmployee.Show();
             } 
@@ -108,24 +113,20 @@ namespace WindowsFormsApplication1
         {
             for (int i = 0; i < panelList.Count; i++)
             {
-                if (i == navID)
-                {
-                    panelList[i].Visible = true;
-                }
-                else
-                {
-                    panelList[i].Visible = false;
-                }
+                panelList[i].Visible = false;
             }
+            panelList[navID].Visible = true;
         }
 
         //**************
         //* log in/out *
         //**************
-        private void btnLogin_Click(object sender, EventArgs e)
+
+        private void Logout()
         {
             if (lblLogin.Text == "Logout")
             {
+                lblStatus.Text = "";
                 lblLogin.Text = "Login";
                 picLogin.BackColor = DEFAULT_BACKGROUND;
                 lblLogin.BackColor = DEFAULT_BACKGROUND;
@@ -134,8 +135,14 @@ namespace WindowsFormsApplication1
                 changeNav(LOGIN_NAV_ID);
                 lblCurrentScreen.Text = "LOGIN";
                 picLogin.Image = Resources.login;
+                userNameBox.Focus();
+                this.AcceptButton = loginEnterButton;
             }
-            
+        }
+        
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            Logout();            
         }
 
         private void lblLogin_Click(object sender, EventArgs e)
@@ -148,14 +155,23 @@ namespace WindowsFormsApplication1
             btnLogin_Click(null, null);
         }
 
-        private void loginEnterButton_Click(object sender, EventArgs e)
+        private void Login()
         {
             // check for valid login information
             string username = userNameBox.Text;
             string password = passwordBox.Text;
 
-            if (true) // this needs to be the login success condition when the database is established.
+            if(username == "")
             {
+                lblStatus.Text = "Error: Username Cannot Be Empty!";
+            }
+            else if (password == "")
+            {
+                lblStatus.Text = "Error: Password Cannot Be Empty!";
+            }
+            else if (true) // this needs to be the login success condition when the database is established.
+            {
+                lblStatus.Text = "";
                 userNameBox.Text = "";
                 passwordBox.Text = "";
                 currentUser = username;
@@ -174,6 +190,11 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void loginEnterButton_Click(object sender, EventArgs e)
+        {
+            Login();
+        }
+
         private void loginResetButton_Click(object sender, EventArgs e)
         {
             userNameBox.Text = "";
@@ -185,7 +206,7 @@ namespace WindowsFormsApplication1
         //******************
 
         //*************
-        //*Item*
+        //*   Item    *
         //*************
 
         // Item click function
@@ -261,11 +282,11 @@ namespace WindowsFormsApplication1
         }
 
         //**************
-        //* End Item *
+        //*  End Item  *
         //**************
 
         //**************
-        //*Order*
+        //*    Order   *
         //**************
 
         // Main Order click function
@@ -331,18 +352,13 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void orderSearchButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
         //*************
         //* End Order *
         //*************
 
 
         //*****************
-        //* Warehouse *
+        //*   Warehouse   *
         //*****************
 
         // calls main Warehouse click function
@@ -398,7 +414,7 @@ namespace WindowsFormsApplication1
 
 
         //*****************
-        //* Employee *
+        //*    Employee   *
         //*****************
 
         private void btnEmployee_Click(object sender, EventArgs e)
@@ -448,7 +464,7 @@ namespace WindowsFormsApplication1
         //*****************
 
         //*****************
-        //* Batch *
+        //*     Batch     *
         //*****************
         private void btnBatch_Click(object sender, EventArgs e)
         {
@@ -469,15 +485,13 @@ namespace WindowsFormsApplication1
             batchTestLabel.Text = "Starting...";
             Refresh();
 
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(5000); // REMOVE THIS FROM FINAL CODE!
 
             batchTestLabel.Text = "Done";
             
         }
-
-
         //*****************
-        //* End Batch *
+        //*   End Batch   *
         //*****************
 
     }
