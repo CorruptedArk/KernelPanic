@@ -174,7 +174,7 @@ namespace WindowsFormsApplication1
                 lblStatus.Text = "Error: Password Cannot Be Empty!";
             }
            
-            else if (loginUser.VerifyUsername(username) == true && loginUser.VerifyPassword(password) == true)  // verify user entered correct login credentials
+            else if (loginUser.VerifyUsernameAndPassword(username, password))  // verify user entered correct login credentials
             {
                 lblStatus.Text = "";
                 userNameBox.Text = "";
