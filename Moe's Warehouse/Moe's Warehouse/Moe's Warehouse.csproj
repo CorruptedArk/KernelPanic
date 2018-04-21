@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BatchProcessor.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="MainForm.cs">
