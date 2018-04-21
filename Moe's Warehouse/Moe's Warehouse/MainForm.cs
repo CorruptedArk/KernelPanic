@@ -1,4 +1,5 @@
-﻿using KernalPanic.Properties;
+﻿using KernalPanic;
+using KernalPanic.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -142,7 +143,8 @@ namespace WindowsFormsApplication1
         
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Logout();            
+            Logout(); 
+            // test
         }
 
         private void lblLogin_Click(object sender, EventArgs e)
@@ -160,6 +162,8 @@ namespace WindowsFormsApplication1
             // check for valid login information
             string username = userNameBox.Text;
             string password = passwordBox.Text;
+            DataAccess loginUser = new DataAccess();
+           
 
             if(username == "")
             {
@@ -169,7 +173,8 @@ namespace WindowsFormsApplication1
             {
                 lblStatus.Text = "Error: Password Cannot Be Empty!";
             }
-            else if (true) // this needs to be the login success condition when the database is established.
+           
+            else if (loginUser.VerifyUsername(username) == true && loginUser.VerifyPassword(password) == true)  // verify user entered correct login credentials
             {
                 lblStatus.Text = "";
                 userNameBox.Text = "";
