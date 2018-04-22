@@ -502,10 +502,11 @@ namespace WindowsFormsApplication1
         // This function will hold the batch process. The contents are currently a placeholder for demonstration
         private void batchProcess()
         {
+            BatchProcessor batch = new BatchProcessor();
             batchTestLabel.Text = "Starting...";
             Refresh();
 
-            System.Threading.Thread.Sleep(5000); // REMOVE THIS FROM FINAL CODE!
+            batch.run();
 
             batchTestLabel.Text = "Done";
             

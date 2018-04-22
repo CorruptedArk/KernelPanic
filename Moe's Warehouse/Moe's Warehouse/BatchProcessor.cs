@@ -209,6 +209,61 @@ namespace KernalPanic
         private void readVendorOrderFile()
         {
             string fileName = "vendororder.txt";
+            string[] vendorOrderLines = { };
+
+            try
+            {
+                vendorOrderLines = File.ReadAllLines(fileName);
+            }
+            catch (Exception e)
+            {
+                writeLineToLog("Error: " + fileName + " failed to open");
+                continueBatch = false;
+            }
+
+            if (continueBatch)
+            {
+                if (vendorOrderLines.Length < 2)
+                {
+                    continueBatch = false;
+                    writeLineToLog("Error: Header or Trailer missing in " + fileName);
+                }
+                else if (vendorOrderLines[0].Substring(0, 2) != "HD")
+                {
+                    continueBatch = false;
+                    writeLineToLog("Error: Header is missing in " + fileName);
+                }
+                else if (vendorOrderLines.Last().Substring(0, 1) != "T")
+                {
+                    continueBatch = false;
+                    writeLineToLog("Error: Trailer is missing in " + fileName);
+                }
+                else if (int.Parse(vendorOrderLines[0].Substring(3, 4)) != lastVendorShipSeq + 1)
+                {
+                    continueBatch = false;
+                    writeLineToLog("Error: Invalid Sequence in " + fileName);
+                }
+                else if (int.Parse(vendorOrderLines.Last().Substring(2, 4)) != vendorOrderLines.Length - 2)
+                {
+                    writeLineToLog("Error: Row count mismatch in " + fileName);
+                }
+                else
+                {
+                    string vendorOrderDate = vendorOrderLines[0].Substring(13, 10);
+
+                    for(int i = 1; i < vendorOrderLines.Length - 2; i++)
+                    {
+                        int tempVendorId = int.Parse(vendorOrderLines[i].Substring(0, 2));
+                        int tempItemId = int.Parse(vendorOrderLines[i].Substring(2, 5));
+                        int tempReorderQuantity = int.Parse(vendorOrderLines[i].Substring(7, 5));
+
+                        //verify vendor, item, that vendor sells item, that quantity is nonzero, that reorder point was actually reached
+                    }
+
+                    // iterate sequence
+                }
+
+            }
 
         }
 
