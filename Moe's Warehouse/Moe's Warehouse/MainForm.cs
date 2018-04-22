@@ -71,6 +71,18 @@ namespace WindowsFormsApplication1
             } 
         }
 
+        private void DisplayError(string errorMsg)
+        {
+            lblStatus.Text = errorMsg;
+            pnStatus.Show();
+        }
+
+        private void ClearError()
+        {
+            lblStatus.Text = "";
+            pnStatus.Hide();
+        }
+
         // Handles which button is currently selected, changes the background color
         // val is based on what order the button comes in, starting at 0
         private void changeNav(int val)
@@ -127,7 +139,7 @@ namespace WindowsFormsApplication1
         {
             if (lblLogin.Text == "Logout")
             {
-                lblStatus.Text = "";
+                ClearError();
                 lblLogin.Text = "Login";
                 picLogin.BackColor = DEFAULT_BACKGROUND;
                 lblLogin.BackColor = DEFAULT_BACKGROUND;
@@ -143,8 +155,7 @@ namespace WindowsFormsApplication1
         
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Logout(); 
-            // test
+            Logout();
         }
 
         private void lblLogin_Click(object sender, EventArgs e)
@@ -167,16 +178,15 @@ namespace WindowsFormsApplication1
 
             if(username == "")
             {
-                lblStatus.Text = "Error: Username Cannot Be Empty!";
+                DisplayError("Error: Username Cannot Be Empty!");
             }
             else if (password == "")
             {
-                lblStatus.Text = "Error: Password Cannot Be Empty!";
-            }
-           
+                DisplayError("Error: Password Cannot Be Empty!");
+            }           
             else if (loginUser.VerifyUsernameAndPassword(username, password))  // verify user entered correct login credentials
             {
-                lblStatus.Text = "";
+                ClearError();
                 userNameBox.Text = "";
                 passwordBox.Text = "";
                 currentUser = username;
@@ -193,6 +203,10 @@ namespace WindowsFormsApplication1
                 itemEditButton.BackColor = Color.White;
                 isInEditMode = false;
             }
+            else
+            {
+                DisplayError("Error: Username/Password Combination Is Invalid!");
+            }
         }
 
         private void loginEnterButton_Click(object sender, EventArgs e)
@@ -204,6 +218,7 @@ namespace WindowsFormsApplication1
         {
             userNameBox.Text = "";
             passwordBox.Text = "";
+            ClearError();
         }
 
         //******************

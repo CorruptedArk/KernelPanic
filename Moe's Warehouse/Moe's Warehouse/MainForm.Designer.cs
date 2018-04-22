@@ -372,8 +372,10 @@
             // 
             // pnStatus
             // 
+            this.pnStatus.BackColor = System.Drawing.Color.Red;
             this.pnStatus.Controls.Add(this.lblStatus);
             this.pnStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnStatus.Location = new System.Drawing.Point(271, 584);
             this.pnStatus.Name = "pnStatus";
             this.pnStatus.Size = new System.Drawing.Size(757, 25);
@@ -382,12 +384,13 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
+            this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.ForeColor = System.Drawing.Color.Red;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.Color.White;
             this.lblStatus.Location = new System.Drawing.Point(0, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(151, 13);
+            this.lblStatus.Size = new System.Drawing.Size(215, 20);
             this.lblStatus.TabIndex = 4;
             this.lblStatus.Text = "[Error or Status Message]";
             // 
