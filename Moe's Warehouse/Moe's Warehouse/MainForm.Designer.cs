@@ -688,12 +688,12 @@
             this.Controls.Add(this.pnStatus);
             this.Controls.Add(this.pnNav);
             this.Controls.Add(this.pnBanner);
-            this.Controls.Add(this.loginPanel);
-            this.Controls.Add(this.batchPanel);
-            this.Controls.Add(this.employeePanel);
             this.Controls.Add(this.warehousePanel);
             this.Controls.Add(this.itemPanel);
             this.Controls.Add(this.orderPanel);
+            this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.batchPanel);
+            this.Controls.Add(this.employeePanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 595);
             this.Name = "FormMain";

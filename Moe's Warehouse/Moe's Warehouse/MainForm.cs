@@ -22,6 +22,7 @@ namespace WindowsFormsApplication1
 
         //List of panels
         private List<Panel> panelList = new List<Panel>();
+        private DataAccess session = new DataAccess();
 
         private string currentUser;
         private bool isInEditMode = false;
@@ -62,13 +63,14 @@ namespace WindowsFormsApplication1
 
         private void ShowNav()
         {
+            string name = currentUser;
             btnItem.Show();
             btnOrder.Show();
             btnWarehouse.Show();
-            if (true) // has permission to view/edit employees, check permission from database
+            if (session.CheckAdmin(name)) // has permission to view/edit employees, check permission from database
             {
                 btnEmployee.Show();
-            } 
+            }
         }
 
         private void DisplayError(string errorMsg)
@@ -172,9 +174,7 @@ namespace WindowsFormsApplication1
         {
             // check for valid login information
             string username = userNameBox.Text;
-            string password = passwordBox.Text;
-            DataAccess loginUser = new DataAccess();
-           
+            string password = passwordBox.Text;           
 
             if(username == "")
             {
@@ -184,7 +184,7 @@ namespace WindowsFormsApplication1
             {
                 DisplayError("Error: Password Cannot Be Empty!");
             }           
-            else if (loginUser.VerifyUsernameAndPassword(username, password))  // verify user entered correct login credentials
+            else if (session.VerifyUsernameAndPassword(username, password))  // verify user entered correct login credentials
             {
                 ClearError();
                 userNameBox.Text = "";
