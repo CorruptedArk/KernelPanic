@@ -21,7 +21,7 @@ namespace KernalPanic
             // lastSeq = value from database
         }
 
-        public void run()
+        public bool run()
         {
             readVendorShipmentFile();
 
@@ -34,7 +34,7 @@ namespace KernalPanic
             {
                 readVendorOrderFile();
             }
-
+            return continueBatch;
         }
 
         private void readVendorShipmentFile()

@@ -23,20 +23,23 @@ namespace WindowsFormsApplication1
 
         //List of panels
         private List<Panel> panelList = new List<Panel>();
+
+        // Establish database connections
         private DataAccess session = new DataAccess();
 
-        private string currentUser;
-        private bool isInEditMode = false;
+        private string currentUser; // Current user, changes on login / logout
+        private bool isInEditMode = false; // Determines if content can be changed or not
 
+        //constructor
         public FormMain()
         {
             InitializeComponent();
+            InitializePanelList();
         }
 
+        // Main form load component that handles setting up the initial view
         private void FormMain_Load(object sender, EventArgs e)
         {
-            InitializePanelList();
-
             //Logout at start to initilize everything... removes code redundancy
             lblLogin.Text = "Logout";
             Logout();
@@ -44,6 +47,7 @@ namespace WindowsFormsApplication1
             SetMainView(LOGIN_NAV_ID);
         }
 
+        // Initializes main displays for future use
         private void InitializePanelList()
         {
             panelList.Add(loginPanel);
@@ -54,6 +58,7 @@ namespace WindowsFormsApplication1
             panelList.Add(batchPanel);
         }
 
+        // Hides all panels after user logout, during batch process, and on other system lock downs
         private void HideNav()
         {
             btnItem.Hide();
@@ -62,24 +67,27 @@ namespace WindowsFormsApplication1
             btnEmployee.Hide();
         }
 
+        // Determines the type of access a user has and customizes the interface accordingly
         private void ShowNav()
         {
             string name = currentUser;
             btnItem.Show();
             btnOrder.Show();
             btnWarehouse.Show();
-            if (session.CheckAdmin(name)) // has permission to view/edit employees, check permission from database
+            if (session.CheckAdmin(name)) // Has permission to view/edit employees, check permission from database
             {
                 btnEmployee.Show();
             }
         }
 
+        // Displays error to user
         private void DisplayError(string errorMsg)
         {
             lblStatus.Text = errorMsg;
             pnStatus.Show();
         }
 
+        // Clears bottom error / status bar
         private void ClearError()
         {
             lblStatus.Text = "";
@@ -124,20 +132,24 @@ namespace WindowsFormsApplication1
             }
         }
 
-        // Sets the panel at navID in panelList as the visible panel and hides the others
+        // Sets the panel at navID in panelList as the visible panel and hides the others, also handles docking the panels
         private void SetMainView(int navID)
         {
             for (int i = 0; i < panelList.Count; i++)
             {
+                panelList[i].Dock = DockStyle.None;
                 panelList[i].Visible = false;
             }
             panelList[navID].Visible = true;
+            panelList[navID].BringToFront();
+            panelList[navID].Dock = DockStyle.Fill;
         }
 
         //**************
         //* log in/out *
         //**************
 
+        // Verifies logout is possible, if it is it clears the session and sets it up for the next user
         private void Logout()
         {
             if (lblLogin.Text == "Logout")
@@ -152,29 +164,34 @@ namespace WindowsFormsApplication1
                 changeNav(LOGIN_NAV_ID);
                 lblCurrentScreen.Text = "LOGIN";
                 picLogin.Image = Resources.login;
+                picBatch.Image = Resources.gear;
                 userNameBox.Focus();
                 this.AcceptButton = loginEnterButton;
             }
         }
-        
+
+        // Calls function to check if log out is possible
         private void btnLogin_Click(object sender, EventArgs e)
         {
             Logout();
         }
 
+        // Calls main login / logout click function
         private void lblLogin_Click(object sender, EventArgs e)
         {
             btnLogin_Click(null, null);
         }
 
+        // Calls main login / logout click function
         private void picLogin_Click(object sender, EventArgs e)
         {
             btnLogin_Click(null, null);
         }
 
+        // Verifies login, checks for user name, password, if it's in database, and if they match
         private void Login()
         {
-            // check for valid login information
+            // Check for valid login information
             string username = userNameBox.Text;
             string password = passwordBox.Text;           
 
@@ -186,7 +203,7 @@ namespace WindowsFormsApplication1
             {
                 DisplayError("Error: Password Cannot Be Empty!");
             }           
-            else if (session.VerifyUsernameAndPassword(username, password))  // verify user entered correct login credentials
+            else if (session.VerifyUsernameAndPassword(username, password))  // Verify user entered correct login credentials
             {
                 ClearError();
                 userNameBox.Text = "";
@@ -211,11 +228,13 @@ namespace WindowsFormsApplication1
             }
         }
 
+        // Calls function to verify login
         private void loginEnterButton_Click(object sender, EventArgs e)
         {
             Login();
         }
 
+        // Reset button, clears errors and textboxes
         private void loginResetButton_Click(object sender, EventArgs e)
         {
             userNameBox.Text = "";
@@ -252,13 +271,13 @@ namespace WindowsFormsApplication1
             changeNav(ITEM_NAV_ID);
         }
 
-        // calls item click function
+        // Calls item click function
         private void picItem_Click(object sender, EventArgs e)
         {
             btnItem_Click(null, null);
         }
 
-        // calls main home click function
+        // Calls main home click function
         private void lblItem_Click(object sender, EventArgs e)
         {
             btnItem_Click(null, null);
@@ -280,7 +299,7 @@ namespace WindowsFormsApplication1
             isInEditMode = true;
         }
 
-
+        // When user clicks search box, clear it
         private void itemSearchBox_Click(object sender, EventArgs e)
         {
             if (itemSearchBox.Text == "Search")
@@ -289,7 +308,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-
+        // When user clicks away from search box, reset it
         private void itemSearchBox_Leave(object sender, EventArgs e)
         {
             if (itemSearchBox.Text == "")
@@ -331,13 +350,13 @@ namespace WindowsFormsApplication1
             changeNav(ORDER_NAV_ID);
         }
 
-        // calls main order click function
+        // Calls main order click function
         private void lblOrder_Click(object sender, EventArgs e)
         {
             btnOrder_Click(null, null);
         }
 
-        // calls main order click function
+        // Calls main order click function
         private void picOrder_Click(object sender, EventArgs e)
         {
             btnOrder_Click(null, null);
@@ -358,6 +377,8 @@ namespace WindowsFormsApplication1
             isInEditMode = true;
         }
 
+
+        // When user clicks search box, clear it
         private void orderSearchBox_Click(object sender, EventArgs e)
         {
             if (orderSearchBox.Text == "Search")
@@ -366,6 +387,7 @@ namespace WindowsFormsApplication1
             }
         }
 
+        // When user clicks away from search box, reset it
         private void orderSearchBox_Leave(object sender, EventArgs e)
         {
             if (orderSearchBox.Text == "")
@@ -383,13 +405,13 @@ namespace WindowsFormsApplication1
         //*   Warehouse   *
         //*****************
 
-        // calls main Warehouse click function
+        // Calls main Warehouse click function
         private void picWarehouse_Click(object sender, EventArgs e)
         {
             btnWarehouse_Click(null, null);
         }
 
-        // calls main Warehouse click function
+        // Calls main Warehouse click function
         private void lblWarehouse_Click(object sender, EventArgs e)
         {
             btnWarehouse_Click(null, null);
@@ -428,7 +450,6 @@ namespace WindowsFormsApplication1
             warehouseEditButton.BackColor = Color.Gray;
             isInEditMode = true;
         }
-
         
         //*****************
         //* End Warehouse *
@@ -438,7 +459,8 @@ namespace WindowsFormsApplication1
         //*****************
         //*    Employee   *
         //*****************
-
+        
+        // When employee button is clicked this will change to that screen and display the employee usernames, ids, emails, and access levels
         private void btnEmployee_Click(object sender, EventArgs e)
         {
             lblCurrentScreen.Text = "EMPLOYEE";
@@ -456,14 +478,16 @@ namespace WindowsFormsApplication1
 
             changeNav(EMPLOYEE_NAV_ID);
 
-            InitList();
+            EmployeeList();
         }
 
+        // Calls main Employee click function
         private void picEmployee_Click(object sender, EventArgs e)
         {
             btnEmployee_Click(null, null);
         }
 
+        // Calls main Employee click function
         private void lblEmployee_Click(object sender, EventArgs e)
         {
             btnEmployee_Click(null, null);
@@ -483,11 +507,9 @@ namespace WindowsFormsApplication1
             isInEditMode = true;
         }
 
-
-        private void InitList()
+        // Sets up the employee listview
+        private void EmployeeList()
         {
-            string employees = session.getEmployees();
-            List<string> stringList = employees.Split(',').ToList<string>();
             lvEmployees.Clear();
             int size = lvEmployees.Width;
             lvEmployees.View = View.Details;
@@ -495,12 +517,14 @@ namespace WindowsFormsApplication1
             lvEmployees.Columns.Add("Username", size / 4, HorizontalAlignment.Center);
             lvEmployees.Columns.Add("EmailAddr", size / 4, HorizontalAlignment.Center);
             lvEmployees.Columns.Add("IsAdmin", size / 4, HorizontalAlignment.Center);
-            //lines below are test data
-            for(int i = 1; i < stringList.Count(); i+=4)
+            string employees = session.getEmployees();
+            List<string> stringList = employees.Split(',').ToList<string>();
+            for (int i = 1; i < stringList.Count(); i+=4)
             {
                 lvEmployees.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1], stringList[i+2], stringList[i+3] }));
             }
         }
+
         //*****************
         //* End Employee *
         //*****************
@@ -508,6 +532,9 @@ namespace WindowsFormsApplication1
         //*****************
         //*     Batch     *
         //*****************
+        
+        // When batch button is clicked, this will disable multiple batch attempts and being a single process,
+        // the systen will unlock once it finishes
         private void btnBatch_Click(object sender, EventArgs e)
         {
             HideNav();
@@ -521,18 +548,26 @@ namespace WindowsFormsApplication1
             btnBatch.Visible = true;
         }
 
-        // This function will hold the batch process. The contents are currently a placeholder for demonstration
+        // This function holds the batch process.
+        // The contents are currently a placeholder for demonstration
         private void batchProcess()
         {
             BatchProcessor batch = new BatchProcessor();
             batchTestLabel.Text = "Starting...";
             Refresh();
 
-            batch.run();
-
-            batchTestLabel.Text = "Done";
-            
+            if(batch.run())
+            {
+                picBatch.Image = Resources.check;
+                batchTestLabel.Text = "Finished Successfully!";
+            }
+            else
+            {
+                picBatch.Image = Resources.error;
+                batchTestLabel.Text = "Errors Encountered, See Log.txt For More Information.";
+            }            
         }
+
         //*****************
         //*   End Batch   *
         //*****************
