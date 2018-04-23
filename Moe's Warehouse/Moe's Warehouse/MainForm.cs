@@ -374,8 +374,8 @@ namespace WindowsFormsApplication1
             for (int i = 1; i < stringList.Count(); i += 7)
             {
                 lvItem.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1],
-                    stringList[i + 2], "$" + stringList[i + 3], stringList[i + 4] , stringList[i + 6] }));
-                tags.Add(stringList[i + 5]);
+                    stringList[i + 2], "$" + stringList[i + 4], stringList[i + 5] , stringList[i + 6] }));
+                tags.Add(stringList[i + 3]);
             }
         }
 
