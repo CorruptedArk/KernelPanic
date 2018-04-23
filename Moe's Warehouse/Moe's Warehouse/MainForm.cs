@@ -18,6 +18,9 @@ namespace WindowsFormsApplication1
         const int EMPLOYEE_NAV_ID = 4;
         const int BATCH_NAV_ID = 5;
 
+        //current display
+        private int currentNavID;
+
         //Default Background color
         readonly Color DEFAULT_BACKGROUND = Color.FromArgb(64, 64, 64);
 
@@ -128,7 +131,6 @@ namespace WindowsFormsApplication1
                 case BATCH_NAV_ID:
                     SetMainView(BATCH_NAV_ID);
                     break;
-                
             }
         }
 
@@ -143,6 +145,35 @@ namespace WindowsFormsApplication1
             panelList[navID].Visible = true;
             panelList[navID].BringToFront();
             panelList[navID].Dock = DockStyle.Fill;
+            currentNavID = navID;
+        }
+
+
+
+        //handles all windows form resize adjustments, to keep the UI consistent and reduce overflow
+        private void FormMain_ResizeEnd(object sender, EventArgs e)
+        {
+            int maxSize;
+            switch (currentNavID)
+            {
+                case ITEM_NAV_ID:
+                    // Add If Needed
+                    break;
+                case ORDER_NAV_ID:
+                    // Add If Needed
+                    break;
+                case WAREHOUSE_NAV_ID:
+                    // Add If Needed
+                    break;
+                case EMPLOYEE_NAV_ID:
+                    // resizes listview columns, to keep everything within margins
+                    maxSize = (lvEmployees.Width - 4) / 4;
+                    for (int i = 0; i < lvEmployees.Columns.Count; i++)
+                    {
+                        lvEmployees.Columns[i].Width = maxSize;
+                    }
+                    break;
+            }
         }
 
         //**************
@@ -514,17 +545,31 @@ namespace WindowsFormsApplication1
         private void EmployeeList()
         {
             lvEmployees.Clear();
-            int size = lvEmployees.Width;
+            int size = (lvEmployees.Width - 4) / 4; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
             lvEmployees.View = View.Details;
-            lvEmployees.Columns.Add("ID", size / 4, HorizontalAlignment.Center);
-            lvEmployees.Columns.Add("Username", size / 4, HorizontalAlignment.Center);
-            lvEmployees.Columns.Add("EmailAddr", size / 4, HorizontalAlignment.Center);
-            lvEmployees.Columns.Add("IsAdmin", size / 4, HorizontalAlignment.Center);
+            lvEmployees.Columns.Add("ID", size, HorizontalAlignment.Center);
+            lvEmployees.Columns.Add("Username", size, HorizontalAlignment.Center);
+            lvEmployees.Columns.Add("EmailAddr", size, HorizontalAlignment.Center);
+            lvEmployees.Columns.Add("IsAdmin", size, HorizontalAlignment.Center);
             string employees = session.getEmployees();
             List<string> stringList = employees.Split(',').ToList<string>();
             for (int i = 1; i < stringList.Count(); i+=4)
             {
                 lvEmployees.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1], stringList[i+2], stringList[i+3] }));
+            }
+        }
+
+        //keeps column width from becoming too small / not visable
+        private void lvEmployees_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
+        {
+            int maxSize = (lvEmployees.Width - 4) / 4; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
+            if (lvEmployees.Columns[e.ColumnIndex].Width < 100)
+            {
+                lvEmployees.Columns[e.ColumnIndex].Width = 100;
+            }
+            else if(lvEmployees.Columns[e.ColumnIndex].Width > maxSize)
+            {
+                lvEmployees.Columns[e.ColumnIndex].Width = maxSize;
             }
         }
 
@@ -618,6 +663,18 @@ namespace WindowsFormsApplication1
 
             ShowNav();
             btnBatch.Visible = true;
+        }
+
+        // Calls main Batch click function
+        private void lblBatch_Click(object sender, EventArgs e)
+        {
+            btnBatch_Click(null, null);
+        }
+
+        // Calls main Batch click function
+        private void picBatchNav_Click(object sender, EventArgs e)
+        {
+            btnBatch_Click(null, null);
         }
 
         // This function holds the batch process.

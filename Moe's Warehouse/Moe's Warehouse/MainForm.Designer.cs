@@ -32,24 +32,17 @@
             this.pnBanner = new System.Windows.Forms.Panel();
             this.lblCurrentScreen = new System.Windows.Forms.Label();
             this.pnCompName = new System.Windows.Forms.Panel();
-            this.picLogo = new System.Windows.Forms.PictureBox();
             this.lblStaticCompanyName = new System.Windows.Forms.Label();
             this.pnNav = new System.Windows.Forms.Panel();
-            this.btnBatch = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Panel();
-            this.picEmployee = new System.Windows.Forms.PictureBox();
             this.lblEmployee = new System.Windows.Forms.Label();
             this.btnWarehouse = new System.Windows.Forms.Panel();
-            this.picWarehouse = new System.Windows.Forms.PictureBox();
             this.lblWarehouse = new System.Windows.Forms.Label();
             this.btnOrder = new System.Windows.Forms.Panel();
-            this.picOrder = new System.Windows.Forms.PictureBox();
             this.lblOrder = new System.Windows.Forms.Label();
             this.btnItem = new System.Windows.Forms.Panel();
-            this.picItem = new System.Windows.Forms.PictureBox();
             this.lblItem = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Panel();
-            this.picLogin = new System.Windows.Forms.PictureBox();
             this.lblLogin = new System.Windows.Forms.Label();
             this.pnStatus = new System.Windows.Forms.Panel();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -83,38 +76,43 @@
             this.employeeViewButton = new System.Windows.Forms.Button();
             this.employeeEditButton = new System.Windows.Forms.Button();
             this.batchPanel = new System.Windows.Forms.Panel();
-            this.picBatch = new System.Windows.Forms.PictureBox();
             this.batchTestLabel = new System.Windows.Forms.Label();
-            this.pnEmployeeEdit = new System.Windows.Forms.Panel();
-            this.btnSubmitNewUser = new System.Windows.Forms.Button();
-            this.cbAdmin = new System.Windows.Forms.CheckBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.gbAddUser = new System.Windows.Forms.GroupBox();
             this.txtNewPass = new System.Windows.Forms.TextBox();
             this.txtConfirmPass = new System.Windows.Forms.TextBox();
-            this.lblusername = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.cbAdmin = new System.Windows.Forms.CheckBox();
             this.lblPassword = new System.Windows.Forms.Label();
+            this.btnSubmitNewUser = new System.Windows.Forms.Button();
             this.lblconfirmPassword = new System.Windows.Forms.Label();
-            this.gbAddUser = new System.Windows.Forms.GroupBox();
-            this.gbDeleteUser = new System.Windows.Forms.GroupBox();
+            this.lblusername = new System.Windows.Forms.Label();
+            this.pnEmployeeEdit = new System.Windows.Forms.Panel();
             this.lblDeleteUser = new System.Windows.Forms.Label();
             this.lblConfirm = new System.Windows.Forms.Label();
             this.txtDeleteUser = new System.Windows.Forms.TextBox();
             this.txtConfirmDelete = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.gbDeleteUser = new System.Windows.Forms.GroupBox();
+            this.lvItem = new System.Windows.Forms.ListView();
+            this.pnItem = new System.Windows.Forms.Panel();
+            this.btnBatch = new System.Windows.Forms.Panel();
+            this.lblBatch = new System.Windows.Forms.Label();
+            this.picBatchNav = new System.Windows.Forms.PictureBox();
+            this.picEmployee = new System.Windows.Forms.PictureBox();
+            this.picWarehouse = new System.Windows.Forms.PictureBox();
+            this.picOrder = new System.Windows.Forms.PictureBox();
+            this.picItem = new System.Windows.Forms.PictureBox();
+            this.picLogin = new System.Windows.Forms.PictureBox();
+            this.picLogo = new System.Windows.Forms.PictureBox();
+            this.picBatch = new System.Windows.Forms.PictureBox();
             this.pnBanner.SuspendLayout();
             this.pnCompName.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.pnNav.SuspendLayout();
             this.btnEmployee.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picEmployee)).BeginInit();
             this.btnWarehouse.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picWarehouse)).BeginInit();
             this.btnOrder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picOrder)).BeginInit();
             this.btnItem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picItem)).BeginInit();
             this.btnLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogin)).BeginInit();
             this.pnStatus.SuspendLayout();
             this.loginPanel.SuspendLayout();
             this.itemPanel.SuspendLayout();
@@ -127,10 +125,19 @@
             this.pnEmployeeList.SuspendLayout();
             this.pnEmployeeViewEdit.SuspendLayout();
             this.batchPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBatch)).BeginInit();
-            this.pnEmployeeEdit.SuspendLayout();
             this.gbAddUser.SuspendLayout();
+            this.pnEmployeeEdit.SuspendLayout();
             this.gbDeleteUser.SuspendLayout();
+            this.pnItem.SuspendLayout();
+            this.btnBatch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBatchNav)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEmployee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picWarehouse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBatch)).BeginInit();
             this.SuspendLayout();
             // 
             // pnBanner
@@ -167,17 +174,6 @@
             this.pnCompName.Size = new System.Drawing.Size(271, 100);
             this.pnCompName.TabIndex = 2;
             // 
-            // picLogo
-            // 
-            this.picLogo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picLogo.Image = global::KernalPanic.Properties.Resources.Company_Logo___White;
-            this.picLogo.Location = new System.Drawing.Point(0, 0);
-            this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(90, 100);
-            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picLogo.TabIndex = 0;
-            this.picLogo.TabStop = false;
-            // 
             // lblStaticCompanyName
             // 
             this.lblStaticCompanyName.Dock = System.Windows.Forms.DockStyle.Right;
@@ -203,18 +199,8 @@
             this.pnNav.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnNav.Location = new System.Drawing.Point(0, 100);
             this.pnNav.Name = "pnNav";
-            this.pnNav.Size = new System.Drawing.Size(271, 509);
+            this.pnNav.Size = new System.Drawing.Size(271, 561);
             this.pnNav.TabIndex = 1;
-            // 
-            // btnBatch
-            // 
-            this.btnBatch.Location = new System.Drawing.Point(38, 462);
-            this.btnBatch.Name = "btnBatch";
-            this.btnBatch.Size = new System.Drawing.Size(194, 34);
-            this.btnBatch.TabIndex = 7;
-            this.btnBatch.Text = "Start Batch";
-            this.btnBatch.UseVisualStyleBackColor = true;
-            this.btnBatch.Click += new System.EventHandler(this.btnBatch_Click);
             // 
             // btnEmployee
             // 
@@ -226,18 +212,6 @@
             this.btnEmployee.Size = new System.Drawing.Size(271, 87);
             this.btnEmployee.TabIndex = 6;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
-            // 
-            // picEmployee
-            // 
-            this.picEmployee.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picEmployee.Image = global::KernalPanic.Properties.Resources.Employee;
-            this.picEmployee.Location = new System.Drawing.Point(0, 0);
-            this.picEmployee.Name = "picEmployee";
-            this.picEmployee.Size = new System.Drawing.Size(90, 87);
-            this.picEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picEmployee.TabIndex = 0;
-            this.picEmployee.TabStop = false;
-            this.picEmployee.Click += new System.EventHandler(this.picEmployee_Click);
             // 
             // lblEmployee
             // 
@@ -263,17 +237,6 @@
             this.btnWarehouse.Size = new System.Drawing.Size(271, 87);
             this.btnWarehouse.TabIndex = 5;
             this.btnWarehouse.Click += new System.EventHandler(this.btnWarehouse_Click);
-            // 
-            // picWarehouse
-            // 
-            this.picWarehouse.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picWarehouse.Image = global::KernalPanic.Properties.Resources.warehouse;
-            this.picWarehouse.Location = new System.Drawing.Point(0, 0);
-            this.picWarehouse.Name = "picWarehouse";
-            this.picWarehouse.Size = new System.Drawing.Size(90, 87);
-            this.picWarehouse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picWarehouse.TabIndex = 0;
-            this.picWarehouse.TabStop = false;
             // 
             // lblWarehouse
             // 
@@ -301,18 +264,6 @@
             this.btnOrder.TabIndex = 4;
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
-            // picOrder
-            // 
-            this.picOrder.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picOrder.Image = global::KernalPanic.Properties.Resources.order;
-            this.picOrder.Location = new System.Drawing.Point(0, 0);
-            this.picOrder.Name = "picOrder";
-            this.picOrder.Size = new System.Drawing.Size(90, 87);
-            this.picOrder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picOrder.TabIndex = 0;
-            this.picOrder.TabStop = false;
-            this.picOrder.Click += new System.EventHandler(this.picOrder_Click);
-            // 
             // lblOrder
             // 
             this.lblOrder.Dock = System.Windows.Forms.DockStyle.Right;
@@ -337,18 +288,6 @@
             this.btnItem.Size = new System.Drawing.Size(271, 87);
             this.btnItem.TabIndex = 3;
             this.btnItem.Click += new System.EventHandler(this.btnItem_Click);
-            // 
-            // picItem
-            // 
-            this.picItem.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picItem.Image = global::KernalPanic.Properties.Resources.item;
-            this.picItem.Location = new System.Drawing.Point(0, 0);
-            this.picItem.Name = "picItem";
-            this.picItem.Size = new System.Drawing.Size(90, 87);
-            this.picItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picItem.TabIndex = 0;
-            this.picItem.TabStop = false;
-            this.picItem.Click += new System.EventHandler(this.picItem_Click);
             // 
             // lblItem
             // 
@@ -376,18 +315,6 @@
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // picLogin
-            // 
-            this.picLogin.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picLogin.Image = global::KernalPanic.Properties.Resources.login;
-            this.picLogin.Location = new System.Drawing.Point(0, 0);
-            this.picLogin.Name = "picLogin";
-            this.picLogin.Size = new System.Drawing.Size(90, 87);
-            this.picLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picLogin.TabIndex = 0;
-            this.picLogin.TabStop = false;
-            this.picLogin.Click += new System.EventHandler(this.picLogin_Click);
-            // 
             // lblLogin
             // 
             this.lblLogin.Dock = System.Windows.Forms.DockStyle.Right;
@@ -408,7 +335,7 @@
             this.pnStatus.Controls.Add(this.lblStatus);
             this.pnStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnStatus.Location = new System.Drawing.Point(271, 584);
+            this.pnStatus.Location = new System.Drawing.Point(271, 636);
             this.pnStatus.Name = "pnStatus";
             this.pnStatus.Size = new System.Drawing.Size(757, 25);
             this.pnStatus.TabIndex = 2;
@@ -436,14 +363,14 @@
             this.loginPanel.Controls.Add(this.passwordBox);
             this.loginPanel.Location = new System.Drawing.Point(272, 100);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(756, 481);
+            this.loginPanel.Size = new System.Drawing.Size(756, 532);
             this.loginPanel.TabIndex = 3;
             // 
             // loginResetButton
             // 
             this.loginResetButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginResetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginResetButton.Location = new System.Drawing.Point(256, 270);
+            this.loginResetButton.Location = new System.Drawing.Point(256, 296);
             this.loginResetButton.Name = "loginResetButton";
             this.loginResetButton.Size = new System.Drawing.Size(154, 38);
             this.loginResetButton.TabIndex = 5;
@@ -479,7 +406,7 @@
             // 
             this.loginEnterButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginEnterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginEnterButton.Location = new System.Drawing.Point(447, 270);
+            this.loginEnterButton.Location = new System.Drawing.Point(447, 296);
             this.loginEnterButton.Name = "loginEnterButton";
             this.loginEnterButton.Size = new System.Drawing.Size(168, 38);
             this.loginEnterButton.TabIndex = 4;
@@ -514,10 +441,11 @@
             // 
             // itemPanel
             // 
+            this.itemPanel.Controls.Add(this.pnItem);
             this.itemPanel.Controls.Add(this.pnItemViewEdit);
             this.itemPanel.Location = new System.Drawing.Point(271, 100);
             this.itemPanel.Name = "itemPanel";
-            this.itemPanel.Size = new System.Drawing.Size(756, 479);
+            this.itemPanel.Size = new System.Drawing.Size(756, 530);
             this.itemPanel.TabIndex = 0;
             // 
             // pnItemViewEdit
@@ -585,7 +513,7 @@
             this.orderPanel.Controls.Add(this.pnOrderViewEdit);
             this.orderPanel.Location = new System.Drawing.Point(271, 100);
             this.orderPanel.Name = "orderPanel";
-            this.orderPanel.Size = new System.Drawing.Size(757, 481);
+            this.orderPanel.Size = new System.Drawing.Size(757, 532);
             this.orderPanel.TabIndex = 0;
             // 
             // pnOrderViewEdit
@@ -652,7 +580,7 @@
             this.warehousePanel.Controls.Add(this.pnWarehouseViewEdit);
             this.warehousePanel.Location = new System.Drawing.Point(271, 100);
             this.warehousePanel.Name = "warehousePanel";
-            this.warehousePanel.Size = new System.Drawing.Size(757, 481);
+            this.warehousePanel.Size = new System.Drawing.Size(757, 532);
             this.warehousePanel.TabIndex = 4;
             // 
             // pnWarehouseViewEdit
@@ -697,28 +625,29 @@
             this.employeePanel.Controls.Add(this.pnEmployeeViewEdit);
             this.employeePanel.Location = new System.Drawing.Point(271, 100);
             this.employeePanel.Name = "employeePanel";
-            this.employeePanel.Size = new System.Drawing.Size(756, 481);
+            this.employeePanel.Size = new System.Drawing.Size(756, 532);
             this.employeePanel.TabIndex = 1;
             // 
             // pnEmployeeList
             // 
-            this.pnEmployeeList.AutoSize = true;
             this.pnEmployeeList.Controls.Add(this.lvEmployees);
             this.pnEmployeeList.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnEmployeeList.Location = new System.Drawing.Point(0, 43);
             this.pnEmployeeList.Name = "pnEmployeeList";
-            this.pnEmployeeList.Size = new System.Drawing.Size(756, 224);
+            this.pnEmployeeList.Size = new System.Drawing.Size(756, 221);
             this.pnEmployeeList.TabIndex = 3;
             // 
             // lvEmployees
             // 
+            this.lvEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvEmployees.LabelEdit = true;
-            this.lvEmployees.Location = new System.Drawing.Point(8, 6);
+            this.lvEmployees.Location = new System.Drawing.Point(0, 0);
             this.lvEmployees.MultiSelect = false;
             this.lvEmployees.Name = "lvEmployees";
-            this.lvEmployees.Size = new System.Drawing.Size(737, 215);
+            this.lvEmployees.Size = new System.Drawing.Size(756, 221);
             this.lvEmployees.TabIndex = 2;
             this.lvEmployees.UseCompatibleStateImageBehavior = false;
+            this.lvEmployees.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.lvEmployees_ColumnWidthChanged);
             // 
             // pnEmployeeViewEdit
             // 
@@ -761,18 +690,8 @@
             this.batchPanel.Controls.Add(this.batchTestLabel);
             this.batchPanel.Location = new System.Drawing.Point(271, 100);
             this.batchPanel.Name = "batchPanel";
-            this.batchPanel.Size = new System.Drawing.Size(756, 481);
+            this.batchPanel.Size = new System.Drawing.Size(756, 532);
             this.batchPanel.TabIndex = 1;
-            // 
-            // picBatch
-            // 
-            this.picBatch.Image = global::KernalPanic.Properties.Resources.gear;
-            this.picBatch.Location = new System.Drawing.Point(8, 6);
-            this.picBatch.Name = "picBatch";
-            this.picBatch.Size = new System.Drawing.Size(137, 112);
-            this.picBatch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picBatch.TabIndex = 1;
-            this.picBatch.TabStop = false;
             // 
             // batchTestLabel
             // 
@@ -784,42 +703,23 @@
             this.batchTestLabel.TabIndex = 0;
             this.batchTestLabel.Text = "Batch";
             // 
-            // pnEmployeeEdit
+            // gbAddUser
             // 
-            this.pnEmployeeEdit.Controls.Add(this.gbDeleteUser);
-            this.pnEmployeeEdit.Controls.Add(this.gbAddUser);
-            this.pnEmployeeEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnEmployeeEdit.Location = new System.Drawing.Point(0, 297);
-            this.pnEmployeeEdit.Name = "pnEmployeeEdit";
-            this.pnEmployeeEdit.Size = new System.Drawing.Size(756, 184);
-            this.pnEmployeeEdit.TabIndex = 5;
-            // 
-            // btnSubmitNewUser
-            // 
-            this.btnSubmitNewUser.Location = new System.Drawing.Point(223, 105);
-            this.btnSubmitNewUser.Name = "btnSubmitNewUser";
-            this.btnSubmitNewUser.Size = new System.Drawing.Size(81, 23);
-            this.btnSubmitNewUser.TabIndex = 0;
-            this.btnSubmitNewUser.Text = "&Submit";
-            this.btnSubmitNewUser.UseVisualStyleBackColor = true;
-            this.btnSubmitNewUser.Click += new System.EventHandler(this.btnSubmitNewUser_Click);
-            // 
-            // cbAdmin
-            // 
-            this.cbAdmin.AutoSize = true;
-            this.cbAdmin.Location = new System.Drawing.Point(103, 109);
-            this.cbAdmin.Name = "cbAdmin";
-            this.cbAdmin.Size = new System.Drawing.Size(103, 17);
-            this.cbAdmin.TabIndex = 1;
-            this.cbAdmin.Text = "Admin Privileges";
-            this.cbAdmin.UseVisualStyleBackColor = true;
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(103, 31);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(201, 20);
-            this.txtUsername.TabIndex = 2;
+            this.gbAddUser.Controls.Add(this.lblusername);
+            this.gbAddUser.Controls.Add(this.lblconfirmPassword);
+            this.gbAddUser.Controls.Add(this.btnSubmitNewUser);
+            this.gbAddUser.Controls.Add(this.lblPassword);
+            this.gbAddUser.Controls.Add(this.cbAdmin);
+            this.gbAddUser.Controls.Add(this.txtUsername);
+            this.gbAddUser.Controls.Add(this.txtConfirmPass);
+            this.gbAddUser.Controls.Add(this.txtNewPass);
+            this.gbAddUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbAddUser.Location = new System.Drawing.Point(0, 0);
+            this.gbAddUser.Name = "gbAddUser";
+            this.gbAddUser.Size = new System.Drawing.Size(756, 184);
+            this.gbAddUser.TabIndex = 8;
+            this.gbAddUser.TabStop = false;
+            this.gbAddUser.Text = "Add User:";
             // 
             // txtNewPass
             // 
@@ -837,14 +737,22 @@
             this.txtConfirmPass.TabIndex = 4;
             this.txtConfirmPass.UseSystemPasswordChar = true;
             // 
-            // lblusername
+            // txtUsername
             // 
-            this.lblusername.AutoSize = true;
-            this.lblusername.Location = new System.Drawing.Point(45, 34);
-            this.lblusername.Name = "lblusername";
-            this.lblusername.Size = new System.Drawing.Size(52, 13);
-            this.lblusername.TabIndex = 5;
-            this.lblusername.Text = "Userame:";
+            this.txtUsername.Location = new System.Drawing.Point(103, 31);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(201, 20);
+            this.txtUsername.TabIndex = 2;
+            // 
+            // cbAdmin
+            // 
+            this.cbAdmin.AutoSize = true;
+            this.cbAdmin.Location = new System.Drawing.Point(103, 109);
+            this.cbAdmin.Name = "cbAdmin";
+            this.cbAdmin.Size = new System.Drawing.Size(103, 17);
+            this.cbAdmin.TabIndex = 1;
+            this.cbAdmin.Text = "Admin Privileges";
+            this.cbAdmin.UseVisualStyleBackColor = true;
             // 
             // lblPassword
             // 
@@ -855,6 +763,16 @@
             this.lblPassword.TabIndex = 6;
             this.lblPassword.Text = "Password:";
             // 
+            // btnSubmitNewUser
+            // 
+            this.btnSubmitNewUser.Location = new System.Drawing.Point(223, 105);
+            this.btnSubmitNewUser.Name = "btnSubmitNewUser";
+            this.btnSubmitNewUser.Size = new System.Drawing.Size(81, 23);
+            this.btnSubmitNewUser.TabIndex = 0;
+            this.btnSubmitNewUser.Text = "&Submit";
+            this.btnSubmitNewUser.UseVisualStyleBackColor = true;
+            this.btnSubmitNewUser.Click += new System.EventHandler(this.btnSubmitNewUser_Click);
+            // 
             // lblconfirmPassword
             // 
             this.lblconfirmPassword.AutoSize = true;
@@ -864,38 +782,24 @@
             this.lblconfirmPassword.TabIndex = 7;
             this.lblconfirmPassword.Text = "Confirm Password:";
             // 
-            // gbAddUser
+            // lblusername
             // 
-            this.gbAddUser.Controls.Add(this.lblusername);
-            this.gbAddUser.Controls.Add(this.lblconfirmPassword);
-            this.gbAddUser.Controls.Add(this.btnSubmitNewUser);
-            this.gbAddUser.Controls.Add(this.lblPassword);
-            this.gbAddUser.Controls.Add(this.cbAdmin);
-            this.gbAddUser.Controls.Add(this.txtUsername);
-            this.gbAddUser.Controls.Add(this.txtConfirmPass);
-            this.gbAddUser.Controls.Add(this.txtNewPass);
-            this.gbAddUser.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gbAddUser.Location = new System.Drawing.Point(0, 0);
-            this.gbAddUser.Name = "gbAddUser";
-            this.gbAddUser.Size = new System.Drawing.Size(365, 184);
-            this.gbAddUser.TabIndex = 8;
-            this.gbAddUser.TabStop = false;
-            this.gbAddUser.Text = "Add User:";
+            this.lblusername.AutoSize = true;
+            this.lblusername.Location = new System.Drawing.Point(45, 34);
+            this.lblusername.Name = "lblusername";
+            this.lblusername.Size = new System.Drawing.Size(52, 13);
+            this.lblusername.TabIndex = 5;
+            this.lblusername.Text = "Userame:";
             // 
-            // gbDeleteUser
+            // pnEmployeeEdit
             // 
-            this.gbDeleteUser.Controls.Add(this.btnDelete);
-            this.gbDeleteUser.Controls.Add(this.txtConfirmDelete);
-            this.gbDeleteUser.Controls.Add(this.txtDeleteUser);
-            this.gbDeleteUser.Controls.Add(this.lblConfirm);
-            this.gbDeleteUser.Controls.Add(this.lblDeleteUser);
-            this.gbDeleteUser.Dock = System.Windows.Forms.DockStyle.Right;
-            this.gbDeleteUser.Location = new System.Drawing.Point(385, 0);
-            this.gbDeleteUser.Name = "gbDeleteUser";
-            this.gbDeleteUser.Size = new System.Drawing.Size(371, 184);
-            this.gbDeleteUser.TabIndex = 9;
-            this.gbDeleteUser.TabStop = false;
-            this.gbDeleteUser.Text = "Delete User:";
+            this.pnEmployeeEdit.Controls.Add(this.gbDeleteUser);
+            this.pnEmployeeEdit.Controls.Add(this.gbAddUser);
+            this.pnEmployeeEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnEmployeeEdit.Location = new System.Drawing.Point(0, 348);
+            this.pnEmployeeEdit.Name = "pnEmployeeEdit";
+            this.pnEmployeeEdit.Size = new System.Drawing.Size(756, 184);
+            this.pnEmployeeEdit.TabIndex = 5;
             // 
             // lblDeleteUser
             // 
@@ -939,42 +843,186 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // gbDeleteUser
+            // 
+            this.gbDeleteUser.Controls.Add(this.btnDelete);
+            this.gbDeleteUser.Controls.Add(this.txtConfirmDelete);
+            this.gbDeleteUser.Controls.Add(this.txtDeleteUser);
+            this.gbDeleteUser.Controls.Add(this.lblConfirm);
+            this.gbDeleteUser.Controls.Add(this.lblDeleteUser);
+            this.gbDeleteUser.Dock = System.Windows.Forms.DockStyle.Right;
+            this.gbDeleteUser.Location = new System.Drawing.Point(487, 0);
+            this.gbDeleteUser.Name = "gbDeleteUser";
+            this.gbDeleteUser.Size = new System.Drawing.Size(269, 184);
+            this.gbDeleteUser.TabIndex = 9;
+            this.gbDeleteUser.TabStop = false;
+            this.gbDeleteUser.Text = "Delete User:";
+            // 
+            // lvItem
+            // 
+            this.lvItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvItem.Location = new System.Drawing.Point(0, 0);
+            this.lvItem.Name = "lvItem";
+            this.lvItem.Size = new System.Drawing.Size(756, 235);
+            this.lvItem.TabIndex = 5;
+            this.lvItem.UseCompatibleStateImageBehavior = false;
+            // 
+            // pnItem
+            // 
+            this.pnItem.Controls.Add(this.lvItem);
+            this.pnItem.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnItem.Location = new System.Drawing.Point(0, 43);
+            this.pnItem.Name = "pnItem";
+            this.pnItem.Size = new System.Drawing.Size(756, 235);
+            this.pnItem.TabIndex = 6;
+            // 
+            // btnBatch
+            // 
+            this.btnBatch.Controls.Add(this.picBatchNav);
+            this.btnBatch.Controls.Add(this.lblBatch);
+            this.btnBatch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBatch.Location = new System.Drawing.Point(0, 435);
+            this.btnBatch.Name = "btnBatch";
+            this.btnBatch.Size = new System.Drawing.Size(271, 87);
+            this.btnBatch.TabIndex = 7;
+            // 
+            // lblBatch
+            // 
+            this.lblBatch.BackColor = System.Drawing.Color.Transparent;
+            this.lblBatch.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblBatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBatch.ForeColor = System.Drawing.Color.White;
+            this.lblBatch.Location = new System.Drawing.Point(89, 0);
+            this.lblBatch.Name = "lblBatch";
+            this.lblBatch.Size = new System.Drawing.Size(182, 87);
+            this.lblBatch.TabIndex = 1;
+            this.lblBatch.Text = "Batch";
+            this.lblBatch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBatch.Click += new System.EventHandler(this.lblBatch_Click);
+            // 
+            // picBatchNav
+            // 
+            this.picBatchNav.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picBatchNav.Image = global::KernalPanic.Properties.Resources.navgear;
+            this.picBatchNav.Location = new System.Drawing.Point(0, 0);
+            this.picBatchNav.Name = "picBatchNav";
+            this.picBatchNav.Size = new System.Drawing.Size(90, 87);
+            this.picBatchNav.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picBatchNav.TabIndex = 0;
+            this.picBatchNav.TabStop = false;
+            this.picBatchNav.Click += new System.EventHandler(this.picBatchNav_Click);
+            // 
+            // picEmployee
+            // 
+            this.picEmployee.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picEmployee.Image = global::KernalPanic.Properties.Resources.Employee;
+            this.picEmployee.Location = new System.Drawing.Point(0, 0);
+            this.picEmployee.Name = "picEmployee";
+            this.picEmployee.Size = new System.Drawing.Size(90, 87);
+            this.picEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picEmployee.TabIndex = 0;
+            this.picEmployee.TabStop = false;
+            this.picEmployee.Click += new System.EventHandler(this.picEmployee_Click);
+            // 
+            // picWarehouse
+            // 
+            this.picWarehouse.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picWarehouse.Image = global::KernalPanic.Properties.Resources.warehouse;
+            this.picWarehouse.Location = new System.Drawing.Point(0, 0);
+            this.picWarehouse.Name = "picWarehouse";
+            this.picWarehouse.Size = new System.Drawing.Size(90, 87);
+            this.picWarehouse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picWarehouse.TabIndex = 0;
+            this.picWarehouse.TabStop = false;
+            // 
+            // picOrder
+            // 
+            this.picOrder.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picOrder.Image = global::KernalPanic.Properties.Resources.order;
+            this.picOrder.Location = new System.Drawing.Point(0, 0);
+            this.picOrder.Name = "picOrder";
+            this.picOrder.Size = new System.Drawing.Size(90, 87);
+            this.picOrder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picOrder.TabIndex = 0;
+            this.picOrder.TabStop = false;
+            this.picOrder.Click += new System.EventHandler(this.picOrder_Click);
+            // 
+            // picItem
+            // 
+            this.picItem.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picItem.Image = global::KernalPanic.Properties.Resources.item;
+            this.picItem.Location = new System.Drawing.Point(0, 0);
+            this.picItem.Name = "picItem";
+            this.picItem.Size = new System.Drawing.Size(90, 87);
+            this.picItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picItem.TabIndex = 0;
+            this.picItem.TabStop = false;
+            this.picItem.Click += new System.EventHandler(this.picItem_Click);
+            // 
+            // picLogin
+            // 
+            this.picLogin.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picLogin.Image = global::KernalPanic.Properties.Resources.login;
+            this.picLogin.Location = new System.Drawing.Point(0, 0);
+            this.picLogin.Name = "picLogin";
+            this.picLogin.Size = new System.Drawing.Size(90, 87);
+            this.picLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picLogin.TabIndex = 0;
+            this.picLogin.TabStop = false;
+            this.picLogin.Click += new System.EventHandler(this.picLogin_Click);
+            // 
+            // picLogo
+            // 
+            this.picLogo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picLogo.Image = global::KernalPanic.Properties.Resources.Company_Logo___White;
+            this.picLogo.Location = new System.Drawing.Point(0, 0);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(90, 100);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picLogo.TabIndex = 0;
+            this.picLogo.TabStop = false;
+            // 
+            // picBatch
+            // 
+            this.picBatch.Image = global::KernalPanic.Properties.Resources.gear;
+            this.picBatch.Location = new System.Drawing.Point(8, 6);
+            this.picBatch.Name = "picBatch";
+            this.picBatch.Size = new System.Drawing.Size(137, 112);
+            this.picBatch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picBatch.TabIndex = 1;
+            this.picBatch.TabStop = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1028, 609);
+            this.ClientSize = new System.Drawing.Size(1028, 661);
             this.Controls.Add(this.pnStatus);
             this.Controls.Add(this.pnNav);
             this.Controls.Add(this.pnBanner);
-            this.Controls.Add(this.employeePanel);
-            this.Controls.Add(this.warehousePanel);
             this.Controls.Add(this.itemPanel);
             this.Controls.Add(this.orderPanel);
             this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.batchPanel);
+            this.Controls.Add(this.employeePanel);
+            this.Controls.Add(this.warehousePanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(900, 595);
+            this.MinimumSize = new System.Drawing.Size(1000, 670);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Moe\'s Warehouse";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.ResizeEnd += new System.EventHandler(this.FormMain_ResizeEnd);
             this.pnBanner.ResumeLayout(false);
             this.pnCompName.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.pnNav.ResumeLayout(false);
             this.btnEmployee.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picEmployee)).EndInit();
             this.btnWarehouse.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picWarehouse)).EndInit();
             this.btnOrder.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picOrder)).EndInit();
             this.btnItem.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picItem)).EndInit();
             this.btnLogin.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picLogin)).EndInit();
             this.pnStatus.ResumeLayout(false);
             this.pnStatus.PerformLayout();
             this.loginPanel.ResumeLayout(false);
@@ -988,17 +1036,25 @@
             this.warehousePanel.ResumeLayout(false);
             this.pnWarehouseViewEdit.ResumeLayout(false);
             this.employeePanel.ResumeLayout(false);
-            this.employeePanel.PerformLayout();
             this.pnEmployeeList.ResumeLayout(false);
             this.pnEmployeeViewEdit.ResumeLayout(false);
             this.batchPanel.ResumeLayout(false);
             this.batchPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBatch)).EndInit();
-            this.pnEmployeeEdit.ResumeLayout(false);
             this.gbAddUser.ResumeLayout(false);
             this.gbAddUser.PerformLayout();
+            this.pnEmployeeEdit.ResumeLayout(false);
             this.gbDeleteUser.ResumeLayout(false);
             this.gbDeleteUser.PerformLayout();
+            this.pnItem.ResumeLayout(false);
+            this.btnBatch.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBatchNav)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEmployee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picWarehouse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBatch)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1038,7 +1094,6 @@
         private System.Windows.Forms.PictureBox picEmployee;
         private System.Windows.Forms.Label lblEmployee;
         private System.Windows.Forms.Panel employeePanel;
-        private System.Windows.Forms.Button btnBatch;
         private System.Windows.Forms.Panel batchPanel;
         private System.Windows.Forms.Label batchTestLabel;
         private System.Windows.Forms.Button loginResetButton;
@@ -1062,21 +1117,26 @@
         private System.Windows.Forms.Panel pnOrderViewEdit;
         private System.Windows.Forms.PictureBox picBatch;
         private System.Windows.Forms.Panel pnEmployeeEdit;
-        private System.Windows.Forms.Label lblconfirmPassword;
-        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.GroupBox gbAddUser;
         private System.Windows.Forms.Label lblusername;
+        private System.Windows.Forms.Label lblconfirmPassword;
+        private System.Windows.Forms.Button btnSubmitNewUser;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.CheckBox cbAdmin;
+        private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtConfirmPass;
         private System.Windows.Forms.TextBox txtNewPass;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.CheckBox cbAdmin;
-        private System.Windows.Forms.Button btnSubmitNewUser;
-        private System.Windows.Forms.GroupBox gbAddUser;
         private System.Windows.Forms.GroupBox gbDeleteUser;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtConfirmDelete;
         private System.Windows.Forms.TextBox txtDeleteUser;
         private System.Windows.Forms.Label lblConfirm;
         private System.Windows.Forms.Label lblDeleteUser;
+        private System.Windows.Forms.Panel pnItem;
+        private System.Windows.Forms.ListView lvItem;
+        private System.Windows.Forms.Panel btnBatch;
+        private System.Windows.Forms.PictureBox picBatchNav;
+        private System.Windows.Forms.Label lblBatch;
     }
 }
 
