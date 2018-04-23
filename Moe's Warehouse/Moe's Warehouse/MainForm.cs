@@ -68,6 +68,7 @@ namespace WindowsFormsApplication1
             btnOrder.Hide();
             btnWarehouse.Hide();
             btnEmployee.Hide();
+            btnBatch.Hide();
         }
 
         // Determines the type of access a user has and customizes the interface accordingly
@@ -81,6 +82,7 @@ namespace WindowsFormsApplication1
             {
                 btnEmployee.Show();
             }
+            btnBatch.Show();
         }
 
         // Displays error to user
@@ -157,7 +159,12 @@ namespace WindowsFormsApplication1
             switch (currentNavID)
             {
                 case ITEM_NAV_ID:
-                    // Add If Needed
+                    // resizes item columns, to keep everything within margins
+                    maxSize = (lvItem.Width - 4) / 6;
+                    for (int i = 0; i < lvItem.Columns.Count; i++)
+                    {
+                        lvItem.Columns[i].Width = maxSize;
+                    }
                     break;
                 case ORDER_NAV_ID:
                     // Add If Needed
@@ -180,27 +187,6 @@ namespace WindowsFormsApplication1
         //* log in/out *
         //**************
 
-        // Verifies logout is possible, if it is it clears the session and sets it up for the next user
-        private void Logout()
-        {
-            if (lblLogin.Text == "Logout")
-            {
-                ClearError();
-                currentUser = "";
-                lblLogin.Text = "Login";
-                picLogin.BackColor = DEFAULT_BACKGROUND;
-                lblLogin.BackColor = DEFAULT_BACKGROUND;
-                HideNav();
-                btnBatch.Visible = false;
-                changeNav(LOGIN_NAV_ID);
-                lblCurrentScreen.Text = "LOGIN";
-                picLogin.Image = Resources.login;
-                picBatch.Image = Resources.gear;
-                userNameBox.Focus();
-                this.AcceptButton = loginEnterButton;
-            }
-        }
-
         // Calls function to check if log out is possible
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -217,6 +203,20 @@ namespace WindowsFormsApplication1
         private void picLogin_Click(object sender, EventArgs e)
         {
             btnLogin_Click(null, null);
+        }
+
+        // Calls function to verify login
+        private void loginEnterButton_Click(object sender, EventArgs e)
+        {
+            Login();
+        }
+
+        // Reset button, clears errors and textboxes
+        private void loginResetButton_Click(object sender, EventArgs e)
+        {
+            userNameBox.Text = "";
+            passwordBox.Text = "";
+            ClearError();
         }
 
         // Verifies login, checks for user name, password, if it's in database, and if they match
@@ -244,14 +244,9 @@ namespace WindowsFormsApplication1
                 lblLogin.BackColor = Color.Red;
                 picLogin.BackColor = Color.Red;
                 ShowNav();
-                btnBatch.Visible = true;
-                lblCurrentScreen.Text = "ITEM";
-                changeNav(ITEM_NAV_ID);
                 picLogin.Image = Resources.logout;
-
-                itemViewButton.BackColor = Color.Gray;
-                itemEditButton.BackColor = Color.White;
                 isInEditMode = false;
+                btnItem_Click(null, null);
             }
             else
             {
@@ -259,18 +254,25 @@ namespace WindowsFormsApplication1
             }
         }
 
-        // Calls function to verify login
-        private void loginEnterButton_Click(object sender, EventArgs e)
+        // Verifies logout is possible, if it is it clears the session and sets it up for the next user
+        private void Logout()
         {
-            Login();
-        }
-
-        // Reset button, clears errors and textboxes
-        private void loginResetButton_Click(object sender, EventArgs e)
-        {
-            userNameBox.Text = "";
-            passwordBox.Text = "";
-            ClearError();
+            if (lblLogin.Text == "Logout")
+            {
+                ClearError();
+                currentUser = "";
+                lblLogin.Text = "Login";
+                picLogin.BackColor = DEFAULT_BACKGROUND;
+                lblLogin.BackColor = DEFAULT_BACKGROUND;
+                HideNav();
+                btnBatch.Visible = false;
+                changeNav(LOGIN_NAV_ID);
+                lblCurrentScreen.Text = "LOGIN";
+                picLogin.Image = Resources.login;
+                picBatch.Image = Resources.gear;
+                userNameBox.Focus();
+                this.AcceptButton = loginEnterButton;
+            }
         }
 
         //******************
@@ -300,6 +302,7 @@ namespace WindowsFormsApplication1
             }
 
             changeNav(ITEM_NAV_ID);
+            ItemList();
         }
 
         // Calls item click function
@@ -351,6 +354,42 @@ namespace WindowsFormsApplication1
         private void itemSearchButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        // Sets up the employee listview
+        private void ItemList()
+        {
+            lvItem.Clear();
+            int size = (lvItem.Width - 4) / 6; // divide by 6 because there's 6 columns, subtract 4 to stop horizontal scroll bar from displaying
+            lvItem.View = View.Details;
+            lvItem.Columns.Add("ID", size, HorizontalAlignment.Center);
+            lvItem.Columns.Add("Item Name", size, HorizontalAlignment.Center);
+            lvItem.Columns.Add("Description", size, HorizontalAlignment.Center);
+            lvItem.Columns.Add("Price", size, HorizontalAlignment.Center);
+            lvItem.Columns.Add("Quantity", size, HorizontalAlignment.Center);
+            lvItem.Columns.Add("Vendor Code", size, HorizontalAlignment.Center);
+            string items = session.getItems();
+            List<string> stringList = items.Split(',').ToList<string>();
+            List<string> tags = new List<string>();
+            for (int i = 1; i < stringList.Count(); i += 7)
+            {
+                lvItem.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1],
+                    stringList[i + 2], "$" + stringList[i + 3], stringList[i + 4] , stringList[i + 6] }));
+                tags.Add(stringList[i + 5]);
+            }
+        }
+
+        private void lvItem_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
+        {
+            int maxSize = (lvItem.Width - 4) / 6; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
+            if (lvItem.Columns[e.ColumnIndex].Width < 100)
+            {
+                lvItem.Columns[e.ColumnIndex].Width = 100;
+            }
+            else if (lvItem.Columns[e.ColumnIndex].Width > maxSize)
+            {
+                lvItem.Columns[e.ColumnIndex].Width = maxSize;
+            }
         }
 
         //**************

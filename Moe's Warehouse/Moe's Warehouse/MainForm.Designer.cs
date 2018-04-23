@@ -866,6 +866,7 @@
             this.lvItem.Size = new System.Drawing.Size(756, 235);
             this.lvItem.TabIndex = 5;
             this.lvItem.UseCompatibleStateImageBehavior = false;
+            this.lvItem.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.lvItem_ColumnWidthChanged);
             // 
             // pnItem
             // 
