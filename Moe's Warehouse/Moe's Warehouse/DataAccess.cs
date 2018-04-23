@@ -103,6 +103,60 @@ namespace KernalPanic
             }
         }
 
+        // adds new employee to database
+        public bool AddAccount(string user, string pass, int admin)
+        {
+            int rows = countAccounts() + 1;
+            string email = user + "@warehouseinc.com";
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("AddAccount", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open(); // open connection
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@IDnum", rows);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@User", user);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@pass", pass);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@email", email);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@isadmin", admin);  // set first sp parameter to name
+                        cmd.ExecuteReader(); // execute sp
+                        connection.Close();
+                    }
+                }
+                return true;
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                return false;
+            }
+        }
+
+        // remove employee from database
+        public bool deleteEmployee(string user)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("deleteEmployee", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open(); // open connection
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@User", user);  // set first sp parameter to name
+                        cmd.ExecuteReader(); // execute sp
+                        connection.Close();
+                    }
+                }
+                return true;
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                return false;
+            }
+        }
+
         // counts number of employee accounts
         private int countAccounts()
         {

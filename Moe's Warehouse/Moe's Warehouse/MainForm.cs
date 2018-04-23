@@ -474,6 +474,7 @@ namespace WindowsFormsApplication1
             {
                 employeeEditButton.BackColor = Color.White;
                 employeeViewButton.BackColor = Color.Gray;
+                pnEmployeeEdit.Hide();
             }
 
             changeNav(EMPLOYEE_NAV_ID);
@@ -497,6 +498,7 @@ namespace WindowsFormsApplication1
         {
             employeeViewButton.BackColor = Color.Gray;
             employeeEditButton.BackColor = Color.White;
+            pnEmployeeEdit.Hide();
             isInEditMode = false;
         }
 
@@ -504,6 +506,7 @@ namespace WindowsFormsApplication1
         {
             employeeEditButton.BackColor = Color.Gray;
             employeeViewButton.BackColor = Color.White;
+            pnEmployeeEdit.Show();
             isInEditMode = true;
         }
 
@@ -525,6 +528,75 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void btnSubmitNewUser_Click(object sender, EventArgs e)
+        {
+            string user = txtUsername.Text;
+            string pass = txtNewPass.Text;
+            string confirmPass = txtConfirmPass.Text;
+            int admin;
+            if(user == "")
+            {
+                DisplayError("Error: A Username Must Be Entered");
+            }
+            else if(pass == "")
+            {
+                DisplayError("Error: A Password Must Be Entered");
+            }
+            else if(confirmPass == "")
+            {
+                DisplayError("Error: Please Confirm Password");
+            }
+            else if(pass != confirmPass)
+            {
+                DisplayError("Error: Passwords Do Not Match");
+            }
+            else
+            {
+                ClearError();
+                admin = (cbAdmin.Checked) ? 1 : 0; // If the check box is checked the user is an admin, otherwise they're not
+                if(session.AddAccount(user, pass, admin))
+                {
+                    MessageBox.Show("User was successfully added!");
+                    EmployeeList();
+                }
+                else
+                {
+                    DisplayError("Error: User could not be added.");
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string user = txtDeleteUser.Text;
+            string confirmUser = txtConfirmDelete.Text;
+            if(user == "")
+            {
+                DisplayError("Error: A Username Must Be Entered");
+            }
+            else if(confirmUser == "")
+            {
+                DisplayError("Error: You Must Confirm The Username");
+            }
+            else if(user != confirmUser)
+            {
+                DisplayError("Error: Usernames Do Not Match");
+            }
+            else
+            {
+                ClearError();
+                if (session.deleteEmployee(user))
+                {
+                    MessageBox.Show("User was successfully deleted!");
+                    EmployeeList();
+                }
+                else
+                {
+                    DisplayError("Error: User could not be found.");
+                }
+            }
+        }
+
         //*****************
         //* End Employee *
         //*****************
@@ -532,7 +604,7 @@ namespace WindowsFormsApplication1
         //*****************
         //*     Batch     *
         //*****************
-        
+
         // When batch button is clicked, this will disable multiple batch attempts and being a single process,
         // the systen will unlock once it finishes
         private void btnBatch_Click(object sender, EventArgs e)
