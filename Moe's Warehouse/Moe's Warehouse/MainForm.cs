@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace WindowsFormsApplication1
 {
@@ -142,6 +143,7 @@ namespace WindowsFormsApplication1
             if (lblLogin.Text == "Logout")
             {
                 ClearError();
+                currentUser = "";
                 lblLogin.Text = "Login";
                 picLogin.BackColor = DEFAULT_BACKGROUND;
                 lblLogin.BackColor = DEFAULT_BACKGROUND;
@@ -453,6 +455,8 @@ namespace WindowsFormsApplication1
             }
 
             changeNav(EMPLOYEE_NAV_ID);
+
+            InitList();
         }
 
         private void picEmployee_Click(object sender, EventArgs e)
@@ -479,6 +483,24 @@ namespace WindowsFormsApplication1
             isInEditMode = true;
         }
 
+
+        private void InitList()
+        {
+            string employees = session.getEmployees();
+            List<string> stringList = employees.Split(',').ToList<string>();
+            lvEmployees.Clear();
+            int size = lvEmployees.Width;
+            lvEmployees.View = View.Details;
+            lvEmployees.Columns.Add("ID", size / 4, HorizontalAlignment.Center);
+            lvEmployees.Columns.Add("Username", size / 4, HorizontalAlignment.Center);
+            lvEmployees.Columns.Add("EmailAddr", size / 4, HorizontalAlignment.Center);
+            lvEmployees.Columns.Add("IsAdmin", size / 4, HorizontalAlignment.Center);
+            //lines below are test data
+            for(int i = 1; i < stringList.Count(); i+=4)
+            {
+                lvEmployees.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1], stringList[i+2], stringList[i+3] }));
+            }
+        }
         //*****************
         //* End Employee *
         //*****************

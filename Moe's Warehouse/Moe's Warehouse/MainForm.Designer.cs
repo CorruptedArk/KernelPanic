@@ -78,6 +78,8 @@
             this.employeeEditButton = new System.Windows.Forms.Button();
             this.batchPanel = new System.Windows.Forms.Panel();
             this.batchTestLabel = new System.Windows.Forms.Label();
+            this.lvEmployees = new System.Windows.Forms.ListView();
+            this.pnEmployeeList = new System.Windows.Forms.Panel();
             this.pnBanner.SuspendLayout();
             this.pnCompName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -99,6 +101,7 @@
             this.warehousePanel.SuspendLayout();
             this.employeePanel.SuspendLayout();
             this.batchPanel.SuspendLayout();
+            this.pnEmployeeList.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnBanner
@@ -630,6 +633,7 @@
             // 
             // employeePanel
             // 
+            this.employeePanel.Controls.Add(this.pnEmployeeList);
             this.employeePanel.Controls.Add(this.employeeViewButton);
             this.employeePanel.Controls.Add(this.employeeEditButton);
             this.employeePanel.Location = new System.Drawing.Point(271, 100);
@@ -679,6 +683,28 @@
             this.batchTestLabel.TabIndex = 0;
             this.batchTestLabel.Text = "Batch";
             // 
+            // lvEmployees
+            // 
+            this.lvEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvEmployees.LabelEdit = true;
+            this.lvEmployees.Location = new System.Drawing.Point(0, 0);
+            this.lvEmployees.MultiSelect = false;
+            this.lvEmployees.Name = "lvEmployees";
+            this.lvEmployees.Size = new System.Drawing.Size(729, 212);
+            this.lvEmployees.TabIndex = 2;
+            this.lvEmployees.UseCompatibleStateImageBehavior = false;
+            // 
+            // pnEmployeeList
+            // 
+            this.pnEmployeeList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnEmployeeList.AutoSize = true;
+            this.pnEmployeeList.Controls.Add(this.lvEmployees);
+            this.pnEmployeeList.Location = new System.Drawing.Point(13, 49);
+            this.pnEmployeeList.Name = "pnEmployeeList";
+            this.pnEmployeeList.Size = new System.Drawing.Size(729, 212);
+            this.pnEmployeeList.TabIndex = 3;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -688,12 +714,12 @@
             this.Controls.Add(this.pnStatus);
             this.Controls.Add(this.pnNav);
             this.Controls.Add(this.pnBanner);
+            this.Controls.Add(this.employeePanel);
             this.Controls.Add(this.warehousePanel);
             this.Controls.Add(this.itemPanel);
             this.Controls.Add(this.orderPanel);
             this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.batchPanel);
-            this.Controls.Add(this.employeePanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 595);
             this.Name = "FormMain";
@@ -725,8 +751,10 @@
             this.orderPanel.PerformLayout();
             this.warehousePanel.ResumeLayout(false);
             this.employeePanel.ResumeLayout(false);
+            this.employeePanel.PerformLayout();
             this.batchPanel.ResumeLayout(false);
             this.batchPanel.PerformLayout();
+            this.pnEmployeeList.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -782,6 +810,8 @@
         private System.Windows.Forms.Button warehouseEditButton;
         private System.Windows.Forms.Button employeeEditButton;
         private System.Windows.Forms.Button employeeViewButton;
+        private System.Windows.Forms.ListView lvEmployees;
+        private System.Windows.Forms.Panel pnEmployeeList;
     }
 }
 
