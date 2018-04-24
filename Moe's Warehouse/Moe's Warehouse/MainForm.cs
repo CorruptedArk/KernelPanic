@@ -291,15 +291,12 @@ namespace WindowsFormsApplication1
 
             if(isInEditMode)
             {
-                itemViewButton.BackColor = Color.White;
-                itemEditButton.BackColor = Color.Gray;
+                itemEditButton_Click(null, null);
 
             }
             else
             {
-                itemViewButton.BackColor = Color.Gray;
-                itemEditButton.BackColor = Color.White;
-                pnEditItems.Hide();
+                itemViewButton_Click(null, null);
             }
 
             changeNav(ITEM_NAV_ID);
@@ -584,13 +581,11 @@ namespace WindowsFormsApplication1
 
             if(isInEditMode)
             {
-                orderViewButton.BackColor = Color.White;
-                orderEditButton.BackColor = Color.Gray;
+                orderEditButton_Click(null, null);
             }
             else
             {
-                orderViewButton.BackColor = Color.Gray;
-                orderEditButton.BackColor = Color.White;
+                orderViewButton_Click(null, null);
             }
 
             changeNav(ORDER_NAV_ID);
@@ -670,13 +665,11 @@ namespace WindowsFormsApplication1
 
             if(isInEditMode)
             {
-                warehouseEditButton.BackColor = Color.Gray;
-                warehouseViewButton.BackColor = Color.White;
+                warehouseEditButton_Click(null, null);
             }
             else
             {
-                warehouseViewButton.BackColor = Color.Gray;
-                warehouseEditButton.BackColor = Color.White;
+                warehouseViewButton_Click(null, null);
             }
 
             changeNav(WAREHOUSE_NAV_ID);
@@ -713,14 +706,11 @@ namespace WindowsFormsApplication1
 
             if (isInEditMode)
             {
-                employeeEditButton.BackColor = Color.Gray;
-                employeeViewButton.BackColor = Color.White;
+                employeeEditButton_Click(null, null);
             }
             else
             {
-                employeeEditButton.BackColor = Color.White;
-                employeeViewButton.BackColor = Color.Gray;
-                pnEmployeeEdit.Hide();
+                employeeViewButton_Click(null, null);
             }
 
             changeNav(EMPLOYEE_NAV_ID);

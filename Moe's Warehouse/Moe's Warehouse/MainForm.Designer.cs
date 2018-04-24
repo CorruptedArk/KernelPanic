@@ -32,17 +32,26 @@
             this.pnBanner = new System.Windows.Forms.Panel();
             this.lblCurrentScreen = new System.Windows.Forms.Label();
             this.pnCompName = new System.Windows.Forms.Panel();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.lblStaticCompanyName = new System.Windows.Forms.Label();
             this.pnNav = new System.Windows.Forms.Panel();
+            this.btnBatch = new System.Windows.Forms.Panel();
+            this.picBatchNav = new System.Windows.Forms.PictureBox();
+            this.lblBatch = new System.Windows.Forms.Label();
             this.btnEmployee = new System.Windows.Forms.Panel();
+            this.picEmployee = new System.Windows.Forms.PictureBox();
             this.lblEmployee = new System.Windows.Forms.Label();
             this.btnWarehouse = new System.Windows.Forms.Panel();
+            this.picWarehouse = new System.Windows.Forms.PictureBox();
             this.lblWarehouse = new System.Windows.Forms.Label();
             this.btnOrder = new System.Windows.Forms.Panel();
+            this.picOrder = new System.Windows.Forms.PictureBox();
             this.lblOrder = new System.Windows.Forms.Label();
             this.btnItem = new System.Windows.Forms.Panel();
+            this.picItem = new System.Windows.Forms.PictureBox();
             this.lblItem = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Panel();
+            this.picLogin = new System.Windows.Forms.PictureBox();
             this.lblLogin = new System.Windows.Forms.Label();
             this.pnStatus = new System.Windows.Forms.Panel();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -54,6 +63,36 @@
             this.passwordLabel = new System.Windows.Forms.Label();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.itemPanel = new System.Windows.Forms.Panel();
+            this.pnEditItems = new System.Windows.Forms.Panel();
+            this.pnDeleteItem = new System.Windows.Forms.Panel();
+            this.gbDeleteItem = new System.Windows.Forms.GroupBox();
+            this.btnDeleteItem = new System.Windows.Forms.Button();
+            this.txtDeleteItemID = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtDeleteItemNameConfirm = new System.Windows.Forms.TextBox();
+            this.lblDeleteItemNameConfirm = new System.Windows.Forms.Label();
+            this.txtDeleteItemName = new System.Windows.Forms.TextBox();
+            this.lblDeleteItemName = new System.Windows.Forms.Label();
+            this.pnAddItems = new System.Windows.Forms.Panel();
+            this.gbAddItems = new System.Windows.Forms.GroupBox();
+            this.btnRemoveItemTag = new System.Windows.Forms.Button();
+            this.btnAddItemTag = new System.Windows.Forms.Button();
+            this.lblAddItemTags = new System.Windows.Forms.Label();
+            this.txtItemTags = new System.Windows.Forms.TextBox();
+            this.lbItemTags = new System.Windows.Forms.ListBox();
+            this.txtItemDesc = new System.Windows.Forms.RichTextBox();
+            this.txtItemPrice = new System.Windows.Forms.TextBox();
+            this.txtItemQty = new System.Windows.Forms.TextBox();
+            this.txtVenCode = new System.Windows.Forms.TextBox();
+            this.txtItemName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblItemQty = new System.Windows.Forms.Label();
+            this.lblItemPrice = new System.Windows.Forms.Label();
+            this.lblItemDesc = new System.Windows.Forms.Label();
+            this.lblItemName = new System.Windows.Forms.Label();
+            this.btnAddItem = new System.Windows.Forms.Button();
+            this.pnItem = new System.Windows.Forms.Panel();
+            this.lvItem = new System.Windows.Forms.ListView();
             this.pnItemViewEdit = new System.Windows.Forms.Panel();
             this.itemViewButton = new System.Windows.Forms.Button();
             this.itemSearchButton = new System.Windows.Forms.Button();
@@ -70,107 +109,68 @@
             this.warehouseViewButton = new System.Windows.Forms.Button();
             this.warehouseEditButton = new System.Windows.Forms.Button();
             this.employeePanel = new System.Windows.Forms.Panel();
+            this.pnEmployeeEdit = new System.Windows.Forms.Panel();
+            this.gbDeleteUser = new System.Windows.Forms.GroupBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.txtConfirmDelete = new System.Windows.Forms.TextBox();
+            this.txtDeleteUser = new System.Windows.Forms.TextBox();
+            this.lblConfirm = new System.Windows.Forms.Label();
+            this.lblDeleteUser = new System.Windows.Forms.Label();
+            this.gbAddUser = new System.Windows.Forms.GroupBox();
+            this.lblusername = new System.Windows.Forms.Label();
+            this.lblconfirmPassword = new System.Windows.Forms.Label();
+            this.btnSubmitNewUser = new System.Windows.Forms.Button();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.cbAdmin = new System.Windows.Forms.CheckBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtConfirmPass = new System.Windows.Forms.TextBox();
+            this.txtNewPass = new System.Windows.Forms.TextBox();
             this.pnEmployeeList = new System.Windows.Forms.Panel();
             this.lvEmployees = new System.Windows.Forms.ListView();
             this.pnEmployeeViewEdit = new System.Windows.Forms.Panel();
             this.employeeViewButton = new System.Windows.Forms.Button();
             this.employeeEditButton = new System.Windows.Forms.Button();
             this.batchPanel = new System.Windows.Forms.Panel();
-            this.batchTestLabel = new System.Windows.Forms.Label();
-            this.gbAddUser = new System.Windows.Forms.GroupBox();
-            this.txtNewPass = new System.Windows.Forms.TextBox();
-            this.txtConfirmPass = new System.Windows.Forms.TextBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.cbAdmin = new System.Windows.Forms.CheckBox();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.btnSubmitNewUser = new System.Windows.Forms.Button();
-            this.lblconfirmPassword = new System.Windows.Forms.Label();
-            this.lblusername = new System.Windows.Forms.Label();
-            this.pnEmployeeEdit = new System.Windows.Forms.Panel();
-            this.lblDeleteUser = new System.Windows.Forms.Label();
-            this.lblConfirm = new System.Windows.Forms.Label();
-            this.txtDeleteUser = new System.Windows.Forms.TextBox();
-            this.txtConfirmDelete = new System.Windows.Forms.TextBox();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.gbDeleteUser = new System.Windows.Forms.GroupBox();
-            this.lvItem = new System.Windows.Forms.ListView();
-            this.pnItem = new System.Windows.Forms.Panel();
-            this.btnBatch = new System.Windows.Forms.Panel();
-            this.lblBatch = new System.Windows.Forms.Label();
-            this.picBatchNav = new System.Windows.Forms.PictureBox();
-            this.picEmployee = new System.Windows.Forms.PictureBox();
-            this.picWarehouse = new System.Windows.Forms.PictureBox();
-            this.picOrder = new System.Windows.Forms.PictureBox();
-            this.picItem = new System.Windows.Forms.PictureBox();
-            this.picLogin = new System.Windows.Forms.PictureBox();
-            this.picLogo = new System.Windows.Forms.PictureBox();
             this.picBatch = new System.Windows.Forms.PictureBox();
-            this.pnEditItems = new System.Windows.Forms.Panel();
-            this.pnAddItems = new System.Windows.Forms.Panel();
-            this.pnDeleteItem = new System.Windows.Forms.Panel();
-            this.gbAddItems = new System.Windows.Forms.GroupBox();
-            this.btnAddItem = new System.Windows.Forms.Button();
-            this.lblItemName = new System.Windows.Forms.Label();
-            this.lblItemDesc = new System.Windows.Forms.Label();
-            this.lblItemPrice = new System.Windows.Forms.Label();
-            this.lblItemQty = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtItemName = new System.Windows.Forms.TextBox();
-            this.txtVenCode = new System.Windows.Forms.TextBox();
-            this.txtItemQty = new System.Windows.Forms.TextBox();
-            this.txtItemPrice = new System.Windows.Forms.TextBox();
-            this.txtItemDesc = new System.Windows.Forms.RichTextBox();
-            this.lbItemTags = new System.Windows.Forms.ListBox();
-            this.txtItemTags = new System.Windows.Forms.TextBox();
-            this.lblAddItemTags = new System.Windows.Forms.Label();
-            this.btnAddItemTag = new System.Windows.Forms.Button();
-            this.btnRemoveItemTag = new System.Windows.Forms.Button();
-            this.gbDeleteItem = new System.Windows.Forms.GroupBox();
-            this.lblDeleteItemName = new System.Windows.Forms.Label();
-            this.txtDeleteItemName = new System.Windows.Forms.TextBox();
-            this.txtDeleteItemNameConfirm = new System.Windows.Forms.TextBox();
-            this.lblDeleteItemNameConfirm = new System.Windows.Forms.Label();
-            this.txtDeleteItemID = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnDeleteItem = new System.Windows.Forms.Button();
+            this.batchTestLabel = new System.Windows.Forms.Label();
             this.pnBanner.SuspendLayout();
             this.pnCompName.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.pnNav.SuspendLayout();
+            this.btnBatch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBatchNav)).BeginInit();
             this.btnEmployee.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEmployee)).BeginInit();
             this.btnWarehouse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picWarehouse)).BeginInit();
             this.btnOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picOrder)).BeginInit();
             this.btnItem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picItem)).BeginInit();
             this.btnLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogin)).BeginInit();
             this.pnStatus.SuspendLayout();
             this.loginPanel.SuspendLayout();
             this.itemPanel.SuspendLayout();
+            this.pnEditItems.SuspendLayout();
+            this.pnDeleteItem.SuspendLayout();
+            this.gbDeleteItem.SuspendLayout();
+            this.pnAddItems.SuspendLayout();
+            this.gbAddItems.SuspendLayout();
+            this.pnItem.SuspendLayout();
             this.pnItemViewEdit.SuspendLayout();
             this.orderPanel.SuspendLayout();
             this.pnOrderViewEdit.SuspendLayout();
             this.warehousePanel.SuspendLayout();
             this.pnWarehouseViewEdit.SuspendLayout();
             this.employeePanel.SuspendLayout();
+            this.pnEmployeeEdit.SuspendLayout();
+            this.gbDeleteUser.SuspendLayout();
+            this.gbAddUser.SuspendLayout();
             this.pnEmployeeList.SuspendLayout();
             this.pnEmployeeViewEdit.SuspendLayout();
             this.batchPanel.SuspendLayout();
-            this.gbAddUser.SuspendLayout();
-            this.pnEmployeeEdit.SuspendLayout();
-            this.gbDeleteUser.SuspendLayout();
-            this.pnItem.SuspendLayout();
-            this.btnBatch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBatchNav)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEmployee)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picWarehouse)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picOrder)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picItem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBatch)).BeginInit();
-            this.pnEditItems.SuspendLayout();
-            this.pnAddItems.SuspendLayout();
-            this.pnDeleteItem.SuspendLayout();
-            this.gbAddItems.SuspendLayout();
-            this.gbDeleteItem.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnBanner
@@ -207,6 +207,17 @@
             this.pnCompName.Size = new System.Drawing.Size(271, 100);
             this.pnCompName.TabIndex = 2;
             // 
+            // picLogo
+            // 
+            this.picLogo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picLogo.Image = global::KernalPanic.Properties.Resources.Company_Logo___White;
+            this.picLogo.Location = new System.Drawing.Point(0, 0);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(90, 100);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picLogo.TabIndex = 0;
+            this.picLogo.TabStop = false;
+            // 
             // lblStaticCompanyName
             // 
             this.lblStaticCompanyName.Dock = System.Windows.Forms.DockStyle.Right;
@@ -235,6 +246,42 @@
             this.pnNav.Size = new System.Drawing.Size(271, 700);
             this.pnNav.TabIndex = 1;
             // 
+            // btnBatch
+            // 
+            this.btnBatch.Controls.Add(this.picBatchNav);
+            this.btnBatch.Controls.Add(this.lblBatch);
+            this.btnBatch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBatch.Location = new System.Drawing.Point(0, 435);
+            this.btnBatch.Name = "btnBatch";
+            this.btnBatch.Size = new System.Drawing.Size(271, 87);
+            this.btnBatch.TabIndex = 7;
+            // 
+            // picBatchNav
+            // 
+            this.picBatchNav.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picBatchNav.Image = global::KernalPanic.Properties.Resources.navgear;
+            this.picBatchNav.Location = new System.Drawing.Point(0, 0);
+            this.picBatchNav.Name = "picBatchNav";
+            this.picBatchNav.Size = new System.Drawing.Size(90, 87);
+            this.picBatchNav.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picBatchNav.TabIndex = 0;
+            this.picBatchNav.TabStop = false;
+            this.picBatchNav.Click += new System.EventHandler(this.picBatchNav_Click);
+            // 
+            // lblBatch
+            // 
+            this.lblBatch.BackColor = System.Drawing.Color.Transparent;
+            this.lblBatch.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblBatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBatch.ForeColor = System.Drawing.Color.White;
+            this.lblBatch.Location = new System.Drawing.Point(89, 0);
+            this.lblBatch.Name = "lblBatch";
+            this.lblBatch.Size = new System.Drawing.Size(182, 87);
+            this.lblBatch.TabIndex = 1;
+            this.lblBatch.Text = "Batch";
+            this.lblBatch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBatch.Click += new System.EventHandler(this.lblBatch_Click);
+            // 
             // btnEmployee
             // 
             this.btnEmployee.Controls.Add(this.picEmployee);
@@ -245,6 +292,18 @@
             this.btnEmployee.Size = new System.Drawing.Size(271, 87);
             this.btnEmployee.TabIndex = 6;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
+            // 
+            // picEmployee
+            // 
+            this.picEmployee.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picEmployee.Image = global::KernalPanic.Properties.Resources.Employee;
+            this.picEmployee.Location = new System.Drawing.Point(0, 0);
+            this.picEmployee.Name = "picEmployee";
+            this.picEmployee.Size = new System.Drawing.Size(90, 87);
+            this.picEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picEmployee.TabIndex = 0;
+            this.picEmployee.TabStop = false;
+            this.picEmployee.Click += new System.EventHandler(this.picEmployee_Click);
             // 
             // lblEmployee
             // 
@@ -270,6 +329,17 @@
             this.btnWarehouse.Size = new System.Drawing.Size(271, 87);
             this.btnWarehouse.TabIndex = 5;
             this.btnWarehouse.Click += new System.EventHandler(this.btnWarehouse_Click);
+            // 
+            // picWarehouse
+            // 
+            this.picWarehouse.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picWarehouse.Image = global::KernalPanic.Properties.Resources.warehouse;
+            this.picWarehouse.Location = new System.Drawing.Point(0, 0);
+            this.picWarehouse.Name = "picWarehouse";
+            this.picWarehouse.Size = new System.Drawing.Size(90, 87);
+            this.picWarehouse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picWarehouse.TabIndex = 0;
+            this.picWarehouse.TabStop = false;
             // 
             // lblWarehouse
             // 
@@ -297,6 +367,18 @@
             this.btnOrder.TabIndex = 4;
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
+            // picOrder
+            // 
+            this.picOrder.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picOrder.Image = global::KernalPanic.Properties.Resources.order;
+            this.picOrder.Location = new System.Drawing.Point(0, 0);
+            this.picOrder.Name = "picOrder";
+            this.picOrder.Size = new System.Drawing.Size(90, 87);
+            this.picOrder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picOrder.TabIndex = 0;
+            this.picOrder.TabStop = false;
+            this.picOrder.Click += new System.EventHandler(this.picOrder_Click);
+            // 
             // lblOrder
             // 
             this.lblOrder.Dock = System.Windows.Forms.DockStyle.Right;
@@ -321,6 +403,18 @@
             this.btnItem.Size = new System.Drawing.Size(271, 87);
             this.btnItem.TabIndex = 3;
             this.btnItem.Click += new System.EventHandler(this.btnItem_Click);
+            // 
+            // picItem
+            // 
+            this.picItem.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picItem.Image = global::KernalPanic.Properties.Resources.item;
+            this.picItem.Location = new System.Drawing.Point(0, 0);
+            this.picItem.Name = "picItem";
+            this.picItem.Size = new System.Drawing.Size(90, 87);
+            this.picItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picItem.TabIndex = 0;
+            this.picItem.TabStop = false;
+            this.picItem.Click += new System.EventHandler(this.picItem_Click);
             // 
             // lblItem
             // 
@@ -347,6 +441,18 @@
             this.btnLogin.Size = new System.Drawing.Size(271, 87);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // picLogin
+            // 
+            this.picLogin.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picLogin.Image = global::KernalPanic.Properties.Resources.login;
+            this.picLogin.Location = new System.Drawing.Point(0, 0);
+            this.picLogin.Name = "picLogin";
+            this.picLogin.Size = new System.Drawing.Size(90, 87);
+            this.picLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picLogin.TabIndex = 0;
+            this.picLogin.TabStop = false;
+            this.picLogin.Click += new System.EventHandler(this.picLogin_Click);
             // 
             // lblLogin
             // 
@@ -484,6 +590,310 @@
             this.itemPanel.Name = "itemPanel";
             this.itemPanel.Size = new System.Drawing.Size(1012, 669);
             this.itemPanel.TabIndex = 1;
+            // 
+            // pnEditItems
+            // 
+            this.pnEditItems.Controls.Add(this.pnDeleteItem);
+            this.pnEditItems.Controls.Add(this.pnAddItems);
+            this.pnEditItems.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnEditItems.Location = new System.Drawing.Point(0, 365);
+            this.pnEditItems.Name = "pnEditItems";
+            this.pnEditItems.Size = new System.Drawing.Size(1012, 304);
+            this.pnEditItems.TabIndex = 7;
+            // 
+            // pnDeleteItem
+            // 
+            this.pnDeleteItem.Controls.Add(this.gbDeleteItem);
+            this.pnDeleteItem.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnDeleteItem.Location = new System.Drawing.Point(353, 0);
+            this.pnDeleteItem.Name = "pnDeleteItem";
+            this.pnDeleteItem.Size = new System.Drawing.Size(353, 304);
+            this.pnDeleteItem.TabIndex = 1;
+            // 
+            // gbDeleteItem
+            // 
+            this.gbDeleteItem.Controls.Add(this.btnDeleteItem);
+            this.gbDeleteItem.Controls.Add(this.txtDeleteItemID);
+            this.gbDeleteItem.Controls.Add(this.label1);
+            this.gbDeleteItem.Controls.Add(this.txtDeleteItemNameConfirm);
+            this.gbDeleteItem.Controls.Add(this.lblDeleteItemNameConfirm);
+            this.gbDeleteItem.Controls.Add(this.txtDeleteItemName);
+            this.gbDeleteItem.Controls.Add(this.lblDeleteItemName);
+            this.gbDeleteItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbDeleteItem.Location = new System.Drawing.Point(0, 0);
+            this.gbDeleteItem.Name = "gbDeleteItem";
+            this.gbDeleteItem.Size = new System.Drawing.Size(353, 304);
+            this.gbDeleteItem.TabIndex = 0;
+            this.gbDeleteItem.TabStop = false;
+            this.gbDeleteItem.Text = "Delete Item:";
+            // 
+            // btnDeleteItem
+            // 
+            this.btnDeleteItem.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnDeleteItem.Location = new System.Drawing.Point(3, 270);
+            this.btnDeleteItem.Name = "btnDeleteItem";
+            this.btnDeleteItem.Size = new System.Drawing.Size(347, 31);
+            this.btnDeleteItem.TabIndex = 6;
+            this.btnDeleteItem.Text = "Delete An Item";
+            this.btnDeleteItem.UseVisualStyleBackColor = true;
+            this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
+            // 
+            // txtDeleteItemID
+            // 
+            this.txtDeleteItemID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDeleteItemID.Location = new System.Drawing.Point(174, 104);
+            this.txtDeleteItemID.Name = "txtDeleteItemID";
+            this.txtDeleteItemID.Size = new System.Drawing.Size(100, 20);
+            this.txtDeleteItemID.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(84, 107);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Item ID Number:";
+            // 
+            // txtDeleteItemNameConfirm
+            // 
+            this.txtDeleteItemNameConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDeleteItemNameConfirm.Location = new System.Drawing.Point(174, 156);
+            this.txtDeleteItemNameConfirm.Name = "txtDeleteItemNameConfirm";
+            this.txtDeleteItemNameConfirm.Size = new System.Drawing.Size(100, 20);
+            this.txtDeleteItemNameConfirm.TabIndex = 3;
+            // 
+            // lblDeleteItemNameConfirm
+            // 
+            this.lblDeleteItemNameConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDeleteItemNameConfirm.AutoSize = true;
+            this.lblDeleteItemNameConfirm.Location = new System.Drawing.Point(69, 159);
+            this.lblDeleteItemNameConfirm.Name = "lblDeleteItemNameConfirm";
+            this.lblDeleteItemNameConfirm.Size = new System.Drawing.Size(99, 13);
+            this.lblDeleteItemNameConfirm.TabIndex = 2;
+            this.lblDeleteItemNameConfirm.Text = "Confirm Item Name:";
+            // 
+            // txtDeleteItemName
+            // 
+            this.txtDeleteItemName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDeleteItemName.Location = new System.Drawing.Point(174, 130);
+            this.txtDeleteItemName.Name = "txtDeleteItemName";
+            this.txtDeleteItemName.Size = new System.Drawing.Size(100, 20);
+            this.txtDeleteItemName.TabIndex = 1;
+            // 
+            // lblDeleteItemName
+            // 
+            this.lblDeleteItemName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDeleteItemName.AutoSize = true;
+            this.lblDeleteItemName.Location = new System.Drawing.Point(107, 133);
+            this.lblDeleteItemName.Name = "lblDeleteItemName";
+            this.lblDeleteItemName.Size = new System.Drawing.Size(61, 13);
+            this.lblDeleteItemName.TabIndex = 0;
+            this.lblDeleteItemName.Text = "Item Name:";
+            // 
+            // pnAddItems
+            // 
+            this.pnAddItems.Controls.Add(this.gbAddItems);
+            this.pnAddItems.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnAddItems.Location = new System.Drawing.Point(0, 0);
+            this.pnAddItems.Name = "pnAddItems";
+            this.pnAddItems.Size = new System.Drawing.Size(353, 304);
+            this.pnAddItems.TabIndex = 0;
+            // 
+            // gbAddItems
+            // 
+            this.gbAddItems.Controls.Add(this.btnRemoveItemTag);
+            this.gbAddItems.Controls.Add(this.btnAddItemTag);
+            this.gbAddItems.Controls.Add(this.lblAddItemTags);
+            this.gbAddItems.Controls.Add(this.txtItemTags);
+            this.gbAddItems.Controls.Add(this.lbItemTags);
+            this.gbAddItems.Controls.Add(this.txtItemDesc);
+            this.gbAddItems.Controls.Add(this.txtItemPrice);
+            this.gbAddItems.Controls.Add(this.txtItemQty);
+            this.gbAddItems.Controls.Add(this.txtVenCode);
+            this.gbAddItems.Controls.Add(this.txtItemName);
+            this.gbAddItems.Controls.Add(this.label5);
+            this.gbAddItems.Controls.Add(this.lblItemQty);
+            this.gbAddItems.Controls.Add(this.lblItemPrice);
+            this.gbAddItems.Controls.Add(this.lblItemDesc);
+            this.gbAddItems.Controls.Add(this.lblItemName);
+            this.gbAddItems.Controls.Add(this.btnAddItem);
+            this.gbAddItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbAddItems.Location = new System.Drawing.Point(0, 0);
+            this.gbAddItems.Name = "gbAddItems";
+            this.gbAddItems.Size = new System.Drawing.Size(353, 304);
+            this.gbAddItems.TabIndex = 0;
+            this.gbAddItems.TabStop = false;
+            this.gbAddItems.Text = "Add Item:";
+            // 
+            // btnRemoveItemTag
+            // 
+            this.btnRemoveItemTag.Location = new System.Drawing.Point(275, 211);
+            this.btnRemoveItemTag.Name = "btnRemoveItemTag";
+            this.btnRemoveItemTag.Size = new System.Drawing.Size(47, 23);
+            this.btnRemoveItemTag.TabIndex = 7;
+            this.btnRemoveItemTag.Text = "-";
+            this.btnRemoveItemTag.UseVisualStyleBackColor = true;
+            this.btnRemoveItemTag.Click += new System.EventHandler(this.btnRemoveItemTag_Click);
+            // 
+            // btnAddItemTag
+            // 
+            this.btnAddItemTag.Location = new System.Drawing.Point(275, 182);
+            this.btnAddItemTag.Name = "btnAddItemTag";
+            this.btnAddItemTag.Size = new System.Drawing.Size(47, 23);
+            this.btnAddItemTag.TabIndex = 6;
+            this.btnAddItemTag.Text = "+";
+            this.btnAddItemTag.UseVisualStyleBackColor = true;
+            this.btnAddItemTag.Click += new System.EventHandler(this.btnAddItemTag_Click);
+            // 
+            // lblAddItemTags
+            // 
+            this.lblAddItemTags.AutoSize = true;
+            this.lblAddItemTags.Location = new System.Drawing.Point(37, 192);
+            this.lblAddItemTags.Name = "lblAddItemTags";
+            this.lblAddItemTags.Size = new System.Drawing.Size(56, 13);
+            this.lblAddItemTags.TabIndex = 13;
+            this.lblAddItemTags.Text = "Add Tags:";
+            // 
+            // txtItemTags
+            // 
+            this.txtItemTags.Location = new System.Drawing.Point(40, 208);
+            this.txtItemTags.Name = "txtItemTags";
+            this.txtItemTags.Size = new System.Drawing.Size(119, 20);
+            this.txtItemTags.TabIndex = 5;
+            this.txtItemTags.TextChanged += new System.EventHandler(this.txtItemTags_TextChanged);
+            // 
+            // lbItemTags
+            // 
+            this.lbItemTags.FormattingEnabled = true;
+            this.lbItemTags.Location = new System.Drawing.Point(165, 152);
+            this.lbItemTags.Name = "lbItemTags";
+            this.lbItemTags.Size = new System.Drawing.Size(104, 108);
+            this.lbItemTags.TabIndex = 11;
+            // 
+            // txtItemDesc
+            // 
+            this.txtItemDesc.Location = new System.Drawing.Point(111, 40);
+            this.txtItemDesc.Name = "txtItemDesc";
+            this.txtItemDesc.Size = new System.Drawing.Size(158, 80);
+            this.txtItemDesc.TabIndex = 1;
+            this.txtItemDesc.Text = "";
+            // 
+            // txtItemPrice
+            // 
+            this.txtItemPrice.Location = new System.Drawing.Point(205, 126);
+            this.txtItemPrice.Name = "txtItemPrice";
+            this.txtItemPrice.Size = new System.Drawing.Size(64, 20);
+            this.txtItemPrice.TabIndex = 3;
+            // 
+            // txtItemQty
+            // 
+            this.txtItemQty.Location = new System.Drawing.Point(111, 126);
+            this.txtItemQty.Name = "txtItemQty";
+            this.txtItemQty.Size = new System.Drawing.Size(48, 20);
+            this.txtItemQty.TabIndex = 2;
+            // 
+            // txtVenCode
+            // 
+            this.txtVenCode.Location = new System.Drawing.Point(111, 152);
+            this.txtVenCode.Name = "txtVenCode";
+            this.txtVenCode.Size = new System.Drawing.Size(48, 20);
+            this.txtVenCode.TabIndex = 4;
+            // 
+            // txtItemName
+            // 
+            this.txtItemName.Location = new System.Drawing.Point(111, 14);
+            this.txtItemName.Name = "txtItemName";
+            this.txtItemName.Size = new System.Drawing.Size(158, 20);
+            this.txtItemName.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(33, 155);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Vendor Code:";
+            // 
+            // lblItemQty
+            // 
+            this.lblItemQty.AutoSize = true;
+            this.lblItemQty.Location = new System.Drawing.Point(56, 129);
+            this.lblItemQty.Name = "lblItemQty";
+            this.lblItemQty.Size = new System.Drawing.Size(49, 13);
+            this.lblItemQty.TabIndex = 4;
+            this.lblItemQty.Text = "Quantity:";
+            // 
+            // lblItemPrice
+            // 
+            this.lblItemPrice.AutoSize = true;
+            this.lblItemPrice.Location = new System.Drawing.Point(165, 129);
+            this.lblItemPrice.Name = "lblItemPrice";
+            this.lblItemPrice.Size = new System.Drawing.Size(34, 13);
+            this.lblItemPrice.TabIndex = 3;
+            this.lblItemPrice.Text = "Price:";
+            // 
+            // lblItemDesc
+            // 
+            this.lblItemDesc.AutoSize = true;
+            this.lblItemDesc.Location = new System.Drawing.Point(42, 43);
+            this.lblItemDesc.Name = "lblItemDesc";
+            this.lblItemDesc.Size = new System.Drawing.Size(63, 13);
+            this.lblItemDesc.TabIndex = 2;
+            this.lblItemDesc.Text = "Description:";
+            // 
+            // lblItemName
+            // 
+            this.lblItemName.AutoSize = true;
+            this.lblItemName.Location = new System.Drawing.Point(44, 17);
+            this.lblItemName.Name = "lblItemName";
+            this.lblItemName.Size = new System.Drawing.Size(61, 13);
+            this.lblItemName.TabIndex = 1;
+            this.lblItemName.Text = "Item Name:";
+            // 
+            // btnAddItem
+            // 
+            this.btnAddItem.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnAddItem.Location = new System.Drawing.Point(3, 270);
+            this.btnAddItem.Name = "btnAddItem";
+            this.btnAddItem.Size = new System.Drawing.Size(347, 31);
+            this.btnAddItem.TabIndex = 8;
+            this.btnAddItem.Text = "Add An Item";
+            this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            // 
+            // pnItem
+            // 
+            this.pnItem.Controls.Add(this.lvItem);
+            this.pnItem.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnItem.Location = new System.Drawing.Point(0, 43);
+            this.pnItem.Name = "pnItem";
+            this.pnItem.Size = new System.Drawing.Size(1012, 235);
+            this.pnItem.TabIndex = 6;
+            // 
+            // lvItem
+            // 
+            this.lvItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvItem.Location = new System.Drawing.Point(0, 0);
+            this.lvItem.Name = "lvItem";
+            this.lvItem.Size = new System.Drawing.Size(1012, 235);
+            this.lvItem.TabIndex = 5;
+            this.lvItem.UseCompatibleStateImageBehavior = false;
+            this.lvItem.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.lvItem_ColumnWidthChanged);
             // 
             // pnItemViewEdit
             // 
@@ -668,6 +1078,196 @@
             this.employeePanel.Size = new System.Drawing.Size(1012, 671);
             this.employeePanel.TabIndex = 1;
             // 
+            // pnEmployeeEdit
+            // 
+            this.pnEmployeeEdit.Controls.Add(this.gbDeleteUser);
+            this.pnEmployeeEdit.Controls.Add(this.gbAddUser);
+            this.pnEmployeeEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnEmployeeEdit.Location = new System.Drawing.Point(0, 413);
+            this.pnEmployeeEdit.Name = "pnEmployeeEdit";
+            this.pnEmployeeEdit.Size = new System.Drawing.Size(1012, 258);
+            this.pnEmployeeEdit.TabIndex = 5;
+            // 
+            // gbDeleteUser
+            // 
+            this.gbDeleteUser.Controls.Add(this.btnDelete);
+            this.gbDeleteUser.Controls.Add(this.txtConfirmDelete);
+            this.gbDeleteUser.Controls.Add(this.txtDeleteUser);
+            this.gbDeleteUser.Controls.Add(this.lblConfirm);
+            this.gbDeleteUser.Controls.Add(this.lblDeleteUser);
+            this.gbDeleteUser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gbDeleteUser.Location = new System.Drawing.Point(347, 0);
+            this.gbDeleteUser.Name = "gbDeleteUser";
+            this.gbDeleteUser.Size = new System.Drawing.Size(269, 258);
+            this.gbDeleteUser.TabIndex = 9;
+            this.gbDeleteUser.TabStop = false;
+            this.gbDeleteUser.Text = "Delete User:";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnDelete.Location = new System.Drawing.Point(3, 222);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(263, 33);
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Text = "Delete A User";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // txtConfirmDelete
+            // 
+            this.txtConfirmDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConfirmDelete.Location = new System.Drawing.Point(125, 107);
+            this.txtConfirmDelete.Name = "txtConfirmDelete";
+            this.txtConfirmDelete.Size = new System.Drawing.Size(117, 20);
+            this.txtConfirmDelete.TabIndex = 3;
+            // 
+            // txtDeleteUser
+            // 
+            this.txtDeleteUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDeleteUser.Location = new System.Drawing.Point(125, 81);
+            this.txtDeleteUser.Name = "txtDeleteUser";
+            this.txtDeleteUser.Size = new System.Drawing.Size(117, 20);
+            this.txtDeleteUser.TabIndex = 2;
+            // 
+            // lblConfirm
+            // 
+            this.lblConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblConfirm.AutoSize = true;
+            this.lblConfirm.Location = new System.Drawing.Point(20, 110);
+            this.lblConfirm.Name = "lblConfirm";
+            this.lblConfirm.Size = new System.Drawing.Size(96, 13);
+            this.lblConfirm.TabIndex = 1;
+            this.lblConfirm.Text = "Confirm Username:";
+            // 
+            // lblDeleteUser
+            // 
+            this.lblDeleteUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDeleteUser.AutoSize = true;
+            this.lblDeleteUser.Location = new System.Drawing.Point(58, 84);
+            this.lblDeleteUser.Name = "lblDeleteUser";
+            this.lblDeleteUser.Size = new System.Drawing.Size(58, 13);
+            this.lblDeleteUser.TabIndex = 0;
+            this.lblDeleteUser.Text = "Username:";
+            // 
+            // gbAddUser
+            // 
+            this.gbAddUser.Controls.Add(this.lblusername);
+            this.gbAddUser.Controls.Add(this.lblconfirmPassword);
+            this.gbAddUser.Controls.Add(this.btnSubmitNewUser);
+            this.gbAddUser.Controls.Add(this.lblPassword);
+            this.gbAddUser.Controls.Add(this.cbAdmin);
+            this.gbAddUser.Controls.Add(this.txtUsername);
+            this.gbAddUser.Controls.Add(this.txtConfirmPass);
+            this.gbAddUser.Controls.Add(this.txtNewPass);
+            this.gbAddUser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gbAddUser.Location = new System.Drawing.Point(0, 0);
+            this.gbAddUser.Name = "gbAddUser";
+            this.gbAddUser.Size = new System.Drawing.Size(347, 258);
+            this.gbAddUser.TabIndex = 8;
+            this.gbAddUser.TabStop = false;
+            this.gbAddUser.Text = "Add User:";
+            // 
+            // lblusername
+            // 
+            this.lblusername.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblusername.AutoSize = true;
+            this.lblusername.Location = new System.Drawing.Point(53, 59);
+            this.lblusername.Name = "lblusername";
+            this.lblusername.Size = new System.Drawing.Size(52, 13);
+            this.lblusername.TabIndex = 5;
+            this.lblusername.Text = "Userame:";
+            // 
+            // lblconfirmPassword
+            // 
+            this.lblconfirmPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblconfirmPassword.AutoSize = true;
+            this.lblconfirmPassword.Location = new System.Drawing.Point(11, 111);
+            this.lblconfirmPassword.Name = "lblconfirmPassword";
+            this.lblconfirmPassword.Size = new System.Drawing.Size(94, 13);
+            this.lblconfirmPassword.TabIndex = 7;
+            this.lblconfirmPassword.Text = "Confirm Password:";
+            // 
+            // btnSubmitNewUser
+            // 
+            this.btnSubmitNewUser.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSubmitNewUser.Location = new System.Drawing.Point(3, 222);
+            this.btnSubmitNewUser.Name = "btnSubmitNewUser";
+            this.btnSubmitNewUser.Size = new System.Drawing.Size(341, 33);
+            this.btnSubmitNewUser.TabIndex = 0;
+            this.btnSubmitNewUser.Text = "Add A User";
+            this.btnSubmitNewUser.UseVisualStyleBackColor = true;
+            this.btnSubmitNewUser.Click += new System.EventHandler(this.btnSubmitNewUser_Click);
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Location = new System.Drawing.Point(49, 85);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(56, 13);
+            this.lblPassword.TabIndex = 6;
+            this.lblPassword.Text = "Password:";
+            // 
+            // cbAdmin
+            // 
+            this.cbAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbAdmin.AutoSize = true;
+            this.cbAdmin.Location = new System.Drawing.Point(111, 134);
+            this.cbAdmin.Name = "cbAdmin";
+            this.cbAdmin.Size = new System.Drawing.Size(103, 17);
+            this.cbAdmin.TabIndex = 1;
+            this.cbAdmin.Text = "Admin Privileges";
+            this.cbAdmin.UseVisualStyleBackColor = true;
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtUsername.Location = new System.Drawing.Point(111, 56);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(201, 20);
+            this.txtUsername.TabIndex = 2;
+            // 
+            // txtConfirmPass
+            // 
+            this.txtConfirmPass.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConfirmPass.Location = new System.Drawing.Point(111, 108);
+            this.txtConfirmPass.Name = "txtConfirmPass";
+            this.txtConfirmPass.Size = new System.Drawing.Size(201, 20);
+            this.txtConfirmPass.TabIndex = 4;
+            this.txtConfirmPass.UseSystemPasswordChar = true;
+            // 
+            // txtNewPass
+            // 
+            this.txtNewPass.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNewPass.Location = new System.Drawing.Point(111, 82);
+            this.txtNewPass.Name = "txtNewPass";
+            this.txtNewPass.Size = new System.Drawing.Size(201, 20);
+            this.txtNewPass.TabIndex = 3;
+            this.txtNewPass.UseSystemPasswordChar = true;
+            // 
             // pnEmployeeList
             // 
             this.pnEmployeeList.Controls.Add(this.lvEmployees);
@@ -733,331 +1333,6 @@
             this.batchPanel.Size = new System.Drawing.Size(1012, 671);
             this.batchPanel.TabIndex = 1;
             // 
-            // batchTestLabel
-            // 
-            this.batchTestLabel.AutoSize = true;
-            this.batchTestLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.batchTestLabel.Location = new System.Drawing.Point(151, 49);
-            this.batchTestLabel.Name = "batchTestLabel";
-            this.batchTestLabel.Size = new System.Drawing.Size(94, 33);
-            this.batchTestLabel.TabIndex = 0;
-            this.batchTestLabel.Text = "Batch";
-            // 
-            // gbAddUser
-            // 
-            this.gbAddUser.Controls.Add(this.lblusername);
-            this.gbAddUser.Controls.Add(this.lblconfirmPassword);
-            this.gbAddUser.Controls.Add(this.btnSubmitNewUser);
-            this.gbAddUser.Controls.Add(this.lblPassword);
-            this.gbAddUser.Controls.Add(this.cbAdmin);
-            this.gbAddUser.Controls.Add(this.txtUsername);
-            this.gbAddUser.Controls.Add(this.txtConfirmPass);
-            this.gbAddUser.Controls.Add(this.txtNewPass);
-            this.gbAddUser.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gbAddUser.Location = new System.Drawing.Point(0, 0);
-            this.gbAddUser.Name = "gbAddUser";
-            this.gbAddUser.Size = new System.Drawing.Size(347, 258);
-            this.gbAddUser.TabIndex = 8;
-            this.gbAddUser.TabStop = false;
-            this.gbAddUser.Text = "Add User:";
-            // 
-            // txtNewPass
-            // 
-            this.txtNewPass.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNewPass.Location = new System.Drawing.Point(111, 82);
-            this.txtNewPass.Name = "txtNewPass";
-            this.txtNewPass.Size = new System.Drawing.Size(201, 20);
-            this.txtNewPass.TabIndex = 3;
-            this.txtNewPass.UseSystemPasswordChar = true;
-            // 
-            // txtConfirmPass
-            // 
-            this.txtConfirmPass.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConfirmPass.Location = new System.Drawing.Point(111, 108);
-            this.txtConfirmPass.Name = "txtConfirmPass";
-            this.txtConfirmPass.Size = new System.Drawing.Size(201, 20);
-            this.txtConfirmPass.TabIndex = 4;
-            this.txtConfirmPass.UseSystemPasswordChar = true;
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUsername.Location = new System.Drawing.Point(111, 56);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(201, 20);
-            this.txtUsername.TabIndex = 2;
-            // 
-            // cbAdmin
-            // 
-            this.cbAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbAdmin.AutoSize = true;
-            this.cbAdmin.Location = new System.Drawing.Point(111, 134);
-            this.cbAdmin.Name = "cbAdmin";
-            this.cbAdmin.Size = new System.Drawing.Size(103, 17);
-            this.cbAdmin.TabIndex = 1;
-            this.cbAdmin.Text = "Admin Privileges";
-            this.cbAdmin.UseVisualStyleBackColor = true;
-            // 
-            // lblPassword
-            // 
-            this.lblPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(49, 85);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(56, 13);
-            this.lblPassword.TabIndex = 6;
-            this.lblPassword.Text = "Password:";
-            // 
-            // btnSubmitNewUser
-            // 
-            this.btnSubmitNewUser.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSubmitNewUser.Location = new System.Drawing.Point(3, 222);
-            this.btnSubmitNewUser.Name = "btnSubmitNewUser";
-            this.btnSubmitNewUser.Size = new System.Drawing.Size(341, 33);
-            this.btnSubmitNewUser.TabIndex = 0;
-            this.btnSubmitNewUser.Text = "Add A User";
-            this.btnSubmitNewUser.UseVisualStyleBackColor = true;
-            this.btnSubmitNewUser.Click += new System.EventHandler(this.btnSubmitNewUser_Click);
-            // 
-            // lblconfirmPassword
-            // 
-            this.lblconfirmPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblconfirmPassword.AutoSize = true;
-            this.lblconfirmPassword.Location = new System.Drawing.Point(11, 111);
-            this.lblconfirmPassword.Name = "lblconfirmPassword";
-            this.lblconfirmPassword.Size = new System.Drawing.Size(94, 13);
-            this.lblconfirmPassword.TabIndex = 7;
-            this.lblconfirmPassword.Text = "Confirm Password:";
-            // 
-            // lblusername
-            // 
-            this.lblusername.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblusername.AutoSize = true;
-            this.lblusername.Location = new System.Drawing.Point(53, 59);
-            this.lblusername.Name = "lblusername";
-            this.lblusername.Size = new System.Drawing.Size(52, 13);
-            this.lblusername.TabIndex = 5;
-            this.lblusername.Text = "Userame:";
-            // 
-            // pnEmployeeEdit
-            // 
-            this.pnEmployeeEdit.Controls.Add(this.gbDeleteUser);
-            this.pnEmployeeEdit.Controls.Add(this.gbAddUser);
-            this.pnEmployeeEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnEmployeeEdit.Location = new System.Drawing.Point(0, 413);
-            this.pnEmployeeEdit.Name = "pnEmployeeEdit";
-            this.pnEmployeeEdit.Size = new System.Drawing.Size(1012, 258);
-            this.pnEmployeeEdit.TabIndex = 5;
-            // 
-            // lblDeleteUser
-            // 
-            this.lblDeleteUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDeleteUser.AutoSize = true;
-            this.lblDeleteUser.Location = new System.Drawing.Point(58, 84);
-            this.lblDeleteUser.Name = "lblDeleteUser";
-            this.lblDeleteUser.Size = new System.Drawing.Size(58, 13);
-            this.lblDeleteUser.TabIndex = 0;
-            this.lblDeleteUser.Text = "Username:";
-            // 
-            // lblConfirm
-            // 
-            this.lblConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblConfirm.AutoSize = true;
-            this.lblConfirm.Location = new System.Drawing.Point(20, 110);
-            this.lblConfirm.Name = "lblConfirm";
-            this.lblConfirm.Size = new System.Drawing.Size(96, 13);
-            this.lblConfirm.TabIndex = 1;
-            this.lblConfirm.Text = "Confirm Username:";
-            // 
-            // txtDeleteUser
-            // 
-            this.txtDeleteUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDeleteUser.Location = new System.Drawing.Point(125, 81);
-            this.txtDeleteUser.Name = "txtDeleteUser";
-            this.txtDeleteUser.Size = new System.Drawing.Size(117, 20);
-            this.txtDeleteUser.TabIndex = 2;
-            // 
-            // txtConfirmDelete
-            // 
-            this.txtConfirmDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConfirmDelete.Location = new System.Drawing.Point(125, 107);
-            this.txtConfirmDelete.Name = "txtConfirmDelete";
-            this.txtConfirmDelete.Size = new System.Drawing.Size(117, 20);
-            this.txtConfirmDelete.TabIndex = 3;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnDelete.Location = new System.Drawing.Point(3, 222);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(263, 33);
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "Delete A User";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // gbDeleteUser
-            // 
-            this.gbDeleteUser.Controls.Add(this.btnDelete);
-            this.gbDeleteUser.Controls.Add(this.txtConfirmDelete);
-            this.gbDeleteUser.Controls.Add(this.txtDeleteUser);
-            this.gbDeleteUser.Controls.Add(this.lblConfirm);
-            this.gbDeleteUser.Controls.Add(this.lblDeleteUser);
-            this.gbDeleteUser.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gbDeleteUser.Location = new System.Drawing.Point(347, 0);
-            this.gbDeleteUser.Name = "gbDeleteUser";
-            this.gbDeleteUser.Size = new System.Drawing.Size(269, 258);
-            this.gbDeleteUser.TabIndex = 9;
-            this.gbDeleteUser.TabStop = false;
-            this.gbDeleteUser.Text = "Delete User:";
-            // 
-            // lvItem
-            // 
-            this.lvItem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvItem.Location = new System.Drawing.Point(0, 0);
-            this.lvItem.Name = "lvItem";
-            this.lvItem.Size = new System.Drawing.Size(1012, 235);
-            this.lvItem.TabIndex = 5;
-            this.lvItem.UseCompatibleStateImageBehavior = false;
-            this.lvItem.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.lvItem_ColumnWidthChanged);
-            // 
-            // pnItem
-            // 
-            this.pnItem.Controls.Add(this.lvItem);
-            this.pnItem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnItem.Location = new System.Drawing.Point(0, 43);
-            this.pnItem.Name = "pnItem";
-            this.pnItem.Size = new System.Drawing.Size(1012, 235);
-            this.pnItem.TabIndex = 6;
-            // 
-            // btnBatch
-            // 
-            this.btnBatch.Controls.Add(this.picBatchNav);
-            this.btnBatch.Controls.Add(this.lblBatch);
-            this.btnBatch.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBatch.Location = new System.Drawing.Point(0, 435);
-            this.btnBatch.Name = "btnBatch";
-            this.btnBatch.Size = new System.Drawing.Size(271, 87);
-            this.btnBatch.TabIndex = 7;
-            // 
-            // lblBatch
-            // 
-            this.lblBatch.BackColor = System.Drawing.Color.Transparent;
-            this.lblBatch.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblBatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBatch.ForeColor = System.Drawing.Color.White;
-            this.lblBatch.Location = new System.Drawing.Point(89, 0);
-            this.lblBatch.Name = "lblBatch";
-            this.lblBatch.Size = new System.Drawing.Size(182, 87);
-            this.lblBatch.TabIndex = 1;
-            this.lblBatch.Text = "Batch";
-            this.lblBatch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblBatch.Click += new System.EventHandler(this.lblBatch_Click);
-            // 
-            // picBatchNav
-            // 
-            this.picBatchNav.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picBatchNav.Image = global::KernalPanic.Properties.Resources.navgear;
-            this.picBatchNav.Location = new System.Drawing.Point(0, 0);
-            this.picBatchNav.Name = "picBatchNav";
-            this.picBatchNav.Size = new System.Drawing.Size(90, 87);
-            this.picBatchNav.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picBatchNav.TabIndex = 0;
-            this.picBatchNav.TabStop = false;
-            this.picBatchNav.Click += new System.EventHandler(this.picBatchNav_Click);
-            // 
-            // picEmployee
-            // 
-            this.picEmployee.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picEmployee.Image = global::KernalPanic.Properties.Resources.Employee;
-            this.picEmployee.Location = new System.Drawing.Point(0, 0);
-            this.picEmployee.Name = "picEmployee";
-            this.picEmployee.Size = new System.Drawing.Size(90, 87);
-            this.picEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picEmployee.TabIndex = 0;
-            this.picEmployee.TabStop = false;
-            this.picEmployee.Click += new System.EventHandler(this.picEmployee_Click);
-            // 
-            // picWarehouse
-            // 
-            this.picWarehouse.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picWarehouse.Image = global::KernalPanic.Properties.Resources.warehouse;
-            this.picWarehouse.Location = new System.Drawing.Point(0, 0);
-            this.picWarehouse.Name = "picWarehouse";
-            this.picWarehouse.Size = new System.Drawing.Size(90, 87);
-            this.picWarehouse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picWarehouse.TabIndex = 0;
-            this.picWarehouse.TabStop = false;
-            // 
-            // picOrder
-            // 
-            this.picOrder.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picOrder.Image = global::KernalPanic.Properties.Resources.order;
-            this.picOrder.Location = new System.Drawing.Point(0, 0);
-            this.picOrder.Name = "picOrder";
-            this.picOrder.Size = new System.Drawing.Size(90, 87);
-            this.picOrder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picOrder.TabIndex = 0;
-            this.picOrder.TabStop = false;
-            this.picOrder.Click += new System.EventHandler(this.picOrder_Click);
-            // 
-            // picItem
-            // 
-            this.picItem.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picItem.Image = global::KernalPanic.Properties.Resources.item;
-            this.picItem.Location = new System.Drawing.Point(0, 0);
-            this.picItem.Name = "picItem";
-            this.picItem.Size = new System.Drawing.Size(90, 87);
-            this.picItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picItem.TabIndex = 0;
-            this.picItem.TabStop = false;
-            this.picItem.Click += new System.EventHandler(this.picItem_Click);
-            // 
-            // picLogin
-            // 
-            this.picLogin.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picLogin.Image = global::KernalPanic.Properties.Resources.login;
-            this.picLogin.Location = new System.Drawing.Point(0, 0);
-            this.picLogin.Name = "picLogin";
-            this.picLogin.Size = new System.Drawing.Size(90, 87);
-            this.picLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picLogin.TabIndex = 0;
-            this.picLogin.TabStop = false;
-            this.picLogin.Click += new System.EventHandler(this.picLogin_Click);
-            // 
-            // picLogo
-            // 
-            this.picLogo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picLogo.Image = global::KernalPanic.Properties.Resources.Company_Logo___White;
-            this.picLogo.Location = new System.Drawing.Point(0, 0);
-            this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(90, 100);
-            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picLogo.TabIndex = 0;
-            this.picLogo.TabStop = false;
-            // 
             // picBatch
             // 
             this.picBatch.Image = global::KernalPanic.Properties.Resources.gear;
@@ -1068,290 +1343,15 @@
             this.picBatch.TabIndex = 1;
             this.picBatch.TabStop = false;
             // 
-            // pnEditItems
+            // batchTestLabel
             // 
-            this.pnEditItems.Controls.Add(this.pnDeleteItem);
-            this.pnEditItems.Controls.Add(this.pnAddItems);
-            this.pnEditItems.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnEditItems.Location = new System.Drawing.Point(0, 365);
-            this.pnEditItems.Name = "pnEditItems";
-            this.pnEditItems.Size = new System.Drawing.Size(1012, 304);
-            this.pnEditItems.TabIndex = 7;
-            // 
-            // pnAddItems
-            // 
-            this.pnAddItems.Controls.Add(this.gbAddItems);
-            this.pnAddItems.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnAddItems.Location = new System.Drawing.Point(0, 0);
-            this.pnAddItems.Name = "pnAddItems";
-            this.pnAddItems.Size = new System.Drawing.Size(353, 304);
-            this.pnAddItems.TabIndex = 0;
-            // 
-            // pnDeleteItem
-            // 
-            this.pnDeleteItem.Controls.Add(this.gbDeleteItem);
-            this.pnDeleteItem.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnDeleteItem.Location = new System.Drawing.Point(353, 0);
-            this.pnDeleteItem.Name = "pnDeleteItem";
-            this.pnDeleteItem.Size = new System.Drawing.Size(353, 304);
-            this.pnDeleteItem.TabIndex = 1;
-            // 
-            // gbAddItems
-            // 
-            this.gbAddItems.Controls.Add(this.btnRemoveItemTag);
-            this.gbAddItems.Controls.Add(this.btnAddItemTag);
-            this.gbAddItems.Controls.Add(this.lblAddItemTags);
-            this.gbAddItems.Controls.Add(this.txtItemTags);
-            this.gbAddItems.Controls.Add(this.lbItemTags);
-            this.gbAddItems.Controls.Add(this.txtItemDesc);
-            this.gbAddItems.Controls.Add(this.txtItemPrice);
-            this.gbAddItems.Controls.Add(this.txtItemQty);
-            this.gbAddItems.Controls.Add(this.txtVenCode);
-            this.gbAddItems.Controls.Add(this.txtItemName);
-            this.gbAddItems.Controls.Add(this.label5);
-            this.gbAddItems.Controls.Add(this.lblItemQty);
-            this.gbAddItems.Controls.Add(this.lblItemPrice);
-            this.gbAddItems.Controls.Add(this.lblItemDesc);
-            this.gbAddItems.Controls.Add(this.lblItemName);
-            this.gbAddItems.Controls.Add(this.btnAddItem);
-            this.gbAddItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbAddItems.Location = new System.Drawing.Point(0, 0);
-            this.gbAddItems.Name = "gbAddItems";
-            this.gbAddItems.Size = new System.Drawing.Size(353, 304);
-            this.gbAddItems.TabIndex = 0;
-            this.gbAddItems.TabStop = false;
-            this.gbAddItems.Text = "Add Item:";
-            // 
-            // btnAddItem
-            // 
-            this.btnAddItem.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnAddItem.Location = new System.Drawing.Point(3, 270);
-            this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(347, 31);
-            this.btnAddItem.TabIndex = 8;
-            this.btnAddItem.Text = "Add An Item";
-            this.btnAddItem.UseVisualStyleBackColor = true;
-            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
-            // 
-            // lblItemName
-            // 
-            this.lblItemName.AutoSize = true;
-            this.lblItemName.Location = new System.Drawing.Point(44, 17);
-            this.lblItemName.Name = "lblItemName";
-            this.lblItemName.Size = new System.Drawing.Size(61, 13);
-            this.lblItemName.TabIndex = 1;
-            this.lblItemName.Text = "Item Name:";
-            // 
-            // lblItemDesc
-            // 
-            this.lblItemDesc.AutoSize = true;
-            this.lblItemDesc.Location = new System.Drawing.Point(42, 43);
-            this.lblItemDesc.Name = "lblItemDesc";
-            this.lblItemDesc.Size = new System.Drawing.Size(63, 13);
-            this.lblItemDesc.TabIndex = 2;
-            this.lblItemDesc.Text = "Description:";
-            // 
-            // lblItemPrice
-            // 
-            this.lblItemPrice.AutoSize = true;
-            this.lblItemPrice.Location = new System.Drawing.Point(165, 129);
-            this.lblItemPrice.Name = "lblItemPrice";
-            this.lblItemPrice.Size = new System.Drawing.Size(34, 13);
-            this.lblItemPrice.TabIndex = 3;
-            this.lblItemPrice.Text = "Price:";
-            // 
-            // lblItemQty
-            // 
-            this.lblItemQty.AutoSize = true;
-            this.lblItemQty.Location = new System.Drawing.Point(56, 129);
-            this.lblItemQty.Name = "lblItemQty";
-            this.lblItemQty.Size = new System.Drawing.Size(49, 13);
-            this.lblItemQty.TabIndex = 4;
-            this.lblItemQty.Text = "Quantity:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(33, 155);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Vendor Code:";
-            // 
-            // txtItemName
-            // 
-            this.txtItemName.Location = new System.Drawing.Point(111, 14);
-            this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(158, 20);
-            this.txtItemName.TabIndex = 0;
-            // 
-            // txtVenCode
-            // 
-            this.txtVenCode.Location = new System.Drawing.Point(111, 152);
-            this.txtVenCode.Name = "txtVenCode";
-            this.txtVenCode.Size = new System.Drawing.Size(48, 20);
-            this.txtVenCode.TabIndex = 4;
-            // 
-            // txtItemQty
-            // 
-            this.txtItemQty.Location = new System.Drawing.Point(111, 126);
-            this.txtItemQty.Name = "txtItemQty";
-            this.txtItemQty.Size = new System.Drawing.Size(48, 20);
-            this.txtItemQty.TabIndex = 2;
-            // 
-            // txtItemPrice
-            // 
-            this.txtItemPrice.Location = new System.Drawing.Point(205, 126);
-            this.txtItemPrice.Name = "txtItemPrice";
-            this.txtItemPrice.Size = new System.Drawing.Size(64, 20);
-            this.txtItemPrice.TabIndex = 3;
-            // 
-            // txtItemDesc
-            // 
-            this.txtItemDesc.Location = new System.Drawing.Point(111, 40);
-            this.txtItemDesc.Name = "txtItemDesc";
-            this.txtItemDesc.Size = new System.Drawing.Size(158, 80);
-            this.txtItemDesc.TabIndex = 1;
-            this.txtItemDesc.Text = "";
-            // 
-            // lbItemTags
-            // 
-            this.lbItemTags.FormattingEnabled = true;
-            this.lbItemTags.Location = new System.Drawing.Point(165, 152);
-            this.lbItemTags.Name = "lbItemTags";
-            this.lbItemTags.Size = new System.Drawing.Size(104, 108);
-            this.lbItemTags.TabIndex = 11;
-            // 
-            // txtItemTags
-            // 
-            this.txtItemTags.Location = new System.Drawing.Point(40, 208);
-            this.txtItemTags.Name = "txtItemTags";
-            this.txtItemTags.Size = new System.Drawing.Size(119, 20);
-            this.txtItemTags.TabIndex = 5;
-            this.txtItemTags.TextChanged += new System.EventHandler(this.txtItemTags_TextChanged);
-            // 
-            // lblAddItemTags
-            // 
-            this.lblAddItemTags.AutoSize = true;
-            this.lblAddItemTags.Location = new System.Drawing.Point(37, 192);
-            this.lblAddItemTags.Name = "lblAddItemTags";
-            this.lblAddItemTags.Size = new System.Drawing.Size(56, 13);
-            this.lblAddItemTags.TabIndex = 13;
-            this.lblAddItemTags.Text = "Add Tags:";
-            // 
-            // btnAddItemTag
-            // 
-            this.btnAddItemTag.Location = new System.Drawing.Point(275, 182);
-            this.btnAddItemTag.Name = "btnAddItemTag";
-            this.btnAddItemTag.Size = new System.Drawing.Size(47, 23);
-            this.btnAddItemTag.TabIndex = 6;
-            this.btnAddItemTag.Text = "+";
-            this.btnAddItemTag.UseVisualStyleBackColor = true;
-            this.btnAddItemTag.Click += new System.EventHandler(this.btnAddItemTag_Click);
-            // 
-            // btnRemoveItemTag
-            // 
-            this.btnRemoveItemTag.Location = new System.Drawing.Point(275, 211);
-            this.btnRemoveItemTag.Name = "btnRemoveItemTag";
-            this.btnRemoveItemTag.Size = new System.Drawing.Size(47, 23);
-            this.btnRemoveItemTag.TabIndex = 7;
-            this.btnRemoveItemTag.Text = "-";
-            this.btnRemoveItemTag.UseVisualStyleBackColor = true;
-            this.btnRemoveItemTag.Click += new System.EventHandler(this.btnRemoveItemTag_Click);
-            // 
-            // gbDeleteItem
-            // 
-            this.gbDeleteItem.Controls.Add(this.btnDeleteItem);
-            this.gbDeleteItem.Controls.Add(this.txtDeleteItemID);
-            this.gbDeleteItem.Controls.Add(this.label1);
-            this.gbDeleteItem.Controls.Add(this.txtDeleteItemNameConfirm);
-            this.gbDeleteItem.Controls.Add(this.lblDeleteItemNameConfirm);
-            this.gbDeleteItem.Controls.Add(this.txtDeleteItemName);
-            this.gbDeleteItem.Controls.Add(this.lblDeleteItemName);
-            this.gbDeleteItem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbDeleteItem.Location = new System.Drawing.Point(0, 0);
-            this.gbDeleteItem.Name = "gbDeleteItem";
-            this.gbDeleteItem.Size = new System.Drawing.Size(353, 304);
-            this.gbDeleteItem.TabIndex = 0;
-            this.gbDeleteItem.TabStop = false;
-            this.gbDeleteItem.Text = "Delete Item:";
-            // 
-            // lblDeleteItemName
-            // 
-            this.lblDeleteItemName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDeleteItemName.AutoSize = true;
-            this.lblDeleteItemName.Location = new System.Drawing.Point(107, 133);
-            this.lblDeleteItemName.Name = "lblDeleteItemName";
-            this.lblDeleteItemName.Size = new System.Drawing.Size(61, 13);
-            this.lblDeleteItemName.TabIndex = 0;
-            this.lblDeleteItemName.Text = "Item Name:";
-            // 
-            // txtDeleteItemName
-            // 
-            this.txtDeleteItemName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDeleteItemName.Location = new System.Drawing.Point(174, 130);
-            this.txtDeleteItemName.Name = "txtDeleteItemName";
-            this.txtDeleteItemName.Size = new System.Drawing.Size(100, 20);
-            this.txtDeleteItemName.TabIndex = 1;
-            // 
-            // txtDeleteItemNameConfirm
-            // 
-            this.txtDeleteItemNameConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDeleteItemNameConfirm.Location = new System.Drawing.Point(174, 156);
-            this.txtDeleteItemNameConfirm.Name = "txtDeleteItemNameConfirm";
-            this.txtDeleteItemNameConfirm.Size = new System.Drawing.Size(100, 20);
-            this.txtDeleteItemNameConfirm.TabIndex = 3;
-            // 
-            // lblDeleteItemNameConfirm
-            // 
-            this.lblDeleteItemNameConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDeleteItemNameConfirm.AutoSize = true;
-            this.lblDeleteItemNameConfirm.Location = new System.Drawing.Point(69, 159);
-            this.lblDeleteItemNameConfirm.Name = "lblDeleteItemNameConfirm";
-            this.lblDeleteItemNameConfirm.Size = new System.Drawing.Size(99, 13);
-            this.lblDeleteItemNameConfirm.TabIndex = 2;
-            this.lblDeleteItemNameConfirm.Text = "Confirm Item Name:";
-            // 
-            // txtDeleteItemID
-            // 
-            this.txtDeleteItemID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDeleteItemID.Location = new System.Drawing.Point(174, 104);
-            this.txtDeleteItemID.Name = "txtDeleteItemID";
-            this.txtDeleteItemID.Size = new System.Drawing.Size(100, 20);
-            this.txtDeleteItemID.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(84, 107);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Item ID Number:";
-            // 
-            // btnDeleteItem
-            // 
-            this.btnDeleteItem.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnDeleteItem.Location = new System.Drawing.Point(3, 270);
-            this.btnDeleteItem.Name = "btnDeleteItem";
-            this.btnDeleteItem.Size = new System.Drawing.Size(347, 31);
-            this.btnDeleteItem.TabIndex = 6;
-            this.btnDeleteItem.Text = "Delete An Item";
-            this.btnDeleteItem.UseVisualStyleBackColor = true;
-            this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
+            this.batchTestLabel.AutoSize = true;
+            this.batchTestLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.batchTestLabel.Location = new System.Drawing.Point(151, 49);
+            this.batchTestLabel.Name = "batchTestLabel";
+            this.batchTestLabel.Size = new System.Drawing.Size(94, 33);
+            this.batchTestLabel.TabIndex = 0;
+            this.batchTestLabel.Text = "Batch";
             // 
             // FormMain
             // 
@@ -1362,12 +1362,12 @@
             this.Controls.Add(this.pnStatus);
             this.Controls.Add(this.pnNav);
             this.Controls.Add(this.pnBanner);
-            this.Controls.Add(this.itemPanel);
-            this.Controls.Add(this.orderPanel);
             this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.batchPanel);
             this.Controls.Add(this.employeePanel);
             this.Controls.Add(this.warehousePanel);
+            this.Controls.Add(this.itemPanel);
+            this.Controls.Add(this.orderPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1000, 670);
             this.Name = "FormMain";
@@ -1378,17 +1378,33 @@
             this.ResizeEnd += new System.EventHandler(this.FormMain_ResizeEnd);
             this.pnBanner.ResumeLayout(false);
             this.pnCompName.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.pnNav.ResumeLayout(false);
+            this.btnBatch.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBatchNav)).EndInit();
             this.btnEmployee.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picEmployee)).EndInit();
             this.btnWarehouse.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picWarehouse)).EndInit();
             this.btnOrder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picOrder)).EndInit();
             this.btnItem.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picItem)).EndInit();
             this.btnLogin.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogin)).EndInit();
             this.pnStatus.ResumeLayout(false);
             this.pnStatus.PerformLayout();
             this.loginPanel.ResumeLayout(false);
             this.loginPanel.PerformLayout();
             this.itemPanel.ResumeLayout(false);
+            this.pnEditItems.ResumeLayout(false);
+            this.pnDeleteItem.ResumeLayout(false);
+            this.gbDeleteItem.ResumeLayout(false);
+            this.gbDeleteItem.PerformLayout();
+            this.pnAddItems.ResumeLayout(false);
+            this.gbAddItems.ResumeLayout(false);
+            this.gbAddItems.PerformLayout();
+            this.pnItem.ResumeLayout(false);
             this.pnItemViewEdit.ResumeLayout(false);
             this.pnItemViewEdit.PerformLayout();
             this.orderPanel.ResumeLayout(false);
@@ -1397,32 +1413,16 @@
             this.warehousePanel.ResumeLayout(false);
             this.pnWarehouseViewEdit.ResumeLayout(false);
             this.employeePanel.ResumeLayout(false);
+            this.pnEmployeeEdit.ResumeLayout(false);
+            this.gbDeleteUser.ResumeLayout(false);
+            this.gbDeleteUser.PerformLayout();
+            this.gbAddUser.ResumeLayout(false);
+            this.gbAddUser.PerformLayout();
             this.pnEmployeeList.ResumeLayout(false);
             this.pnEmployeeViewEdit.ResumeLayout(false);
             this.batchPanel.ResumeLayout(false);
             this.batchPanel.PerformLayout();
-            this.gbAddUser.ResumeLayout(false);
-            this.gbAddUser.PerformLayout();
-            this.pnEmployeeEdit.ResumeLayout(false);
-            this.gbDeleteUser.ResumeLayout(false);
-            this.gbDeleteUser.PerformLayout();
-            this.pnItem.ResumeLayout(false);
-            this.btnBatch.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picBatchNav)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEmployee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picWarehouse)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picOrder)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picItem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBatch)).EndInit();
-            this.pnEditItems.ResumeLayout(false);
-            this.pnAddItems.ResumeLayout(false);
-            this.pnDeleteItem.ResumeLayout(false);
-            this.gbAddItems.ResumeLayout(false);
-            this.gbAddItems.PerformLayout();
-            this.gbDeleteItem.ResumeLayout(false);
-            this.gbDeleteItem.PerformLayout();
             this.ResumeLayout(false);
 
         }
