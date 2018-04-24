@@ -337,6 +337,7 @@ namespace WindowsFormsApplication1
             if (itemSearchBox.Text == "Search")
             {
                 itemSearchBox.Text = "";
+                this.AcceptButton = itemSearchButton;
             }
         }
 
@@ -351,7 +352,39 @@ namespace WindowsFormsApplication1
 
         private void itemSearchButton_Click(object sender, EventArgs e)
         {
-
+            if (itemSearchBox.Text != "Search" && itemSearchBox.Text != "")
+            {
+                string item = itemSearchBox.Text;
+                lvItem.Clear();
+                int size = (lvItem.Width - 4) / 6; // divide by 6 because there's 6 columns, subtract 4 to stop horizontal scroll bar from displaying
+                lvItem.View = View.Details;
+                lvItem.Columns.Add("ID", size, HorizontalAlignment.Center);
+                lvItem.Columns.Add("Item Name", size, HorizontalAlignment.Center);
+                lvItem.Columns.Add("Description", size, HorizontalAlignment.Center);
+                lvItem.Columns.Add("Price", size, HorizontalAlignment.Center);
+                lvItem.Columns.Add("Quantity", size, HorizontalAlignment.Center);
+                lvItem.Columns.Add("Vendor Codes", size, HorizontalAlignment.Center);
+                string items = session.SearchItems(item);
+                List<string> stringList = items.Split(',').ToList<string>();
+                for (int i = 0; i < stringList.Count(); i++)
+                {
+                    if (stringList[i] == "")
+                    {
+                        stringList.RemoveAt(i);
+                        i--;
+                    }
+                }
+                stringList.Insert(0, "");
+                for (int i = 1; i < stringList.Count(); i += 7)
+                {
+                    lvItem.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1],
+                    stringList[i + 2], "$" + stringList[i + 4], stringList[i + 5] , stringList[i + 6] }));
+                }
+            }
+            else
+            {
+                DisplayError("Error: Invalid search request.");
+            }
         }
 
         // Sets up the employee listview

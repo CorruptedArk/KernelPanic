@@ -167,7 +167,7 @@ namespace KernalPanic
             }
         }
 
-        // counts number of employee accounts
+        // counts number of items in database
         private int countItems()
         {
             int returnValue;
@@ -192,6 +192,32 @@ namespace KernalPanic
             {
                 return 0;
             }
+        }
+
+        public string SearchItems(string item)
+        {
+            string returnValue = "";
+            int rows = countItems();
+            for (int row = 1; row <= rows; row++)
+            {
+                returnValue += ",";
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SearchItems", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open(); // open connection
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@curIndex", row);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@itemToFind", item);  // set first sp parameter to name                    
+                        cmd.Parameters.Add("@result", MySqlDbType.Text); // declare third sp param as type int
+                        cmd.Parameters["@result"].Direction = ParameterDirection.Output; // declare third sp param as return parameter
+                        cmd.ExecuteReader(); // execute sp
+                        connection.Close();
+                        returnValue += Convert.ToString(cmd.Parameters["@result"].Value); // convert sp result to string
+                    }
+                }
+            }
+            return returnValue;
         }
 
         //////////////////////////////////// End Item Data ////////////////////////////////////
