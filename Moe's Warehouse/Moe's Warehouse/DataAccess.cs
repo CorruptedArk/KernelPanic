@@ -112,7 +112,7 @@ namespace KernalPanic
         }
 
         // adds new Items to database
-        public bool AddItems(string name, string desc, string tags, int price, int qty, int vencode)
+        public bool AddItems(string name, string desc, string tags, float price, int qty, int vencode)
         {
             int rows = countItems() + 1;
             try
@@ -142,6 +142,31 @@ namespace KernalPanic
             }
         }
 
+        // remove item from database
+        public bool DeleteItem(int ID, string name)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("DeleteItem", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open(); // open connection
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@idNum", ID);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@itemName", name);  // set first sp parameter to name
+                        cmd.ExecuteReader(); // execute sp
+                        connection.Close();
+                    }
+                }
+                return true;
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                return false;
+            }
+        }
+
         // counts number of employee accounts
         private int countItems()
         {
@@ -159,7 +184,6 @@ namespace KernalPanic
                         cmd.ExecuteReader(); // execute sp
                         returnValue = Convert.ToInt32(cmd.Parameters["@result"].Value); // convert sp result to int
                         connection.Close();
-                        MessageBox.Show(returnValue.ToString());
                         return returnValue;
                     }
                 }

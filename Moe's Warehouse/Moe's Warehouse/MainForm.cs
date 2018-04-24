@@ -299,6 +299,7 @@ namespace WindowsFormsApplication1
             {
                 itemViewButton.BackColor = Color.Gray;
                 itemEditButton.BackColor = Color.White;
+                pnEditItems.Hide();
             }
 
             changeNav(ITEM_NAV_ID);
@@ -321,7 +322,7 @@ namespace WindowsFormsApplication1
         {
             itemViewButton.BackColor = Color.Gray;
             itemEditButton.BackColor = Color.White;
-
+            pnEditItems.Hide();
             isInEditMode = false;
         }
 
@@ -329,7 +330,7 @@ namespace WindowsFormsApplication1
         {
             itemEditButton.BackColor = Color.Gray;
             itemViewButton.BackColor = Color.White;
-
+            pnEditItems.Show();
             isInEditMode = true;
         }
 
@@ -390,6 +391,181 @@ namespace WindowsFormsApplication1
             {
                 lvItem.Columns[e.ColumnIndex].Width = maxSize;
             }
+        }
+
+        private void btnAddItemTag_Click(object sender, EventArgs e)
+        {
+            string tag = txtItemTags.Text;
+            if (tag == "")
+            {
+                DisplayError("Error: You must add a tag first.");
+            }
+            else
+            {
+                ClearError();
+                lbItemTags.Items.Add(tag);
+                txtItemTags.Text = "";
+            }
+        }
+
+        private void btnRemoveItemTag_Click(object sender, EventArgs e)
+        {
+            if (lbItemTags.SelectedIndex == -1)
+            {
+                DisplayError("Error: You must select a tag to remove.");
+            }
+            else
+            {
+                ClearError();
+                lbItemTags.Items.RemoveAt(lbItemTags.SelectedIndex);
+                lbItemTags.SelectedIndex = -1;
+            }
+        }
+
+        private void txtItemTags_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = btnAddItemTag;
+        }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            AddItem();
+        }
+
+        private void AddItem()
+        {
+            string name = txtItemName.Text;
+            string desc = txtItemDesc.Text;
+            string price = txtItemPrice.Text;
+            string qty = txtItemQty.Text;
+            string venCode = txtVenCode.Text;
+
+            if (name == "" || desc == "" || price == "" || qty == "" || venCode == "")
+            {
+                DisplayError("Error: Please make sure all fields are filled out.");
+            }
+            else if (lbItemTags.Items.Count == 0)
+            {
+                DisplayError("Error: Please make sure tags are added.");
+            }
+            else if (desc.Contains(','))
+            {
+                DisplayError("Error: Commas are not allowed in the Description.");
+            }
+            else
+            {
+                string tags = parseTags();
+                float numPrice;
+                int numQty, numVenCode;
+                if (float.TryParse(price, out numPrice))
+                {
+                    if (int.TryParse(qty, out numQty))
+                    {
+                        if (int.TryParse(venCode, out numVenCode))
+                        {
+                            ClearError();
+                            if (session.AddItems(name, desc, tags, numPrice, numQty, numVenCode))
+                            {
+                                MessageBox.Show("Item was added!");
+                                ItemList();
+                                clearItemAdd();
+                            }
+                            else
+                            {
+                                DisplayError("Error: The Item Could Not Be Added.");
+                            }
+                        }
+                        else
+                        {
+                            DisplayError("Error: Issue with the Vendor Code.");
+                        }
+                    }
+                    else
+                    {
+                        DisplayError("Error: Issue with the Quantity textbox.");
+                    }
+                }
+                else
+                {
+                    DisplayError("Error: Issue with the Price textbox.");
+                }
+            }
+        }
+
+        private string parseTags()
+        {
+            string Tags = "";
+            for (int i = 0; i < lbItemTags.Items.Count; i++)
+            {
+                if (i != 0)
+                {
+                    Tags += " | ";
+                }
+                Tags += lbItemTags.Items[i];
+            }
+            MessageBox.Show(Tags);
+            return Tags;
+        }
+
+        // Button calls function to remove items from database
+        private void btnDeleteItem_Click(object sender, EventArgs e)
+        {
+            deleteItems();
+        }
+
+        //deletes an item from database
+        private void deleteItems()
+        {
+            string name = txtDeleteItemName.Text;
+            string confirm = txtDeleteItemNameConfirm.Text;
+            string ID = txtDeleteItemID.Text;
+            int numID;
+            if (name == "" || confirm == "" || ID == "")
+            {
+                DisplayError("Error: Make sure all fields are filled out.");
+            }
+            else if (int.TryParse(ID, out numID))
+            {
+                if (name == confirm)
+                {
+                    if (session.DeleteItem(numID, name))
+                    {
+                        ClearError();
+                        ItemList();
+                        clearItemDelete();
+                    }
+                    else
+                    {
+                        DisplayError("Error: Item Could Not Be Found.");
+                    }
+                }
+                else
+                {
+                    DisplayError("Error: Item Names Must Match.");
+                }
+            }
+            else
+            {
+                DisplayError("Error: Check The ID And Try Again.");
+            }
+        }
+
+        private void clearItemDelete()
+        {
+            txtDeleteItemName.Text = "";
+            txtDeleteItemNameConfirm.Text = "";
+            txtDeleteItemID.Text = "";
+        }
+
+        private void clearItemAdd()
+        {
+            txtItemName.Text = "";
+            txtItemDesc.Text = "";
+            txtItemTags.Text = "";
+            txtItemPrice.Text = "";
+            txtItemQty.Text = "";
+            txtVenCode.Text = "";
+            lbItemTags.Items.Clear();
         }
 
         //**************
