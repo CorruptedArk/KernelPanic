@@ -14,11 +14,15 @@ namespace KernalPanic
         private int lastVendorShipSeq;
         private int lastCustOrderSeq;
         private int lastVendorOrderSeq;
+        private DataAccess session;
 
-        public BatchProcessor()
+        public BatchProcessor(DataAccess session)
         {
+            this.session = session;
             continueBatch = true;
-            // lastSeq = value from database
+            lastVendorShipSeq = session.getLastSequenceNum("vendorShip");
+            lastCustOrderSeq = session.getLastSequenceNum("custOrder");
+            lastVendorOrderSeq = session.getLastSequenceNum("vendorOrder");
         }
 
         public bool run()
@@ -93,9 +97,21 @@ namespace KernalPanic
                         tempDateReceived = vendorShipLines[i].Substring(23, 10);
 
                         //verify item exists, valid dates, non-zero quantity, fill backorders, deploy remaining amount of inventory to warehouses based on individual item distribution 
+                        if (!session.verifyItem(tempItemID))
+                        {
+                            writeLineToLog("Error: Item " + tempItemID + " is invalid");
+                        }
+                        else if(tempQuantityReceived <= 0)
+                        {
+                            writeLineToLog(tempQuantityReceived.ToString() + " is an invalid recieved quantity");
+                        }
+                        else
+                        {
+                            // Distribute items
+                        }
                     }
 
-                    // iterate sequence value
+                    session.setSequenceNumber("vendorShip", lastVendorShipSeq + 1);
                 }
             }
 
@@ -197,7 +213,7 @@ namespace KernalPanic
                             }
                         }
 
-                        // iterate order sequence
+                        session.setSequenceNumber("custOrder", lastCustOrderSeq + 1);
 
                     }
                     
@@ -260,7 +276,7 @@ namespace KernalPanic
                         //verify vendor, item, that vendor sells item, that quantity is nonzero, that reorder point was actually reached
                     }
 
-                    // iterate sequence
+                    session.setSequenceNumber("vendorOrder", lastVendorOrderSeq + 1);
                 }
 
             }

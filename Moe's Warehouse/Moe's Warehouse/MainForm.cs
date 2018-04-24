@@ -919,7 +919,7 @@ namespace WindowsFormsApplication1
         // The contents are currently a placeholder for demonstration
         private void batchProcess()
         {
-            BatchProcessor batch = new BatchProcessor();
+            BatchProcessor batch = new BatchProcessor(session);
             batchTestLabel.Text = "Starting...";
             Refresh();
 

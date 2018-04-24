@@ -39,11 +39,11 @@ namespace KernalPanic
                     }
                 }
             }
-            catch(MySql.Data.MySqlClient.MySqlException ex)
+            catch (MySql.Data.MySqlClient.MySqlException ex)
             {
                 return false;
             }
-}
+        }
 
         // checks if user is an admin or regular user
         public bool CheckAdmin(string name)
@@ -67,7 +67,7 @@ namespace KernalPanic
                     }
                 }
             }
-            catch(MySql.Data.MySqlClient.MySqlException ex)
+            catch (MySql.Data.MySqlClient.MySqlException ex)
             {
                 return false;
             }
@@ -338,5 +338,86 @@ namespace KernalPanic
             }
         }
         ///////////////////////////////// End Employee Data /////////////////////////////////
+
+
+        public int getLastSequenceNum(string sequenceName)
+        {
+            int sequenceNum;
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("getSequenceNum", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open(); // open connection
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@sequenceName", sequenceName);
+                        cmd.Parameters.Add("@sequenceNum", MySqlDbType.Int32);
+                        cmd.Parameters["@sequenceNum"].Direction = ParameterDirection.Output;
+                        cmd.ExecuteReader();
+                        sequenceNum = Convert.ToInt32(cmd.Parameters["@sequenceNum"].Value);
+                        connection.Close();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                sequenceNum = -1;
+            }
+
+            return sequenceNum;
+        }
+
+        public bool verifyItem(int itemID)
+        {
+            bool itemExists;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("verifyItem", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open(); // open connection
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@itemID", itemID);
+                        cmd.Parameters.Add("@itemExists", MySqlDbType.Bit, 1);
+                        cmd.Parameters["@itemExists"].Direction = ParameterDirection.Output;
+                        cmd.ExecuteReader();
+                        itemExists = Convert.ToBoolean(cmd.Parameters["@itemExists"].Value);
+                        connection.Close();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                itemExists = false;
+            }
+
+            return itemExists;
+        }
+
+        public void setSequenceNumber(string sequenceName, int sequenceNumber)
+        {
+            try
+            { 
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("verifyItem", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@sequenceName", sequenceName);
+                        cmd.Parameters.AddWithValue("@sequenceNumber", sequenceNumber);
+                        cmd.ExecuteReader();
+                        connection.Close();
+                    }
+                }
+            }
+            catch(MySql.Data.MySqlClient.MySqlException ex)
+            {
+               
+            }
+        }
     }
 }
