@@ -373,7 +373,7 @@ namespace WindowsFormsApplication1
             List<string> tags = new List<string>();
             for (int i = 1; i < stringList.Count(); i += 7)
             {
-                lvItem.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1],
+                lvItem.Items.Add(new ListViewItem(new[] { stringList[0], stringList[i + 1],
                     stringList[i + 2], "$" + stringList[i + 4], stringList[i + 5] , stringList[i + 6] }));
                 tags.Add(stringList[i + 3]);
             }
@@ -734,6 +734,16 @@ namespace WindowsFormsApplication1
                 picBatch.Image = Resources.error;
                 batchTestLabel.Text = "Errors Encountered, See Log.txt For More Information.";
             }            
+        }
+
+        private void lvItem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void itemPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         //*****************
