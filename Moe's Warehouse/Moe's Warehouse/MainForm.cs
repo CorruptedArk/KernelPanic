@@ -291,14 +291,12 @@ namespace WindowsFormsApplication1
 
             if(isInEditMode)
             {
-                itemViewButton.BackColor = Color.White;
-                itemEditButton.BackColor = Color.Gray;
+                itemEditButton_Click(null, null);
 
             }
             else
             {
-                itemViewButton.BackColor = Color.Gray;
-                itemEditButton.BackColor = Color.White;
+                itemViewButton_Click(null, null);
             }
 
             changeNav(ITEM_NAV_ID);
@@ -321,7 +319,7 @@ namespace WindowsFormsApplication1
         {
             itemViewButton.BackColor = Color.Gray;
             itemEditButton.BackColor = Color.White;
-
+            pnEditItems.Hide();
             isInEditMode = false;
         }
 
@@ -329,7 +327,7 @@ namespace WindowsFormsApplication1
         {
             itemEditButton.BackColor = Color.Gray;
             itemViewButton.BackColor = Color.White;
-
+            pnEditItems.Show();
             isInEditMode = true;
         }
 
@@ -339,6 +337,7 @@ namespace WindowsFormsApplication1
             if (itemSearchBox.Text == "Search")
             {
                 itemSearchBox.Text = "";
+                this.AcceptButton = itemSearchButton;
             }
         }
 
@@ -353,7 +352,39 @@ namespace WindowsFormsApplication1
 
         private void itemSearchButton_Click(object sender, EventArgs e)
         {
-
+            if (itemSearchBox.Text != "Search" && itemSearchBox.Text != "")
+            {
+                string item = itemSearchBox.Text;
+                lvItem.Clear();
+                int size = (lvItem.Width - 4) / 6; // divide by 6 because there's 6 columns, subtract 4 to stop horizontal scroll bar from displaying
+                lvItem.View = View.Details;
+                lvItem.Columns.Add("ID", size, HorizontalAlignment.Center);
+                lvItem.Columns.Add("Item Name", size, HorizontalAlignment.Center);
+                lvItem.Columns.Add("Description", size, HorizontalAlignment.Center);
+                lvItem.Columns.Add("Price", size, HorizontalAlignment.Center);
+                lvItem.Columns.Add("Quantity", size, HorizontalAlignment.Center);
+                lvItem.Columns.Add("Vendor Codes", size, HorizontalAlignment.Center);
+                string items = session.SearchItems(item);
+                List<string> stringList = items.Split(',').ToList<string>();
+                for (int i = 0; i < stringList.Count(); i++)
+                {
+                    if (stringList[i] == "")
+                    {
+                        stringList.RemoveAt(i);
+                        i--;
+                    }
+                }
+                stringList.Insert(0, "");
+                for (int i = 1; i < stringList.Count(); i += 7)
+                {
+                    lvItem.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1],
+                    stringList[i + 2], "$" + stringList[i + 4], stringList[i + 5] , stringList[i + 6] }));
+                }
+            }
+            else
+            {
+                DisplayError("Error: Invalid search request.");
+            }
         }
 
         // Sets up the employee listview
@@ -392,6 +423,181 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void btnAddItemTag_Click(object sender, EventArgs e)
+        {
+            string tag = txtItemTags.Text;
+            if (tag == "")
+            {
+                DisplayError("Error: You must add a tag first.");
+            }
+            else
+            {
+                ClearError();
+                lbItemTags.Items.Add(tag);
+                txtItemTags.Text = "";
+            }
+        }
+
+        private void btnRemoveItemTag_Click(object sender, EventArgs e)
+        {
+            if (lbItemTags.SelectedIndex == -1)
+            {
+                DisplayError("Error: You must select a tag to remove.");
+            }
+            else
+            {
+                ClearError();
+                lbItemTags.Items.RemoveAt(lbItemTags.SelectedIndex);
+                lbItemTags.SelectedIndex = -1;
+            }
+        }
+
+        private void txtItemTags_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = btnAddItemTag;
+        }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            AddItem();
+        }
+
+        private void AddItem()
+        {
+            string name = txtItemName.Text;
+            string desc = txtItemDesc.Text;
+            string price = txtItemPrice.Text;
+            string qty = txtItemQty.Text;
+            string venCode = txtVenCode.Text;
+
+            if (name == "" || desc == "" || price == "" || qty == "" || venCode == "")
+            {
+                DisplayError("Error: Please make sure all fields are filled out.");
+            }
+            else if (lbItemTags.Items.Count == 0)
+            {
+                DisplayError("Error: Please make sure tags are added.");
+            }
+            else if (desc.Contains(','))
+            {
+                DisplayError("Error: Commas are not allowed in the Description.");
+            }
+            else
+            {
+                string tags = parseTags();
+                float numPrice;
+                int numQty, numVenCode;
+                if (float.TryParse(price, out numPrice))
+                {
+                    if (int.TryParse(qty, out numQty))
+                    {
+                        if (int.TryParse(venCode, out numVenCode))
+                        {
+                            ClearError();
+                            if (session.AddItems(name, desc, tags, numPrice, numQty, numVenCode))
+                            {
+                                MessageBox.Show("Item was added!");
+                                ItemList();
+                                clearItemAdd();
+                            }
+                            else
+                            {
+                                DisplayError("Error: The Item Could Not Be Added.");
+                            }
+                        }
+                        else
+                        {
+                            DisplayError("Error: Issue with the Vendor Code.");
+                        }
+                    }
+                    else
+                    {
+                        DisplayError("Error: Issue with the Quantity textbox.");
+                    }
+                }
+                else
+                {
+                    DisplayError("Error: Issue with the Price textbox.");
+                }
+            }
+        }
+
+        private string parseTags()
+        {
+            string Tags = "";
+            for (int i = 0; i < lbItemTags.Items.Count; i++)
+            {
+                if (i != 0)
+                {
+                    Tags += " | ";
+                }
+                Tags += lbItemTags.Items[i];
+            }
+            MessageBox.Show(Tags);
+            return Tags;
+        }
+
+        // Button calls function to remove items from database
+        private void btnDeleteItem_Click(object sender, EventArgs e)
+        {
+            deleteItems();
+        }
+
+        //deletes an item from database
+        private void deleteItems()
+        {
+            string name = txtDeleteItemName.Text;
+            string confirm = txtDeleteItemNameConfirm.Text;
+            string ID = txtDeleteItemID.Text;
+            int numID;
+            if (name == "" || confirm == "" || ID == "")
+            {
+                DisplayError("Error: Make sure all fields are filled out.");
+            }
+            else if (int.TryParse(ID, out numID))
+            {
+                if (name == confirm)
+                {
+                    if (session.DeleteItem(numID, name))
+                    {
+                        ClearError();
+                        ItemList();
+                        clearItemDelete();
+                    }
+                    else
+                    {
+                        DisplayError("Error: Item Could Not Be Found.");
+                    }
+                }
+                else
+                {
+                    DisplayError("Error: Item Names Must Match.");
+                }
+            }
+            else
+            {
+                DisplayError("Error: Check The ID And Try Again.");
+            }
+        }
+
+        private void clearItemDelete()
+        {
+            txtDeleteItemName.Text = "";
+            txtDeleteItemNameConfirm.Text = "";
+            txtDeleteItemID.Text = "";
+        }
+
+        private void clearItemAdd()
+        {
+            txtItemName.Text = "";
+            txtItemDesc.Text = "";
+            txtItemTags.Text = "";
+            txtItemPrice.Text = "";
+            txtItemQty.Text = "";
+            txtVenCode.Text = "";
+            lbItemTags.Items.Clear();
+        }
+
         //**************
         //*  End Item  *
         //**************
@@ -408,13 +614,11 @@ namespace WindowsFormsApplication1
 
             if(isInEditMode)
             {
-                orderViewButton.BackColor = Color.White;
-                orderEditButton.BackColor = Color.Gray;
+                orderEditButton_Click(null, null);
             }
             else
             {
-                orderViewButton.BackColor = Color.Gray;
-                orderEditButton.BackColor = Color.White;
+                orderViewButton_Click(null, null);
             }
 
             changeNav(ORDER_NAV_ID);
@@ -494,13 +698,11 @@ namespace WindowsFormsApplication1
 
             if(isInEditMode)
             {
-                warehouseEditButton.BackColor = Color.Gray;
-                warehouseViewButton.BackColor = Color.White;
+                warehouseEditButton_Click(null, null);
             }
             else
             {
-                warehouseViewButton.BackColor = Color.Gray;
-                warehouseEditButton.BackColor = Color.White;
+                warehouseViewButton_Click(null, null);
             }
 
             changeNav(WAREHOUSE_NAV_ID);
@@ -537,14 +739,11 @@ namespace WindowsFormsApplication1
 
             if (isInEditMode)
             {
-                employeeEditButton.BackColor = Color.Gray;
-                employeeViewButton.BackColor = Color.White;
+                employeeEditButton_Click(null, null);
             }
             else
             {
-                employeeEditButton.BackColor = Color.White;
-                employeeViewButton.BackColor = Color.Gray;
-                pnEmployeeEdit.Hide();
+                employeeViewButton_Click(null, null);
             }
 
             changeNav(EMPLOYEE_NAV_ID);
