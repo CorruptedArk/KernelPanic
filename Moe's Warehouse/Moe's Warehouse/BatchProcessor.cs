@@ -96,17 +96,26 @@ namespace KernalPanic
                         tempDateRequested = vendorShipLines[i].Substring(13, 10);
                         tempDateReceived = vendorShipLines[i].Substring(23, 10);
 
-                        //verify item exists, valid dates, non-zero quantity, fill backorders, deploy remaining amount of inventory to warehouses based on individual item distribution 
-                        if (!session.verifyItem(tempItemID))
+                        //fill backorders, deploy remaining amount of inventory to warehouses based on individual item distribution 
+                        if (!session.verifyItem(tempItemID)) //item doesn't exist
                         {
                             writeLineToLog("Error: Item " + tempItemID + " is invalid");
                         }
-                        else if(tempQuantityReceived <= 0)
+                        else if(!session.vendorOrderExists(tempVendorID, tempItemID, tempDateRequested)) // shipment has no matching order
+                        {
+                            writeLineToLog("Error: vendor shipment vendor: " + tempVendorID + " item: " + tempItemID + " date: " + tempDateRequested + " does not match a vendor order");
+                        }
+                        else if (tempQuantityReceived <= 0) //zero or negative quantity
                         {
                             writeLineToLog(tempQuantityReceived.ToString() + " is an invalid recieved quantity");
                         }
+                        else if (session.vendorShipExists(tempVendorID, tempItemID, tempDateRequested)) // vendor shipment already processed
+                        {
+                            writeLineToLog("Error: vendor shipment vendor: " + tempVendorID + " item: " + tempItemID + " date: " + tempDateRequested + " already exists");
+                        }
                         else
                         {
+                            // fill backorder
                             // Distribute items
                         }
                     }

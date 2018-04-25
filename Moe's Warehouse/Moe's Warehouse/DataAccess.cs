@@ -419,5 +419,65 @@ namespace KernalPanic
                
             }
         }
+
+        public bool vendorOrderExists(int vendorID, int itemID, string date)
+        {
+            bool verified;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("vendorOrderExists", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@vendorID", vendorID);
+                        cmd.Parameters.AddWithValue("@itemID", itemID);
+                        cmd.Parameters.AddWithValue("@reqDate", date);
+                        cmd.Parameters.Add("@verified", MySqlDbType.Bit, 1);
+                        cmd.Parameters["@verified"].Direction = ParameterDirection.Output;
+                        cmd.ExecuteReader();
+                        verified = Convert.ToBoolean(cmd.Parameters["@verified"].Value);
+                        connection.Close();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                verified = false;
+            }
+
+            return verified;
+        }
+
+        public bool vendorShipExists(int vendorID, int itemID, string date)
+        {
+            bool verified;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("vendorShipExists", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@vendorID", vendorID);
+                        cmd.Parameters.AddWithValue("@itemID", itemID);
+                        cmd.Parameters.AddWithValue("@reqDate", date);
+                        cmd.Parameters.Add("@verified", MySqlDbType.Bit, 1);
+                        cmd.Parameters["@verified"].Direction = ParameterDirection.Output;
+                        cmd.ExecuteReader();
+                        verified = Convert.ToBoolean(cmd.Parameters["@verified"].Value);
+                        connection.Close();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                verified = false;
+            }
+
+            return verified;
+        }
     }
 }
