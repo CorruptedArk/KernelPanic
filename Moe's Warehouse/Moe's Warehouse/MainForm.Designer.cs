@@ -94,9 +94,10 @@
             this.pnItem = new System.Windows.Forms.Panel();
             this.lvItem = new System.Windows.Forms.ListView();
             this.pnItemViewEdit = new System.Windows.Forms.Panel();
-            this.itemViewButton = new System.Windows.Forms.Button();
+            this.btnItemRefresh = new System.Windows.Forms.PictureBox();
             this.itemSearchButton = new System.Windows.Forms.Button();
             this.itemEditButton = new System.Windows.Forms.Button();
+            this.itemViewButton = new System.Windows.Forms.Button();
             this.itemSearchBox = new System.Windows.Forms.TextBox();
             this.orderPanel = new System.Windows.Forms.Panel();
             this.pnOrderViewEdit = new System.Windows.Forms.Panel();
@@ -111,6 +112,8 @@
             this.employeePanel = new System.Windows.Forms.Panel();
             this.pnEmployeeEdit = new System.Windows.Forms.Panel();
             this.gbDeleteUser = new System.Windows.Forms.GroupBox();
+            this.txtDeleteEmployeeID = new System.Windows.Forms.TextBox();
+            this.lblDeleteEmployeeID = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtConfirmDelete = new System.Windows.Forms.TextBox();
             this.txtDeleteUser = new System.Windows.Forms.TextBox();
@@ -159,6 +162,7 @@
             this.gbAddItems.SuspendLayout();
             this.pnItem.SuspendLayout();
             this.pnItemViewEdit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnItemRefresh)).BeginInit();
             this.orderPanel.SuspendLayout();
             this.pnOrderViewEdit.SuspendLayout();
             this.warehousePanel.SuspendLayout();
@@ -633,7 +637,7 @@
             this.btnDeleteItem.Location = new System.Drawing.Point(3, 270);
             this.btnDeleteItem.Name = "btnDeleteItem";
             this.btnDeleteItem.Size = new System.Drawing.Size(347, 31);
-            this.btnDeleteItem.TabIndex = 6;
+            this.btnDeleteItem.TabIndex = 3;
             this.btnDeleteItem.Text = "Delete An Item";
             this.btnDeleteItem.UseVisualStyleBackColor = true;
             this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
@@ -646,7 +650,7 @@
             this.txtDeleteItemID.Location = new System.Drawing.Point(174, 104);
             this.txtDeleteItemID.Name = "txtDeleteItemID";
             this.txtDeleteItemID.Size = new System.Drawing.Size(100, 20);
-            this.txtDeleteItemID.TabIndex = 5;
+            this.txtDeleteItemID.TabIndex = 0;
             // 
             // label1
             // 
@@ -668,7 +672,7 @@
             this.txtDeleteItemNameConfirm.Location = new System.Drawing.Point(174, 156);
             this.txtDeleteItemNameConfirm.Name = "txtDeleteItemNameConfirm";
             this.txtDeleteItemNameConfirm.Size = new System.Drawing.Size(100, 20);
-            this.txtDeleteItemNameConfirm.TabIndex = 3;
+            this.txtDeleteItemNameConfirm.TabIndex = 2;
             // 
             // lblDeleteItemNameConfirm
             // 
@@ -897,9 +901,10 @@
             // 
             // pnItemViewEdit
             // 
-            this.pnItemViewEdit.Controls.Add(this.itemViewButton);
+            this.pnItemViewEdit.Controls.Add(this.btnItemRefresh);
             this.pnItemViewEdit.Controls.Add(this.itemSearchButton);
             this.pnItemViewEdit.Controls.Add(this.itemEditButton);
+            this.pnItemViewEdit.Controls.Add(this.itemViewButton);
             this.pnItemViewEdit.Controls.Add(this.itemSearchBox);
             this.pnItemViewEdit.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnItemViewEdit.Location = new System.Drawing.Point(0, 0);
@@ -907,22 +912,23 @@
             this.pnItemViewEdit.Size = new System.Drawing.Size(1012, 43);
             this.pnItemViewEdit.TabIndex = 4;
             // 
-            // itemViewButton
+            // btnItemRefresh
             // 
-            this.itemViewButton.BackColor = System.Drawing.Color.Gray;
-            this.itemViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.itemViewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemViewButton.Location = new System.Drawing.Point(0, 0);
-            this.itemViewButton.Name = "itemViewButton";
-            this.itemViewButton.Size = new System.Drawing.Size(121, 43);
-            this.itemViewButton.TabIndex = 1;
-            this.itemViewButton.Text = "View";
-            this.itemViewButton.UseVisualStyleBackColor = false;
-            this.itemViewButton.Click += new System.EventHandler(this.itemViewButton_Click);
+            this.btnItemRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnItemRefresh.Image = global::KernalPanic.Properties.Resources.reset;
+            this.btnItemRefresh.Location = new System.Drawing.Point(711, 0);
+            this.btnItemRefresh.Name = "btnItemRefresh";
+            this.btnItemRefresh.Size = new System.Drawing.Size(45, 43);
+            this.btnItemRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnItemRefresh.TabIndex = 4;
+            this.btnItemRefresh.TabStop = false;
+            this.btnItemRefresh.Click += new System.EventHandler(this.btnItemRefresh_Click);
             // 
             // itemSearchButton
             // 
-            this.itemSearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemSearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.itemSearchButton.Location = new System.Drawing.Point(920, 10);
             this.itemSearchButton.Name = "itemSearchButton";
             this.itemSearchButton.Size = new System.Drawing.Size(63, 24);
@@ -933,6 +939,7 @@
             // 
             // itemEditButton
             // 
+            this.itemEditButton.Dock = System.Windows.Forms.DockStyle.Left;
             this.itemEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.itemEditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemEditButton.Location = new System.Drawing.Point(121, 0);
@@ -943,9 +950,24 @@
             this.itemEditButton.UseVisualStyleBackColor = true;
             this.itemEditButton.Click += new System.EventHandler(this.itemEditButton_Click);
             // 
+            // itemViewButton
+            // 
+            this.itemViewButton.BackColor = System.Drawing.Color.Gray;
+            this.itemViewButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.itemViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.itemViewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemViewButton.Location = new System.Drawing.Point(0, 0);
+            this.itemViewButton.Name = "itemViewButton";
+            this.itemViewButton.Size = new System.Drawing.Size(121, 43);
+            this.itemViewButton.TabIndex = 1;
+            this.itemViewButton.Text = "View";
+            this.itemViewButton.UseVisualStyleBackColor = false;
+            this.itemViewButton.Click += new System.EventHandler(this.itemViewButton_Click);
+            // 
             // itemSearchBox
             // 
-            this.itemSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.itemSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemSearchBox.Location = new System.Drawing.Point(762, 10);
             this.itemSearchBox.Name = "itemSearchBox";
@@ -1090,6 +1112,8 @@
             // 
             // gbDeleteUser
             // 
+            this.gbDeleteUser.Controls.Add(this.txtDeleteEmployeeID);
+            this.gbDeleteUser.Controls.Add(this.lblDeleteEmployeeID);
             this.gbDeleteUser.Controls.Add(this.btnDelete);
             this.gbDeleteUser.Controls.Add(this.txtConfirmDelete);
             this.gbDeleteUser.Controls.Add(this.txtDeleteUser);
@@ -1103,13 +1127,29 @@
             this.gbDeleteUser.TabStop = false;
             this.gbDeleteUser.Text = "Delete User:";
             // 
+            // txtDeleteEmployeeID
+            // 
+            this.txtDeleteEmployeeID.Location = new System.Drawing.Point(116, 62);
+            this.txtDeleteEmployeeID.Name = "txtDeleteEmployeeID";
+            this.txtDeleteEmployeeID.Size = new System.Drawing.Size(117, 20);
+            this.txtDeleteEmployeeID.TabIndex = 0;
+            // 
+            // lblDeleteEmployeeID
+            // 
+            this.lblDeleteEmployeeID.AutoSize = true;
+            this.lblDeleteEmployeeID.Location = new System.Drawing.Point(37, 65);
+            this.lblDeleteEmployeeID.Name = "lblDeleteEmployeeID";
+            this.lblDeleteEmployeeID.Size = new System.Drawing.Size(70, 13);
+            this.lblDeleteEmployeeID.TabIndex = 3;
+            this.lblDeleteEmployeeID.Text = "Employee ID:";
+            // 
             // btnDelete
             // 
             this.btnDelete.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnDelete.Location = new System.Drawing.Point(3, 222);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(263, 33);
-            this.btnDelete.TabIndex = 4;
+            this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete A User";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -1119,20 +1159,20 @@
             this.txtConfirmDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConfirmDelete.Location = new System.Drawing.Point(125, 107);
+            this.txtConfirmDelete.Location = new System.Drawing.Point(116, 113);
             this.txtConfirmDelete.Name = "txtConfirmDelete";
             this.txtConfirmDelete.Size = new System.Drawing.Size(117, 20);
-            this.txtConfirmDelete.TabIndex = 3;
+            this.txtConfirmDelete.TabIndex = 2;
             // 
             // txtDeleteUser
             // 
             this.txtDeleteUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDeleteUser.Location = new System.Drawing.Point(125, 81);
+            this.txtDeleteUser.Location = new System.Drawing.Point(116, 87);
             this.txtDeleteUser.Name = "txtDeleteUser";
             this.txtDeleteUser.Size = new System.Drawing.Size(117, 20);
-            this.txtDeleteUser.TabIndex = 2;
+            this.txtDeleteUser.TabIndex = 1;
             // 
             // lblConfirm
             // 
@@ -1140,7 +1180,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblConfirm.AutoSize = true;
-            this.lblConfirm.Location = new System.Drawing.Point(20, 110);
+            this.lblConfirm.Location = new System.Drawing.Point(11, 116);
             this.lblConfirm.Name = "lblConfirm";
             this.lblConfirm.Size = new System.Drawing.Size(96, 13);
             this.lblConfirm.TabIndex = 1;
@@ -1152,7 +1192,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDeleteUser.AutoSize = true;
-            this.lblDeleteUser.Location = new System.Drawing.Point(58, 84);
+            this.lblDeleteUser.Location = new System.Drawing.Point(49, 90);
             this.lblDeleteUser.Name = "lblDeleteUser";
             this.lblDeleteUser.Size = new System.Drawing.Size(58, 13);
             this.lblDeleteUser.TabIndex = 0;
@@ -1206,7 +1246,7 @@
             this.btnSubmitNewUser.Location = new System.Drawing.Point(3, 222);
             this.btnSubmitNewUser.Name = "btnSubmitNewUser";
             this.btnSubmitNewUser.Size = new System.Drawing.Size(341, 33);
-            this.btnSubmitNewUser.TabIndex = 0;
+            this.btnSubmitNewUser.TabIndex = 4;
             this.btnSubmitNewUser.Text = "Add A User";
             this.btnSubmitNewUser.UseVisualStyleBackColor = true;
             this.btnSubmitNewUser.Click += new System.EventHandler(this.btnSubmitNewUser_Click);
@@ -1232,7 +1272,7 @@
             this.cbAdmin.Location = new System.Drawing.Point(111, 134);
             this.cbAdmin.Name = "cbAdmin";
             this.cbAdmin.Size = new System.Drawing.Size(103, 17);
-            this.cbAdmin.TabIndex = 1;
+            this.cbAdmin.TabIndex = 3;
             this.cbAdmin.Text = "Admin Privileges";
             this.cbAdmin.UseVisualStyleBackColor = true;
             // 
@@ -1244,7 +1284,7 @@
             this.txtUsername.Location = new System.Drawing.Point(111, 56);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(201, 20);
-            this.txtUsername.TabIndex = 2;
+            this.txtUsername.TabIndex = 0;
             // 
             // txtConfirmPass
             // 
@@ -1254,7 +1294,7 @@
             this.txtConfirmPass.Location = new System.Drawing.Point(111, 108);
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.Size = new System.Drawing.Size(201, 20);
-            this.txtConfirmPass.TabIndex = 4;
+            this.txtConfirmPass.TabIndex = 2;
             this.txtConfirmPass.UseSystemPasswordChar = true;
             // 
             // txtNewPass
@@ -1265,7 +1305,7 @@
             this.txtNewPass.Location = new System.Drawing.Point(111, 82);
             this.txtNewPass.Name = "txtNewPass";
             this.txtNewPass.Size = new System.Drawing.Size(201, 20);
-            this.txtNewPass.TabIndex = 3;
+            this.txtNewPass.TabIndex = 1;
             this.txtNewPass.UseSystemPasswordChar = true;
             // 
             // pnEmployeeList
@@ -1362,12 +1402,12 @@
             this.Controls.Add(this.pnStatus);
             this.Controls.Add(this.pnNav);
             this.Controls.Add(this.pnBanner);
-            this.Controls.Add(this.loginPanel);
-            this.Controls.Add(this.batchPanel);
             this.Controls.Add(this.employeePanel);
             this.Controls.Add(this.warehousePanel);
             this.Controls.Add(this.itemPanel);
             this.Controls.Add(this.orderPanel);
+            this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.batchPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1000, 670);
             this.Name = "FormMain";
@@ -1407,6 +1447,7 @@
             this.pnItem.ResumeLayout(false);
             this.pnItemViewEdit.ResumeLayout(false);
             this.pnItemViewEdit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnItemRefresh)).EndInit();
             this.orderPanel.ResumeLayout(false);
             this.pnOrderViewEdit.ResumeLayout(false);
             this.pnOrderViewEdit.PerformLayout();
@@ -1533,6 +1574,9 @@
         private System.Windows.Forms.Label lblDeleteItemNameConfirm;
         private System.Windows.Forms.TextBox txtDeleteItemName;
         private System.Windows.Forms.Label lblDeleteItemName;
+        private System.Windows.Forms.PictureBox btnItemRefresh;
+        private System.Windows.Forms.TextBox txtDeleteEmployeeID;
+        private System.Windows.Forms.Label lblDeleteEmployeeID;
     }
 }
 

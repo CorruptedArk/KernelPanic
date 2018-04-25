@@ -300,6 +300,7 @@ namespace WindowsFormsApplication1
             }
 
             changeNav(ITEM_NAV_ID);
+            btnItemRefresh.Hide();
             ItemList();
         }
 
@@ -347,7 +348,15 @@ namespace WindowsFormsApplication1
             if (itemSearchBox.Text == "")
             {
                 itemSearchBox.Text = "Search";
+                ItemList();
             }
+        }
+
+        private void btnItemRefresh_Click(object sender, EventArgs e)
+        {
+            ItemList();
+            btnItemRefresh.Hide();
+            itemSearchBox.Text = "Search";
         }
 
         private void itemSearchButton_Click(object sender, EventArgs e)
@@ -374,7 +383,7 @@ namespace WindowsFormsApplication1
                         i--;
                     }
                 }
-                stringList.Insert(0, "");
+                stringList.Insert(0, ""); // fixes a parsing error
                 for (int i = 1; i < stringList.Count(); i += 7)
                 {
                     lvItem.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1],
@@ -385,9 +394,10 @@ namespace WindowsFormsApplication1
             {
                 DisplayError("Error: Invalid search request.");
             }
+            btnItemRefresh.Show();
         }
 
-        // Sets up the employee listview
+        // Sets up the Item listview
         private void ItemList()
         {
             lvItem.Clear();
@@ -533,7 +543,6 @@ namespace WindowsFormsApplication1
                 }
                 Tags += lbItemTags.Items[i];
             }
-            MessageBox.Show(Tags);
             return Tags;
         }
 
@@ -841,6 +850,9 @@ namespace WindowsFormsApplication1
                 {
                     MessageBox.Show("User was successfully added!");
                     EmployeeList();
+                    txtUsername.Text = "";
+                    txtNewPass.Text = "";
+                    txtConfirmPass.Text = "";
                 }
                 else
                 {
@@ -851,8 +863,10 @@ namespace WindowsFormsApplication1
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            string ID = txtDeleteEmployeeID.Text;
             string user = txtDeleteUser.Text;
             string confirmUser = txtConfirmDelete.Text;
+            int numID;
             if(user == "")
             {
                 DisplayError("Error: A Username Must Be Entered");
@@ -867,15 +881,25 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                ClearError();
-                if (session.deleteEmployee(user))
+                if(int.TryParse(ID, out numID))
                 {
-                    MessageBox.Show("User was successfully deleted!");
-                    EmployeeList();
+                    ClearError();
+                    if (session.deleteEmployee(user, numID))
+                    {
+                        MessageBox.Show("User was successfully deleted!");
+                        EmployeeList();
+                        txtDeleteEmployeeID.Text = "";
+                        txtDeleteUser.Text = "";
+                        txtConfirmDelete.Text = "";
+                    }
+                    else
+                    {
+                        DisplayError("Error: User could not be found.");
+                    }
                 }
                 else
                 {
-                    DisplayError("Error: User could not be found.");
+                    DisplayError("Error: Check The ID And Try Again.");
                 }
             }
         }
