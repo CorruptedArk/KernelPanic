@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Dapper;
-using System.Threading.Tasks;
 using System.Data;
-using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
-using System.Windows.Forms;
 
 namespace KernalPanic
 {
@@ -159,6 +152,7 @@ namespace KernalPanic
                         connection.Close();
                     }
                 }
+                UpdateItemID(ID);
                 return true;
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
@@ -218,6 +212,26 @@ namespace KernalPanic
                 }
             }
             return returnValue;
+        }
+
+        public void UpdateItemID(int currentRow)
+        {
+            int rows = countItems();
+            for (int row = currentRow; row <= rows; row++)
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("UpdateItemID", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open(); // open connection
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@IDnum", row + 1);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@newID", row);  // set first sp parameter to name
+                        cmd.ExecuteReader(); // execute sp
+                        connection.Close();
+                    }
+                }
+            }
         }
 
         //////////////////////////////////// End Item Data ////////////////////////////////////
@@ -288,7 +302,7 @@ namespace KernalPanic
         }
 
         // remove employee from database
-        public bool deleteEmployee(string user)
+        public bool deleteEmployee(string user, int ID)
         {
             try
             {
@@ -303,11 +317,32 @@ namespace KernalPanic
                         connection.Close();
                     }
                 }
+                UpdateEmployeeID(ID);
                 return true;
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
                 return false;
+            }
+        }
+
+        public void UpdateEmployeeID(int currentRow)
+        {
+            int rows = countAccounts();
+            for (int row = currentRow; row <= rows; row++)
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("UpdateEmployeeID", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open(); // open connection
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@IDnum", row + 1);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@newID", row);  // set first sp parameter to name
+                        cmd.ExecuteReader(); // execute sp
+                        connection.Close();
+                    }
+                }
             }
         }
 
