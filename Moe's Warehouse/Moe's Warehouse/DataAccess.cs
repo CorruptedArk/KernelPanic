@@ -97,8 +97,7 @@ namespace KernalPanic
                         tmpItems.Tags = (string)reader["Tags"];
                         float.TryParse(reader["Price"].ToString(), out ftNum);
                         tmpItems.Price = ftNum;
-                        int.TryParse(reader["Quantity"].ToString(), out num);
-                        tmpItems.Qty = num;
+                        tmpItems.Qty = getItemQuantity(tmpItems.ID);
                         int.TryParse(reader["Vendor Code"].ToString(), out num);
                         tmpItems.VenCode = num;
                         items.Add(tmpItems);
@@ -112,8 +111,44 @@ namespace KernalPanic
             return items;
         }
 
+        private int getItemQuantity(int row)
+        {
+            MySqlDataReader reader;
+            int totalQuantity = 0, parser;
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandText = "select * from ITEM_WAREHOUSE where ItemID = " + row.ToString() + ";";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    int.TryParse(reader["Ware1"].ToString(), out parser);
+                    totalQuantity += parser;
+                    int.TryParse(reader["Ware2"].ToString(), out parser);
+                    totalQuantity += parser;
+                    int.TryParse(reader["Ware3"].ToString(), out parser);
+                    totalQuantity += parser;
+                    int.TryParse(reader["Ware4"].ToString(), out parser);
+                    totalQuantity += parser;
+                    int.TryParse(reader["Ware5"].ToString(), out parser);
+                    totalQuantity += parser;
+                    int.TryParse(reader["Ware6"].ToString(), out parser);
+                    totalQuantity += parser;
+                    int.TryParse(reader["Ware7"].ToString(), out parser);
+                    totalQuantity += parser;
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex) { }
+            return totalQuantity;
+        }
+
         // adds new Items to database
-        public bool AddItems(string name, string desc, string tags, float price, int qty, int vencode)
+        public int AddItems(string name, string desc, string tags, float price, int qty, int vencode)
         {
             int rows = countItems() + 1;
             try
@@ -129,17 +164,17 @@ namespace KernalPanic
                         cmd.Parameters.AddWithValue("@descr", desc);  // set first sp parameter to name
                         cmd.Parameters.AddWithValue("@tags", tags);  // set first sp parameter to name
                         cmd.Parameters.AddWithValue("@cost", price);  // set first sp parameter to name
-                        cmd.Parameters.AddWithValue("@qty", qty);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@qty", qty);  // set first sp parameter to name -------------------REMOVE
                         cmd.Parameters.AddWithValue("@venCode", vencode);  // set first sp parameter to name
                         cmd.ExecuteReader(); // execute sp
                         connection.Close();
                     }
                 }
-                return true;
+                return rows;
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                return false;
+                return -1;
             }
         }
 
