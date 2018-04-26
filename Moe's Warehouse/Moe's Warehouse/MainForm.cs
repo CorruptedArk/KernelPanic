@@ -167,7 +167,12 @@ namespace WindowsFormsApplication1
                     }
                     break;
                 case ORDER_NAV_ID:
-                    // Add If Needed
+                    // resizes listview columns, to keep everything within margins
+                    maxSize = (lvOrders.Width - 4) / 4;
+                    for (int i = 0; i < lvOrders.Columns.Count; i++)
+                    {
+                        lvOrders.Columns[i].Width = maxSize;
+                    }
                     break;
                 case WAREHOUSE_NAV_ID:
                     // resizes listview columns, to keep everything within margins
@@ -175,6 +180,10 @@ namespace WindowsFormsApplication1
                     for (int i = 0; i < lvWarehouses.Columns.Count; i++)
                     {
                         lvWarehouses.Columns[i].Width = maxSize;
+                    }
+                    for (int i = 0; i < lvWarehouseItems.Columns.Count; i++)
+                    {
+                        lvWarehouseItems.Columns[i].Width = maxSize;
                     }
                     break;
                 case EMPLOYEE_NAV_ID:
@@ -496,7 +505,7 @@ namespace WindowsFormsApplication1
             {
                 string tags = parseTags();
                 float numPrice;
-                int numQty, numVenCode;
+                int numQty, numVenCode, newID;
                 if (float.TryParse(price, out numPrice))
                 {
                     if (int.TryParse(qty, out numQty))
@@ -504,7 +513,8 @@ namespace WindowsFormsApplication1
                         if (int.TryParse(venCode, out numVenCode))
                         {
                             ClearError();
-                            if (session.AddItems(name, desc, tags, numPrice, numQty, numVenCode))
+                            newID = session.AddItems(name, desc, tags, numPrice, numQty, numVenCode);
+                            if (newID != -1)
                             {
                                 MessageBox.Show("Item was added!");
                                 ItemList(true);
