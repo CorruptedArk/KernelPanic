@@ -853,15 +853,29 @@ namespace WindowsFormsApplication1
 
         private void lvWarehouses_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            int ID;
             int size = (lvWarehouseItems.Width - 15) / 3; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
-            lvWarehouseItems.Columns.Add("ID", 50, HorizontalAlignment.Center);
-            lvWarehouseItems.Columns.Add("Item Name", size, HorizontalAlignment.Center);
-            lvWarehouseItems.Columns.Add("Quantity", size, HorizontalAlignment.Center);
+            
             if (lvWarehouses.SelectedItems.Count != 0)
             {
-                // TODO: Add Warehouse Quantity Information To lvWarehouseItems ListView
-                MessageBox.Show(lvWarehouses.SelectedItems[0].Text);
+                lvWarehouseItems.Clear();
+                lvWarehouseItems.View = View.Details;
+                lvWarehouseItems.Columns.Add("ID", 50, HorizontalAlignment.Center);
+                lvWarehouseItems.Columns.Add("Item Name", size, HorizontalAlignment.Center);
+                lvWarehouseItems.Columns.Add("Quantity", size, HorizontalAlignment.Center);
+                int.TryParse(lvWarehouses.SelectedItems[0].Text, out ID);
+                List<WarhouseItem> WareItems = session.getWarehouseItems(ID);
+                for(int i = 0; i < WareItems.Count(); i++)
+                {
+                    for(int j = 0; j < items.Count(); j++)
+                    {
+                        if(WareItems[i].ID == items[j].ID)
+                        {
+                            WareItems[i].Name = items[j].Name;
+                            lvWarehouseItems.Items.Add(new ListViewItem(new[] { WareItems[i].ID.ToString(), WareItems[i].Name, WareItems[i].Qty.ToString() }));
+                        }
+                    }
+                }
             }
         }
 
