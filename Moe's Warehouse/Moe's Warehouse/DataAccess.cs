@@ -398,6 +398,43 @@ namespace KernalPanic
             return warehouses;
         }
 
+        // gathers all warehouses to be displayed
+        public List<WarhouseItem> getWarehouseItems(int row)
+        {
+            string column = "Ware" + row.ToString();
+            List<WarhouseItem> warehouseItems = new List<WarhouseItem>();
+            WarhouseItem tmpWarehouseItems;
+            MySqlDataReader reader;
+            int num;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandText = "select ItemID, " + column + " from ITEM_WAREHOUSE";
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        tmpWarehouseItems = new WarhouseItem();
+                        int.TryParse(reader["ItemID"].ToString(), out num);
+                        tmpWarehouseItems.ID = num;
+                        int.TryParse(reader[column].ToString(), out num);
+                        if (num != 0)
+                        {
+                            tmpWarehouseItems.Qty = num;
+                            warehouseItems.Add(tmpWarehouseItems);
+                        }
+                    }
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex) { }
+
+            return warehouseItems;
+        }
+
         // counts number of items in database
         // Kept in case needed in later
         /*private int countWarehouses()

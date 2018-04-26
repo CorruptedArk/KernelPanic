@@ -124,7 +124,6 @@
             this.orderEditButton = new System.Windows.Forms.Button();
             this.warehousePanel = new System.Windows.Forms.Panel();
             this.gbItemsInWarehouse = new System.Windows.Forms.GroupBox();
-            this.lvWarehouseItems = new System.Windows.Forms.ListView();
             this.gbWarehouseInfo = new System.Windows.Forms.GroupBox();
             this.lvWarehouses = new System.Windows.Forms.ListView();
             this.employeePanel = new System.Windows.Forms.Panel();
@@ -154,6 +153,7 @@
             this.batchPanel = new System.Windows.Forms.Panel();
             this.picBatch = new System.Windows.Forms.PictureBox();
             this.batchTestLabel = new System.Windows.Forms.Label();
+            this.lvWarehouseItems = new System.Windows.Forms.ListView();
             this.pnBanner.SuspendLayout();
             this.pnCompName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -623,8 +623,6 @@
             // 
             this.pnEditItems.Controls.Add(this.pnDeleteItem);
             this.pnEditItems.Controls.Add(this.pnAddItems);
-            this.pnEditItems.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnEditItems.Location = new System.Drawing.Point(0, 365);
             this.pnEditItems.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnEditItems.Location = new System.Drawing.Point(0, 278);
             this.pnEditItems.Name = "pnEditItems";
@@ -1020,7 +1018,6 @@
             this.pnEditOrder.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnEditOrder.Location = new System.Drawing.Point(0, 359);
             this.pnEditOrder.Margin = new System.Windows.Forms.Padding(2);
-            this.pnEditOrder.Margin = new System.Windows.Forms.Padding(2);
             this.pnEditOrder.Name = "pnEditOrder";
             this.pnEditOrder.Size = new System.Drawing.Size(1013, 254);
             this.pnEditOrder.TabIndex = 6;
@@ -1098,7 +1095,6 @@
             this.rbOrderAdd.AutoSize = true;
             this.rbOrderAdd.Location = new System.Drawing.Point(192, 44);
             this.rbOrderAdd.Margin = new System.Windows.Forms.Padding(2);
-            this.rbOrderAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rbOrderAdd.Name = "rbOrderAdd";
             this.rbOrderAdd.Size = new System.Drawing.Size(73, 17);
             this.rbOrderAdd.TabIndex = 4;
@@ -1297,15 +1293,6 @@
             this.gbItemsInWarehouse.TabStop = false;
             this.gbItemsInWarehouse.Text = "Items:";
             // 
-            // lvWarehouseItems
-            // 
-            this.lvWarehouseItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvWarehouseItems.Location = new System.Drawing.Point(3, 18);
-            this.lvWarehouseItems.Name = "lvWarehouseItems";
-            this.lvWarehouseItems.Size = new System.Drawing.Size(1007, 205);
-            this.lvWarehouseItems.TabIndex = 0;
-            this.lvWarehouseItems.UseCompatibleStateImageBehavior = false;
-            // 
             // gbWarehouseInfo
             // 
             this.gbWarehouseInfo.Controls.Add(this.lvWarehouses);
@@ -1349,8 +1336,6 @@
             // 
             this.pnEmployeeEdit.Controls.Add(this.gbDeleteUser);
             this.pnEmployeeEdit.Controls.Add(this.gbAddUser);
-            this.pnEmployeeEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnEmployeeEdit.Location = new System.Drawing.Point(0, 413);
             this.pnEmployeeEdit.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnEmployeeEdit.Location = new System.Drawing.Point(0, 342);
             this.pnEmployeeEdit.Name = "pnEmployeeEdit";
@@ -1640,6 +1625,17 @@
             this.batchTestLabel.TabIndex = 0;
             this.batchTestLabel.Text = "Batch";
             // 
+            // lvWarehouseItems
+            // 
+            this.lvWarehouseItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvWarehouseItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvWarehouseItems.Location = new System.Drawing.Point(3, 18);
+            this.lvWarehouseItems.MultiSelect = false;
+            this.lvWarehouseItems.Name = "lvWarehouseItems";
+            this.lvWarehouseItems.Size = new System.Drawing.Size(1007, 205);
+            this.lvWarehouseItems.TabIndex = 1;
+            this.lvWarehouseItems.UseCompatibleStateImageBehavior = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1649,12 +1645,12 @@
             this.Controls.Add(this.pnStatus);
             this.Controls.Add(this.pnNav);
             this.Controls.Add(this.pnBanner);
-            this.Controls.Add(this.loginPanel);
-            this.Controls.Add(this.batchPanel);
-            this.Controls.Add(this.employeePanel);
             this.Controls.Add(this.warehousePanel);
             this.Controls.Add(this.itemPanel);
             this.Controls.Add(this.orderPanel);
+            this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.batchPanel);
+            this.Controls.Add(this.employeePanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(999, 669);
             this.Name = "FormMain";
@@ -1833,7 +1829,6 @@
         private System.Windows.Forms.GroupBox gbWarehouseInfo;
         private System.Windows.Forms.ListView lvWarehouses;
         private System.Windows.Forms.GroupBox gbItemsInWarehouse;
-        private System.Windows.Forms.ListView lvWarehouseItems;
         private System.Windows.Forms.Panel pnEditOrder;
         private System.Windows.Forms.Panel pnOrderPanel;
         private System.Windows.Forms.ListView lvOrders;
@@ -1850,6 +1845,7 @@
         private System.Windows.Forms.RadioButton rbOrderAdd;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ListView lvWarehouseItems;
     }
 }
 
