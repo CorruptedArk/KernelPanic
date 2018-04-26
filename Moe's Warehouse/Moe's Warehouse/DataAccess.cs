@@ -3,6 +3,7 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Windows.Forms;
+
 namespace KernalPanic
 {
     class DataAccess
@@ -175,6 +176,7 @@ namespace KernalPanic
             return orderItemList;
         }
 
+<<<<<<< HEAD
         public List<Order> getOrdersWithItem(Items item)
         {
             List<Order> orderList = new List<Order>();
@@ -289,8 +291,10 @@ namespace KernalPanic
             return customerList;
         }
 
+=======
+>>>>>>> ff979bc28729976b01d7610ffe59728d6e138ba8
         // adds new Items to database
-        public int AddItems(string name, string desc, string tags, float price, int qty, int vencode)
+        public int AddItems(string name, string desc, string tags, float price, int vencode, List<int> qty)
         {
             int rows = countItems() + 1;
             try
@@ -301,13 +305,24 @@ namespace KernalPanic
                     {
                         connection.Open(); // open connection
                         cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Item Information
                         cmd.Parameters.AddWithValue("@IDnum", rows);  // set first sp parameter to name
                         cmd.Parameters.AddWithValue("@itemName", name);  // set first sp parameter to name
                         cmd.Parameters.AddWithValue("@descr", desc);  // set first sp parameter to name
                         cmd.Parameters.AddWithValue("@tags", tags);  // set first sp parameter to name
                         cmd.Parameters.AddWithValue("@cost", price);  // set first sp parameter to name
-                        cmd.Parameters.AddWithValue("@qty", qty);  // set first sp parameter to name -------------------REMOVE
                         cmd.Parameters.AddWithValue("@venCode", vencode);  // set first sp parameter to name
+
+                        // Warhouse Item Quantity
+                        cmd.Parameters.AddWithValue("@Ware1_Qty", vencode);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware2_Qty", vencode);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware3_Qty", vencode);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware4_Qty", vencode);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware5_Qty", vencode);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware6_Qty", vencode);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware7_Qty", vencode);  // set first sp parameter to name
+
                         cmd.ExecuteReader(); // execute sp
                         connection.Close();
                     }
@@ -822,7 +837,99 @@ namespace KernalPanic
                 
             }
         }
-        
+
+        public List<Order> getOrdersWithItem(Items item)
+        {
+            List<Order> orderList = new List<Order>();
+            MySqlDataReader reader;
+            Order tempOrder;
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", item.ID);
+                    cmd.CommandText = "select * from CUSTOMER_ORDER where exists( select * from ORDER_ITEM where ItemID = @itemID AND CUSTOMER_ORDER.OrderNum = ORDER_ITEM.OrderNum)";
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        tempOrder = new Order();
+                        tempOrder.OrderNum = Convert.ToString(reader["OrderNum"]);
+                        tempOrder.CustID = Convert.ToInt32(reader["CustomerID"]);
+                        tempOrder.CustName = Convert.ToString(reader["CustomerShipName"]);
+                        tempOrder.CustStreet = Convert.ToString(reader["CustShipStreet"]);
+                        tempOrder.CustState = Convert.ToString(reader["CustShipState"]);
+                        tempOrder.CustZip = Convert.ToInt32(reader["CustShipZip"]);
+                        tempOrder.OrderDate = Convert.ToString(reader["OrderDate"]);
+                        orderList.Add(tempOrder);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+
+            }
+
+            return orderList;
+        }
+
+        public List<Customer> getCustomersByOrders(List<Order> orders)
+        {
+            List<Customer> customerList = new List<Customer>();
+            MySqlDataReader reader;
+            Customer tempCust;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    for (int i = 0; i < orders.Count; i++)
+                    {
+                        MySqlCommand cmd = connection.CreateCommand();
+                        cmd.Parameters.AddWithValue("@custID", orders[i].CustID);
+                        cmd.CommandText = "select * from CUSTOMER where ID = @custID";
+                        reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            tempCust = new Customer();
+                            tempCust.Id = orders[i].CustID;
+                            tempCust.Name = Convert.ToString(reader["Name"]);
+                            tempCust.Street = Convert.ToString(reader["Street"]);
+                            tempCust.City = Convert.ToString(reader["City"]);
+                            tempCust.State = Convert.ToString(reader["State"]);
+                            tempCust.Zip = Convert.ToInt32(reader["ZipCode"]);
+                            tempCust.PriorityOne = Convert.ToInt32(reader["PriorityOne"]);
+                            tempCust.PriorityTwo = Convert.ToInt32(reader["PriorityTwo"]);
+                            tempCust.PriorityThree = Convert.ToInt32(reader["PriorityThree"]);
+                            tempCust.PriorityFour = Convert.ToInt32(reader["PriorityFour"]);
+                            tempCust.PriorityFive = Convert.ToInt32(reader["PriorityFive"]);
+                            tempCust.PrioritySix = Convert.ToInt32(reader["PrioritySix"]);
+                            tempCust.PrioritySeven = Convert.ToInt32(reader["PrioritySeven"]);
+
+                            if (!customerList.Contains(tempCust))
+                            {
+                                customerList.Add(tempCust);
+                            }
+                        }
+                        reader.Close();
+                    }
+                    connection.Close();
+
+                }
+
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+
+            }
+
+
+            return customerList;
+        }
+
         ///////////////////////////////// End Batch Data /////////////////////////////////
     }
 }
