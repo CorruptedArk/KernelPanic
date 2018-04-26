@@ -101,11 +101,15 @@
             this.itemSearchBox = new System.Windows.Forms.TextBox();
             this.orderPanel = new System.Windows.Forms.Panel();
             this.pnOrderViewEdit = new System.Windows.Forms.Panel();
+            this.btnOrderSearchBack = new System.Windows.Forms.PictureBox();
             this.orderViewButton = new System.Windows.Forms.Button();
             this.orderSearchButton = new System.Windows.Forms.Button();
             this.orderSearchBox = new System.Windows.Forms.TextBox();
             this.orderEditButton = new System.Windows.Forms.Button();
             this.warehousePanel = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbWarehouseInfo = new System.Windows.Forms.GroupBox();
+            this.lvWarehouses = new System.Windows.Forms.ListView();
             this.pnWarehouseViewEdit = new System.Windows.Forms.Panel();
             this.warehouseViewButton = new System.Windows.Forms.Button();
             this.warehouseEditButton = new System.Windows.Forms.Button();
@@ -136,9 +140,6 @@
             this.batchPanel = new System.Windows.Forms.Panel();
             this.picBatch = new System.Windows.Forms.PictureBox();
             this.batchTestLabel = new System.Windows.Forms.Label();
-            this.btnOrderSearchBack = new System.Windows.Forms.PictureBox();
-            this.gbWarehouseInfo = new System.Windows.Forms.GroupBox();
-            this.lvWarehouses = new System.Windows.Forms.ListView();
             this.pnBanner.SuspendLayout();
             this.pnCompName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -168,7 +169,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnItemRefresh)).BeginInit();
             this.orderPanel.SuspendLayout();
             this.pnOrderViewEdit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOrderSearchBack)).BeginInit();
             this.warehousePanel.SuspendLayout();
+            this.gbWarehouseInfo.SuspendLayout();
             this.pnWarehouseViewEdit.SuspendLayout();
             this.employeePanel.SuspendLayout();
             this.pnEmployeeEdit.SuspendLayout();
@@ -178,8 +181,6 @@
             this.pnEmployeeViewEdit.SuspendLayout();
             this.batchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBatch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnOrderSearchBack)).BeginInit();
-            this.gbWarehouseInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnBanner
@@ -1003,6 +1004,18 @@
             this.pnOrderViewEdit.Size = new System.Drawing.Size(1013, 43);
             this.pnOrderViewEdit.TabIndex = 4;
             // 
+            // btnOrderSearchBack
+            // 
+            this.btnOrderSearchBack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOrderSearchBack.Image = global::KernalPanic.Properties.Resources.reset;
+            this.btnOrderSearchBack.Location = new System.Drawing.Point(711, 0);
+            this.btnOrderSearchBack.Name = "btnOrderSearchBack";
+            this.btnOrderSearchBack.Size = new System.Drawing.Size(45, 43);
+            this.btnOrderSearchBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnOrderSearchBack.TabIndex = 5;
+            this.btnOrderSearchBack.TabStop = false;
+            // 
             // orderViewButton
             // 
             this.orderViewButton.BackColor = System.Drawing.Color.Gray;
@@ -1054,12 +1067,46 @@
             // 
             // warehousePanel
             // 
+            this.warehousePanel.Controls.Add(this.groupBox1);
             this.warehousePanel.Controls.Add(this.gbWarehouseInfo);
             this.warehousePanel.Controls.Add(this.pnWarehouseViewEdit);
             this.warehousePanel.Location = new System.Drawing.Point(271, 100);
             this.warehousePanel.Name = "warehousePanel";
             this.warehousePanel.Size = new System.Drawing.Size(1013, 671);
             this.warehousePanel.TabIndex = 4;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox1.Location = new System.Drawing.Point(0, 243);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(322, 428);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // gbWarehouseInfo
+            // 
+            this.gbWarehouseInfo.Controls.Add(this.lvWarehouses);
+            this.gbWarehouseInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbWarehouseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbWarehouseInfo.Location = new System.Drawing.Point(0, 43);
+            this.gbWarehouseInfo.Name = "gbWarehouseInfo";
+            this.gbWarehouseInfo.Size = new System.Drawing.Size(1013, 200);
+            this.gbWarehouseInfo.TabIndex = 3;
+            this.gbWarehouseInfo.TabStop = false;
+            this.gbWarehouseInfo.Text = "Warehouses:";
+            // 
+            // lvWarehouses
+            // 
+            this.lvWarehouses.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvWarehouses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvWarehouses.Location = new System.Drawing.Point(3, 18);
+            this.lvWarehouses.Name = "lvWarehouses";
+            this.lvWarehouses.Size = new System.Drawing.Size(1007, 179);
+            this.lvWarehouses.TabIndex = 0;
+            this.lvWarehouses.UseCompatibleStateImageBehavior = false;
+            this.lvWarehouses.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.lvWarehouses_ColumnWidthChanged);
             // 
             // pnWarehouseViewEdit
             // 
@@ -1402,40 +1449,6 @@
             this.batchTestLabel.TabIndex = 0;
             this.batchTestLabel.Text = "Batch";
             // 
-            // btnOrderSearchBack
-            // 
-            this.btnOrderSearchBack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOrderSearchBack.Image = global::KernalPanic.Properties.Resources.reset;
-            this.btnOrderSearchBack.Location = new System.Drawing.Point(711, 0);
-            this.btnOrderSearchBack.Name = "btnOrderSearchBack";
-            this.btnOrderSearchBack.Size = new System.Drawing.Size(45, 43);
-            this.btnOrderSearchBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnOrderSearchBack.TabIndex = 5;
-            this.btnOrderSearchBack.TabStop = false;
-            // 
-            // gbWarehouseInfo
-            // 
-            this.gbWarehouseInfo.Controls.Add(this.lvWarehouses);
-            this.gbWarehouseInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbWarehouseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbWarehouseInfo.Location = new System.Drawing.Point(0, 43);
-            this.gbWarehouseInfo.Name = "gbWarehouseInfo";
-            this.gbWarehouseInfo.Size = new System.Drawing.Size(1013, 200);
-            this.gbWarehouseInfo.TabIndex = 3;
-            this.gbWarehouseInfo.TabStop = false;
-            this.gbWarehouseInfo.Text = "Warehouses:";
-            // 
-            // lvWarehouses
-            // 
-            this.lvWarehouses.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvWarehouses.Location = new System.Drawing.Point(3, 18);
-            this.lvWarehouses.Name = "lvWarehouses";
-            this.lvWarehouses.Size = new System.Drawing.Size(1007, 179);
-            this.lvWarehouses.TabIndex = 0;
-            this.lvWarehouses.UseCompatibleStateImageBehavior = false;
-            this.lvWarehouses.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.lvWarehouses_ColumnWidthChanged);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1494,7 +1507,9 @@
             this.orderPanel.ResumeLayout(false);
             this.pnOrderViewEdit.ResumeLayout(false);
             this.pnOrderViewEdit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOrderSearchBack)).EndInit();
             this.warehousePanel.ResumeLayout(false);
+            this.gbWarehouseInfo.ResumeLayout(false);
             this.pnWarehouseViewEdit.ResumeLayout(false);
             this.employeePanel.ResumeLayout(false);
             this.pnEmployeeEdit.ResumeLayout(false);
@@ -1507,8 +1522,6 @@
             this.batchPanel.ResumeLayout(false);
             this.batchPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBatch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnOrderSearchBack)).EndInit();
-            this.gbWarehouseInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1625,6 +1638,7 @@
         private System.Windows.Forms.PictureBox btnOrderSearchBack;
         private System.Windows.Forms.GroupBox gbWarehouseInfo;
         private System.Windows.Forms.ListView lvWarehouses;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
