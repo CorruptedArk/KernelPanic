@@ -503,9 +503,12 @@ namespace WindowsFormsApplication1
             }
             else
             {
+
                 string tags = parseTags();
                 float numPrice;
                 int numQty, numVenCode, newID;
+                List<int> WarehouseQty;
+
                 if (float.TryParse(price, out numPrice))
                 {
                     if (int.TryParse(qty, out numQty))
@@ -513,7 +516,8 @@ namespace WindowsFormsApplication1
                         if (int.TryParse(venCode, out numVenCode))
                         {
                             ClearError();
-                            newID = session.AddItems(name, desc, tags, numPrice, numQty, numVenCode);
+                            WarehouseQty = distributeQty(numQty);
+                            newID = session.AddItems(name, desc, tags, numPrice, numVenCode, WarehouseQty);
                             if (newID != -1)
                             {
                                 MessageBox.Show("Item was added!");
@@ -540,6 +544,26 @@ namespace WindowsFormsApplication1
                     DisplayError("Error: Issue with the Price textbox.");
                 }
             }
+        }
+
+        private List<int> distributeQty(int totalQty)
+        {
+            const int NUMWAREHOUSES = 7;
+            int value;
+            List<int> qty = new List<int>();
+            if(totalQty % NUMWAREHOUSES == 0)
+            {
+                value = totalQty / NUMWAREHOUSES;
+                for (int i = 0; i < NUMWAREHOUSES; i++)
+                {
+                    qty.Add(value);
+                }
+            }
+            else
+            {
+
+            }
+            return qty;
         }
 
         private string parseTags()
