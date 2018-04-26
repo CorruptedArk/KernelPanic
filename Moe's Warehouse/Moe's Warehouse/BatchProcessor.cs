@@ -330,22 +330,72 @@ namespace KernalPanic
         {
             List<Items> itemList = session.getItems();
 
-            for(int i = 0; i < itemList.Count; i++)
+            for (int i = 0; i < itemList.Count; i++)
             {
                 List<OrderItem> tempOrderItems = session.getOrderItemsWithItem(itemList[i]);
                 List<Order> tempOrderList = session.getOrdersWithItem(itemList[i]);
                 List<Customer> tempCustList = session.getCustomersByOrders(tempOrderList);
+                List<int> quantityByCustomer = new List<int>();
+                List<int> quantityByWarehouse = new List<int>();
+                List<int> percentByWarehouse = new List<int>();
+                int itemTotal = 0;
+                int percentRemaining = 100;
 
-                for(int j = 0; j < tempCustList.Count; j++)
+                for (int j = 0; j < tempCustList.Count; j++) // per customer
                 {
+                    quantityByCustomer.Add(0);
+                    for (int k = 0; k < tempOrderList.Count; k++) // per order
+                    {
+                        for (int m = 0; m < tempOrderItems.Count; m++) // per order-item
+                        {
+                            if (tempCustList[j].Id == tempOrderList[k].CustID && tempOrderList[k].OrderNum == tempOrderItems[m].OrderNum)
+                            {
+                                quantityByCustomer[j] += tempOrderItems[m].Quantity;
+                            }
 
+                        }
+                    }
                 }
 
+                for (int j = 0; j < 7; j++)
+                {
+                    quantityByWarehouse.Add(0);
+                    for (int k = 0; k < tempCustList.Count; k++)
+                    {
+                        if (tempCustList[k].PriorityOne - 1 == j)
+                        {
+                            quantityByWarehouse[j] += quantityByCustomer[k];
+                        }
+                    }
+                }
+
+                for (int j = 0; j < quantityByWarehouse.Count; j++)
+                {
+                    itemTotal += quantityByWarehouse[j];
+                }
+
+                int maxPercent = 0;
+                int maxIndex = 0;
+                for (int j = 0; j < quantityByWarehouse.Count; j++)
+                {
+                    percentByWarehouse[j] = (int)Math.Floor(quantityByWarehouse[j] / (decimal)itemTotal * 100);
+                    percentRemaining -= percentByWarehouse[j];
+
+                    if (maxPercent < percentByWarehouse[j])
+                    {
+                        maxPercent = percentByWarehouse[j];
+                        maxIndex = j;
+                    }
+                }
+
+                percentByWarehouse[maxIndex] += percentRemaining;
+
+                for (int j = 0; j < percentByWarehouse.Count; j++)
+                {
+                    session.updateRestockDistributions(itemList[i].ID, j + 1, percentByWarehouse[j]);
+                }
 
             }
-
-            
-
         }
 
 
