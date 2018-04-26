@@ -581,7 +581,6 @@ namespace KernalPanic
             return verified;
         }
 
-<<<<<<< HEAD
         public void insertVendorShipment(int vendorID, int itemID, int quantityReceived, string dateRequested, string dateReceived)
         {
 
@@ -679,8 +678,6 @@ namespace KernalPanic
             }
         }
         
-=======
         ///////////////////////////////// End Batch Data /////////////////////////////////
->>>>>>> 2d0b940d6ea4de3f892597e382e3cde981cae964
     }
 }
