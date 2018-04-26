@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Collections.Generic;
 
 namespace KernalPanic
 {
@@ -514,5 +515,103 @@ namespace KernalPanic
 
             return verified;
         }
+
+        public void insertVendorShipment(int vendorID, int itemID, int quantityReceived, string dateRequested, string dateReceived)
+        {
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("insertVendorShip", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@vendorID", vendorID);
+                        cmd.Parameters.AddWithValue("@itemID", itemID);
+                        cmd.Parameters.AddWithValue("@receiveQty", quantityReceived);
+                        cmd.Parameters.AddWithValue("@reqDate", dateRequested);
+                        cmd.Parameters.AddWithValue("@receiveDate", dateReceived);
+                        cmd.ExecuteReader();
+                        connection.Close();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+
+            }
+        }
+
+        public List<BackorderItem> getBackorderItems(int itemNum)
+        {
+            List<BackorderItem> backorderItems = new List<BackorderItem>();
+            BackorderItem tempBackOrderItem;
+            MySqlDataReader reader;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("getBackorderItems", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        
+                        connection.Open();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@itemID", itemNum);
+                        cmd.Parameters.Add("@orderNum", MySqlDbType.VarChar, 6);
+                        cmd.Parameters["@orderNum"].Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add("@reqQty", MySqlDbType.Int32, 5);
+                        cmd.Parameters["@reqQty"].Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add("@backorderQty", MySqlDbType.Int32, 5);
+                        cmd.Parameters["@backorderQty"].Direction = ParameterDirection.Output;
+                        reader = cmd.ExecuteReader();
+
+                        while(reader.Read())
+                        {
+                            tempBackOrderItem = new BackorderItem();
+                            tempBackOrderItem.ItemId = itemNum;
+                            tempBackOrderItem.OrderNum = (string) reader["@orderNum"];
+                            tempBackOrderItem.ReqQty = (int) reader["@reqQty"];
+                            tempBackOrderItem.BackorderQty = (int) reader["@backorderQty"];
+                            backorderItems.Add(tempBackOrderItem);
+                        }
+
+                        connection.Close();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+
+            }
+
+            return backorderItems;
+        }
+
+        public void updateBackorderItem(BackorderItem backorderItem)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("updateBackorderItem", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@orderNum", backorderItem.OrderNum);
+                        cmd.Parameters.AddWithValue("@itemID", backorderItem.ItemId);
+                        cmd.Parameters.AddWithValue("@reqQty", backorderItem.ReqQty);
+                        cmd.Parameters.AddWithValue("@backorderQty", backorderItem.BackorderQty);
+                        cmd.ExecuteReader();
+                        connection.Close();
+                    }
+                }
+            }
+            catch(MySql.Data.MySqlClient.MySqlException ex)
+            {
+                
+            }
+        }
+        
     }
 }

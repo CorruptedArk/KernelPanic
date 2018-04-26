@@ -14,6 +14,7 @@ namespace KernalPanic
         private int lastVendorOrderSeq;
         private DataAccess session;
 
+
         public BatchProcessor(DataAccess session)
         {
             this.session = session;
@@ -86,7 +87,9 @@ namespace KernalPanic
                     int tempQuantityReceived;
                     string tempDateRequested;
                     string tempDateReceived;
-                    for(int i = 1; i < vendorShipLines.Length - 1; i++)
+                    int tempAvailableQuantity;
+                    List<BackorderItem> tempBackorderItemList;
+                    for (int i = 1; i < vendorShipLines.Length - 1; i++)
                     {
                         tempVendorID = int.Parse(vendorShipLines[i].Substring(0, 2));
                         tempItemID = int.Parse(vendorShipLines[i].Substring(2, 5));
@@ -113,8 +116,35 @@ namespace KernalPanic
                         }
                         else
                         {
+                            session.insertVendorShipment(tempVendorID, tempItemID, tempQuantityReceived, tempDateRequested, tempDateReceived);
+
                             // fill backorder
+                            tempAvailableQuantity = tempQuantityReceived;
+                            tempBackorderItemList = session.getBackorderItems(tempItemID);
+
+                            for(int j = 0; j < tempBackorderItemList.Count && tempAvailableQuantity > 0; j++)
+                            {
+                                if(tempAvailableQuantity > tempBackorderItemList[j].BackorderQty)
+                                {
+                                    tempAvailableQuantity -= tempBackorderItemList[j].BackorderQty;
+                                    tempBackorderItemList[j].BackorderQty = 0;
+                                }
+                                else if(tempAvailableQuantity < tempBackorderItemList[j].BackorderQty)
+                                {
+                                    tempBackorderItemList[j].BackorderQty -= tempAvailableQuantity;
+                                    tempAvailableQuantity = 0;
+                                }
+                                else
+                                {
+                                    tempAvailableQuantity = 0;
+                                    tempBackorderItemList[j].BackorderQty = 0;
+                                }
+
+                                session.updateBackorderItem(tempBackorderItemList[j]);
+                            }
+
                             // Distribute items
+                            
                         }
                     }
 
@@ -123,7 +153,7 @@ namespace KernalPanic
             }
 
         }
-
+ 
         private void readCustomerOrderFile()
         {
             string fileName = "orders.txt";
