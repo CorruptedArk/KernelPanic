@@ -111,26 +111,18 @@ namespace KernalPanic
             return items;
         }
 
-<<<<<<< HEAD
         private int getItemQuantity(int row)
         {
             MySqlDataReader reader;
             int totalQuantity = 0, parser;
 
-=======
-        public List<OrderItem> getOrderItemsWithItem(Items item)
-        {
-            List<OrderItem> orderItemList = new List<OrderItem>();
-            OrderItem tempOrderItem;
-            MySqlDataReader reader;
->>>>>>> 185306cd203ebcb9ffe111b9b07032999dc870ea
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
                 {
                     connection.Open();
                     MySqlCommand cmd = connection.CreateCommand();
-<<<<<<< HEAD
+
                     cmd.CommandText = "select * from ITEM_WAREHOUSE where ItemID = " + row.ToString() + ";";
                     reader = cmd.ExecuteReader();
                     reader.Read();
@@ -149,28 +141,37 @@ namespace KernalPanic
                     int.TryParse(reader["Ware7"].ToString(), out parser);
                     totalQuantity += parser;
                     reader.Close();
-=======
-                    cmd.Parameters.AddWithValue("@itemID", item.ID);
-                    cmd.CommandText = "select * from ORDER_ITEM where ItemID = @itemID";
-                    reader = cmd.ExecuteReader();
-                    while(reader.Read())
-                    {
-                        tempOrderItem = new OrderItem();
-                        tempOrderItem.ItemID = item.ID;
-                        tempOrderItem.OrderNum = Convert.ToString(reader["OrderNum"]);
-                        tempOrderItem.Quantity = Convert.ToInt32(reader["ReqQty"]);
-                        orderItemList.Add(tempOrderItem);
-                    }
->>>>>>> 185306cd203ebcb9ffe111b9b07032999dc870ea
                     connection.Close();
                 }
             }
             catch (MySql.Data.MySqlClient.MySqlException ex) { }
-<<<<<<< HEAD
+
             return totalQuantity;
-=======
+        }
 
-
+        public List<OrderItem> getOrderItemsWithItem(Items item)
+        {
+            List<OrderItem> orderItemList = new List<OrderItem>();
+            OrderItem tempOrderItem;
+            MySqlDataReader reader;
+            using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+            {
+                connection.Open();
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.Parameters.AddWithValue("@itemID", item.ID);
+                cmd.CommandText = "select * from ORDER_ITEM where ItemID = @itemID";
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    tempOrderItem = new OrderItem();
+                    tempOrderItem.ItemID = item.ID;
+                    tempOrderItem.OrderNum = Convert.ToString(reader["OrderNum"]);
+                    tempOrderItem.Quantity = Convert.ToInt32(reader["ReqQty"]);
+                    orderItemList.Add(tempOrderItem);
+                }
+                reader.Close();
+                connection.Close();
+            }
             return orderItemList;
         }
 
@@ -252,7 +253,7 @@ namespace KernalPanic
                         }
                         reader.Close();
                     }
-                    connection.Close
+                    connection.Close();
 
                 }
 
@@ -264,7 +265,6 @@ namespace KernalPanic
 
 
             return customerList;
->>>>>>> 185306cd203ebcb9ffe111b9b07032999dc870ea
         }
 
         // adds new Items to database
