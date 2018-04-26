@@ -288,6 +288,9 @@ namespace WindowsFormsApplication1
         //*   Item    *
         //*************
 
+        // Declared here for searching and fast restore
+        private List<Items> items;
+
         // Item click function
         // Sets title, and changes background color
         private void btnItem_Click(object sender, EventArgs e)
@@ -306,7 +309,7 @@ namespace WindowsFormsApplication1
 
             changeNav(ITEM_NAV_ID);
             btnItemRefresh.Hide();
-            ItemList();
+            ItemList(false);
         }
 
         // Calls item click function
@@ -353,13 +356,13 @@ namespace WindowsFormsApplication1
             if (itemSearchBox.Text == "")
             {
                 itemSearchBox.Text = "Search";
-                ItemList();
+                ItemList(false);
             }
         }
 
         private void btnItemRefresh_Click(object sender, EventArgs e)
         {
-            ItemList();
+            ItemList(false);
             btnItemRefresh.Hide();
             itemSearchBox.Text = "Search";
         }
@@ -368,7 +371,7 @@ namespace WindowsFormsApplication1
         {
             if (itemSearchBox.Text != "Search" && itemSearchBox.Text != "")
             {
-                string item = itemSearchBox.Text;
+                string keyword = itemSearchBox.Text;
                 lvItem.Clear();
                 int size = (lvItem.Width - 4) / 6; // divide by 6 because there's 6 columns, subtract 4 to stop horizontal scroll bar from displaying
                 lvItem.View = View.Details;
@@ -378,21 +381,13 @@ namespace WindowsFormsApplication1
                 lvItem.Columns.Add("Price", size, HorizontalAlignment.Center);
                 lvItem.Columns.Add("Quantity", size, HorizontalAlignment.Center);
                 lvItem.Columns.Add("Vendor Codes", size, HorizontalAlignment.Center);
-                string items = session.SearchItems(item);
-                List<string> stringList = items.Split(',').ToList<string>();
-                for (int i = 0; i < stringList.Count(); i++)
+                for(int i = 0; i< items.Count(); i++)
                 {
-                    if (stringList[i] == "")
+                    if(items[i].Name.Contains(keyword) || items[i].Desc.Contains(keyword) || items[i].Tags.Contains(keyword))
                     {
-                        stringList.RemoveAt(i);
-                        i--;
+                        lvItem.Items.Add(new ListViewItem(new[] { items[i].ID.ToString(), items[i].Name,
+                            items[i].Desc, items[i].Price.ToString("C"), items[i].Qty.ToString(), items[i].VenCode.ToString() }));
                     }
-                }
-                stringList.Insert(0, ""); // fixes a parsing error
-                for (int i = 1; i < stringList.Count(); i += 7)
-                {
-                    lvItem.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1],
-                    stringList[i + 2], "$" + stringList[i + 4], stringList[i + 5] , stringList[i + 6] }));
                 }
             }
             else
@@ -403,7 +398,7 @@ namespace WindowsFormsApplication1
         }
 
         // Sets up the Item listview
-        private void ItemList()
+        private void ItemList(bool DataChanged)
         {
             lvItem.Clear();
             int size = (lvItem.Width - 4) / 6; // divide by 6 because there's 6 columns, subtract 4 to stop horizontal scroll bar from displaying
@@ -414,14 +409,14 @@ namespace WindowsFormsApplication1
             lvItem.Columns.Add("Price", size, HorizontalAlignment.Center);
             lvItem.Columns.Add("Quantity", size, HorizontalAlignment.Center);
             lvItem.Columns.Add("Vendor Code", size, HorizontalAlignment.Center);
-            string items = session.getItems();
-            List<string> stringList = items.Split(',').ToList<string>();
-            List<string> tags = new List<string>();
-            for (int i = 1; i < stringList.Count(); i += 7)
+            if(items == null || DataChanged)
             {
-                lvItem.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1],
-                    stringList[i + 2], "$" + stringList[i + 4], stringList[i + 5] , stringList[i + 6] }));
-                tags.Add(stringList[i + 3]);
+                items = session.getItems();
+            }
+            for (int i = 0; i < items.Count(); i++)
+            {
+                lvItem.Items.Add(new ListViewItem(new[] { items[i].ID.ToString(), items[i].Name,
+                    items[i].Desc, items[i].Price.ToString("C"), items[i].Qty.ToString(), items[i].VenCode.ToString() }));
             }
         }
 
@@ -512,7 +507,7 @@ namespace WindowsFormsApplication1
                             if (session.AddItems(name, desc, tags, numPrice, numQty, numVenCode))
                             {
                                 MessageBox.Show("Item was added!");
-                                ItemList();
+                                ItemList(true);
                                 clearItemAdd();
                             }
                             else
@@ -575,7 +570,7 @@ namespace WindowsFormsApplication1
                     if (session.DeleteItem(numID, name))
                     {
                         ClearError();
-                        ItemList();
+                        ItemList(true);
                         clearItemDelete();
                     }
                     else
@@ -693,6 +688,8 @@ namespace WindowsFormsApplication1
         //*   Warehouse   *
         //*****************
 
+        private List<Warehouses> warehouse;
+
         // Calls main Warehouse click function
         private void picWarehouse_Click(object sender, EventArgs e)
         {
@@ -720,11 +717,11 @@ namespace WindowsFormsApplication1
             }
 
             changeNav(WAREHOUSE_NAV_ID);
-            WarehouseList();
+            WarehouseList(false);
         }
 
         // Sets up the employee listview
-        private void WarehouseList()
+        private void WarehouseList(bool DataChanged)
         {
             lvWarehouses.Clear();
             int size = (lvWarehouses.Width - 4) / 3; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
@@ -732,11 +729,15 @@ namespace WindowsFormsApplication1
             lvWarehouses.Columns.Add("ID", size, HorizontalAlignment.Center);
             lvWarehouses.Columns.Add("Building Name", size, HorizontalAlignment.Center);
             lvWarehouses.Columns.Add("Address", size, HorizontalAlignment.Center);
-            string warehouse = session.getWarehouses();
-            List<string> stringList = warehouse.Split('|').ToList<string>();
-            for (int i = 1; i < stringList.Count(); i += 3)
+
+            if(warehouse == null || DataChanged)
             {
-                lvWarehouses.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1], stringList[i + 2] }));
+                warehouse = session.getWarehouses();
+            }
+            
+            for (int i = 0; i < warehouse.Count(); i++)
+            {
+                lvWarehouses.Items.Add(new ListViewItem(new[] { warehouse[i].ID.ToString(), warehouse[i].Name, warehouse[i].Street + " " + warehouse[i].City + ", " + warehouse[i].State + " " + warehouse[i].Zip.ToString() }));
             }
         }
 
@@ -766,7 +767,7 @@ namespace WindowsFormsApplication1
             warehouseEditButton.BackColor = Color.Gray;
             isInEditMode = true;
         }
-        
+
         //*****************
         //* End Warehouse *
         //*****************
@@ -775,7 +776,9 @@ namespace WindowsFormsApplication1
         //*****************
         //*    Employee   *
         //*****************
-        
+
+        private List<Employees> employees;
+
         // When employee button is clicked this will change to that screen and display the employee usernames, ids, emails, and access levels
         private void btnEmployee_Click(object sender, EventArgs e)
         {
@@ -792,7 +795,7 @@ namespace WindowsFormsApplication1
 
             changeNav(EMPLOYEE_NAV_ID);
 
-            EmployeeList();
+            EmployeeList(false);
         }
 
         // Calls main Employee click function
@@ -824,7 +827,7 @@ namespace WindowsFormsApplication1
         }
 
         // Sets up the employee listview
-        private void EmployeeList()
+        private void EmployeeList(bool DataChanged)
         {
             lvEmployees.Clear();
             int size = (lvEmployees.Width - 4) / 4; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
@@ -833,11 +836,15 @@ namespace WindowsFormsApplication1
             lvEmployees.Columns.Add("Username", size, HorizontalAlignment.Center);
             lvEmployees.Columns.Add("EmailAddr", size, HorizontalAlignment.Center);
             lvEmployees.Columns.Add("IsAdmin", size, HorizontalAlignment.Center);
-            string employees = session.getEmployees();
-            List<string> stringList = employees.Split(',').ToList<string>();
-            for (int i = 1; i < stringList.Count(); i+=4)
+
+            if(employees == null || DataChanged)
             {
-                lvEmployees.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1], stringList[i+2], stringList[i+3] }));
+                employees = session.getEmployees();
+            }
+
+            for (int i = 0; i < employees.Count(); i++)
+            {
+                lvEmployees.Items.Add(new ListViewItem(new[] { employees[i].ID.ToString(), employees[i].Name, employees[i].Email, employees[i].Admin.ToString() }));
             }
         }
 
@@ -884,7 +891,7 @@ namespace WindowsFormsApplication1
                 if(session.AddAccount(user, pass, admin))
                 {
                     MessageBox.Show("User was successfully added!");
-                    EmployeeList();
+                    EmployeeList(true);
                     txtUsername.Text = "";
                     txtNewPass.Text = "";
                     txtConfirmPass.Text = "";
@@ -919,10 +926,10 @@ namespace WindowsFormsApplication1
                 if(int.TryParse(ID, out numID))
                 {
                     ClearError();
-                    if (session.deleteEmployee(user, numID))
+                    if (session.deleteEmployee(user))
                     {
                         MessageBox.Show("User was successfully deleted!");
-                        EmployeeList();
+                        EmployeeList(true);
                         txtDeleteEmployeeID.Text = "";
                         txtDeleteUser.Text = "";
                         txtConfirmDelete.Text = "";

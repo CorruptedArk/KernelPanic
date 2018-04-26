@@ -72,37 +72,44 @@ namespace KernalPanic
         /////////////////////////////////// Start Item Data ///////////////////////////////////
 
         // gathers all Items to be displayed
-        public string getItems()
+        public List<Items> getItems()
         {
-            string returnValue = "";
-            int rows = countItems();
+            List<Items> items = new List<Items>();
+            Items tmpItems;
+            MySqlDataReader reader;
+            int num;
+            float ftNum;
             try
             {
-                for (int row = 1; row <= rows; row++)
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
                 {
-                    returnValue += ",";
-                    using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                    connection.Open();
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandText = "select * from ITEM";
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        using (MySqlCommand cmd = new MySqlCommand("getItems", connection)) // assign new sql command to db connection and stored procedure
-                        {
-                            connection.Open(); // open connection
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.AddWithValue("@curIndex", row);  // set first sp parameter to name
-                            cmd.Parameters.Add("@result", MySqlDbType.Text); // declare second sp param as type int
-                            cmd.Parameters["@result"].Direction = ParameterDirection.Output; // declare second sp param as return parameter
-                            cmd.ExecuteReader(); // execute sp
-                            connection.Close();
-                            returnValue += Convert.ToString(cmd.Parameters["@result"].Value); // convert sp result to string
-                        }
+                        tmpItems = new Items();
+                        int.TryParse(reader["ID"].ToString(), out num);
+                        tmpItems.ID = num;
+                        tmpItems.Name = (string)reader["Name"];
+                        tmpItems.Desc = (string)reader["Description"];
+                        tmpItems.Tags = (string)reader["Tags"];
+                        float.TryParse(reader["Price"].ToString(), out ftNum);
+                        tmpItems.Price = ftNum;
+                        int.TryParse(reader["Quantity"].ToString(), out num);
+                        tmpItems.Qty = num;
+                        int.TryParse(reader["Vendor Code"].ToString(), out num);
+                        tmpItems.VenCode = num;
+                        items.Add(tmpItems);
                     }
+                    reader.Close();
+                    connection.Close();
                 }
-                //MessageBox.Show(returnValue);
-                return returnValue;
             }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
-            {
-                return "";
-            }
+            catch (MySql.Data.MySqlClient.MySqlException ex) { }
+
+            return items;
         }
 
         // adds new Items to database
@@ -153,7 +160,6 @@ namespace KernalPanic
                         connection.Close();
                     }
                 }
-                UpdateItemID(ID);
                 return true;
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
@@ -215,65 +221,50 @@ namespace KernalPanic
             return returnValue;
         }
 
-        public void UpdateItemID(int currentRow)
-        {
-            int rows = countItems();
-            for (int row = currentRow; row <= rows; row++)
-            {
-                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
-                {
-                    using (MySqlCommand cmd = new MySqlCommand("UpdateItemID", connection)) // assign new sql command to db connection and stored procedure
-                    {
-                        connection.Open(); // open connection
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@IDnum", row + 1);  // set first sp parameter to name
-                        cmd.Parameters.AddWithValue("@newID", row);  // set first sp parameter to name
-                        cmd.ExecuteReader(); // execute sp
-                        connection.Close();
-                    }
-                }
-            }
-        }
-
         //////////////////////////////////// End Item Data ////////////////////////////////////
 
         /////////////////////////////// Start Warehouse Data ///////////////////////////////
 
-        // gathers all Warehouses to be displayed
-        public string getWarehouses()
+        // gathers all warehouses to be displayed
+        public List<Warehouses> getWarehouses()
         {
-            string returnValue = "";
-            int rows = countWarehouses();
+            List<Warehouses> warehouses = new List<Warehouses>();
+            Warehouses tmpWarehouses;
+            MySqlDataReader reader;
+            int num;
             try
             {
-                for (int row = 1; row <= rows; row++)
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
                 {
-                    returnValue += "|";
-                    using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                    connection.Open();
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandText = "select * from WAREHOUSE";
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        using (MySqlCommand cmd = new MySqlCommand("getWarehouses", connection)) // assign new sql command to db connection and stored procedure
-                        {
-                            connection.Open(); // open connection
-                            cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@curIndex", row);  // set first sp parameter to name
-                            cmd.Parameters.Add("@result", MySqlDbType.MediumText); // declare second sp param as type int
-                            cmd.Parameters["@result"].Direction = ParameterDirection.Output; // declare second sp param as return parameter
-                            cmd.ExecuteReader(); // execute sp
-                            connection.Close();
-                            returnValue += Convert.ToString(cmd.Parameters["@result"].Value); // convert sp result to string
-                        }
+                        tmpWarehouses = new Warehouses();
+                        int.TryParse(reader["ID"].ToString(), out num);
+                        tmpWarehouses.ID = num;
+                        tmpWarehouses.Name = (string)reader["Name"];
+                        tmpWarehouses.Street = (string)reader["Street"];
+                        tmpWarehouses.City = (string)reader["City"];
+                        tmpWarehouses.State = (string)reader["State"];
+                        int.TryParse(reader["ZipCode"].ToString(), out num);
+                        tmpWarehouses.Zip = num;
+                        warehouses.Add(tmpWarehouses);
                     }
+                    reader.Close();
+                    connection.Close();
                 }
-                return returnValue;
             }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
-            {
-                return "";
-            }
+            catch (MySql.Data.MySqlClient.MySqlException ex) { }
+
+            return warehouses;
         }
 
         // counts number of items in database
-        private int countWarehouses()
+        // Kept in case needed in later
+        /*private int countWarehouses()
         {
             int returnValue;
             try
@@ -297,43 +288,41 @@ namespace KernalPanic
             {
                 return 0;
             }
-        }
+        }*/
 
         //////////////////////////////// End Warehouse Data ////////////////////////////////
 
         //////////////////////////////// Start Employee Data ////////////////////////////////
 
-        // gathers all employees to be displayed
-        public string getEmployees()
+        public List<Employees> getEmployees()
         {
-            string returnValue = "";
-            int rows = countAccounts();
+            List<Employees> employees = new List<Employees>();
+            Employees tmpEmployee;
+            MySqlDataReader reader;
             try
             {
-                for (int row = 1; row <= rows; row++)
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
                 {
-                    returnValue += ",";
-                    using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                    connection.Open();
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandText = "select * from ACCOUNT";
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        using (MySqlCommand cmd = new MySqlCommand("getEmployees", connection)) // assign new sql command to db connection and stored procedure
-                        {
-                            connection.Open(); // open connection
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.AddWithValue("@curIndex", row);  // set first sp parameter to name
-                            cmd.Parameters.Add("@result", MySqlDbType.Text); // declare second sp param as type int
-                            cmd.Parameters["@result"].Direction = ParameterDirection.Output; // declare second sp param as return parameter
-                            cmd.ExecuteReader(); // execute sp
-                            connection.Close();
-                            returnValue += Convert.ToString(cmd.Parameters["@result"].Value); // convert sp result to string
-                        }
+                        tmpEmployee = new Employees();
+                        tmpEmployee.ID = (int)reader["ID"];
+                        tmpEmployee.Name = (string)reader["Username"];
+                        tmpEmployee.Email = (string)reader["EmailAddr"];
+                        tmpEmployee.Admin = (int)reader["IsAdmin"];
+                        employees.Add(tmpEmployee);
                     }
+                    reader.Close();
+                    connection.Close();
                 }
-                return returnValue;
             }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
-            {
-                return "";
-            }
+            catch (MySql.Data.MySqlClient.MySqlException ex) { }
+
+            return employees;
         }
 
         // adds new employee to database
@@ -367,7 +356,7 @@ namespace KernalPanic
         }
 
         // remove employee from database
-        public bool deleteEmployee(string user, int ID)
+        public bool deleteEmployee(string user)
         {
             try
             {
@@ -382,32 +371,11 @@ namespace KernalPanic
                         connection.Close();
                     }
                 }
-                UpdateEmployeeID(ID);
                 return true;
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
                 return false;
-            }
-        }
-
-        public void UpdateEmployeeID(int currentRow)
-        {
-            int rows = countAccounts();
-            for (int row = currentRow; row <= rows; row++)
-            {
-                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
-                {
-                    using (MySqlCommand cmd = new MySqlCommand("UpdateEmployeeID", connection)) // assign new sql command to db connection and stored procedure
-                    {
-                        connection.Open(); // open connection
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@IDnum", row + 1);  // set first sp parameter to name
-                        cmd.Parameters.AddWithValue("@newID", row);  // set first sp parameter to name
-                        cmd.ExecuteReader(); // execute sp
-                        connection.Close();
-                    }
-                }
             }
         }
 
