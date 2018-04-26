@@ -149,8 +149,7 @@ namespace KernalPanic
 
             return totalQuantity;
         }
-
-<<<<<<< HEAD
+        
         public List<OrderItem> getOrderItemsWithItem(Items item)
         {
             List<OrderItem> orderItemList = new List<OrderItem>();
@@ -214,10 +213,6 @@ namespace KernalPanic
 
             return orderList;
         }
-=======
-        
-       
->>>>>>> f8c8ba4878ed38bdbc920d301152e7efff79e83f
 
         public void updateRestockDistributions(int itemID, int warehouseID, int percent)
         {
@@ -239,25 +234,9 @@ namespace KernalPanic
             {
 
             }
+        
         }
 
-
-<<<<<<< HEAD
-                }
-
-            }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
-            {
-
-            }
-
-
-            return customerList;
-        }
-
-
-=======
->>>>>>> f8c8ba4878ed38bdbc920d301152e7efff79e83f
         // adds new Items to database
         public int AddItems(string name, string desc, string tags, float price, int vencode, List<int> qty)
         {
@@ -803,74 +782,6 @@ namespace KernalPanic
             }
         }
 
-<<<<<<< HEAD
-=======
-        
-
-		public List<OrderItem> getOrderItemsWithItem(Items item)
-        {
-            List<OrderItem> orderItemList = new List<OrderItem>();
-            OrderItem tempOrderItem;
-            MySqlDataReader reader;
-            using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
-            {
-                connection.Open();
-                MySqlCommand cmd = connection.CreateCommand();
-                cmd.Parameters.AddWithValue("@itemID", item.ID);
-                cmd.CommandText = "select * from ORDER_ITEM where ItemID = @itemID";
-                reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    tempOrderItem = new OrderItem();
-                    tempOrderItem.ItemID = item.ID;
-                    tempOrderItem.OrderNum = Convert.ToString(reader["OrderNum"]);
-                    tempOrderItem.Quantity = Convert.ToInt32(reader["ReqQty"]);
-                    orderItemList.Add(tempOrderItem);
-                }
-                reader.Close();
-                connection.Close();
-            }
-            return orderItemList;
-        }
-
-        public List<Order> getOrdersWithItem(Items item)
-        {
-            List<Order> orderList = new List<Order>();
-            MySqlDataReader reader;
-            Order tempOrder;
-
-            try
-            {
-                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
-                {
-                    connection.Open();
-                    MySqlCommand cmd = connection.CreateCommand();
-                    cmd.Parameters.AddWithValue("@itemID", item.ID);
-                    cmd.CommandText = "select * from CUSTOMER_ORDER where exists( select * from ORDER_ITEM where ItemID = @itemID AND CUSTOMER_ORDER.OrderNum = ORDER_ITEM.OrderNum)";
-                    reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        tempOrder = new Order();
-                        tempOrder.OrderNum = Convert.ToString(reader["OrderNum"]);
-                        tempOrder.CustID = Convert.ToInt32(reader["CustomerID"]);
-                        tempOrder.CustName = Convert.ToString(reader["CustomerShipName"]);
-                        tempOrder.CustStreet = Convert.ToString(reader["CustShipStreet"]);
-                        tempOrder.CustState = Convert.ToString(reader["CustShipState"]);
-                        tempOrder.CustZip = Convert.ToInt32(reader["CustShipZip"]);
-                        tempOrder.OrderDate = Convert.ToString(reader["OrderDate"]);
-                        orderList.Add(tempOrder);
-                    }
-                    connection.Close();
-                }
-            }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
-            {
-
-            }
-
-            return orderList;
-        }
-
         public List<Customer> getCustomersByOrders(List<Order> orders)
         {
             List<Customer> customerList = new List<Customer>();
@@ -924,8 +835,6 @@ namespace KernalPanic
 
             return customerList;
         }
-
->>>>>>> f8c8ba4878ed38bdbc920d301152e7efff79e83f
         ///////////////////////////////// End Batch Data /////////////////////////////////
     }
 }
