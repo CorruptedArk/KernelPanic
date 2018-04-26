@@ -213,6 +213,28 @@ namespace KernalPanic
             return orderList;
         }
 
+        public void updateRestockDistributions(int itemID, int warehouseID, int percent)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", warehouseID);
+                    cmd.Parameters.AddWithValue("@percent", percent);
+                    cmd.CommandText = "update DISTRIBUTIONS set DistributionPercent = @percent where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    cmd.ExecuteReader();
+                    connection.Close();
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+
+            }
+        }
+
         public List<Customer> getCustomersByOrders(List<Order> orders)
         {
             List<Customer> customerList = new List<Customer>();
