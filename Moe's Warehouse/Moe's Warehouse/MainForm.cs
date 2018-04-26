@@ -707,15 +707,6 @@ namespace WindowsFormsApplication1
         {
             lblCurrentScreen.Text = "WAREHOUSE";
 
-            if(isInEditMode)
-            {
-                warehouseEditButton_Click(null, null);
-            }
-            else
-            {
-                warehouseViewButton_Click(null, null);
-            }
-
             changeNav(WAREHOUSE_NAV_ID);
             WarehouseList(false);
         }
@@ -737,7 +728,8 @@ namespace WindowsFormsApplication1
             
             for (int i = 0; i < warehouse.Count(); i++)
             {
-                lvWarehouses.Items.Add(new ListViewItem(new[] { warehouse[i].ID.ToString(), warehouse[i].Name, warehouse[i].Street + " " + warehouse[i].City + ", " + warehouse[i].State + " " + warehouse[i].Zip.ToString() }));
+                lvWarehouses.Items.Add(new ListViewItem(new[] { warehouse[i].ID.ToString(), warehouse[i].Name,
+                    warehouse[i].Street + " " + warehouse[i].City + ", " + warehouse[i].State + " " + warehouse[i].Zip.ToString() }));
             }
         }
 
@@ -754,18 +746,18 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void warehouseViewButton_Click(object sender, EventArgs e)
+        private void lvWarehouses_SelectedIndexChanged(object sender, EventArgs e)
         {
-            warehouseViewButton.BackColor = Color.Gray;
-            warehouseEditButton.BackColor = Color.White;
-            isInEditMode = false;
-        }
 
-        private void warehouseEditButton_Click(object sender, EventArgs e)
-        {
-            warehouseViewButton.BackColor = Color.White;
-            warehouseEditButton.BackColor = Color.Gray;
-            isInEditMode = true;
+            int size = (lvWarehouseItems.Width - 4) / 3; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
+            lvWarehouseItems.Columns.Add("ID", size, HorizontalAlignment.Center);
+            lvWarehouseItems.Columns.Add("Item Name", size, HorizontalAlignment.Center);
+            lvWarehouseItems.Columns.Add("Quantity", size, HorizontalAlignment.Center);
+            if (lvWarehouses.SelectedItems.Count != 0)
+            {
+                // TODO: Add Warehouse Quantity Information To lvWarehouseItems ListView
+                MessageBox.Show(lvWarehouses.SelectedItems[0].Text);
+            }
         }
 
         //*****************

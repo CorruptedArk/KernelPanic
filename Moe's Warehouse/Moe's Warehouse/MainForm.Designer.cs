@@ -107,12 +107,10 @@
             this.orderSearchBox = new System.Windows.Forms.TextBox();
             this.orderEditButton = new System.Windows.Forms.Button();
             this.warehousePanel = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbItemsInWarehouse = new System.Windows.Forms.GroupBox();
+            this.lvWarehouseItems = new System.Windows.Forms.ListView();
             this.gbWarehouseInfo = new System.Windows.Forms.GroupBox();
             this.lvWarehouses = new System.Windows.Forms.ListView();
-            this.pnWarehouseViewEdit = new System.Windows.Forms.Panel();
-            this.warehouseViewButton = new System.Windows.Forms.Button();
-            this.warehouseEditButton = new System.Windows.Forms.Button();
             this.employeePanel = new System.Windows.Forms.Panel();
             this.pnEmployeeEdit = new System.Windows.Forms.Panel();
             this.gbDeleteUser = new System.Windows.Forms.GroupBox();
@@ -171,8 +169,8 @@
             this.pnOrderViewEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnOrderSearchBack)).BeginInit();
             this.warehousePanel.SuspendLayout();
+            this.gbItemsInWarehouse.SuspendLayout();
             this.gbWarehouseInfo.SuspendLayout();
-            this.pnWarehouseViewEdit.SuspendLayout();
             this.employeePanel.SuspendLayout();
             this.pnEmployeeEdit.SuspendLayout();
             this.gbDeleteUser.SuspendLayout();
@@ -1067,30 +1065,40 @@
             // 
             // warehousePanel
             // 
-            this.warehousePanel.Controls.Add(this.groupBox1);
+            this.warehousePanel.Controls.Add(this.gbItemsInWarehouse);
             this.warehousePanel.Controls.Add(this.gbWarehouseInfo);
-            this.warehousePanel.Controls.Add(this.pnWarehouseViewEdit);
             this.warehousePanel.Location = new System.Drawing.Point(271, 100);
             this.warehousePanel.Name = "warehousePanel";
             this.warehousePanel.Size = new System.Drawing.Size(1013, 671);
             this.warehousePanel.TabIndex = 4;
             // 
-            // groupBox1
+            // gbItemsInWarehouse
             // 
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox1.Location = new System.Drawing.Point(0, 243);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(322, 428);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.gbItemsInWarehouse.Controls.Add(this.lvWarehouseItems);
+            this.gbItemsInWarehouse.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbItemsInWarehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbItemsInWarehouse.Location = new System.Drawing.Point(0, 200);
+            this.gbItemsInWarehouse.Name = "gbItemsInWarehouse";
+            this.gbItemsInWarehouse.Size = new System.Drawing.Size(1013, 226);
+            this.gbItemsInWarehouse.TabIndex = 4;
+            this.gbItemsInWarehouse.TabStop = false;
+            this.gbItemsInWarehouse.Text = "Items:";
+            // 
+            // lvWarehouseItems
+            // 
+            this.lvWarehouseItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvWarehouseItems.Location = new System.Drawing.Point(3, 18);
+            this.lvWarehouseItems.Name = "lvWarehouseItems";
+            this.lvWarehouseItems.Size = new System.Drawing.Size(1007, 205);
+            this.lvWarehouseItems.TabIndex = 0;
+            this.lvWarehouseItems.UseCompatibleStateImageBehavior = false;
             // 
             // gbWarehouseInfo
             // 
             this.gbWarehouseInfo.Controls.Add(this.lvWarehouses);
             this.gbWarehouseInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbWarehouseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbWarehouseInfo.Location = new System.Drawing.Point(0, 43);
+            this.gbWarehouseInfo.Location = new System.Drawing.Point(0, 0);
             this.gbWarehouseInfo.Name = "gbWarehouseInfo";
             this.gbWarehouseInfo.Size = new System.Drawing.Size(1013, 200);
             this.gbWarehouseInfo.TabIndex = 3;
@@ -1101,47 +1109,15 @@
             // 
             this.lvWarehouses.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvWarehouses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvWarehouses.FullRowSelect = true;
             this.lvWarehouses.Location = new System.Drawing.Point(3, 18);
+            this.lvWarehouses.MultiSelect = false;
             this.lvWarehouses.Name = "lvWarehouses";
             this.lvWarehouses.Size = new System.Drawing.Size(1007, 179);
             this.lvWarehouses.TabIndex = 0;
             this.lvWarehouses.UseCompatibleStateImageBehavior = false;
             this.lvWarehouses.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this.lvWarehouses_ColumnWidthChanged);
-            // 
-            // pnWarehouseViewEdit
-            // 
-            this.pnWarehouseViewEdit.Controls.Add(this.warehouseViewButton);
-            this.pnWarehouseViewEdit.Controls.Add(this.warehouseEditButton);
-            this.pnWarehouseViewEdit.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnWarehouseViewEdit.Location = new System.Drawing.Point(0, 0);
-            this.pnWarehouseViewEdit.Name = "pnWarehouseViewEdit";
-            this.pnWarehouseViewEdit.Size = new System.Drawing.Size(1013, 43);
-            this.pnWarehouseViewEdit.TabIndex = 2;
-            // 
-            // warehouseViewButton
-            // 
-            this.warehouseViewButton.BackColor = System.Drawing.Color.Gray;
-            this.warehouseViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.warehouseViewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.warehouseViewButton.Location = new System.Drawing.Point(0, 0);
-            this.warehouseViewButton.Name = "warehouseViewButton";
-            this.warehouseViewButton.Size = new System.Drawing.Size(121, 43);
-            this.warehouseViewButton.TabIndex = 0;
-            this.warehouseViewButton.Text = "View";
-            this.warehouseViewButton.UseVisualStyleBackColor = false;
-            this.warehouseViewButton.Click += new System.EventHandler(this.warehouseViewButton_Click);
-            // 
-            // warehouseEditButton
-            // 
-            this.warehouseEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.warehouseEditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.warehouseEditButton.Location = new System.Drawing.Point(121, 0);
-            this.warehouseEditButton.Name = "warehouseEditButton";
-            this.warehouseEditButton.Size = new System.Drawing.Size(121, 43);
-            this.warehouseEditButton.TabIndex = 1;
-            this.warehouseEditButton.Text = "Edit";
-            this.warehouseEditButton.UseVisualStyleBackColor = true;
-            this.warehouseEditButton.Click += new System.EventHandler(this.warehouseEditButton_Click);
+            this.lvWarehouses.SelectedIndexChanged += new System.EventHandler(this.lvWarehouses_SelectedIndexChanged);
             // 
             // employeePanel
             // 
@@ -1509,8 +1485,8 @@
             this.pnOrderViewEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnOrderSearchBack)).EndInit();
             this.warehousePanel.ResumeLayout(false);
+            this.gbItemsInWarehouse.ResumeLayout(false);
             this.gbWarehouseInfo.ResumeLayout(false);
-            this.pnWarehouseViewEdit.ResumeLayout(false);
             this.employeePanel.ResumeLayout(false);
             this.pnEmployeeEdit.ResumeLayout(false);
             this.gbDeleteUser.ResumeLayout(false);
@@ -1572,14 +1548,11 @@
         private System.Windows.Forms.Button orderEditButton;
         private System.Windows.Forms.Button orderSearchButton;
         private System.Windows.Forms.TextBox orderSearchBox;
-        private System.Windows.Forms.Button warehouseViewButton;
-        private System.Windows.Forms.Button warehouseEditButton;
         private System.Windows.Forms.Button employeeEditButton;
         private System.Windows.Forms.Button employeeViewButton;
         private System.Windows.Forms.ListView lvEmployees;
         private System.Windows.Forms.Panel pnEmployeeList;
         private System.Windows.Forms.Panel pnItemViewEdit;
-        private System.Windows.Forms.Panel pnWarehouseViewEdit;
         private System.Windows.Forms.Panel pnEmployeeViewEdit;
         private System.Windows.Forms.Panel pnOrderViewEdit;
         private System.Windows.Forms.PictureBox picBatch;
@@ -1638,7 +1611,8 @@
         private System.Windows.Forms.PictureBox btnOrderSearchBack;
         private System.Windows.Forms.GroupBox gbWarehouseInfo;
         private System.Windows.Forms.ListView lvWarehouses;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbItemsInWarehouse;
+        private System.Windows.Forms.ListView lvWarehouseItems;
     }
 }
 
