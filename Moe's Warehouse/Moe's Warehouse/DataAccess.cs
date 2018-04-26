@@ -112,6 +112,129 @@ namespace KernalPanic
             return items;
         }
 
+        public List<OrderItem> getOrderItemsWithItem(Items item)
+        {
+            List<OrderItem> orderItemList = new List<OrderItem>();
+            OrderItem tempOrderItem;
+            MySqlDataReader reader;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", item.ID);
+                    cmd.CommandText = "select * from ORDER_ITEM where ItemID = @itemID";
+                    reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        tempOrderItem = new OrderItem();
+                        tempOrderItem.ItemID = item.ID;
+                        tempOrderItem.OrderNum = Convert.ToString(reader["OrderNum"]);
+                        tempOrderItem.Quantity = Convert.ToInt32(reader["ReqQty"]);
+                        orderItemList.Add(tempOrderItem);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex) { }
+
+
+            return orderItemList;
+        }
+
+        public List<Order> getOrdersWithItem(Items item)
+        {
+            List<Order> orderList = new List<Order>();
+            MySqlDataReader reader;
+            Order tempOrder;
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", item.ID);
+                    cmd.CommandText = "select * from CUSTOMER_ORDER where exists( select * from ORDER_ITEM where ItemID = @itemID AND CUSTOMER_ORDER.OrderNum = ORDER_ITEM.OrderNum)";
+                    reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        tempOrder = new Order();
+                        tempOrder.OrderNum = Convert.ToString(reader["OrderNum"]);
+                        tempOrder.CustID = Convert.ToInt32(reader["CustomerID"]);
+                        tempOrder.CustName = Convert.ToString(reader["CustomerShipName"]);
+                        tempOrder.CustStreet = Convert.ToString(reader["CustShipStreet"]);
+                        tempOrder.CustState = Convert.ToString(reader["CustShipState"]);
+                        tempOrder.CustZip = Convert.ToInt32(reader["CustShipZip"]);
+                        tempOrder.OrderDate = Convert.ToString(reader["OrderDate"]);
+                        orderList.Add(tempOrder);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+
+            }
+
+            return orderList;
+        }
+
+        public List<Customer> getCustomersByOrders(List<Order> orders)
+        {
+            List<Customer> customerList = new List<Customer>();
+            MySqlDataReader reader;
+            Customer tempCust;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    for (int i = 0; i < orders.Count; i++)
+                    { 
+                        MySqlCommand cmd = connection.CreateCommand();
+                        cmd.Parameters.AddWithValue("@custID", orders[i].CustID);
+                        cmd.CommandText = "select * from CUSTOMER where ID = @custID";
+                        reader = cmd.ExecuteReader();
+                        while(reader.Read())
+                        {
+                            tempCust = new Customer();
+                            tempCust.Id = orders[i].CustID;
+                            tempCust.Name = Convert.ToString(reader["Name"]);
+                            tempCust.Street = Convert.ToString(reader["Street"]);
+                            tempCust.City = Convert.ToString(reader["City"]);
+                            tempCust.State = Convert.ToString(reader["State"]);
+                            tempCust.Zip = Convert.ToInt32(reader["ZipCode"]);
+                            tempCust.PriorityOne = Convert.ToInt32(reader["PriorityOne"]);
+                            tempCust.PriorityTwo = Convert.ToInt32(reader["PriorityTwo"]);
+                            tempCust.PriorityThree = Convert.ToInt32(reader["PriorityThree"]);
+                            tempCust.PriorityFour = Convert.ToInt32(reader["PriorityFour"]);
+                            tempCust.PriorityFive = Convert.ToInt32(reader["PriorityFive"]);
+                            tempCust.PrioritySix = Convert.ToInt32(reader["PrioritySix"]);
+                            tempCust.PrioritySeven = Convert.ToInt32(reader["PrioritySeven"]);
+
+                            if(!customerList.Contains(tempCust))
+                            {
+                                customerList.Add(tempCust);
+                            }
+                        }
+                        reader.Close();
+                    }
+                    connection.Close
+
+                }
+
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+
+            }
+
+
+            return customerList;
+        }
+
         // adds new Items to database
         public bool AddItems(string name, string desc, string tags, float price, int qty, int vencode)
         {
@@ -472,7 +595,7 @@ namespace KernalPanic
             { 
                 using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("verifyItem", connection)) // assign new sql command to db connection and stored procedure
+                    using (MySqlCommand cmd = new MySqlCommand("setSequenceNumber", connection)) // assign new sql command to db connection and stored procedure
                     {
                         connection.Open();
                         cmd.CommandType = CommandType.StoredProcedure;
