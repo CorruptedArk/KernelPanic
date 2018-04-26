@@ -650,6 +650,8 @@ namespace WindowsFormsApplication1
         {
             orderViewButton.BackColor = Color.Gray;
             orderEditButton.BackColor = Color.White;
+            pnEditOrder.Hide();
+            gbModifyOrders.Hide();
             isInEditMode = false;
         }
 
@@ -657,9 +659,24 @@ namespace WindowsFormsApplication1
         {
             orderEditButton.BackColor = Color.Gray;
             orderViewButton.BackColor = Color.White;
+            pnEditOrder.Show();
+            gbModifyOrders.Hide();
+            txtEditOrderNumber.Focus();
             isInEditMode = true;
         }
 
+        private void OrderList()
+        {
+            lvOrders.Clear();
+            int size = (lvOrders.Width - 4) / 3; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
+            lvOrders.View = View.Details;
+            lvOrders.Columns.Add("ID", size, HorizontalAlignment.Center);
+            lvOrders.Columns.Add("Building Name", size, HorizontalAlignment.Center);
+            lvOrders.Columns.Add("Address", size, HorizontalAlignment.Center);
+
+            // TODO: Populate the order listview here
+
+        }
 
         // When user clicks search box, clear it
         private void orderSearchBox_Click(object sender, EventArgs e)
@@ -677,6 +694,57 @@ namespace WindowsFormsApplication1
             {
                 orderSearchBox.Text = "Search";
             }
+        }
+
+        private void btnEditOrderNumber_Click(object sender, EventArgs e)
+        {
+            string orderNum = txtEditOrderNumber.Text;
+            if (orderNum != "") // TODO: Add verification that order number exists in records
+            {
+                gbModifyOrders.Show();
+            }
+            else
+            {
+                gbModifyOrders.Hide();
+            }
+        }
+
+        private void txtEditOrderNumber_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = btnEditOrderNumber;
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (rbOrderAdd.Checked)
+            {
+                // TODO: Add an order here
+            }
+            else if (rbOrderRemove.Checked)
+            {
+                // TODO: Remove an Order here
+            }
+            else if (rbOrderModify.Checked)
+            {
+                // TODO: Modify Quantity here
+            }
+            else
+            {
+                DisplayError("Error: Please Select A Radio Button.");
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            txtOrderItem.Text = "";
+            txtOrderQty.Text = "";
+            rbOrderAdd.Checked = rbOrderModify.Checked = rbOrderRemove.Checked = false;
+        }
+
+        private void rbOrderRemove_CheckedChanged(object sender, EventArgs e)
+        {
+            lblOrderQty.Hide();
+            txtOrderQty.Hide();
         }
 
         //*************
