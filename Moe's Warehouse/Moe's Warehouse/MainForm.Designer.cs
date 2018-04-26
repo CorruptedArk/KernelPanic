@@ -124,6 +124,7 @@
             this.orderEditButton = new System.Windows.Forms.Button();
             this.warehousePanel = new System.Windows.Forms.Panel();
             this.gbItemsInWarehouse = new System.Windows.Forms.GroupBox();
+            this.lvWarehouseItems = new System.Windows.Forms.ListView();
             this.gbWarehouseInfo = new System.Windows.Forms.GroupBox();
             this.lvWarehouses = new System.Windows.Forms.ListView();
             this.employeePanel = new System.Windows.Forms.Panel();
@@ -153,7 +154,6 @@
             this.batchPanel = new System.Windows.Forms.Panel();
             this.picBatch = new System.Windows.Forms.PictureBox();
             this.batchTestLabel = new System.Windows.Forms.Label();
-            this.lvWarehouseItems = new System.Windows.Forms.ListView();
             this.pnBanner.SuspendLayout();
             this.pnCompName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -1293,6 +1293,17 @@
             this.gbItemsInWarehouse.TabStop = false;
             this.gbItemsInWarehouse.Text = "Items:";
             // 
+            // lvWarehouseItems
+            // 
+            this.lvWarehouseItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvWarehouseItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvWarehouseItems.Location = new System.Drawing.Point(3, 18);
+            this.lvWarehouseItems.MultiSelect = false;
+            this.lvWarehouseItems.Name = "lvWarehouseItems";
+            this.lvWarehouseItems.Size = new System.Drawing.Size(1007, 205);
+            this.lvWarehouseItems.TabIndex = 1;
+            this.lvWarehouseItems.UseCompatibleStateImageBehavior = false;
+            // 
             // gbWarehouseInfo
             // 
             this.gbWarehouseInfo.Controls.Add(this.lvWarehouses);
@@ -1624,17 +1635,6 @@
             this.batchTestLabel.Size = new System.Drawing.Size(94, 33);
             this.batchTestLabel.TabIndex = 0;
             this.batchTestLabel.Text = "Batch";
-            // 
-            // lvWarehouseItems
-            // 
-            this.lvWarehouseItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvWarehouseItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvWarehouseItems.Location = new System.Drawing.Point(3, 18);
-            this.lvWarehouseItems.MultiSelect = false;
-            this.lvWarehouseItems.Name = "lvWarehouseItems";
-            this.lvWarehouseItems.Size = new System.Drawing.Size(1007, 205);
-            this.lvWarehouseItems.TabIndex = 1;
-            this.lvWarehouseItems.UseCompatibleStateImageBehavior = false;
             // 
             // FormMain
             // 
