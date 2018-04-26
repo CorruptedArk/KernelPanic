@@ -170,7 +170,12 @@ namespace WindowsFormsApplication1
                     // Add If Needed
                     break;
                 case WAREHOUSE_NAV_ID:
-                    // Add If Needed
+                    // resizes listview columns, to keep everything within margins
+                    maxSize = (lvWarehouses.Width - 4) / 3;
+                    for (int i = 0; i < lvWarehouses.Columns.Count; i++)
+                    {
+                        lvWarehouses.Columns[i].Width = maxSize;
+                    }
                     break;
                 case EMPLOYEE_NAV_ID:
                     // resizes listview columns, to keep everything within margins
@@ -715,8 +720,38 @@ namespace WindowsFormsApplication1
             }
 
             changeNav(WAREHOUSE_NAV_ID);
+            WarehouseList();
         }
 
+        // Sets up the employee listview
+        private void WarehouseList()
+        {
+            lvWarehouses.Clear();
+            int size = (lvWarehouses.Width - 4) / 3; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
+            lvWarehouses.View = View.Details;
+            lvWarehouses.Columns.Add("ID", size, HorizontalAlignment.Center);
+            lvWarehouses.Columns.Add("Building Name", size, HorizontalAlignment.Center);
+            lvWarehouses.Columns.Add("Address", size, HorizontalAlignment.Center);
+            string warehouse = session.getWarehouses();
+            List<string> stringList = warehouse.Split('|').ToList<string>();
+            for (int i = 1; i < stringList.Count(); i += 3)
+            {
+                lvWarehouses.Items.Add(new ListViewItem(new[] { stringList[i], stringList[i + 1], stringList[i + 2] }));
+            }
+        }
+
+        private void lvWarehouses_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
+        {
+            int maxSize = (lvWarehouses.Width - 4) / 3; // divide by 3 because there's 3 columns, subtract 4 to stop horizontal scroll bar from displaying
+            if (lvWarehouses.Columns[e.ColumnIndex].Width < 150)
+            {
+                lvWarehouses.Columns[e.ColumnIndex].Width = 150;
+            }
+            else if (lvWarehouses.Columns[e.ColumnIndex].Width > maxSize)
+            {
+                lvWarehouses.Columns[e.ColumnIndex].Width = maxSize;
+            }
+        }
 
         private void warehouseViewButton_Click(object sender, EventArgs e)
         {

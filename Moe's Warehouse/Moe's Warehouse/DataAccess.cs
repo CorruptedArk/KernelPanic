@@ -2,7 +2,7 @@
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
-
+using System.Windows.Forms;
 namespace KernalPanic
 {
     class DataAccess
@@ -237,6 +237,70 @@ namespace KernalPanic
 
         //////////////////////////////////// End Item Data ////////////////////////////////////
 
+        /////////////////////////////// Start Warehouse Data ///////////////////////////////
+
+        // gathers all Warehouses to be displayed
+        public string getWarehouses()
+        {
+            string returnValue = "";
+            int rows = countWarehouses();
+            try
+            {
+                for (int row = 1; row <= rows; row++)
+                {
+                    returnValue += "|";
+                    using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                    {
+                        using (MySqlCommand cmd = new MySqlCommand("getWarehouses", connection)) // assign new sql command to db connection and stored procedure
+                        {
+                            connection.Open(); // open connection
+                            cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@curIndex", row);  // set first sp parameter to name
+                            cmd.Parameters.Add("@result", MySqlDbType.MediumText); // declare second sp param as type int
+                            cmd.Parameters["@result"].Direction = ParameterDirection.Output; // declare second sp param as return parameter
+                            cmd.ExecuteReader(); // execute sp
+                            connection.Close();
+                            returnValue += Convert.ToString(cmd.Parameters["@result"].Value); // convert sp result to string
+                        }
+                    }
+                }
+                return returnValue;
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                return "";
+            }
+        }
+
+        // counts number of items in database
+        private int countWarehouses()
+        {
+            int returnValue;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("countWarehouses", connection)) // assign new sql command to db connection and stored procedure
+                    {
+                        connection.Open(); // open connection
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@result", MySqlDbType.Int32); // declare second sp param as type int
+                        cmd.Parameters["@result"].Direction = ParameterDirection.Output; // declare second sp param as return parameter
+                        cmd.ExecuteReader(); // execute sp
+                        returnValue = Convert.ToInt32(cmd.Parameters["@result"].Value); // convert sp result to int
+                        connection.Close();
+                        return returnValue;
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                return 0;
+            }
+        }
+
+        //////////////////////////////// End Warehouse Data ////////////////////////////////
+
         //////////////////////////////// Start Employee Data ////////////////////////////////
 
         // gathers all employees to be displayed
@@ -375,6 +439,7 @@ namespace KernalPanic
         }
         ///////////////////////////////// End Employee Data /////////////////////////////////
 
+        ///////////////////////////////// Start Batch Data /////////////////////////////////
 
         public int getLastSequenceNum(string sequenceName)
         {
@@ -516,6 +581,7 @@ namespace KernalPanic
             return verified;
         }
 
+<<<<<<< HEAD
         public void insertVendorShipment(int vendorID, int itemID, int quantityReceived, string dateRequested, string dateReceived)
         {
 
@@ -613,5 +679,8 @@ namespace KernalPanic
             }
         }
         
+=======
+        ///////////////////////////////// End Batch Data /////////////////////////////////
+>>>>>>> 2d0b940d6ea4de3f892597e382e3cde981cae964
     }
 }
