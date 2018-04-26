@@ -13,9 +13,9 @@ namespace KernalPanic
         private int reqQty;
         private int backorderQty;
 
-        public string OrderNum { get => orderNum; set => orderNum = value; }
-        public int ItemId { get => itemId; set => itemId = value; }
-        public int ReqQty { get => reqQty; set => reqQty = value; }
-        public int BackorderQty { get => backorderQty; set => backorderQty = value; }
+        public string OrderNum { get { return orderNum; } set { orderNum = value; } }
+        public int ItemId { get { return itemId; } set { itemId = value; } }
+        public int ReqQty { get { return reqQty; } set { reqQty = value; } }
+        public int BackorderQty { get { return backorderQty; } set { backorderQty = value; } }
     }
 }
