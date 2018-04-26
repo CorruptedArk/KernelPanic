@@ -37,6 +37,12 @@ namespace KernalPanic
             {
                 readVendorOrderFile();
             }
+
+            if(continueBatch)
+            {
+                restockDistributionUpdate();
+            }
+
             return continueBatch;
         }
 
@@ -317,6 +323,28 @@ namespace KernalPanic
                 }
 
             }
+
+        }
+
+        private void restockDistributionUpdate()
+        {
+            List<Items> itemList = session.getItems();
+
+            for(int i = 0; i < itemList.Count; i++)
+            {
+                List<OrderItem> tempOrderItems = session.getOrderItemsWithItem(itemList[i]);
+                List<Order> tempOrderList = session.getOrdersWithItem(itemList[i]);
+                List<Customer> tempCustList = session.getCustomersByOrders(tempOrderList);
+
+                for(int j = 0; j < tempCustList.Count; j++)
+                {
+
+                }
+
+
+            }
+
+            
 
         }
 
