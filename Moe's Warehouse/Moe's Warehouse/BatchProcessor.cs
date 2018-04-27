@@ -151,6 +151,7 @@ namespace KernalPanic
                             }
 
                             // Distribute items
+                            session.distributeItems(tempItemID, tempAvailableQuantity);
                             
                         }
                     }

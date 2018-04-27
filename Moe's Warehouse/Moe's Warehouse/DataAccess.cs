@@ -873,7 +873,142 @@ namespace KernalPanic
             return customerList;
         }
 
+        public void distributeItems(int itemID, int quantity)
+        {
+            int distOne, distTwo, distThree, distFour, distFive, distSix, distSeven;
+            int qtyOne = 0 , qtyTwo = 0, qtyThree = 0, qtyFour = 0, qtyFive = 0, qtySix = 0, qtySeven = 0;
+            MySqlDataReader reader;
+            int remaining = quantity;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 1);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distOne = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
 
+                    cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 2);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distTwo = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
+
+                    cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 3);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distThree = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
+
+                    cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 4);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distFour = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
+
+                    cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 5);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distFive = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
+
+                    cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 6);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distSix = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
+
+                    cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 7);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distSeven = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
+
+                    qtyOne = (int)Math.Floor(distOne * quantity / 100.0);
+                    remaining -= qtyOne;
+
+                    if(remaining >= (int)Math.Floor(distTwo * quantity / 100.0))
+                    {
+                        qtyTwo = (int)Math.Floor(distTwo * quantity / 100.0);
+                        remaining -= qtyTwo;
+                    }
+
+                    if (remaining >= (int)Math.Floor(distThree * quantity / 100.0))
+                    {
+                        qtyThree = (int)Math.Floor(distThree * quantity / 100.0);
+                        remaining -= qtyThree;
+                    }
+
+                    if (remaining >= (int)Math.Floor(distFour * quantity / 100.0))
+                    {
+                        qtyFour = (int)Math.Floor(distFour * quantity / 100.0);
+                        remaining -= qtyFour;
+                    }
+
+                    if (remaining >= (int)Math.Floor(distFive * quantity / 100.0))
+                    {
+                        qtyFive = (int)Math.Floor(distFive * quantity / 100.0);
+                        remaining -= qtyFive;
+                    }
+
+                    if (remaining >= (int)Math.Floor(distSix * quantity / 100.0))
+                    {
+                        qtySix = (int)Math.Floor(distSix * quantity / 100.0);
+                        remaining -= qtySix;
+                    }
+
+                    if (remaining >= (int)Math.Floor(distSeven * quantity / 100.0))
+                    {
+                        qtySeven = (int)Math.Floor(distSeven * quantity / 100.0);
+                        remaining -= qtySeven;
+                    }
+
+                    qtyOne += remaining;
+                    remaining = 0;
+
+                    cmd = connection.CreateCommand();
+                    cmd.CommandText = "update ITEM_WAREHOUSE set Ware1 = Ware1 + @qtyOne, Ware2 = Ware2 + @qtyTwo, Ware3 = Ware3 + @qtyThree, Ware4 = Ware4 + @qtyFour, Ware5 = Ware5 + @qtyFive, Ware6 = Ware6 + @qtySix, Ware7 = Ware7 + @qtySeven where ItemID = @itemID";
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@qtyOne", qtyOne);
+                    cmd.Parameters.AddWithValue("@qtyTwo", qtyTwo);
+                    cmd.Parameters.AddWithValue("@qtyThree", qtyThree);
+                    cmd.Parameters.AddWithValue("@qtyFour", qtyFour);
+                    cmd.Parameters.AddWithValue("@qtyFive", qtyFive);
+                    cmd.Parameters.AddWithValue("@qtySix", qtySix);
+                    cmd.Parameters.AddWithValue("@qtySeven", qtySeven);
+                    cmd.ExecuteReader();
+                    connection.Close();
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+
+            }
+
+        }
 
         ///////////////////////////////// End Batch Data /////////////////////////////////
     }
