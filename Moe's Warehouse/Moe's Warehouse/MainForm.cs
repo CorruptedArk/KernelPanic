@@ -10,6 +10,12 @@ namespace WindowsFormsApplication1
 {
     public partial class FormMain : Form
     {
+
+        //Program Name: Moe's Warehouse
+        //Team Name: Kernal Panic
+        //Description: An warehouse inventory system that keeps track of items, orders, employees, and a number of other things
+        //Date Created: 4/19/2018
+
         //Navigation Panel Order
         const int LOGIN_NAV_ID = 0;
         const int ITEM_NAV_ID = 1;
@@ -349,7 +355,9 @@ namespace WindowsFormsApplication1
             isInEditMode = true;
         }
 
-        // When user clicks search box, clear it
+        //Description: When user clicks search box, clear it
+        //Pre-condition: Searchbox must be clicked and must contain the word "Search"
+        //Post-condition: An empty textbox preped for user to use
         private void itemSearchBox_Click(object sender, EventArgs e)
         {
             if (itemSearchBox.Text == "Search")
@@ -358,8 +366,10 @@ namespace WindowsFormsApplication1
                 this.AcceptButton = itemSearchButton;
             }
         }
-
-        // When user clicks away from search box, reset it
+        
+        //Description: When user clicks away from search box, reset it
+        //Pre-condition: An empty textbox and the user to click away from that textbox
+        //Post-condition: A reset textbox that provides a more consistent UI
         private void itemSearchBox_Leave(object sender, EventArgs e)
         {
             if (itemSearchBox.Text == "")
@@ -369,6 +379,10 @@ namespace WindowsFormsApplication1
             }
         }
 
+        //Description: resets the search bar and displays the original list to the user
+        //Pre-condition: User must click on the button
+        //Post-condition: A reset search bar, the button used to call this function to be removed from user display,
+        //                and original content to be displayed
         private void btnItemRefresh_Click(object sender, EventArgs e)
         {
             ItemList(false);
@@ -376,6 +390,9 @@ namespace WindowsFormsApplication1
             itemSearchBox.Text = "Search";
         }
 
+        //Description: Preforms the search and preps it for display
+        //Pre-condition: A keyword must be entered into the searchbox that isn't "search" or ""
+        //Post-condition: A list of items containing the keywords
         private void itemSearchButton_Click(object sender, EventArgs e)
         {
             if (itemSearchBox.Text != "Search" && itemSearchBox.Text != "")
