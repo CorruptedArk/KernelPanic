@@ -378,6 +378,70 @@ namespace KernalPanic
 
         //////////////////////////////////// End Item Data ////////////////////////////////////
 
+        /////////////////////////////// Start Order Data ///////////////////////////////
+
+        // get all customer orders
+        public List<Order> getCustomerOrders()
+        {
+            List<Order> orderList = new List<Order>();
+            MySqlDataReader reader;
+            Order tempOrder;
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandText = "select * from CUSTOMER_ORDER";
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        tempOrder = new Order();
+                        tempOrder.OrderNum = Convert.ToString(reader["OrderNum"]);
+                        tempOrder.CustID = Convert.ToInt32(reader["CustomerID"]);
+                        tempOrder.CustName = Convert.ToString(reader["CustomerShipName"]);
+                        tempOrder.CustStreet = Convert.ToString(reader["CustShipStreet"]);
+                        tempOrder.CustState = Convert.ToString(reader["CustShipState"]);
+                        tempOrder.CustZip = Convert.ToInt32(reader["CustShipZip"]);
+                        //tempOrder.OrderDate = Convert.ToString(reader["OrderDate"]);
+                        orderList.Add(tempOrder);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+
+            }
+            return orderList;
+
+        }
+        // retrieve list of order items and their quantities
+    
+        // delete customer order
+        public void deleteOrder(string orderNum)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    MySqlCommand cmd = new MySqlCommand("DeleteOrder", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orderNumber", orderNum);
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+
+            }
+        }
+
+        /////////////////////////////// End Order Data ///////////////////////////////
+
         /////////////////////////////// Start Warehouse Data ///////////////////////////////
 
         // gathers all warehouses to be displayed

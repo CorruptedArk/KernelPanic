@@ -623,13 +623,8 @@
             // 
             this.pnEditItems.Controls.Add(this.pnDeleteItem);
             this.pnEditItems.Controls.Add(this.pnAddItems);
-<<<<<<< HEAD
-            this.pnEditItems.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnEditItems.Location = new System.Drawing.Point(0, 365);
-=======
             this.pnEditItems.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnEditItems.Location = new System.Drawing.Point(0, 278);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.pnEditItems.Name = "pnEditItems";
             this.pnEditItems.Size = new System.Drawing.Size(1012, 304);
             this.pnEditItems.TabIndex = 7;
@@ -1022,11 +1017,7 @@
             this.pnEditOrder.Controls.Add(this.gbEnterOrderNumber);
             this.pnEditOrder.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnEditOrder.Location = new System.Drawing.Point(0, 359);
-<<<<<<< HEAD
-            this.pnEditOrder.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.pnEditOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.pnEditOrder.Name = "pnEditOrder";
             this.pnEditOrder.Size = new System.Drawing.Size(1013, 254);
             this.pnEditOrder.TabIndex = 6;
@@ -1044,15 +1035,9 @@
             this.gbModifyOrders.Controls.Add(this.txtOrderItem);
             this.gbModifyOrders.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbModifyOrders.Location = new System.Drawing.Point(257, 0);
-<<<<<<< HEAD
-            this.gbModifyOrders.Margin = new System.Windows.Forms.Padding(2);
-            this.gbModifyOrders.Name = "gbModifyOrders";
-            this.gbModifyOrders.Padding = new System.Windows.Forms.Padding(2);
-=======
             this.gbModifyOrders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbModifyOrders.Name = "gbModifyOrders";
             this.gbModifyOrders.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.gbModifyOrders.Size = new System.Drawing.Size(304, 254);
             this.gbModifyOrders.TabIndex = 1;
             this.gbModifyOrders.TabStop = false;
@@ -1061,11 +1046,7 @@
             // btnSubmit
             // 
             this.btnSubmit.Location = new System.Drawing.Point(109, 119);
-<<<<<<< HEAD
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(56, 19);
             this.btnSubmit.TabIndex = 8;
@@ -1076,11 +1057,7 @@
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(48, 118);
-<<<<<<< HEAD
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(56, 19);
             this.btnCancel.TabIndex = 7;
@@ -1092,11 +1069,7 @@
             // 
             this.rbOrderModify.AutoSize = true;
             this.rbOrderModify.Location = new System.Drawing.Point(192, 88);
-<<<<<<< HEAD
-            this.rbOrderModify.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.rbOrderModify.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.rbOrderModify.Name = "rbOrderModify";
             this.rbOrderModify.Size = new System.Drawing.Size(98, 17);
             this.rbOrderModify.TabIndex = 6;
@@ -1108,11 +1081,7 @@
             // 
             this.rbOrderRemove.AutoSize = true;
             this.rbOrderRemove.Location = new System.Drawing.Point(192, 66);
-<<<<<<< HEAD
-            this.rbOrderRemove.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.rbOrderRemove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.rbOrderRemove.Name = "rbOrderRemove";
             this.rbOrderRemove.Size = new System.Drawing.Size(94, 17);
             this.rbOrderRemove.TabIndex = 5;
@@ -1125,11 +1094,7 @@
             // 
             this.rbOrderAdd.AutoSize = true;
             this.rbOrderAdd.Location = new System.Drawing.Point(192, 44);
-<<<<<<< HEAD
-            this.rbOrderAdd.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.rbOrderAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.rbOrderAdd.Name = "rbOrderAdd";
             this.rbOrderAdd.Size = new System.Drawing.Size(73, 17);
             this.rbOrderAdd.TabIndex = 4;
@@ -1160,11 +1125,7 @@
             // txtOrderQty
             // 
             this.txtOrderQty.Location = new System.Drawing.Point(90, 76);
-<<<<<<< HEAD
-            this.txtOrderQty.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.txtOrderQty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.txtOrderQty.Name = "txtOrderQty";
             this.txtOrderQty.Size = new System.Drawing.Size(44, 20);
             this.txtOrderQty.TabIndex = 1;
@@ -1172,11 +1133,7 @@
             // txtOrderItem
             // 
             this.txtOrderItem.Location = new System.Drawing.Point(90, 54);
-<<<<<<< HEAD
-            this.txtOrderItem.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.txtOrderItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.txtOrderItem.Name = "txtOrderItem";
             this.txtOrderItem.Size = new System.Drawing.Size(76, 20);
             this.txtOrderItem.TabIndex = 0;
@@ -1187,15 +1144,9 @@
             this.gbEnterOrderNumber.Controls.Add(this.btnEditOrderNumber);
             this.gbEnterOrderNumber.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbEnterOrderNumber.Location = new System.Drawing.Point(0, 0);
-<<<<<<< HEAD
-            this.gbEnterOrderNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.gbEnterOrderNumber.Name = "gbEnterOrderNumber";
-            this.gbEnterOrderNumber.Padding = new System.Windows.Forms.Padding(2);
-=======
             this.gbEnterOrderNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbEnterOrderNumber.Name = "gbEnterOrderNumber";
             this.gbEnterOrderNumber.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.gbEnterOrderNumber.Size = new System.Drawing.Size(257, 254);
             this.gbEnterOrderNumber.TabIndex = 0;
             this.gbEnterOrderNumber.TabStop = false;
@@ -1207,11 +1158,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEditOrderNumber.Location = new System.Drawing.Point(50, 116);
-<<<<<<< HEAD
-            this.txtEditOrderNumber.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.txtEditOrderNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.txtEditOrderNumber.Name = "txtEditOrderNumber";
             this.txtEditOrderNumber.Size = new System.Drawing.Size(72, 20);
             this.txtEditOrderNumber.TabIndex = 1;
@@ -1223,11 +1170,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditOrderNumber.Location = new System.Drawing.Point(125, 115);
-<<<<<<< HEAD
-            this.btnEditOrderNumber.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.btnEditOrderNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.btnEditOrderNumber.Name = "btnEditOrderNumber";
             this.btnEditOrderNumber.Size = new System.Drawing.Size(74, 19);
             this.btnEditOrderNumber.TabIndex = 0;
@@ -1240,11 +1183,7 @@
             this.pnOrderPanel.Controls.Add(this.lvOrders);
             this.pnOrderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnOrderPanel.Location = new System.Drawing.Point(0, 43);
-<<<<<<< HEAD
-            this.pnOrderPanel.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.pnOrderPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.pnOrderPanel.Name = "pnOrderPanel";
             this.pnOrderPanel.Size = new System.Drawing.Size(1013, 316);
             this.pnOrderPanel.TabIndex = 5;
@@ -1253,11 +1192,7 @@
             // 
             this.lvOrders.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvOrders.Location = new System.Drawing.Point(0, 0);
-<<<<<<< HEAD
-            this.lvOrders.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.lvOrders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.lvOrders.Name = "lvOrders";
             this.lvOrders.Size = new System.Drawing.Size(1013, 316);
             this.lvOrders.TabIndex = 0;
@@ -1410,13 +1345,8 @@
             // 
             this.pnEmployeeEdit.Controls.Add(this.gbDeleteUser);
             this.pnEmployeeEdit.Controls.Add(this.gbAddUser);
-<<<<<<< HEAD
-            this.pnEmployeeEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnEmployeeEdit.Location = new System.Drawing.Point(0, 413);
-=======
             this.pnEmployeeEdit.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnEmployeeEdit.Location = new System.Drawing.Point(0, 342);
->>>>>>> 4c140e55ae4ecf9d24d38ec16e573c31cd57320f
             this.pnEmployeeEdit.Name = "pnEmployeeEdit";
             this.pnEmployeeEdit.Size = new System.Drawing.Size(1012, 258);
             this.pnEmployeeEdit.TabIndex = 5;

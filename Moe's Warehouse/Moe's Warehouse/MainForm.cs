@@ -641,6 +641,7 @@ namespace WindowsFormsApplication1
             }
 
             changeNav(ORDER_NAV_ID);
+            OrderList();
         }
 
         // Calls main order click function
@@ -677,15 +678,32 @@ namespace WindowsFormsApplication1
 
         private void OrderList()
         {
+            List<Order> ordersToDisplay;
             lvOrders.Clear();
-            int size = (lvOrders.Width - 4) / 3; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
+            int size = (lvOrders.Width - 4) / 4; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
             lvOrders.View = View.Details;
-            lvOrders.Columns.Add("ID", size, HorizontalAlignment.Center);
-            lvOrders.Columns.Add("Building Name", size, HorizontalAlignment.Center);
-            lvOrders.Columns.Add("Address", size, HorizontalAlignment.Center);
+            lvOrders.Columns.Add("Order Number", size, HorizontalAlignment.Center);
+            lvOrders.Columns.Add("Customer/Vendor Name", size, HorizontalAlignment.Center);
+            lvOrders.Columns.Add("Item(s)", size, HorizontalAlignment.Center);
+            lvOrders.Columns.Add("Quantity", size, HorizontalAlignment.Center);
+            ordersToDisplay = session.getCustomerOrders();
+            foreach (var order in ordersToDisplay)
+            {
+                lvOrders.Items.Add(new ListViewItem(new[] {order.OrderNum, order.CustName, "Test", "Test"}));
+            }
+        }
 
-            // TODO: Populate the order listview here
-
+        private void lvOrders_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
+        {
+            int maxSize = (lvOrders.Width - 4) / 4; // divide by 3 because there's 3 columns, subtract 4 to stop horizontal scroll bar from displaying
+            if (lvOrders.Columns[e.ColumnIndex].Width < 150)
+            {
+                lvOrders.Columns[e.ColumnIndex].Width = 150;
+            }
+            else if (lvOrders.Columns[e.ColumnIndex].Width > maxSize)
+            {
+                lvOrders.Columns[e.ColumnIndex].Width = maxSize;
+            }
         }
 
         // When user clicks search box, clear it
@@ -732,7 +750,7 @@ namespace WindowsFormsApplication1
             }
             else if (rbOrderRemove.Checked)
             {
-                // TODO: Remove an Order here
+                session.deleteOrder(txtEditOrderNumber.Text);
             }
             else if (rbOrderModify.Checked)
             {
