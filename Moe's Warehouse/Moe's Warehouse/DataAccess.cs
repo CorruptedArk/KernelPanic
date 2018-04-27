@@ -3,6 +3,7 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Windows.Forms;
+
 namespace KernalPanic
 {
     class DataAccess
@@ -148,7 +149,7 @@ namespace KernalPanic
 
             return totalQuantity;
         }
-
+        
         public List<OrderItem> getOrderItemsWithItem(Items item)
         {
             List<OrderItem> orderItemList = new List<OrderItem>();
@@ -190,7 +191,7 @@ namespace KernalPanic
                     cmd.Parameters.AddWithValue("@itemID", item.ID);
                     cmd.CommandText = "select * from CUSTOMER_ORDER where exists( select * from ORDER_ITEM where ItemID = @itemID AND CUSTOMER_ORDER.OrderNum = ORDER_ITEM.OrderNum)";
                     reader = cmd.ExecuteReader();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         tempOrder = new Order();
                         tempOrder.OrderNum = Convert.ToString(reader["OrderNum"]);
@@ -213,62 +214,31 @@ namespace KernalPanic
             return orderList;
         }
 
-        public List<Customer> getCustomersByOrders(List<Order> orders)
+        public void updateRestockDistributions(int itemID, int warehouseID, int percent)
         {
-            List<Customer> customerList = new List<Customer>();
-            MySqlDataReader reader;
-            Customer tempCust;
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
                 {
                     connection.Open();
-                    for (int i = 0; i < orders.Count; i++)
-                    { 
-                        MySqlCommand cmd = connection.CreateCommand();
-                        cmd.Parameters.AddWithValue("@custID", orders[i].CustID);
-                        cmd.CommandText = "select * from CUSTOMER where ID = @custID";
-                        reader = cmd.ExecuteReader();
-                        while(reader.Read())
-                        {
-                            tempCust = new Customer();
-                            tempCust.Id = orders[i].CustID;
-                            tempCust.Name = Convert.ToString(reader["Name"]);
-                            tempCust.Street = Convert.ToString(reader["Street"]);
-                            tempCust.City = Convert.ToString(reader["City"]);
-                            tempCust.State = Convert.ToString(reader["State"]);
-                            tempCust.Zip = Convert.ToInt32(reader["ZipCode"]);
-                            tempCust.PriorityOne = Convert.ToInt32(reader["PriorityOne"]);
-                            tempCust.PriorityTwo = Convert.ToInt32(reader["PriorityTwo"]);
-                            tempCust.PriorityThree = Convert.ToInt32(reader["PriorityThree"]);
-                            tempCust.PriorityFour = Convert.ToInt32(reader["PriorityFour"]);
-                            tempCust.PriorityFive = Convert.ToInt32(reader["PriorityFive"]);
-                            tempCust.PrioritySix = Convert.ToInt32(reader["PrioritySix"]);
-                            tempCust.PrioritySeven = Convert.ToInt32(reader["PrioritySeven"]);
-
-                            if(!customerList.Contains(tempCust))
-                            {
-                                customerList.Add(tempCust);
-                            }
-                        }
-                        reader.Close();
-                    }
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", warehouseID);
+                    cmd.Parameters.AddWithValue("@percent", percent);
+                    cmd.CommandText = "update DISTRIBUTIONS set DistributionPercent = @percent where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    cmd.ExecuteReader();
                     connection.Close();
-
                 }
-
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
 
             }
-
-
-            return customerList;
+        
         }
 
         // adds new Items to database
-        public int AddItems(string name, string desc, string tags, float price, int qty, int vencode)
+        public int AddItems(string name, string desc, string tags, float price, int vencode, List<int> qty)
         {
             int rows = countItems() + 1;
             try
@@ -279,13 +249,24 @@ namespace KernalPanic
                     {
                         connection.Open(); // open connection
                         cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Item Information
                         cmd.Parameters.AddWithValue("@IDnum", rows);  // set first sp parameter to name
                         cmd.Parameters.AddWithValue("@itemName", name);  // set first sp parameter to name
                         cmd.Parameters.AddWithValue("@descr", desc);  // set first sp parameter to name
                         cmd.Parameters.AddWithValue("@tags", tags);  // set first sp parameter to name
                         cmd.Parameters.AddWithValue("@cost", price);  // set first sp parameter to name
-                        cmd.Parameters.AddWithValue("@qty", qty);  // set first sp parameter to name -------------------REMOVE
                         cmd.Parameters.AddWithValue("@venCode", vencode);  // set first sp parameter to name
+
+                        // Warhouse Item Quantity
+                        cmd.Parameters.AddWithValue("@Ware1_Qty", vencode);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware2_Qty", vencode);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware3_Qty", vencode);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware4_Qty", vencode);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware5_Qty", vencode);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware6_Qty", vencode);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware7_Qty", vencode);  // set first sp parameter to name
+
                         cmd.ExecuteReader(); // execute sp
                         connection.Close();
                     }
@@ -479,6 +460,43 @@ namespace KernalPanic
             catch (MySql.Data.MySqlClient.MySqlException ex) { }
 
             return warehouses;
+        }
+
+        // gathers all warehouses to be displayed
+        public List<WarhouseItem> getWarehouseItems(int row)
+        {
+            string column = "Ware" + row.ToString();
+            List<WarhouseItem> warehouseItems = new List<WarhouseItem>();
+            WarhouseItem tmpWarehouseItems;
+            MySqlDataReader reader;
+            int num;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.CommandText = "select ItemID, " + column + " from ITEM_WAREHOUSE";
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        tmpWarehouseItems = new WarhouseItem();
+                        int.TryParse(reader["ItemID"].ToString(), out num);
+                        tmpWarehouseItems.ID = num;
+                        int.TryParse(reader[column].ToString(), out num);
+                        if (num != 0)
+                        {
+                            tmpWarehouseItems.Qty = num;
+                            warehouseItems.Add(tmpWarehouseItems);
+                        }
+                    }
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex) { }
+
+            return warehouseItems;
         }
 
         // counts number of items in database
@@ -864,7 +882,198 @@ namespace KernalPanic
                 
             }
         }
-        
+
+        public List<Customer> getCustomersByOrders(List<Order> orders)
+        {
+            List<Customer> customerList = new List<Customer>();
+            MySqlDataReader reader;
+            Customer tempCust;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    for (int i = 0; i < orders.Count; i++)
+                    {
+                        MySqlCommand cmd = connection.CreateCommand();
+                        cmd.Parameters.AddWithValue("@custID", orders[i].CustID);
+                        cmd.CommandText = "select * from CUSTOMER where ID = @custID";
+                        reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            tempCust = new Customer();
+                            tempCust.Id = orders[i].CustID;
+                            tempCust.Name = Convert.ToString(reader["Name"]);
+                            tempCust.Street = Convert.ToString(reader["Street"]);
+                            tempCust.City = Convert.ToString(reader["City"]);
+                            tempCust.State = Convert.ToString(reader["State"]);
+                            tempCust.Zip = Convert.ToInt32(reader["ZipCode"]);
+                            tempCust.PriorityOne = Convert.ToInt32(reader["PriorityOne"]);
+                            tempCust.PriorityTwo = Convert.ToInt32(reader["PriorityTwo"]);
+                            tempCust.PriorityThree = Convert.ToInt32(reader["PriorityThree"]);
+                            tempCust.PriorityFour = Convert.ToInt32(reader["PriorityFour"]);
+                            tempCust.PriorityFive = Convert.ToInt32(reader["PriorityFive"]);
+                            tempCust.PrioritySix = Convert.ToInt32(reader["PrioritySix"]);
+                            tempCust.PrioritySeven = Convert.ToInt32(reader["PrioritySeven"]);
+
+                            if (!customerList.Contains(tempCust))
+                            {
+                                customerList.Add(tempCust);
+                            }
+                        }
+                        reader.Close();
+                    }
+                    connection.Close();
+
+                }
+
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+
+            }
+
+
+            return customerList;
+        }
+
+        public void distributeItems(int itemID, int quantity)
+        {
+            int distOne, distTwo, distThree, distFour, distFive, distSix, distSeven;
+            int qtyOne = 0 , qtyTwo = 0, qtyThree = 0, qtyFour = 0, qtyFive = 0, qtySix = 0, qtySeven = 0;
+            MySqlDataReader reader;
+            int remaining = quantity;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(Helper.ConnectVal("WarehouseDB")))  // establish new db connection
+                {
+                    connection.Open();
+                    MySqlCommand cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 1);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distOne = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
+
+                    cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 2);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distTwo = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
+
+                    cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 3);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distThree = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
+
+                    cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 4);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distFour = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
+
+                    cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 5);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distFive = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
+
+                    cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 6);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distSix = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
+
+                    cmd = connection.CreateCommand();
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@warehouseID", 7);
+                    cmd.CommandText = "select DistributionPercent from DISTRIBUTIONS where ItemID = @itemID AND WarehouseID = @warehouseID";
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    distSeven = Convert.ToInt32(reader["DistributionPercent"]);
+                    reader.Close();
+
+                    qtyOne = (int)Math.Floor(distOne * quantity / 100.0);
+                    remaining -= qtyOne;
+
+                    if(remaining >= (int)Math.Floor(distTwo * quantity / 100.0))
+                    {
+                        qtyTwo = (int)Math.Floor(distTwo * quantity / 100.0);
+                        remaining -= qtyTwo;
+                    }
+
+                    if (remaining >= (int)Math.Floor(distThree * quantity / 100.0))
+                    {
+                        qtyThree = (int)Math.Floor(distThree * quantity / 100.0);
+                        remaining -= qtyThree;
+                    }
+
+                    if (remaining >= (int)Math.Floor(distFour * quantity / 100.0))
+                    {
+                        qtyFour = (int)Math.Floor(distFour * quantity / 100.0);
+                        remaining -= qtyFour;
+                    }
+
+                    if (remaining >= (int)Math.Floor(distFive * quantity / 100.0))
+                    {
+                        qtyFive = (int)Math.Floor(distFive * quantity / 100.0);
+                        remaining -= qtyFive;
+                    }
+
+                    if (remaining >= (int)Math.Floor(distSix * quantity / 100.0))
+                    {
+                        qtySix = (int)Math.Floor(distSix * quantity / 100.0);
+                        remaining -= qtySix;
+                    }
+
+                    if (remaining >= (int)Math.Floor(distSeven * quantity / 100.0))
+                    {
+                        qtySeven = (int)Math.Floor(distSeven * quantity / 100.0);
+                        remaining -= qtySeven;
+                    }
+
+                    qtyOne += remaining;
+                    remaining = 0;
+
+                    cmd = connection.CreateCommand();
+                    cmd.CommandText = "update ITEM_WAREHOUSE set Ware1 = Ware1 + @qtyOne, Ware2 = Ware2 + @qtyTwo, Ware3 = Ware3 + @qtyThree, Ware4 = Ware4 + @qtyFour, Ware5 = Ware5 + @qtyFive, Ware6 = Ware6 + @qtySix, Ware7 = Ware7 + @qtySeven where ItemID = @itemID";
+                    cmd.Parameters.AddWithValue("@itemID", itemID);
+                    cmd.Parameters.AddWithValue("@qtyOne", qtyOne);
+                    cmd.Parameters.AddWithValue("@qtyTwo", qtyTwo);
+                    cmd.Parameters.AddWithValue("@qtyThree", qtyThree);
+                    cmd.Parameters.AddWithValue("@qtyFour", qtyFour);
+                    cmd.Parameters.AddWithValue("@qtyFive", qtyFive);
+                    cmd.Parameters.AddWithValue("@qtySix", qtySix);
+                    cmd.Parameters.AddWithValue("@qtySeven", qtySeven);
+                    cmd.ExecuteReader();
+                    connection.Close();
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+
+            }
+
+        }
+
         ///////////////////////////////// End Batch Data /////////////////////////////////
     }
 }

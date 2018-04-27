@@ -160,38 +160,38 @@ namespace WindowsFormsApplication1
             {
                 case ITEM_NAV_ID:
                     // resizes item columns, to keep everything within margins
-                    maxSize = (lvItem.Width - 4) / 6;
+                    maxSize = (lvItem.Width - 15) / 6;
                     for (int i = 0; i < lvItem.Columns.Count; i++)
                     {
-                        lvItem.Columns[i].Width = maxSize;
+                        lvItem.Columns[i].Width = (i != 0) ? maxSize : 50;
                     }
                     break;
                 case ORDER_NAV_ID:
                     // resizes listview columns, to keep everything within margins
-                    maxSize = (lvOrders.Width - 4) / 4;
+                    maxSize = (lvOrders.Width - 15) / 4;
                     for (int i = 0; i < lvOrders.Columns.Count; i++)
                     {
-                        lvOrders.Columns[i].Width = maxSize;
+                        lvOrders.Columns[i].Width = (i != 0) ? maxSize : 50;
                     }
                     break;
                 case WAREHOUSE_NAV_ID:
                     // resizes listview columns, to keep everything within margins
-                    maxSize = (lvWarehouses.Width - 4) / 3;
+                    maxSize = (lvWarehouses.Width - 15) / 3;
                     for (int i = 0; i < lvWarehouses.Columns.Count; i++)
                     {
-                        lvWarehouses.Columns[i].Width = maxSize;
+                        lvWarehouses.Columns[i].Width = (i != 0) ? maxSize : 50;
                     }
                     for (int i = 0; i < lvWarehouseItems.Columns.Count; i++)
                     {
-                        lvWarehouseItems.Columns[i].Width = maxSize;
+                        lvWarehouseItems.Columns[i].Width = (i != 0) ? maxSize : 50;
                     }
                     break;
                 case EMPLOYEE_NAV_ID:
                     // resizes listview columns, to keep everything within margins
-                    maxSize = (lvEmployees.Width - 4) / 4;
+                    maxSize = (lvEmployees.Width - 15) / 4;
                     for (int i = 0; i < lvEmployees.Columns.Count; i++)
                     {
-                        lvEmployees.Columns[i].Width = maxSize;
+                        lvEmployees.Columns[i].Width = (i != 0) ? maxSize : 50;
                     }
                     break;
             }
@@ -382,9 +382,9 @@ namespace WindowsFormsApplication1
             {
                 string keyword = itemSearchBox.Text;
                 lvItem.Clear();
-                int size = (lvItem.Width - 4) / 6; // divide by 6 because there's 6 columns, subtract 4 to stop horizontal scroll bar from displaying
+                int size = (lvItem.Width - 15) / 6; // divide by 6 because there's 6 columns, subtract 4 to stop horizontal scroll bar from displaying
                 lvItem.View = View.Details;
-                lvItem.Columns.Add("ID", size, HorizontalAlignment.Center);
+                lvItem.Columns.Add("ID", 50, HorizontalAlignment.Center);
                 lvItem.Columns.Add("Item Name", size, HorizontalAlignment.Center);
                 lvItem.Columns.Add("Description", size, HorizontalAlignment.Center);
                 lvItem.Columns.Add("Price", size, HorizontalAlignment.Center);
@@ -410,9 +410,9 @@ namespace WindowsFormsApplication1
         private void ItemList(bool DataChanged)
         {
             lvItem.Clear();
-            int size = (lvItem.Width - 4) / 6; // divide by 6 because there's 6 columns, subtract 4 to stop horizontal scroll bar from displaying
+            int size = (lvItem.Width - 15) / 6; // divide by 6 because there's 6 columns, subtract 4 to stop horizontal scroll bar from displaying
             lvItem.View = View.Details;
-            lvItem.Columns.Add("ID", size, HorizontalAlignment.Center);
+            lvItem.Columns.Add("ID", 50, HorizontalAlignment.Center);
             lvItem.Columns.Add("Item Name", size, HorizontalAlignment.Center);
             lvItem.Columns.Add("Description", size, HorizontalAlignment.Center);
             lvItem.Columns.Add("Price", size, HorizontalAlignment.Center);
@@ -431,7 +431,7 @@ namespace WindowsFormsApplication1
 
         private void lvItem_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
         {
-            int maxSize = (lvItem.Width - 4) / 6; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
+            int maxSize = (lvItem.Width - 15) / 6; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
             if (lvItem.Columns[e.ColumnIndex].Width < 100)
             {
                 lvItem.Columns[e.ColumnIndex].Width = 100;
@@ -503,9 +503,12 @@ namespace WindowsFormsApplication1
             }
             else
             {
+
                 string tags = parseTags();
                 float numPrice;
                 int numQty, numVenCode, newID;
+                List<int> WarehouseQty;
+
                 if (float.TryParse(price, out numPrice))
                 {
                     if (int.TryParse(qty, out numQty))
@@ -513,7 +516,8 @@ namespace WindowsFormsApplication1
                         if (int.TryParse(venCode, out numVenCode))
                         {
                             ClearError();
-                            newID = session.AddItems(name, desc, tags, numPrice, numQty, numVenCode);
+                            WarehouseQty = distributeQty(numQty);
+                            newID = session.AddItems(name, desc, tags, numPrice, numVenCode, WarehouseQty);
                             if (newID != -1)
                             {
                                 MessageBox.Show("Item was added!");
@@ -540,6 +544,29 @@ namespace WindowsFormsApplication1
                     DisplayError("Error: Issue with the Price textbox.");
                 }
             }
+        }
+
+        private List<int> distributeQty(int totalQty)
+        {
+            const int NUMWAREHOUSES = 7;
+            int value;
+            List<int> qty = new List<int>();
+            int index = 0;
+            value = (int)Math.Floor((double)totalQty / NUMWAREHOUSES);
+            for (int i = 0; i < NUMWAREHOUSES; i++)
+            {
+                qty.Add(value);
+            }
+            value = totalQty % NUMWAREHOUSES;
+            while (value-- > 0)
+            {
+                qty[index++]++;
+                if (value >= 0 && index >= 7)
+                {
+                    index = 0;
+                }
+            }
+            return qty;
         }
 
         private string parseTags()
@@ -692,7 +719,6 @@ namespace WindowsFormsApplication1
                 lvOrders.Items.Add(new ListViewItem(new[] {order.OrderNum, order.CustName, "Test", "Test"}));
             }
         }
-
         private void lvOrders_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
         {
             int maxSize = (lvOrders.Width - 4) / 4; // divide by 3 because there's 3 columns, subtract 4 to stop horizontal scroll bar from displaying
@@ -811,9 +837,9 @@ namespace WindowsFormsApplication1
         private void WarehouseList(bool DataChanged)
         {
             lvWarehouses.Clear();
-            int size = (lvWarehouses.Width - 4) / 3; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
+            int size = (lvWarehouses.Width - 15) / 3; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
             lvWarehouses.View = View.Details;
-            lvWarehouses.Columns.Add("ID", size, HorizontalAlignment.Center);
+            lvWarehouses.Columns.Add("ID", 50, HorizontalAlignment.Center);
             lvWarehouses.Columns.Add("Building Name", size, HorizontalAlignment.Center);
             lvWarehouses.Columns.Add("Address", size, HorizontalAlignment.Center);
 
@@ -831,7 +857,7 @@ namespace WindowsFormsApplication1
 
         private void lvWarehouses_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
         {
-            int maxSize = (lvWarehouses.Width - 4) / 3; // divide by 3 because there's 3 columns, subtract 4 to stop horizontal scroll bar from displaying
+            int maxSize = (lvWarehouses.Width - 15) / 3; // divide by 3 because there's 3 columns, subtract 4 to stop horizontal scroll bar from displaying
             if (lvWarehouses.Columns[e.ColumnIndex].Width < 150)
             {
                 lvWarehouses.Columns[e.ColumnIndex].Width = 150;
@@ -844,15 +870,29 @@ namespace WindowsFormsApplication1
 
         private void lvWarehouses_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            int size = (lvWarehouseItems.Width - 4) / 3; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
-            lvWarehouseItems.Columns.Add("ID", size, HorizontalAlignment.Center);
-            lvWarehouseItems.Columns.Add("Item Name", size, HorizontalAlignment.Center);
-            lvWarehouseItems.Columns.Add("Quantity", size, HorizontalAlignment.Center);
+            int ID;
+            int size = (lvWarehouseItems.Width - 15) / 3; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
+            
             if (lvWarehouses.SelectedItems.Count != 0)
             {
-                // TODO: Add Warehouse Quantity Information To lvWarehouseItems ListView
-                MessageBox.Show(lvWarehouses.SelectedItems[0].Text);
+                lvWarehouseItems.Clear();
+                lvWarehouseItems.View = View.Details;
+                lvWarehouseItems.Columns.Add("ID", 50, HorizontalAlignment.Center);
+                lvWarehouseItems.Columns.Add("Item Name", size, HorizontalAlignment.Center);
+                lvWarehouseItems.Columns.Add("Quantity", size, HorizontalAlignment.Center);
+                int.TryParse(lvWarehouses.SelectedItems[0].Text, out ID);
+                List<WarhouseItem> WareItems = session.getWarehouseItems(ID);
+                for(int i = 0; i < WareItems.Count(); i++)
+                {
+                    for(int j = 0; j < items.Count(); j++)
+                    {
+                        if(WareItems[i].ID == items[j].ID)
+                        {
+                            WareItems[i].Name = items[j].Name;
+                            lvWarehouseItems.Items.Add(new ListViewItem(new[] { WareItems[i].ID.ToString(), WareItems[i].Name, WareItems[i].Qty.ToString() }));
+                        }
+                    }
+                }
             }
         }
 
@@ -918,9 +958,9 @@ namespace WindowsFormsApplication1
         private void EmployeeList(bool DataChanged)
         {
             lvEmployees.Clear();
-            int size = (lvEmployees.Width - 4) / 4; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
+            int size = (lvEmployees.Width - 15) / 4; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
             lvEmployees.View = View.Details;
-            lvEmployees.Columns.Add("ID", size, HorizontalAlignment.Center);
+            lvEmployees.Columns.Add("ID", 50, HorizontalAlignment.Center);
             lvEmployees.Columns.Add("Username", size, HorizontalAlignment.Center);
             lvEmployees.Columns.Add("EmailAddr", size, HorizontalAlignment.Center);
             lvEmployees.Columns.Add("IsAdmin", size, HorizontalAlignment.Center);
@@ -939,7 +979,7 @@ namespace WindowsFormsApplication1
         //keeps column width from becoming too small / not visable
         private void lvEmployees_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
         {
-            int maxSize = (lvEmployees.Width - 4) / 4; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
+            int maxSize = (lvEmployees.Width - 15) / 4; // divide by 4 because there's 4 columns, subtract 4 to stop horizontal scroll bar from displaying
             if (lvEmployees.Columns[e.ColumnIndex].Width < 100)
             {
                 lvEmployees.Columns[e.ColumnIndex].Width = 100;
