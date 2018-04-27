@@ -26,6 +26,10 @@ namespace KernalPanic
 
         public bool run()
         {
+
+           
+            restockDistributionUpdate();
+            
             readVendorShipmentFile();
 
             if(continueBatch)
@@ -38,10 +42,7 @@ namespace KernalPanic
                 readVendorOrderFile();
             }
 
-            if(continueBatch)
-            {
-                restockDistributionUpdate();
-            }
+           
 
             return continueBatch;
         }
@@ -374,27 +375,29 @@ namespace KernalPanic
                     itemTotal += quantityByWarehouse[j];
                 }
 
-                int maxPercent = 0;
-                int maxIndex = 0;
-                for (int j = 0; j < quantityByWarehouse.Count; j++)
+                if (itemTotal > 0)
                 {
-                    percentByWarehouse[j] = (int)Math.Floor(quantityByWarehouse[j] / (decimal)itemTotal * 100);
-                    percentRemaining -= percentByWarehouse[j];
-
-                    if (maxPercent < percentByWarehouse[j])
+                    int maxPercent = 0;
+                    int maxIndex = 0;
+                    for (int j = 0; j < quantityByWarehouse.Count; j++)
                     {
-                        maxPercent = percentByWarehouse[j];
-                        maxIndex = j;
+                        percentByWarehouse[j] = (int)Math.Floor(quantityByWarehouse[j] / (decimal)itemTotal * 100);
+                        percentRemaining -= percentByWarehouse[j];
+
+                        if (maxPercent < percentByWarehouse[j])
+                        {
+                            maxPercent = percentByWarehouse[j];
+                            maxIndex = j;
+                        }
+                    }
+
+                    percentByWarehouse[maxIndex] += percentRemaining;
+
+                    for (int j = 0; j < percentByWarehouse.Count; j++)
+                    {
+                        session.updateRestockDistributions(itemList[i].ID, j + 1, percentByWarehouse[j]);
                     }
                 }
-
-                percentByWarehouse[maxIndex] += percentRemaining;
-
-                for (int j = 0; j < percentByWarehouse.Count; j++)
-                {
-                    session.updateRestockDistributions(itemList[i].ID, j + 1, percentByWarehouse[j]);
-                }
-
             }
         }
 
