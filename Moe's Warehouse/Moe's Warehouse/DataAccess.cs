@@ -649,6 +649,7 @@ namespace KernalPanic
         public int getLastSequenceNum(string sequenceName)
         {
             int sequenceNum;
+            MySqlDataReader reader;
 
             try
             {
@@ -659,10 +660,9 @@ namespace KernalPanic
                         connection.Open(); // open connection
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@sequenceName", sequenceName);
-                        cmd.Parameters.Add("@sequenceNum", MySqlDbType.Int32);
-                        cmd.Parameters["@sequenceNum"].Direction = ParameterDirection.Output;
-                        cmd.ExecuteReader();
-                        sequenceNum = Convert.ToInt32(cmd.Parameters["@sequenceNum"].Value);
+                        reader = cmd.ExecuteReader();
+                        reader.Read();
+                        sequenceNum = Convert.ToInt32(reader["SequenceNumber"]);
                         connection.Close();
                     }
                 }
