@@ -259,13 +259,13 @@ namespace KernalPanic
                         cmd.Parameters.AddWithValue("@venCode", vencode);  // set first sp parameter to name
 
                         // Warhouse Item Quantity
-                        cmd.Parameters.AddWithValue("@Ware1_Qty", vencode);  // set first sp parameter to name
-                        cmd.Parameters.AddWithValue("@Ware2_Qty", vencode);  // set first sp parameter to name
-                        cmd.Parameters.AddWithValue("@Ware3_Qty", vencode);  // set first sp parameter to name
-                        cmd.Parameters.AddWithValue("@Ware4_Qty", vencode);  // set first sp parameter to name
-                        cmd.Parameters.AddWithValue("@Ware5_Qty", vencode);  // set first sp parameter to name
-                        cmd.Parameters.AddWithValue("@Ware6_Qty", vencode);  // set first sp parameter to name
-                        cmd.Parameters.AddWithValue("@Ware7_Qty", vencode);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware1_Qty", qty[0]);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware2_Qty", qty[1]);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware3_Qty", qty[2]);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware4_Qty", qty[3]);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware5_Qty", qty[4]);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware6_Qty", qty[5]);  // set first sp parameter to name
+                        cmd.Parameters.AddWithValue("@Ware7_Qty", qty[6]);  // set first sp parameter to name
 
                         cmd.ExecuteReader(); // execute sp
                         connection.Close();
